@@ -1,0 +1,14 @@
+﻿@page
+@model PrivacyModel
+@{
+    ViewData["Title"] = "Privacy Policy";
+}
+<h1>@ViewData["Title"]</h1>
+<p>UserName:@User.Identity.Name</p>
+<p>Auth:@User.Identity.IsAuthenticated</p>
+<p>@User.Identity.AuthenticationType</p>
+@foreach (var item in User.Identities)
+{
+    <p>@item.NameClaimType</p>
+}
+<p>Use this page to detail your site's privacy policy.</p>

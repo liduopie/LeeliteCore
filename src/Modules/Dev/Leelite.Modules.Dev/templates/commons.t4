@@ -1,0 +1,25 @@
+﻿<#+
+    private string TypeConver(string type)
+    {
+        string rel;
+        switch(type)
+        {
+            case "String":
+                rel="string";
+                break;
+            case "Int32":
+                rel="int";
+                break;
+            case "Int64":
+                rel="long";
+                break;
+            case "Boolean":
+                rel="bool";
+                break;
+            default:
+                rel=type;
+                break;
+        }
+        return rel;
+    }
+#>

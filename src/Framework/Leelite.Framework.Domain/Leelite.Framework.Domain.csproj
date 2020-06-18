@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj" />
+    <ProjectReference Include="..\Leelite.Framework.Data\Leelite.Framework.Data.csproj" />
+  </ItemGroup>
+
+</Project>

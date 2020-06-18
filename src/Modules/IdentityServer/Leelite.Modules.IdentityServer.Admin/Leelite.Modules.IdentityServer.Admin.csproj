@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="3.1.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.3" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.3" />
+		<PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework" Version="1.0.0-rc1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Leelite.Core.Modular\Leelite.Core.Modular.csproj" />
+	  <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
+	  <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.HealthChecks\Leelite.Extensions.HealthChecks.csproj" />
+	</ItemGroup>
+</Project>

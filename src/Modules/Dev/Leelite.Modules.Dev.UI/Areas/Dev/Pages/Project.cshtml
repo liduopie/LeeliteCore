@@ -1,0 +1,35 @@
+﻿@page
+@model ProjectModel
+@{
+    ViewData["Title"] = "项目生成工具";
+}
+
+<form method="post">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Info.Namespace" class="control-label"></label>
+        <input asp-for="Info.Namespace" class="form-control" required />
+        <span asp-validation-for="Info.Namespace" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Info.ProjectType" class="control-label"></label>
+        <select asp-for="Info.ProjectType" class="form-control">
+            <option value="lib">Lib</option>
+            <option value="web">Web</option>
+            <option value="webapi">WebApi</option>
+        </select>
+        <span asp-validation-for="Info.ProjectType" class="text-danger"></span>
+    </div>
+    <div class="form-check">
+        <input asp-for="Info.IsModule" type="checkbox" class="form-check-input" />
+        <label asp-for="Info.IsModule" class="form-check-label"></label>
+    </div>
+    <input type="submit" value="生成代码" />
+</form>
+
+<div>
+    <em>Logs:</em>
+    <pre>
+    <code>@Model.Logs</code>
+    </pre>
+</div>

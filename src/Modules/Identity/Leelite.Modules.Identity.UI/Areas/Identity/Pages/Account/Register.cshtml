@@ -1,0 +1,85 @@
+﻿@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "注册";
+}
+
+<div class="card mb-0 login-form">
+    <div class="card-body">
+        <div class="text-center mb-3">
+            <i class="icon-plus3 icon-2x text-success border-success border-3 rounded-round p-3 mb-3 mt-1"></i>
+            <h5 class="mb-0">注册帐号</h5>
+            <span class="d-block text-muted">所有字段必填</span>
+        </div>
+
+        <div class="form-group text-center text-muted content-divider">
+            <span class="px-2">账号/邮箱</span>
+        </div>
+        <form asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <div asp-validation-summary="ModelOnly" class="validation-invalid-label"></div>
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input asp-for="Input.UserName" class="form-control" placeholder="帐号" />
+                <div class="form-control-feedback">
+                    <i class="icon-user-check text-muted"></i>
+                </div>
+                <span asp-validation-for="Input.UserName" class="validation-invalid-label"></span>
+            </div>
+
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input asp-for="Input.Password" class="form-control" placeholder="密码" />
+                <div class="form-control-feedback">
+                    <i class="icon-user-lock text-muted"></i>
+                </div>
+                <span asp-validation-for="Input.Password" class="validation-invalid-label"></span>
+            </div>
+
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input asp-for="Input.ConfirmPassword" class="form-control" placeholder="确认密码" />
+                <div class="form-control-feedback">
+                    <i class="icon-user-lock text-muted"></i>
+                </div>
+                <span asp-validation-for="Input.ConfirmPassword" class="validation-invalid-label"></span>
+            </div>
+
+            <div class="form-group form-group-feedback form-group-feedback-left">
+                <input asp-for="Input.Email" class="form-control" placeholder="邮箱" />
+                <div class="form-control-feedback">
+                    <i class="icon-mention text-muted"></i>
+                </div>
+                <span asp-validation-for="Input.Email" class="validation-invalid-label"></span>
+            </div>
+
+            <div class="form-group">
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+                        Send me <a href="#">test account settings</a>
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" name="remember" class="form-input-styled" checked data-fouc>
+                        Subscribe to monthly newsletter
+                    </label>
+                </div>
+
+                <div class="form-check">
+                    <label class="form-check-label">
+                        <input type="checkbox" name="remember" class="form-input-styled" data-fouc>
+                        同意 <a href="#">服务条款</a>
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn bg-teal-400 btn-block">注册 <i class="icon-circle-right2 ml-2"></i></button>
+            </div>
+        </form>
+        <vc:external-logins></vc:external-logins>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

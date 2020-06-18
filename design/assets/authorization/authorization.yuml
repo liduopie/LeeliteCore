@@ -1,0 +1,11 @@
+// {type:class}
+// {generate:false}
+
+[User]
+[PermissionRole]
+
+[UserPermissionValue|Id;OrganizationId;UserId;PermissionCode;Value:bool;]
+[RolePermissionValue|Id;PermissionRoleId;PermissionCode;]
+
+[User]<1-*[UserPermissionValue]
+[PermissionRole]<1-*[RolePermissionValue]

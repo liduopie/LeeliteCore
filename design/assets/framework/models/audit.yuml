@@ -1,0 +1,10 @@
+// {type:class}
+
+[IAudited]
+
+[ICreationAudited|CreationTime:DateTime?;CreatorId:TKey;Creator:string]
+
+[IModificationAudited|LastModificationTime:DateTime?;LastModifierId:TKey;Modifier:string]
+
+[ICreationAudited]^[IAudited]
+[IModificationAudited]^[IAudited]

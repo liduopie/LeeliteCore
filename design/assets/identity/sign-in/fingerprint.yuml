@@ -1,0 +1,7 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:false}
+
+[UserFingerprint|Id;UserId;Finger;Fingerprint;IsValid]
+[User]1-*>[UserFingerprint]
+[UserFingerprint]->[note: Finger 手指枚举]

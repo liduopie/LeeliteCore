@@ -1,0 +1,14 @@
+﻿@page
+@using Leelite.Modules.Identity.SignIn.Options
+@model LoginMobileModel
+@{
+    Layout = "_LoginLayout.cshtml";
+    ViewData["Title"] = "短信验证码登录";
+}
+@section LoginTabs {
+    <vc:login-tabs current="@LoginType.Mobile"></vc:login-tabs>
+}
+短信验证码登录
+@section Register{
+    <vc:register return-url=""></vc:register>
+}

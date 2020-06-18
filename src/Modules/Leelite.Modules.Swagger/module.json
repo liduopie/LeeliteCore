@@ -1,0 +1,7 @@
+{
+  "Name": "Leelite.Modules.Swagger",
+  "Assemblys": [
+    "Leelite.Modules.Swagger.dll"
+  ],
+  "Views": []
+}

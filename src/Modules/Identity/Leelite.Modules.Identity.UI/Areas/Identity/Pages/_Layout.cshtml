@@ -1,0 +1,13 @@
+﻿@{
+    Layout = "/Views/Shared/_Layout.cshtml";
+}
+@section Styles{
+    @RenderSection("Styles", required: false)
+}
+@RenderBody()
+@section ScriptsPlugins {
+    @RenderSection("ScriptsPlugins", required: false)
+}
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

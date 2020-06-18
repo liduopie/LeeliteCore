@@ -1,0 +1,13 @@
+{
+  "Name": "Leelite.Modules.FileStorage",
+  "Assemblys": [
+    "Leelite.Modules.FileStorage.dll",
+    "Leelite.Modules.FileStorage.Api.dll",
+    "Leelite.Modules.FileStorage.Admin.dll",
+    "Leelite.Modules.FileStorage.UI.dll"
+  ],
+  "Views": [
+    "Leelite.Modules.FileStorage.UI.Views.dll" //,
+    //"Leelite.Modules.Files.Admin.Views.dll"
+  ]
+}

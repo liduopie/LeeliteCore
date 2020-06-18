@@ -1,0 +1,9 @@
+// {type:class}
+
+[IPaging|Pager:PageParam]
+[PageParam|Page:int;PageSize:int]
+[PageList|Page:int;PageSize:int;TotalCount:long;PageCount:long;SortItems:IList<SortParam>;Data:IList<T>]
+[SortParam|FiledName:string;SortType]
+
+[IPaging]++-[PageParam]
+[PageList]++-[SortParam]

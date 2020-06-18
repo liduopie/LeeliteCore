@@ -1,0 +1,6 @@
+// {type:class}
+// {generate:false}
+
+// 审计日志管理
+
+[AuditLog|Id;ModuleCode;ServiceName;MethodName;Level:string;CustomData:jsonb;OrganizationId;UserId;OperationTime:DateTime;Signature:string;Host:string;Url:string;AppId;ClientName;ClientIp:string;BrowserInfo:string;]

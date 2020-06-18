@@ -1,0 +1,8 @@
+{
+  "Name": "Leelite.Samples.ModuleSample",
+  "Assemblys": [
+    "Leelite.Samples.ModuleSample.dll"
+  ],
+  "Views": [
+  ]
+}

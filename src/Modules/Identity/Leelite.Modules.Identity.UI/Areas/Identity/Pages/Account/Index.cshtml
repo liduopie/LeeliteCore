@@ -1,0 +1,74 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "登录索引页面";
+}
+<!-- Login form -->
+<form class="login-form" action="index.html">
+    <div class="card mb-0">
+        <div class="card-body">
+            <div class="text-center mb-3">
+                <i class="icon-bubble-lines3 icon-2x text-warning-400 border-warning-400 border-3 rounded-round p-3 mb-3 mt-1"></i>
+                <h5 class="mb-0">登录</h5>
+                <span class="d-block text-muted">多种登录方式</span>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <a class="px-2" asp-area="Identity" asp-page="/SignIn/Login">默认登录</a>
+            </div>
+
+            <div class="form-group">
+                <a class="btn bg-blue btn-block" asp-area="Identity" asp-page="/SignIn/Login"><i class="icon-comment mr-2"></i> 登录窗口</a>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <a class="px-2" asp-area="Identity" asp-page="/SignIn/LoginWithPassword">密码登录</a>
+            </div>
+
+            <div class="form-group">
+                <a class="btn bg-blue btn-block" asp-area="Identity" asp-page="/SignIn/LoginWithPassword"><i class="icon-comment mr-2"></i> 登录窗口</a>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <span class="px-2">Registration form</span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn bg-blue btn-block" data-toggle="modal" data-target="#modal-registration"><i class="icon-comment mr-2"></i> Launch modal</button>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <span class="px-2">Unlock user form</span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn bg-blue btn-block" data-toggle="modal" data-target="#modal-unlock"><i class="icon-comment mr-2"></i> Launch modal</button>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <span class="px-2">Password recovery form</span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn bg-blue btn-block" data-toggle="modal" data-target="#modal-recover"><i class="icon-comment mr-2"></i> Launch modal</button>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <span class="px-2">Tabbed form</span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn bg-blue btn-block" data-toggle="modal" data-target="#modal-tabbed"><i class="icon-comment mr-2"></i> Launch modal</button>
+            </div>
+
+            <div class="form-group text-center text-muted content-divider">
+                <span class="px-2">Form with validation</span>
+            </div>
+
+            <div class="form-group">
+                <button type="button" class="btn bg-blue btn-block" data-toggle="modal" data-target="#modal-validation"><i class="icon-comment mr-2"></i> Launch modal</button>
+            </div>
+        </div>
+    </div>
+</form>
+<!-- /login form -->

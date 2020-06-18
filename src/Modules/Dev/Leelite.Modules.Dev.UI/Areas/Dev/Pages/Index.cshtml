@@ -1,0 +1,26 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "开发工具";
+}
+
+<div class="row">
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">代码生成器</h5>
+                <p class="card-text">DDD 代码结构</p>
+                <a class="btn btn-primary" asp-area="Dev" asp-page="/Code">进入</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">项目生成器</h5>
+                <p class="card-text">lib,web,webapi等项目模板</p>
+                <a class="btn btn-primary" asp-area="Dev" asp-page="/Project">进入</a>
+            </div>
+        </div>
+    </div>
+</div>

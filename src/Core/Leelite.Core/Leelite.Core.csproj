@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.3" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj" />
+    <ProjectReference Include="..\..\Extensions\Leelite.Extensions.DependencyInjection\Leelite.Extensions.DependencyInjection.csproj" />
+    <ProjectReference Include="..\Leelite.Core.Mapper\Leelite.Core.Mapper.csproj" />
+    <ProjectReference Include="..\Leelite.Core.Modular\Leelite.Core.Modular.csproj" />
+    <ProjectReference Include="..\Leelite.Core.Plugin\Leelite.Core.Plugin.csproj" />
+  </ItemGroup>
+
+</Project>

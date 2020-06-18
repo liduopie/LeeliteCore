@@ -1,0 +1,9 @@
+{
+  "Name": "Leelite.Modules.UI.Shared",
+  "Assemblys": [
+    "Leelite.Modules.UI.Shared.dll"
+  ],
+  "Views": [
+    "Leelite.Modules.UI.Shared.Views.dll"
+  ]
+}

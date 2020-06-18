@@ -1,0 +1,8 @@
+{
+  "Name": "Leelite.Modules.HealthChecks",
+  "Assemblys": [
+    "Leelite.Modules.HealthChecks.dll",
+    "Leelite.Modules.HealthChecks.UI.dll"
+  ],
+  "Views": []
+}

@@ -1,0 +1,15 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ parameter type="System.String" name="ClassName" #>
+<#@ parameter type="System.String" name="Namespace" #>
+using FluentValidation;
+using Leelite.Commons.Validation;
+
+namespace <#=Namespace #>.Dtos.<#=ClassName #>Dtos
+{
+    public class <#=ClassName #>CreateRequestValidator : Validator<<#=ClassName #>CreateRequest>
+    {
+        public <#=ClassName #>CreateRequestValidator()
+        {
+        }
+    }
+}

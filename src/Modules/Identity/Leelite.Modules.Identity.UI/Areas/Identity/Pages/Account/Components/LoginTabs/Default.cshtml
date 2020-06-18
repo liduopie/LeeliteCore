@@ -1,0 +1,76 @@
+﻿@model LoginTabsViewModel
+
+<div class="card-header bg-white @(Model.Options.Logins.Count>0?"pb-0 pt-sm-0 pr-sm-0 header-elements-sm-inline":"")">
+    <h6 class="card-title">登录</h6>
+    <div class="header-elements">
+        <ul class="nav nav-tabs nav-tabs-bottom card-header-tabs mx-0">
+            @{
+                for (int i = 0; i < 3 && i < Model.Options.Logins.Count; i++)
+                {
+                    switch (Model.Options.Logins[i])
+                    {
+                        case Leelite.Modules.Identity.SignIn.Options.LoginType.Password:
+                            <li class="nav-item">
+                                <a asp-page="./Login" class="nav-link @(Model.Options.Logins[i]==Model.CurrentLoginType?"active":"")">
+                                    <i class="icon-lock5"></i>
+                                </a>
+                            </li>
+                            break;
+                        case Leelite.Modules.Identity.SignIn.Options.LoginType.Mobile:
+                            <li class="nav-item">
+                                <a asp-page="./LoginMobile" class="nav-link @(Model.Options.Logins[i]==Model.CurrentLoginType?"active":"")">
+                                    <i class="icon-mobile"></i>
+                                </a>
+                            </li>
+                            break;
+                        case Leelite.Modules.Identity.SignIn.Options.LoginType.QRcode:
+                            <li class="nav-item">
+                                <a asp-page="./LoginQrcode" class="nav-link @(Model.Options.Logins[i]==Model.CurrentLoginType?"active":"")">
+                                    <i class="icon-qrcode"></i>
+                                </a>
+                            </li>
+                            break;
+                        default:
+                            break;
+                    }
+                }
+
+                if (Model.Options.Logins.Count > 3)
+                {
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"></a>
+
+                        <div class="dropdown-menu dropdown-menu-right">
+                            @for (int i = 3; i < Model.Options.Logins.Count; i++)
+                            {
+                                switch (Model.Options.Logins[i])
+                                {
+                                    case Leelite.Modules.Identity.SignIn.Options.LoginType.Password:
+                                        <a href="#login-tab-@Model.Options.Logins[i].ToString().ToLower()" tabindex="-1" class="dropdown-item" data-toggle="tab">
+                                            <i class="icon-lock5"></i>
+                                            密码登录
+                                        </a>
+                                        break;
+                                    case Leelite.Modules.Identity.SignIn.Options.LoginType.Mobile:
+                                        <a href="#login-tab-@Model.Options.Logins[i].ToString().ToLower()" tabindex="-1" class="dropdown-item" data-toggle="tab">
+                                            <i class="icon-mobile"></i>
+                                            短信验证码
+                                        </a>
+                                        break;
+                                    case Leelite.Modules.Identity.SignIn.Options.LoginType.QRcode:
+                                        <a href="#login-tab-@Model.Options.Logins[i].ToString().ToLower()" tabindex="-1" class="dropdown-item" data-toggle="tab">
+                                            <i class="icon-qrcode"></i>
+                                            扫描二维码
+                                        </a>
+                                        break;
+                                    default:
+                                        break;
+                                }
+                            }
+                        </div>
+                    </li>
+                }
+            }
+        </ul>
+    </div>
+</div>

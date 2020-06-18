@@ -1,0 +1,27 @@
+// {type:class}
+// {direction:topDown}
+// {generate:false}
+
+// TODO: 需要重新考虑
+
+[message|id;type;receiver;content;time;status;returnUrl;handleUrl;sessionId]
+[messageService]++-[sendNotificationApi]
+[messageService]++-[sendSMSApi]
+[messageService]++-[sendWeChatApi]
+[messageService]++-[sendDingtalkApi]
+[sendNotificationApi]->[ISender]
+[sendSMSApi]->[ISender]
+[sendWeChatApi]->[ISender]
+[sendDingtalkApi]->[ISender]
+[ISender]++-[sendNotification]
+[ISender]++-[sendSMS]
+[ISender]++-[sendWeChat]
+[ISender]++-[sendDingtalk]
+[sendNotification]-.->[NotificationOption]
+[sendSMS]-.->[SMSOption]
+[sendWeChat]-.->[WeChatOption]
+[sendDingtalk]-.->[DingtalkOption]
+[sendNotification]->[message]
+[sendSMS]->[message]
+[sendWeChat]->[message]
+[sendDingtalk]->[message]

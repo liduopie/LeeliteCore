@@ -1,0 +1,13 @@
+﻿using Leelite.Framework.Models.Enabled;
+using Leelite.Framework.Service.Dtos;
+
+namespace Leelite.Samples.ModuleSample.Dtos
+{
+    public class BlogUpdateRequest : IUpdateRequest<int>, IEnabledParameter
+    {
+        public int Id { get; set; }
+        public string Url { get; set; }
+        public int Rating { get; set; }
+        public bool? IsEnabled { get; set; }
+    }
+}

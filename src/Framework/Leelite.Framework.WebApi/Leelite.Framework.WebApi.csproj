@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Extensions\Leelite.Extensions.System\Leelite.Extensions.System.csproj" />
+    <ProjectReference Include="..\Leelite.Framework\Leelite.Framework.csproj" />
+  </ItemGroup>
+
+</Project>

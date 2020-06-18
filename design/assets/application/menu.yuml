@@ -1,0 +1,8 @@
+// {type:class}
+// {generate:false}
+
+[Tree]
+[Menu|Id;Name;Target:string;Url;Description]
+[Tree]<-[Menu]
+
+[Shortcut]

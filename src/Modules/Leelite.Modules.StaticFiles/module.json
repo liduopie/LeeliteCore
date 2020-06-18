@@ -1,0 +1,7 @@
+{
+  "Name": "Leelite.Modules.StaticFiles",
+  "Assemblys": [
+    "Leelite.Modules.StaticFiles.dll"
+  ],
+  "Views": []
+}

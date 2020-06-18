@@ -1,0 +1,9 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:false}
+
+
+[Key|KeyId;PublicKey;Signature;SignatureRule:(KeyId:UserId:...);ValidDate]
+[KeyHistory]
+
+[Key]<1-*[KeyHistory]

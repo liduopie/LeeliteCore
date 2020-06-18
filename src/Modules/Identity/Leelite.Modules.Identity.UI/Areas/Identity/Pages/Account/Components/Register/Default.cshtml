@@ -1,0 +1,16 @@
+﻿@model RegisterViewModel
+
+@{
+    if (Model.Options.UserOptions.Register)
+    {
+        <div class="form-group text-center text-muted content-divider">
+            <span class="px-2">没有帐号?</span>
+        </div>
+
+        <div class="form-group">
+            <a asp-page="../Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-light btn-block">注册</a>
+        </div>
+
+        <span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+    }
+}

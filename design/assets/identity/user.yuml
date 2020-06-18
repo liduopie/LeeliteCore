@@ -1,0 +1,27 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:false}
+
+// 基础用户
+// 用户管理和登录方式将在该方案中持续扩展
+
+// Identity
+[UserPassword|PasswordHash:string]
+[UserPhoneNumber|PhoneNumberConfirmed:bool;PhoneNumber:string;]
+[UserLocked|LockoutEnabled:bool;LockoutEnd:DateTimeOffset?]
+[UserEmail|Email:string;NormalizedEmail:string;EmailConfirmed:bool;]
+[UserInfo|UserName:string;NormalizedUserName:string;]
+[User|Id;SecurityStamp:string;ConcurrencyStamp:string;AccessFailedCount:int;TwoFactorEnabled:bool;]
+
+[User]++-[UserPassword]
+[User]++-[UserPhoneNumber]
+[User]++-[UserLocked]
+[User]++-[UserEmail]
+[User]++-[UserInfo]
+
+[UserClaim|Id:int;UserId;ClaimType:string;ClaimValue:string;]
+[UserClaim]*-1>[User]
+[UserLogin|UserId;LoginProvider:string;ProviderDisplayName:string;ProviderKey:string;]
+[UserLogin]*-1>[User]
+[UserToken|UserId;Name:string;LoginProvider:string;Value:string;]
+[UserToken]*-1>[User]

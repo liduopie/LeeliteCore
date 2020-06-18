@@ -1,0 +1,8 @@
+// {type:class}
+
+// Models
+[Employee]
+[AreaEmployee|RelationCode;AreaId;EmployeeId;]
+
+[Area]<*-*>[Employee][AreaEmployee]
+[AreaEmployee]RelationCode->[node: 系统字典|Code=owner;Code=children;]

@@ -1,0 +1,9 @@
+{
+  "Name": "Leelite.Modules.Settings",
+  "Assemblys": [
+    "Leelite.Modules.Settings.dll",
+    "Leelite.Modules.Settings.Api.dll"
+  ],
+  "Views": [
+  ]
+}

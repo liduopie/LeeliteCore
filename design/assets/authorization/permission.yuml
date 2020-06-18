@@ -1,0 +1,7 @@
+// {type:class}
+// {generate:false}
+
+[Tree]
+[Permission|Code;Name;Exclusions:string;]
+
+[Tree]^[Permission]

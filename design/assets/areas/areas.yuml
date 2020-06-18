@@ -1,0 +1,10 @@
+// {type:class}
+
+[<<ITree>>]
+
+[AreaType|Id;Name;]
+[Area|Id;Name;AreaTypeCode;]
+
+// Relations
+[<<ITree>>]^[Area]
+[Area]<-.-[AreaType]

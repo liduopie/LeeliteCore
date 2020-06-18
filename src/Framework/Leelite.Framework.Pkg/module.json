@@ -1,0 +1,13 @@
+{
+  "Name": "Leelite.Framework",
+  "Assemblys": [
+    "Leelite.Framework.dll",
+    "Leelite.Framework.Data.dll",
+    "Leelite.Framework.Domain.dll",
+    "Leelite.Framework.EntityFramework.dll",
+    "Leelite.Framework.Models.dll",
+    "Leelite.Framework.Service.dll",
+    "Leelite.Framework.WebApi.dll"
+  ],
+  "Views": []
+}

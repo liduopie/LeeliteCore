@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+}
+@section Styles{
+    <link href="~/identity/css/identity.css" rel="stylesheet" type="text/css">
+    @RenderSection("Styles", required: false)
+}
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper gradient-1">
+        <!-- Main navbar -->
+        <div class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.075); border-bottom-color: rgba(255,255,255,0.35);">
+            <div class="navbar-brand">
+                <a href="index.html" class="d-inline-block">
+                    <img src="~/global_assets/images/logo_light.png" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- /main navbar -->
+        <!-- Content area -->
+        <div class="content d-flex justify-content-center align-items-center">
+            @RenderBody()
+        </div>
+        <!-- /content area -->
+        <!-- Footer -->
+        <div class="navbar navbar-expand-lg navbar-dark bg-dark-alpha border-0">
+            <div class="text-center d-lg-none w-100">
+                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                    <i class="icon-unfold mr-2"></i>
+                    Footer
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-footer">
+                <span class="navbar-text">
+                    &copy; @DateTime.Now.Year. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a>
+                </span>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /main content -->
+</div>
+<!-- /page content -->
+@section ScriptsPlugins {
+    <script src="~/global_assets/js/plugins/forms/styling/uniform.min.js"></script>
+    @RenderSection("ScriptsPlugins", required: false)
+}
+@section Scripts {
+    <script src="~/identity/pages/identity.js"></script>
+    @RenderSection("Scripts", required: false)
+}

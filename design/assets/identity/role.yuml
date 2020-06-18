@@ -1,0 +1,7 @@
+// {type:class}
+// {generate:false}
+
+[Role|Id;Name:string;NormalizedName:string;]
+[RoleClaim|Id;RoleId;ClaimType:string;ClaimValue:string;]
+
+[RoleClaim]1-*>[Role]

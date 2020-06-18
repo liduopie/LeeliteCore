@@ -1,0 +1,10 @@
+{
+  "Name": "Leelite.Modules.Dev",
+  "Assemblys": [
+    "Leelite.Modules.Dev.dll",
+    "Leelite.Modules.Dev.UI.dll"
+  ],
+  "Views": [
+    "Leelite.Modules.Dev.UI.Views.dll"
+  ] 
+}

@@ -1,0 +1,10 @@
+// {type:activity}
+// {direction:leftToRight}
+// {generate:false}
+
+(start)[文件流]->(File Store)->|a|
+|a|[文件记录]->(FileStoreContext)->|c|
+|a|[文件流]-><b>
+<b>->(Db Stream)->|c|
+<b>->(Physics File Stream)->|c|
+|c|->(end)

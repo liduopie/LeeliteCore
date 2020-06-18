@@ -1,0 +1,8 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:false}
+
+[User]
+[UserPhoneNumber|PhoneNumberConfirmed:bool;PhoneNumber:string;]
+
+[User]1-1>[UserPhoneNumber]

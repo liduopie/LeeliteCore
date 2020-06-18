@@ -1,0 +1,26 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspectInjector" Version="2.3.1" />
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="FluentValidation" Version="8.6.2" />
+    <PackageReference Include="MediatR" Version="8.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="3.1.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.Commons.Aspects\Leelite.Commons.Aspects.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Assembly\Leelite.Commons.Assembly.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Convention\Leelite.Commons.Convention.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Helpers\Leelite.Commons.Helpers.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Host\Leelite.Commons.Host.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Lifetime\Leelite.Commons.Lifetime.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Mapper\Leelite.Commons.Mapper.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Validation\Leelite.Commons.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,10 @@
+{
+  "Name": "Leelite.Modules.IdentityServer",
+  "Assemblys": [
+    "Leelite.Modules.IdentityServer.dll",
+    "Leelite.Modules.IdentityServer.Admin.dll",
+    "Leelite.Modules.IdentityServer.Admin.Api.dll",
+    "Leelite.Modules.IdentityServer.STS.dll"
+  ],
+  "Views": []
+}

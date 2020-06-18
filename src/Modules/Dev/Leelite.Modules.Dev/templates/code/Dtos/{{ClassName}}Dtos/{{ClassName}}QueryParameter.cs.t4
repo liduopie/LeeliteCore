@@ -1,0 +1,22 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ parameter type="System.String" name="ClassName" #>
+<#@ parameter type="System.String" name="Namespace" #>
+using System;
+using System.Linq.Expressions;
+using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.Parameters;
+using <#=Namespace #>.Models.<#=ClassName #>Agg;
+
+namespace <#=Namespace #>.Dtos.<#=ClassName #>Dtos
+{
+    public class <#=ClassName #>QueryParameter : PageParameter<<#=ClassName #>>
+    {
+        public override Expression<Func<<#=ClassName #>, bool>> SatisfiedBy()
+        {
+            Criterion<<#=ClassName #>> c = new TrueCriterion<<#=ClassName #>>();
+
+            return c.SatisfiedBy();
+        }
+    }
+}
+

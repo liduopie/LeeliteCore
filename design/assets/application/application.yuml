@@ -1,0 +1,13 @@
+// {type:class}
+// {generate:false}
+
+[Application|Id:string;Name;MenuId;Description]
+[ModuleItem|AppCode;ModuleCode;]
+[FeatureItem]
+[MenuItem]
+[ShortcutItem]
+
+[Application]<1-*[ModuleItem]
+[Application]<1-*[FeatureItem]
+[Application]<1-*[MenuItem]
+[Application]<1-*[ShortcutItem]

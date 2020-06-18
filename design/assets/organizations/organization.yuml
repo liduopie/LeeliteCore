@@ -1,0 +1,29 @@
+// {type:class}
+
+[Organization|Id;TypeId:int;]
+[OrganizationTag]
+[OrganizationAttributes]
+
+[OrganizationType]
+[OrganizationTypeOptions]
+[OrganizationTypAttributeDefinition]
+
+[User]
+[Employee|UserId;OrganizationId;]
+
+[OrganizationTree|Id;Name;]
+[OrganizationTreeOptions]
+[OrganizationNode|OrganizationTreeId;ParentId;Path;]
+
+[Organization]1-*>[OrganizationType][OrganizationTag]
+[Organization]<1-*[OrganizationAttributes]
+[User]1-*>[Organization][Employee]
+
+[OrganizationType]-[note: 不同的单位类型;...]
+[OrganizationType]<-[OrganizationTypeOptions]
+[OrganizationType]<-[OrganizationTypAttributeDefinition]
+
+[Tree]^[OrganizationNode]
+[OrganizationNode]1-*>[OrganizationTree]
+[Organization]->[OrganizationNode]
+[OrganizationTreeOptions]->[OrganizationTree]

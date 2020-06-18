@@ -1,0 +1,6 @@
+// {type:class}
+
+[DataType|Id:string;Name:string;Type:System/Organ;]
+[Dicitonary|DataTypeId;OrganizationId;Code:string;Value:string;Enabled:bool;Sort;]
+
+[DataType]->[Dicitonary]

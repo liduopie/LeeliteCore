@@ -1,0 +1,36 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="..\..\commons.t4" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ parameter type="System.String" name="ClassName" #>
+<#@ parameter type="System.String" name="ClassFullName" #>
+<#@ parameter type="System.String" name="Namespace" #>
+<#@ parameter type="System.String" name="AssemblyPath" #>
+<#
+    var assembly = Assembly.LoadFile(AssemblyPath); 
+    var classType = assembly.GetType(ClassFullName);
+    var idProp = classType.GetProperties().Where(c => c.Name == "Id").FirstOrDefault();
+    var moudleNmae = Namespace.Split('.')[Namespace.Split('.').Length-1];
+#>
+using Leelite.Framework.WebApi;
+using <#=Namespace #>.Dtos.<#=ClassName #>Dtos;
+using <#=Namespace #>.Interfaces;
+using <#=Namespace #>.Models.<#=ClassName #>Agg;
+using Microsoft.AspNetCore.Mvc;
+
+namespace <#=Namespace #>.WebApi
+{
+    [ApiController]
+    [Area("<#=moudleNmae #>")]
+    [Route("api/[area]/[controller]")]
+    public class <#=ClassName #>Controller : RESTfulController<<#=ClassName #>, <#=TypeConver(idProp.PropertyType.Name) #>, <#=ClassName #>Dto, <#=ClassName #>CreateRequest, <#=ClassName #>UpdateRequest, <#=ClassName #>QueryParameter>
+    {
+        private readonly I<#=ClassName #>Service _service;
+
+        public <#=ClassName #>Controller(I<#=ClassName #>Service service) : base(service)
+        {
+            _service = service;
+        }
+    }
+}

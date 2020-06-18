@@ -1,0 +1,58 @@
+﻿@{
+    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+}
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main content -->
+    <div class="content-wrapper">
+        <!-- Main navbar -->
+        <div class="navbar navbar-expand-md navbar-dark">
+            <div class="navbar-brand">
+                <a href="index.html" class="d-inline-block">
+                    <img src="~/global_assets/images/logo_light.png" alt="">
+                </a>
+            </div>
+        </div>
+        <!-- /main navbar -->
+        <!-- Content area -->
+        <div class="content d-flex justify-content-center align-items-center">
+            <h1>Manage your account</h1>
+            <div>
+                <h4>Change your account settings</h4>
+                <hr />
+                <div class="row">
+                    <div class="col-md-3">
+                        <partial name="_ManageNav" />
+                    </div>
+                    <div class="col-md-9">
+                        @RenderBody()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /content area -->
+        <!-- Footer -->
+        <div class="navbar navbar-expand-lg navbar-light">
+            <div class="text-center d-lg-none w-100">
+                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
+                    <i class="icon-unfold mr-2"></i>
+                    Footer
+                </button>
+            </div>
+
+            <div class="navbar-collapse collapse" id="navbar-footer">
+                <span class="navbar-text">
+                    &copy; 2015 - 2018. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a>
+                </span>
+            </div>
+        </div>
+        <!-- /footer -->
+    </div>
+    <!-- /main content -->
+</div>
+<!-- /page content -->
+
+@section Scripts {
+    @RenderSection("Scripts", required: false)
+}

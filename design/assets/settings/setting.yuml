@@ -1,0 +1,12 @@
+// {type:class}
+
+[ITree]
+
+[SettingDefinitionGroup|Name;DisplayName;]
+[SettingDefinition|Name;DisplayName;Description;Scopes:SettingScopes;IsInherited;Group;DefaultValue;CustomData;]
+
+[SettingScopes]->[node:Application | Tenant | User]
+[SettingValue|TenantId:long?;UserId:long?;Name:string;Value;]
+
+[ITree]^[SettingDefinitionGroup]
+[SettingDefinitionGroup]<1-*[SettingDefinition]

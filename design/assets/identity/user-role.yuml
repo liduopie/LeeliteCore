@@ -1,0 +1,6 @@
+// {type:class}
+// {generate:false}
+
+[User]
+
+[Role]<*-*>[User][UserRole|UserId;RoleId;]

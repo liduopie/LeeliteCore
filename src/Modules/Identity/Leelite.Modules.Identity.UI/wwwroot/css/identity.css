@@ -1,0 +1,9 @@
+﻿.gradient-1 {
+    background: linear-gradient(to top right,#2490d9,#00d685);
+    background: url(../../global_assets/images/backgrounds/sections.png),linear-gradient(to top right,#2490d9,#00d685);
+    background-repeat: repeat;
+}
+
+.sign-in {
+
+}

@@ -1,0 +1,11 @@
+{
+  // 在主机的 appsettings.json 中增加配置
+  "StaticFiles": {
+    "Paths": [
+      {
+        "FilePath": "../StaticFiles/global_assets",
+        "RequestPath": "/global_assets"
+      }
+    ]
+  }
+}

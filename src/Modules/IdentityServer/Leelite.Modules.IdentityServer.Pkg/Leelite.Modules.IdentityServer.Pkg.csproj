@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.IdentityServer\</OutputPath>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.Modules.IdentityServer.Admin.Api\Leelite.Modules.IdentityServer.Admin.Api.csproj" />
+    <ProjectReference Include="..\Leelite.Modules.IdentityServer.Admin\Leelite.Modules.IdentityServer.Admin.csproj" />
+    <ProjectReference Include="..\Leelite.Modules.IdentityServer.STS\Leelite.Modules.IdentityServer.STS.csproj" />
+    <ProjectReference Include="..\Leelite.Modules.IdentityServer\Leelite.Modules.IdentityServer.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="module.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

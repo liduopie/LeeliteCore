@@ -1,0 +1,31 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ include file="..\..\..\commons.t4" #>
+<#@ import namespace="System.Reflection" #>
+<#@ parameter type="System.String" name="ClassName" #>
+<#@ parameter type="System.String" name="ClassFullName" #>
+<#@ parameter type="System.String" name="Namespace" #>
+<#@ parameter type="System.String" name="AssemblyPath" #>
+<#
+    var assembly = Assembly.LoadFile(AssemblyPath); 
+    var classType = assembly.GetType(ClassFullName);
+#>
+using Leelite.Framework.Service.Dtos;
+
+namespace <#=Namespace #>.Dtos.<#=ClassName #>Dtos
+{
+    public class <#=ClassName #>CreateRequest : IRequest
+    {
+<# 
+foreach(var prop in classType.GetProperties())
+{
+    if(prop.Name != "Id")
+    {
+#>
+        public <#=TypeConver(prop.PropertyType.Name) #> <#=prop.Name #> { get; set; }
+
+<#
+    }
+} 
+#>
+    }
+}

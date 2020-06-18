@@ -1,0 +1,7 @@
+// {type:class}
+// {direction:leftToRight}
+// {generate:false}
+
+[UserKeys|UserId;;KeyId;]
+
+[User]1-*>[UserKeys]

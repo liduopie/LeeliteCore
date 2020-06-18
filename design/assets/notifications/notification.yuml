@@ -1,0 +1,16 @@
+// {type:class}
+// {generate:false}
+
+// abp
+
+[NotificationInfo|Id;NotificationName;Data:jsonb;Severity;UserIds;ExcludedUserIds;TenantIds;]
+
+[TenantNotification|Id;TenantId;NotificationName;Data:jsonb;Severity;]
+[UserNotification|TenantId;UserId;CreationTime;Data:NotificationData;State;]
+
+[NotificationSeverity|Info:0;Success:1;Warn:2;Error:3;Fatal:4;]
+[UserNotificationState|Unread:0;Read;]
+[DataType|Info:Url;]
+
+[NotificationInfo]<1-*[TenantNotification]
+[NotificationInfo]<1-*[UserNotification]
