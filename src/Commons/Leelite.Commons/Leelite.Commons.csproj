@@ -15,6 +15,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Leelite.Commons.Aspects\Leelite.Commons.Aspects.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Assembly\Leelite.Commons.Assembly.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Cache.InMemory\Leelite.Commons.Cache.InMemory.csproj" />
+    <ProjectReference Include="..\Leelite.Commons.Cache\Leelite.Commons.Cache.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Convention\Leelite.Commons.Convention.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Helpers\Leelite.Commons.Helpers.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Host\Leelite.Commons.Host.csproj" />
