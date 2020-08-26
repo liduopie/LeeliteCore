@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
+using Leelite.Core.Settings;
 using Leelite.Modules.Settings.Dtos.SettingValueDtos;
 using Leelite.Modules.Settings.Interfaces;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 
-namespace Leelite.Modules.Settings.Definition
+namespace Leelite.Core.Settings.Definition
 {
     /// <summary>
     /// A setting group is used to group some settings togehter.

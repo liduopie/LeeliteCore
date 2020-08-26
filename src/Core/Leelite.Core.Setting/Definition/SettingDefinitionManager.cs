@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using Leelite.Commons.Lifetime;
 
-namespace Leelite.Modules.Settings.Definition
+namespace Leelite.Core.Settings.Definition
 {
     /// <summary>
     /// Implements <see cref="ISettingDefinitionManager"/>.

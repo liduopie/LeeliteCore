@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Threading.Tasks;
 
+using Leelite.Core.Settings;
 using Leelite.Modules.Identity.Models.UserAgg;
 using Leelite.Modules.Identity.SignIn.Options;
 using Leelite.Modules.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models;
