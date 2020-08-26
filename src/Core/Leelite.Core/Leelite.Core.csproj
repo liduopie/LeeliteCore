@@ -16,6 +16,7 @@
     <ProjectReference Include="..\Leelite.Core.Mapper\Leelite.Core.Mapper.csproj" />
     <ProjectReference Include="..\Leelite.Core.Modular\Leelite.Core.Modular.csproj" />
     <ProjectReference Include="..\Leelite.Core.Plugin\Leelite.Core.Plugin.csproj" />
+    <ProjectReference Include="..\Leelite.Core.Setting\Leelite.Core.Setting.csproj" />
   </ItemGroup>
 
 </Project>
