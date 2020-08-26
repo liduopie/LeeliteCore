@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Leelite.Modules.Settings.Definition
+namespace Leelite.Core.Settings.Definition
 {
     /// <summary>
     /// Defines setting definition manager.

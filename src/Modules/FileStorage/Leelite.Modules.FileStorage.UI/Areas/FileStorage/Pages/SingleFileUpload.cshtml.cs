@@ -7,6 +7,8 @@ using System.Net;
 using System.Reflection;
 using System.Threading.Tasks;
 using HybridFS.FileSystem;
+
+using Leelite.Core.Settings;
 using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
 using Leelite.Modules.FileStorage.Interfaces;
 using Leelite.Modules.FileStorage.Options;

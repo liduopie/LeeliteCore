@@ -1,4 +1,5 @@
-﻿using Leelite.Modules.Identity.Options;
+﻿using Leelite.Core.Settings;
+using Leelite.Modules.Identity.Options;
 using Leelite.Modules.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models;
 using Leelite.Modules.Settings.Interfaces;
 

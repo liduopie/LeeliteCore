@@ -8,6 +8,8 @@ using HybridFS.FileSystem;
 using HybridFS.FileSystem.Exceptions;
 using HybridFS.FileSystem.Models;
 using HybridFS.Utility;
+
+using Leelite.Core.Settings;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;
 using Leelite.Framework.Domain.Repository;

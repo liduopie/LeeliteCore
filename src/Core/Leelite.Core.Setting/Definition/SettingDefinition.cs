@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Text.Json;
 
-namespace Leelite.Modules.Settings.Definition
+namespace Leelite.Core.Settings.Definition
 {
     /// <summary>
     /// Defines a setting.

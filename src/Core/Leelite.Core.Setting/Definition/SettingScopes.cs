@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Leelite.Modules.Settings.Definition
+namespace Leelite.Core.Settings.Definition
 {
     /// <summary>
     /// Defines scope of a setting.

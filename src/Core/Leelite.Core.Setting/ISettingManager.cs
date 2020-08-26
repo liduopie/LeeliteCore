@@ -1,8 +1,8 @@
 ﻿using Leelite.Commons.Lifetime;
 
-using Microsoft.Extensions.Configuration;
+//using Microsoft.Extensions.Configuration;
 
-namespace Leelite.Modules.Settings.Interfaces
+namespace Leelite.Core.Settings
 {
     /// <summary>
     /// 配置管理
@@ -13,7 +13,7 @@ namespace Leelite.Modules.Settings.Interfaces
         /// 获取应用程序配置
         /// </summary>
         /// <returns>返回配置跟目录</returns>
-        IConfigurationRoot GetApplicationConfig();
+        //IConfigurationRoot GetApplicationConfig();
 
         /// <summary>
         /// 刷新应用程序配置
@@ -25,7 +25,7 @@ namespace Leelite.Modules.Settings.Interfaces
         /// </summary>
         /// <param name="tenantId">租户Id</param>
         /// <returns>返回配置跟目录</returns>
-        IConfigurationRoot GetTenantConfig(long tenantId);
+        //IConfigurationRoot GetTenantConfig(long tenantId);
 
         /// <summary>
         /// 刷新租户配置
@@ -38,7 +38,7 @@ namespace Leelite.Modules.Settings.Interfaces
         /// </summary>
         /// <param name="userId">用户Id</param>
         /// <returns>返回配置跟目录</returns>
-        IConfigurationRoot GetUserConfig(long userId);
+        //IConfigurationRoot GetUserConfig(long userId);
 
         /// <summary>
         /// 刷新用户配置
