@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Reflection;
+
 using AspectInjector.Broker;
+
 using FluentValidation;
+using FluentValidation.Results;
+
 using Leelite.Commons.Host;
 using Leelite.Commons.Validation;
+
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
@@ -22,7 +27,7 @@ namespace Leelite.Commons.Aspects
         [Advice(Kind.Before, Targets = Target.Public | Target.Method)]
         public void Before(
             [Argument(Source.Type)] Type type,
-            [Argument(Source.Metadata)]MethodBase metadata,
+            [Argument(Source.Metadata)] MethodBase metadata,
             [Argument(Source.Name)] string name,
             [Argument(Source.Arguments)] object[] args)
         {
@@ -38,7 +43,9 @@ namespace Leelite.Commons.Aspects
 
                 var validatorType = validatorInterfaceType.MakeGenericType(parameter.ParameterType);
 
-                var validator = (IValidator)HostManager.Context.HostServices.GetService(validatorType);
+                var validator = HostManager.Context.HostServices.GetService(validatorType);
+
+                MethodInfo validateMethod = validatorType.GetMethod("Validate");
 
                 if (validator == null) continue;
 
@@ -48,7 +55,7 @@ namespace Leelite.Commons.Aspects
                 {
                     if (arg.GetType() == parameter.ParameterType)
                     {
-                        var result = validator.Validate(arg);
+                        var result = (ValidationResult)validateMethod.Invoke(validator, new object[] { arg });
 
                         if (!result.IsValid)
                         {
