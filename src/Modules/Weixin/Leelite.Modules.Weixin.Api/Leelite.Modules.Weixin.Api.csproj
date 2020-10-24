@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.Weixin\</OutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.5.510" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\Leelite.Modules.Weixin\Leelite.Modules.Weixin.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>
