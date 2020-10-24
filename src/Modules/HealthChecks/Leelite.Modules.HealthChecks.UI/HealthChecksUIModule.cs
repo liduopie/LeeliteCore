@@ -34,7 +34,7 @@ namespace Leelite.Modules.HealthChecks.UI
                 setup.AddHealthCheckEndpoint("HTTP-Api-Basic", "/healthz");
                 setup.AddHealthCheckEndpoint("Process", "/health-process");
                 setup.AddHealthCheckEndpoint("Database", "/health-database");
-            });
+            }).AddInMemoryStorage();
         }
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)

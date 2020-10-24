@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netcoreapp3.1</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\Hosts\AppHost\Modules\Leelite.Modules.Hangfire\</OutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.7.17" />
+		<PackageReference Include="Hangfire.Core" Version="1.7.17" />
+		<PackageReference Include="Hangfire.PostgreSql" Version="1.7.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

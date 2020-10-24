@@ -1,0 +1,11 @@
+{
+  "Name": "Leelite.Modules.Hangfire",
+  "Assemblys": [
+    "Dapper.dll",
+    "Hangfire.Core.dll",
+    "Hangfire.AspNetCore.dll",
+    "Hangfire.PostgreSql.dll",
+    "Leelite.Modules.Hangfire.dll"
+  ],
+  "Views": []
+}
