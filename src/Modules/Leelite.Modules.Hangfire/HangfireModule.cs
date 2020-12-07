@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 using Hangfire;
 using Hangfire.PostgreSql;
@@ -12,10 +10,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace Leelite.Modules.Hangfire
 {
-    public class HangfireModule : MvcModuleStartupBase
+    public class HangfireModule : MvcModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {

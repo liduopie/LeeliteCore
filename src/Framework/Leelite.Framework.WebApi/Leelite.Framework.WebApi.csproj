@@ -1,17 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
-  </PropertyGroup>
-  
-  <ItemGroup>
-    <FrameworkReference Include="Microsoft.AspNetCore.App" />
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\Extensions\Leelite.Extensions.System\Leelite.Extensions.System.csproj" />
-    <ProjectReference Include="..\Leelite.Framework\Leelite.Framework.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\Hosts\AppHost\Modules\Leelite.Framework.WebApi</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\Leelite.Framework\Leelite.Framework.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 
 </Project>

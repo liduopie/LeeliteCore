@@ -1,0 +1,8 @@
+{
+  "Name": "Leelite.Modules.Identity",
+  "AssemblyFileName": "Leelite.Modules.Identity.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Modules.Identity.dll",
+    "Leelite.Modules.Identity.SignIn.dll"
+  ]
+}

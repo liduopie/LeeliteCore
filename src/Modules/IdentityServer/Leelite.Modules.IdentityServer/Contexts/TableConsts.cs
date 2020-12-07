@@ -2,25 +2,28 @@
 {
     public static class TableConsts
     {
-        public const string Clients = "IdentityServer_Clients";
-        public const string ClientClaims = "IdentityServer_ClientClaims";
+        public const string ApiResource = "IdentityServer_ApiResource";
+        public const string ApiResourceClaim = "IdentityServer_ApiResourceClaim";
+        public const string ApiResourceProperty = "IdentityServer_ApiResourceProperty";
+        public const string ApiResourceScope = "IdentityServer_ApiResourceScope";
+        public const string ApiResourceSecret = "IdentityServer_ApiResourceSecret";
+        public const string ApiScope = "IdentityServer_ApiScope";
+        public const string ApiScopeClaim = "IdentityServer_ApiScopeClaim";
+        public const string ApiScopeProperty = "IdentityServer_ApiScopeProperty";
+        public const string Client = "IdentityServer_Client";
+        public const string ClientClaim = "IdentityServer_ClientClaim";
+        public const string ClientCorsOrigin = "IdentityServer_ClientCorsOrigin";
+        public const string ClientGrantType = "IdentityServer_ClientGrantType";
+        public const string ClientIdPRestriction = "IdentityServer_ClientIdPRestriction";
+        public const string ClientPostLogoutRedirectUri = "IdentityServer_ClientPostLogoutRedirectUri";
+        public const string ClientProperty = "IdentityServer_ClientProperty";
+        public const string ClientRedirectUri = "IdentityServer_ClientRedirectUri";
         public const string ClientScopes = "IdentityServer_ClientScopes";
-        public const string ClientSecrets = "IdentityServer_ClientSecrets";
-        public const string ClientProperties = "IdentityServer_ClientProperties";
-        public const string ClientGrantTypes = "IdentityServer_ClientGrantTypes";
-        public const string ClientCorsOrigins = "IdentityServer_ClientCorsOrigins";
-        public const string ClientRedirectUris = "IdentityServer_ClientRedirectUris";
-        public const string ClientIdPRestrictions = "IdentityServer_ClientIdPRestrictions";
-        public const string ClientPostLogoutRedirectUris = "IdentityServer_ClientPostLogoutRedirectUris";
+        public const string ClientSecret = "IdentityServer_ClientSecret";
+        public const string IdentityResource = "IdentityServer_IdentityResource";
+        public const string IdentityResourceClaim = "IdentityServer_IdentityResourceClaim";
+        public const string IdentityResourceProperty = "IdentityServer_IdentityResourceProperty";
 
-        public const string ApiClaims = "IdentityServer_ApiClaims";
-        public const string ApiScopes = "IdentityServer_ApiScopes";
-        public const string ApiSecrets = "IdentityServer_ApiSecrets";
-        public const string ApiResources = "IdentityServer_ApiResources";
-        public const string ApiScopeClaims = "IdentityServer_ApiScopeClaims";
-
-        public const string IdentityClaims = "IdentityServer_IdentityClaims";
-        public const string IdentityResources = "IdentityServer_IdentityResources";
 
         public const string PersistedGrants = "IdentityServer_PersistedGrants";
         public const string DeviceFlowCodes = "IdentityServer_DeviceFlowCodes";

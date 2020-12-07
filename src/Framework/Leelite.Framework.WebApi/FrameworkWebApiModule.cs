@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Framework.WebApi
 {
-    public class FrameworkWebApiModule : MvcModuleStartupBase
+    public class FrameworkWebApiModule : MvcModuleBase
     {
         public override void MvcBuild(IMvcBuilder builder)
         {

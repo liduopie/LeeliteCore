@@ -1,13 +1,14 @@
 ﻿using Leelite.Commons.Convention;
 using Leelite.Commons.Host;
-using Leelite.Core.Modular.Module;
+using Leelite.Core.Module;
 using Leelite.Framework.Conventions;
 using Leelite.Framework.Domain;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Framework
 {
-    public class FrameworkModule : ModuleStartupBase
+    public class FrameworkModule : ModuleBase
     {
         public override void ConfigureConventions()
         {

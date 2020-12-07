@@ -1,6 +1,7 @@
 using System;
+
 using Leelite.Commons.Host;
-using Leelite.Core.Modular;
+
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Hosting;
 
@@ -10,10 +11,6 @@ namespace AppHost
     {
         public static void Main(string[] args)
         {
-            var hotModule = new HotModule();
-
-            hotModule.Run();
-
             try
             {
                 do

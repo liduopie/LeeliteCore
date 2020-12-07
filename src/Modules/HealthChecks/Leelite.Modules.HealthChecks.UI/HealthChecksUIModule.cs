@@ -4,8 +4,8 @@ using HealthChecks.UI.Client;
 
 using Leelite.AspNetCore.Modular;
 using Leelite.Commons.Host;
-using Leelite.Core.Modular.Dependency;
-using Leelite.Core.Modular.Module;
+using Leelite.Core.Module;
+using Leelite.Core.Module.Dependency;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -16,7 +16,7 @@ using Microsoft.Extensions.DependencyInjection;
 namespace Leelite.Modules.HealthChecks.UI
 {
     [DependsOn(typeof(HealthChecksModule))]
-    public class HealthChecksUIModule : MvcModuleStartupBase
+    public class HealthChecksUIModule : MvcModuleBase
     {
         private bool _enabled = false;
 
@@ -43,9 +43,14 @@ namespace Leelite.Modules.HealthChecks.UI
 
             app.UseRouting().UseEndpoints(config =>
             {
+                config.MapHealthChecks("/health", new HealthCheckOptions
+                {
+                    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+                });
+
                 config.MapHealthChecksUI(setup =>
                 {
-                    setup.AddCustomStylesheet(Path.Combine(this.GetModuleEntry(app.ApplicationServices).ModulePath, "assets/dotnet.css"));
+                    setup.AddCustomStylesheet(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "assets/dotnet.css"));
                 });
 
                 config.MapHealthChecks("/healthz", new HealthCheckOptions

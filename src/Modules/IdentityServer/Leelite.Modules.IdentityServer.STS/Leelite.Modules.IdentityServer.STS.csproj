@@ -1,17 +1,17 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="3.1.4" />
-    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.1.7" />
+    <PackageReference Include="IdentityServer4.EntityFramework.Storage" Version="4.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.HealthChecks\Leelite.Extensions.HealthChecks.csproj" />
+    <ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Identity\Leelite.Modules.Identity\Leelite.Modules.Identity.csproj" />
     <ProjectReference Include="..\Leelite.Modules.IdentityServer\Leelite.Modules.IdentityServer.csproj" />
   </ItemGroup>

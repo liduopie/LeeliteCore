@@ -1,8 +1,5 @@
 {
   "Name": "Leelite.Modules.Setting",
-  "Assemblys": [
-    "Leelite.Modules.Setting.dll"
-  ],
-  "Views": [
-  ]
+  "AssemblyFileName": "Leelite.Modules.Setting.dll",
+  "ReferencedAssemblies": []
 }

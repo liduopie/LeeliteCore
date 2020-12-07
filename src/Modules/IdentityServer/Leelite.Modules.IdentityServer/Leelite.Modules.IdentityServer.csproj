@@ -1,17 +1,18 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework" Version="1.0.0-rc2-update1" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework" Version="2.0.0-beta1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Leelite.Core.Modular\Leelite.Core.Modular.csproj" />
+    <ProjectReference Include="..\..\..\Core\Leelite.Core\Leelite.Core.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
-    <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.HealthChecks\Leelite.Extensions.HealthChecks.csproj" />
   </ItemGroup>
 
 </Project>

@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj" />
+    <ProjectReference Include="..\..\Core\Leelite.Core\Leelite.Core.csproj" />
   </ItemGroup>
 
 </Project>

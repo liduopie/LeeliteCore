@@ -3,8 +3,10 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Leelite.Modules.Identity.Contexts;
 using Leelite.Modules.Identity.Models.UserAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -21,11 +23,7 @@ namespace Leelite.Modules.Identity.Stores.UserStore
         /// <param name="describer">The <see cref="IdentityErrorDescriber"/> used to describe store errors.</param>
         public UserStore(IdentityContext context, IdentityErrorDescriber describer = null)
         {
-            if (context == null)
-            {
-                throw new ArgumentNullException(nameof(context));
-            }
-            Context = context;
+            Context = context ?? throw new ArgumentNullException(nameof(context));
 
             if (describer == null)
             {
@@ -262,7 +260,7 @@ namespace Leelite.Modules.Identity.Stores.UserStore
         {
             if (id == null)
             {
-                return default(long);
+                return default;
             }
             return (long)TypeDescriptor.GetConverter(typeof(long)).ConvertFromInvariantString(id);
         }

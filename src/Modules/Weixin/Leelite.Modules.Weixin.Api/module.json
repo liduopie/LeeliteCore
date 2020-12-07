@@ -1,14 +1,7 @@
 {
   "Name": "Leelite.Modules.Weixin",
-  "Assemblys": [
-    "Senparc.NeuChar.dll",
-    "Senparc.CO2NET.dll",
-    "Senparc.CO2NET.APM.dll",
-    "Senparc.Weixin.dll",
-    "Senparc.Weixin.MP.dll",
-    "Leelite.Modules.Weixin.dll",
-    "Leelite.Modules.Weixin.Api.dll"
-  ],
-  "Views": [
+  "AssemblyFileName": "Leelite.Modules.Weixin.Api.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Modules.Weixin.dll"
   ]
 }

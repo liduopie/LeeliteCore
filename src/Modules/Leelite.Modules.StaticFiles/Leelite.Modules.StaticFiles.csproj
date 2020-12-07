@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -10,10 +10,11 @@
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\Hosts\AppHost\Modules\Leelite.Modules.StaticFiles\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="module.json">

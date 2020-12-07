@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -19,14 +19,6 @@
   </Target>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Aspects\Leelite.Commons.Aspects.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Assembly\Leelite.Commons.Assembly.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Convention\Leelite.Commons.Convention.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Helpers\Leelite.Commons.Helpers.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Host\Leelite.Commons.Host.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Lifetime\Leelite.Commons.Lifetime.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Mapper\Leelite.Commons.Mapper.csproj" />
-    <ProjectReference Include="..\..\Commons\Leelite.Commons.Validation\Leelite.Commons.Validation.csproj" />
     <ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj">
       <PrivateAssets>all</PrivateAssets>
     </ProjectReference>

@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Leelite.Commons.Aspects;
-using Leelite.Commons.Validation;
+
+using Leelite.Core.Aspects;
+using Leelite.Core.Validation;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.Data.Store

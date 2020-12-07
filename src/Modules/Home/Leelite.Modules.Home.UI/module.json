@@ -1,9 +1,7 @@
 {
-  "Name": "Leelite.Modules.Home.UI",
-  "Assemblys": [
-    "Leelite.Modules.Home.UI.dll"
-  ],
-  "Views": [
-    "Leelite.Modules.Home.UI.Views.dll"
+  "Name": "Leelite.Modules.Home",
+  "AssemblyFileName": "Leelite.Modules.Home.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Modules.Home.dll"
   ]
 }

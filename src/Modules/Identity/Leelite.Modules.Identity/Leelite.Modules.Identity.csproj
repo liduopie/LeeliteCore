@@ -3,20 +3,15 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
-
+	
   <ItemGroup>
-    <Compile Remove="Migrations\PostgreSQL\20200326052218_InitialCreate.cs" />
-    <Compile Remove="Migrations\PostgreSQL\20200326052218_InitialCreate.Designer.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.7" />
+    <PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Core\Leelite.Core\Leelite.Core.csproj" />
     <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
-    <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.HealthChecks\Leelite.Extensions.HealthChecks.csproj" />
     <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
   </ItemGroup>
 

@@ -12,7 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.IdentityServer.STS
 {
-    public class IdentityServerSTSModule : MvcModuleStartupBase
+    public class IdentityServerSTSModule : MvcModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {
@@ -29,7 +29,7 @@ namespace Leelite.Modules.IdentityServer.STS
                 .AddIdentityServerJwt();
 
             // TODO:Uri 修改为配置文件
-            services.AddHealthChecks().AddIdentityServer(new Uri("http://localhost:5000"), "Identity Server");
+            // services.AddHealthChecks().AddIdentityServer(new Uri("http://localhost:5000"), "Identity Server");
         }
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
