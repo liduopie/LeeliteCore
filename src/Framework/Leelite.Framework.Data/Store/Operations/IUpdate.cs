@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
-using Leelite.Commons.Validation;
+
+using Leelite.Core.Validation;
 
 namespace Leelite.Framework.Data.Store.Operations
 {

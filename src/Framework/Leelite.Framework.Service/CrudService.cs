@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Command;

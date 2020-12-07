@@ -1,28 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>netcoreapp3.1</TargetFramework>
+		<TargetFramework>net5.0</TargetFramework>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.HealthChecks\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
-	
+
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="3.1.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="3.1.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI" Version="5.0.0-preview1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="5.0.0-preview1" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.InMemory.Storage" Version="5.0.0-preview1" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\AspNetCore\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Leelite.Modules.HealthChecks\Leelite.Modules.HealthChecks.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.HealthChecks\Leelite.Modules.HealthChecks.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Content Update="module.json">
-	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-	  </Content>
+		<Content Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
 	</ItemGroup>
 
 	<ItemGroup>

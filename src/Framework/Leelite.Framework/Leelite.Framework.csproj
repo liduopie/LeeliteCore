@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.2.0" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="9.3.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,5 +16,4 @@
     <ProjectReference Include="..\Leelite.Framework.Models\Leelite.Framework.Models.csproj" />
     <ProjectReference Include="..\Leelite.Framework.Service\Leelite.Framework.Service.csproj" />
   </ItemGroup>
-
 </Project>

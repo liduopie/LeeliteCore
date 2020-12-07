@@ -1,22 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="8.1.0" />
-    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="3.1.7" />
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="3.1.7" />
+    <PackageReference Include="AspectInjector" Version="2.4.1" />
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="FluentValidation" Version="9.3.0" />
+    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="5.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj" />
     <ProjectReference Include="..\..\Extensions\Leelite.Extensions.DependencyInjection\Leelite.Extensions.DependencyInjection.csproj" />
-    <ProjectReference Include="..\Leelite.Core.Mapper\Leelite.Core.Mapper.csproj" />
-    <ProjectReference Include="..\Leelite.Core.Modular\Leelite.Core.Modular.csproj" />
-    <ProjectReference Include="..\Leelite.Core.Plugin\Leelite.Core.Plugin.csproj" />
-    <ProjectReference Include="..\Leelite.Core.Setting\Leelite.Core.Setting.csproj" />
+    <ProjectReference Include="..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
   </ItemGroup>
 
 </Project>

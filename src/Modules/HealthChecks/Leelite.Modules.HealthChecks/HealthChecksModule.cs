@@ -1,10 +1,11 @@
 ﻿using Leelite.Commons.Host;
-using Leelite.Core.Modular.Module;
+using Leelite.Core.Module;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.HealthChecks
 {
-    public class HealthChecksModule : ModuleStartupBase
+    public class HealthChecksModule : ModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {

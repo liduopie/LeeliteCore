@@ -1,7 +1,5 @@
 {
   "Name": "Leelite.Modules.DevOps",
-  "Assemblys": [
-    "Leelite.Modules.DevOps.dll"
-  ],
-  "Views": []
+  "AssemblyFileName": "Leelite.Modules.DevOps.dll",
+  "ReferencedAssemblies": []
 }

@@ -91,7 +91,7 @@ namespace Leelite.Framework.WebApi
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult<TDto>> Put(TKey id, [FromBody] TUpdateRequest updateRequest)
+        public virtual async Task<ActionResult<TDto>> Put([FromQuery]TKey id, [FromBody] TUpdateRequest updateRequest)
         {
             if (!id.Equals(updateRequest.Id))
             {

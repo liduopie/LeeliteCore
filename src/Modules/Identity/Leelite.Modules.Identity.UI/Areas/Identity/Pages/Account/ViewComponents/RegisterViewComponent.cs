@@ -18,11 +18,12 @@ namespace Leelite.Modules.Identity.UI.Areas.Identity.Pages.Account.ViewComponent
 
         public IViewComponentResult Invoke(string returnUrl)
         {
-            var model = new RegisterViewModel();
+            var model = new RegisterViewModel
+            {
+                Options = _settingManager.GetApplicationOptions<IdentityOptions>(nameof(IdentityOptions)),
 
-            model.Options = _settingManager.GetApplicationOptions<IdentityOptions>(nameof(IdentityOptions));
-
-            model.ReturnUrl = returnUrl;
+                ReturnUrl = returnUrl
+            };
 
             return View(model);
         }

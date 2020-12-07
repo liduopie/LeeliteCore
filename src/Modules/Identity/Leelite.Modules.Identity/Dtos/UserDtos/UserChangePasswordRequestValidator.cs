@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
-using Leelite.Commons.Validation;
+
+using Leelite.Core.Validation;
 
 namespace Leelite.Modules.Identity.Dtos.UserDtos
 {

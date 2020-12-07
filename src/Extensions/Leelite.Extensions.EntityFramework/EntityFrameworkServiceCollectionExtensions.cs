@@ -14,7 +14,7 @@ namespace Microsoft.Extensions.DependencyInjection
             services.AddSingleton<IConnectionStringFactory, ConfigConnectionStringFactory>();
             services.AddScoped<IConnectionFactory, DefaultConnectionFactory>();
 
-            services.AddDbProviders();
+            AddDbProviders();
 
             services.AddSingleton<IProviderTypeOptions>(c =>
             {
@@ -23,7 +23,7 @@ namespace Microsoft.Extensions.DependencyInjection
         }
 
 
-        private static void AddDbProviders(this IServiceCollection services)
+        private static void AddDbProviders()
         {
             DbProviderFactories.RegisterFactory("Npgsql", Npgsql.NpgsqlFactory.Instance);
             DbProviderFactories.RegisterFactory("Sqlite", Data.Sqlite.SqliteFactory.Instance);
@@ -33,12 +33,12 @@ namespace Microsoft.Extensions.DependencyInjection
         public static void AddDbContext<TContext>(this IServiceCollection services, string connectionStringName, Action<IServiceProvider, DbContextOptionsBuilder> optionsAction = null)
              where TContext : DbContext
         {
-            Action<IServiceProvider, DbContextOptionsBuilder> action = (serviceProvider, builder) =>
+            void action(IServiceProvider serviceProvider, DbContextOptionsBuilder builder)
             {
                 var _configuration = serviceProvider.GetService<IConfiguration>();
                 var _connectionFactory = serviceProvider.GetService<IConnectionFactory>();
 
-                var options = serviceProvider.GetService<IProviderTypeOptions>();
+                var options = serviceProvider.GetRequiredService<IProviderTypeOptions>();
 
                 var dbProviderName = options.ProviderType;
 
@@ -63,7 +63,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 }
 
                 optionsAction?.Invoke(serviceProvider, builder);
-            };
+            }
 
             services.AddDbContext<TContext>(action);
 

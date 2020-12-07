@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 
 using Leelite.Commons.Host;
-using Leelite.Core.Modular.Module;
 using Leelite.Framework.Service.Commands;
 using Leelite.Modules.FileStorage.CommandHandlers;
 using Leelite.Modules.FileStorage.Contexts;
@@ -15,10 +14,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using HybridFS.FileSystem;
+using Leelite.Core.Module;
 
 namespace Leelite.Modules.FileStorage
 {
-    public class FileStorageModule : ModuleStartupBase
+    public class FileStorageModule : ModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {
@@ -31,11 +31,11 @@ namespace Leelite.Modules.FileStorage
             services.AddHybridFS_Sqlite();
         }
 
-        public override async Task UpdateDatabase()
+        public override void Init()
         {
             var dbContext = HostManager.Context.HostServices.GetService<FileStorageContext>();
 
-            await dbContext.Database.MigrateAsync();
+            dbContext.Database.Migrate();
         }
     }
 }

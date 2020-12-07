@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using Leelite.Commons.Validation;
+
+using Leelite.Core.Validation;
 
 namespace Leelite.Framework.Data.Store.Operations
 {

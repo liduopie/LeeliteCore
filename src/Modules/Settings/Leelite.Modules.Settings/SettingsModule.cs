@@ -1,20 +1,18 @@
-﻿using System.Threading.Tasks;
-
+﻿
 using Leelite.Commons.Host;
-using Leelite.Core.Modular.Dependency;
-using Leelite.Core.Modular.Module;
+using Leelite.Core.Module;
+using Leelite.Core.Module.Dependency;
 using Leelite.Framework;
 using Leelite.Modules.Settings.Contexts;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.Settings
 {
     [DependsOn(typeof(FrameworkModule))]
-    public class SettingsModule : ModuleStartupBase
+    public class SettingsModule : ModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {
@@ -23,11 +21,11 @@ namespace Leelite.Modules.Settings
             services.AddDbContext<SettingsContext>("Default");
         }
 
-        public override async Task UpdateDatabase()
+        public override void Init()
         {
             var settingsContext = HostManager.Context.HostServices.GetService<SettingsContext>();
 
-            await settingsContext.Database.MigrateAsync();
+            settingsContext.Database.Migrate();
         }
     }
 }

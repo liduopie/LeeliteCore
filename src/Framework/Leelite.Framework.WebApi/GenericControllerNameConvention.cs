@@ -10,7 +10,7 @@ namespace Leelite.Framework.WebApi
     [AttributeUsage(AttributeTargets.Class, AllowMultiple = false, Inherited = false)]
     public class GenericControllerNameConvention : Attribute, IControllerModelConvention
     {
-        private Type _type;
+        private readonly Type _type;
         public GenericControllerNameConvention(Type type)
         {
             _type = type;
@@ -30,7 +30,7 @@ namespace Leelite.Framework.WebApi
 
             var fullName = entityType.FullName;
 
-            var area = fullName.Substring(fullName.IndexOf("Modules") + 8);
+            var area = fullName[(fullName.IndexOf("Modules") + 8)..];
 
             area = area.Substring(0, area.IndexOf("."));
 

@@ -9,7 +9,7 @@ using Microsoft.Extensions.FileProviders;
 
 namespace Leelite.Modules.StaticFiles
 {
-    public class StaticFilesModule : MvcModuleStartupBase
+    public class StaticFilesModule : MvcModuleBase
     {
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {

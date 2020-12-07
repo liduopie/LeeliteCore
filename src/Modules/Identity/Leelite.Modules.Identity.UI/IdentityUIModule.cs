@@ -2,8 +2,8 @@
 
 using Leelite.AspNetCore.Modular;
 using Leelite.Commons.Host;
-using Leelite.Core.Modular.Dependency;
-using Leelite.Core.Modular.Module;
+using Leelite.Core.Module;
+using Leelite.Core.Module.Dependency;
 using Leelite.Modules.Identity.Models.RoleAgg;
 using Leelite.Modules.Identity.Models.UserAgg;
 using Leelite.Modules.Identity.UI.Areas.Identity.Services;
@@ -23,7 +23,7 @@ using Microsoft.Extensions.FileProviders;
 namespace Leelite.Modules.Identity.UI
 {
     [DependsOn(typeof(IdentityModule), typeof(SettingsModule))]
-    public class IdentityUIModule : MvcModuleStartupBase
+    public class IdentityUIModule : MvcModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {
@@ -59,7 +59,7 @@ namespace Leelite.Modules.Identity.UI
 
             app.UseStaticFiles(new StaticFileOptions
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(this.GetModuleEntry(app.ApplicationServices).ModulePath, "wwwroot")),
+                FileProvider = new PhysicalFileProvider(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "wwwroot")),
                 RequestPath = "/identity"
             });
         }

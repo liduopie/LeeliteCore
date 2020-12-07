@@ -1,5 +1,4 @@
-﻿
-using Leelite.Core.Modular;
+﻿using Leelite.Core.Modular;
 
 using Microsoft.AspNetCore.Mvc;
 
@@ -19,9 +18,9 @@ namespace Leelite.Modules.DevOps.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            foreach (var item in _modularManager.ModuleStartups)
+            foreach (var item in _modularManager.Modules)
             {
-                item.UpdateDatabase();
+                item.Init();
             }
 
             return Ok();

@@ -1,6 +1,4 @@
 ﻿using System;
-using Leelite.Commons.Assembly.Loader;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Commons.Host
 {
@@ -21,9 +19,6 @@ namespace Leelite.Commons.Host
             var loggerFactory = LoggerFactory.Create(builder =>
             {
                 builder
-                    .AddFilter("Microsoft", LogLevel.Warning)
-                    .AddFilter("System", LogLevel.Warning)
-                    .AddFilter("LoggingConsoleApp.Program", LogLevel.Debug)
                     .AddConsole()
                     .AddEventLog();
             });
@@ -70,13 +65,7 @@ namespace Leelite.Commons.Host
         {
             Restarting = true;
 
-            Logger.LogCritical("Host Restart");
-
             Stop();
-
-            var loader = Context.HostServices.GetService<IAssemblyLoader>();
-
-            loader.Unload();
         }
     }
 }

@@ -29,10 +29,11 @@ namespace Leelite.Modules.Identity.UI.Areas.Identity.Pages.Account.ViewComponent
 
         public async Task<IViewComponentResult> InvokeAsync()
         {
-            var model = new ExternalLoginsViewModel();
-
-            model.ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-            model.Options = _settingManager.GetApplicationOptions<LoginOptions>(nameof(LoginOptions));
+            var model = new ExternalLoginsViewModel
+            {
+                ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList(),
+                Options = _settingManager.GetApplicationOptions<LoginOptions>(nameof(LoginOptions))
+            };
 
             return View(model);
         }

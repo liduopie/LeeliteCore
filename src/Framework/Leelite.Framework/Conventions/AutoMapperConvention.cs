@@ -1,10 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+
 using AutoMapper;
+
 using Leelite.Commons.Convention;
 using Leelite.Commons.Host;
-using Leelite.Commons.Mapper;
+using Leelite.Core.Mapper;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Framework.Conventions

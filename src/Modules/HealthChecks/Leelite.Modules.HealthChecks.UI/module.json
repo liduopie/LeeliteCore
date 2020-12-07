@@ -1,13 +1,7 @@
 {
   "Name": "Leelite.Modules.HealthChecks",
-  "Assemblys": [
-    "YamlDotNet.dll",
-    "Microsoft.Rest.ClientRuntime.dll",
-    "KubernetesClient.dll",
-    "HealthChecks.UI.dll",
-    "HealthChecks.UI.InMemory.Storage.dll",
-    "Leelite.Modules.HealthChecks.dll",
-    "Leelite.Modules.HealthChecks.UI.dll"
-  ],
-  "Views": []
+  "AssemblyFileName": "Leelite.Modules.HealthChecks.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Modules.HealthChecks.dll"
+  ]
 }

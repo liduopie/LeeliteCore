@@ -11,7 +11,7 @@ namespace Leelite.Modules.Identity.Contexts.Configurations
         public void Configure(EntityTypeBuilder<Role> builder)
         {
             builder.HasKey(r => r.Id);
-            builder.HasIndex(r => r.NormalizedName).HasName("RoleNameIndex").IsUnique();
+            builder.HasIndex(r => r.NormalizedName).HasDatabaseName("RoleNameIndex").IsUnique();
             builder.ToTable(TableConsts.IdentityRoles);
 
             builder.Property(r => r.ConcurrencyStamp).HasMaxLength(256).IsConcurrencyToken();

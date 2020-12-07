@@ -50,7 +50,7 @@ namespace Leelite.Modules.Identity.Contexts.Configurations
             {
                 a.Property(p => p.UserName).HasColumnName("UserName").HasMaxLength(nameMaxLength);
                 a.Property(p => p.NormalizedUserName).HasColumnName("NormalizedUserName").HasMaxLength(nameMaxLength);
-                a.HasIndex(p => p.NormalizedUserName).HasName("UserNameIndex").IsUnique();
+                a.HasIndex(p => p.NormalizedUserName).HasDatabaseName("UserNameIndex").IsUnique();
             });
 
             builder.OwnsOne(u => u.Password, pa =>
@@ -69,7 +69,7 @@ namespace Leelite.Modules.Identity.Contexts.Configurations
                 e.Property(p => p.Email).HasColumnName("Email").HasMaxLength(nameMaxLength);
                 e.Property(p => p.NormalizedEmail).HasColumnName("NormalizedEmail").HasMaxLength(nameMaxLength);
                 e.Property(p => p.EmailConfirmed).HasColumnName("EmailConfirmed").HasMaxLength(nameMaxLength);
-                e.HasIndex(p => p.NormalizedEmail).HasName("EmailIndex");
+                e.HasIndex(p => p.NormalizedEmail).HasDatabaseName("EmailIndex");
             });
 
             builder.OwnsOne(u => u.IDCard, i =>
