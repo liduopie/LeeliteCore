@@ -15,7 +15,7 @@ namespace Leelite.Core.Cache.InMemory
     /// </summary>
     public class InMemoryCacheLock : AbstractCacheLock
     {
-        private ILogger _logger;
+        private readonly ILogger _logger;
 
         //这里必须为非公开的构造函数，使用 Create() 方法创建
         public InMemoryCacheLock(InMemoryCache localCache, string resourceName, string key,
@@ -33,11 +33,11 @@ namespace Leelite.Core.Cache.InMemory
         /// <summary>
         /// 随机数
         /// </summary>
-        private static Random _rnd = new Random();
+        private static readonly Random _rnd = new Random();
         /// <summary>
         /// 读取LockPool时的锁
         /// </summary>
-        private static object lookPoolLock = new object();
+        private static readonly object lookPoolLock = new object();
 
         public override ICacheLock Lock()
         {
