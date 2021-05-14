@@ -2,6 +2,7 @@
 
 namespace Leelite.Commons.Host
 {
+    using Microsoft.Extensions.DependencyInjection;
     using Microsoft.Extensions.Hosting;
     using Microsoft.Extensions.Logging;
 
@@ -18,9 +19,7 @@ namespace Leelite.Commons.Host
 
             var loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder
-                    .AddConsole()
-                    .AddEventLog();
+                builder.AddConsole();
             });
             Logger = loggerFactory.CreateLogger("HostManager");
         }

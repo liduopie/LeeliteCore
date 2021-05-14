@@ -17,9 +17,7 @@ namespace Leelite.Core.Aspects
         {
             _loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder
-                    .AddConsole()
-                    .AddEventLog();
+                builder.AddConsole();
             });
         }
 

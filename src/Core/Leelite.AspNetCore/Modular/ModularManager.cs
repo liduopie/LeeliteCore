@@ -42,9 +42,7 @@ namespace Leelite.AspNetCore.Modular
 
             var loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder
-                    .AddConsole()
-                    .AddEventLog();
+                builder.AddConsole();
             });
             _logger = loggerFactory.CreateLogger<ModularManager>();
         }
