@@ -20,12 +20,5 @@ namespace Leelite.Modules.Settings
 
             services.AddDbContext<SettingsContext>("Default");
         }
-
-        public override void Init()
-        {
-            var settingsContext = HostManager.Context.HostServices.GetService<SettingsContext>();
-
-            settingsContext.Database.Migrate();
-        }
     }
 }

@@ -18,11 +18,6 @@ namespace Leelite.Modules.DevOps.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            foreach (var item in _modularManager.Modules)
-            {
-                item.Init();
-            }
-
             return Ok();
         }
     }
