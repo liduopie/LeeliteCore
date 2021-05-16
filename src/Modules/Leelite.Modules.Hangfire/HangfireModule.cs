@@ -35,9 +35,11 @@ namespace Leelite.Modules.Hangfire
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            app.UseHangfireServer();
+
             // Make `Back to site` link working for subfolder applications
             //var options = new DashboardOptions { AppPath = "~" };
-
             app.UseHangfireDashboard();
 
             var backgroundJobs = app.ApplicationServices.GetService<IBackgroundJobClient>();
