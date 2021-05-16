@@ -14,3 +14,8 @@ Drop-Database -s AppHost -c SettingsContext
 Remove-Migration Check -s AppHost -c SettingsContext
 
 SettingsDesignTimeFactory
+
+生成数据库初始化SQL
+dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -p Leelite.Modules.Settings.csproj -s ../../../Hosts/AppHost/AppHost.csproj
+简化版本
+dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -s ../../../Hosts/AppHost
