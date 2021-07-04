@@ -1,11 +1,15 @@
 ﻿using System;
+
 using Hangfire;
 using Hangfire.Console;
 using Hangfire.RecurringJobExtensions;
 using Hangfire.Server;
+
 using Leelite.AspNetCore.Modular;
+using Leelite.Commons.Host;
 using Leelite.Core.Module.Dependency;
 using Leelite.Modules.Hangfire;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
@@ -16,6 +20,16 @@ namespace Leelite.Modules.PushCenter
     [DependsOn(typeof(HangfireModule))]
     public class PushCenterModule : MvcModuleBase
     {
+        public override void ConfigureServices(HostContext context)
+        {
+            var services = context.ServiceDescriptors;
+
+            services.AddHangfire(configuration =>
+            {
+                configuration.UseRecurringJob(typeof(RecurringJobService));
+            });
+        }
+
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             var backgroundJobs = app.ApplicationServices.GetService<IBackgroundJobClient>();

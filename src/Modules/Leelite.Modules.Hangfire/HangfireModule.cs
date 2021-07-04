@@ -14,6 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
 using Hangfire.RecurringJobExtensions;
+using Hangfire.Console;
 
 namespace Leelite.Modules.Hangfire
 {
@@ -38,10 +39,10 @@ namespace Leelite.Modules.Hangfire
 
                 configuration.UseConsole();
 
-                //using json config file to build RecurringJob automatically.
+                // using json config file to build RecurringJob automatically.
                 configuration.UseRecurringJob("recurringjob.json");
-                //using RecurringJobAttribute to build RecurringJob automatically.
-                configuration.UseRecurringJob(typeof(RecurringJobService));
+                // using RecurringJobAttribute to build RecurringJob automatically.
+                // configuration.UseRecurringJob(typeof(RecurringJobService));
 
             });
 
