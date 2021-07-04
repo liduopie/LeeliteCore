@@ -1,20 +1,15 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 using Leelite.Framework.Domain.Aggregate;
-using Leelite.Framework.Models.SoftDelete;
+using Leelite.Framework.Models.Audit;
+using Leelite.Framework.Models.State;
 
-namespace Leelite.Modules.Message.Models.MessageAgg
+namespace Leelite.Modules.Message.Models.SessionAgg
 {
-    /// <summary>
-    /// 系统消息
-    /// </summary>
-    public class Message : AggregateRoot<long>,
-        ISoftDelete
+    public class Session : AggregateRoot<long>,
+        IState<CompleteState>
     {
-        /// <summary>
-        /// 用户标识
-        /// </summary>
-        public long UserId { get; set; }
-
         /// <summary>
         /// 消息类型
         /// </summary>
@@ -36,17 +31,19 @@ namespace Leelite.Modules.Message.Models.MessageAgg
         public string Data { get; set; }
 
         /// <summary>
-        /// 阅读状态:false未读、true已读
+        /// 用户Id串
         /// </summary>
-        public bool ReadState { get; set; }
+        public string UserIds { get; set; }
 
         /// <summary>
-        /// 送达状态:false未发送、ture已发送
+        /// 用户数量
         /// </summary>
-        public bool DeliveryState { get; set; }
+        public int UserNum { get; set; }
 
-        /// <inheritdoc/>
-        public bool IsDeleted { get; set; }
+        /// <summary>
+        /// 推送数量
+        /// </summary>
+        public int PushNum { get; set; }
 
         /// <summary>
         /// 创建时间
@@ -54,18 +51,23 @@ namespace Leelite.Modules.Message.Models.MessageAgg
         public DateTime CreateTime { get; set; }
 
         /// <summary>
-        /// 阅读时间
+        /// 完成状态
         /// </summary>
-        public DateTime? ReadTime { get; set; }
+        public CompleteState State { get; set; }
 
         /// <summary>
-        /// 删除时间
+        /// 完成时间
         /// </summary>
-        public DateTime? DeleteTime { get; set; }
+        public DateTime CompleteTime { get; set; }
 
         /// <summary>
         /// 过期时间
         /// </summary>
         public DateTime ExpirationTime { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        public string Remark { get; set; }
     }
 }

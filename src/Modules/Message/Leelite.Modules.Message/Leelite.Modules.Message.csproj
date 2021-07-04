@@ -7,5 +7,10 @@
   <ItemGroup>
     <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
   </ItemGroup>
-
+  <ItemGroup>
+    <None Remove="Models\SessionAgg\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\SessionAgg\" />
+  </ItemGroup>
 </Project>
