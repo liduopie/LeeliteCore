@@ -1,5 +1,7 @@
 using Leelite.Framework.Service.Dtos;
 
+using System;
+
 namespace Leelite.Modules.Message.Models.MessageAgg.Dtos.MessageDtos
 {
     public class MessageUpdateRequest : IUpdateRequest<long>

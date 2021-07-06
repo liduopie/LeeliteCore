@@ -1,7 +1,7 @@
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Modules.Message.Models.SessionAgg.Contexts;
-using Leelite.Modules.Message.Models.SessionAgg.Models.SessionAgg;
+using Leelite.Modules.Message.Models.SessionAgg;
 
 namespace Leelite.Modules.Message.Models.SessionAgg.Repositories
 {
