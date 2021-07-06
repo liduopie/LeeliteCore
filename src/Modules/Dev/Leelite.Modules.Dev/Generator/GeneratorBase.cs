@@ -50,9 +50,6 @@ namespace Leelite.Modules.Dev.Generator
 
             TemplateGenerator = new TemplateGenerator();
 
-            TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, "System.CodeDom.dll"));
-            TemplateGenerator.Refs.Add("System.ComponentModel.Primitives.dll");
-            
             foreach (var item in Parameters)
             {
                 TemplateGenerator.TryAddParameter(item.Key + "=" + item.Value);

@@ -15,5 +15,6 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Mono.TextTemplating" Version="2.2.1" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
   </ItemGroup>
 </Project>

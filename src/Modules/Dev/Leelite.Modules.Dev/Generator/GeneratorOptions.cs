@@ -6,7 +6,7 @@ namespace Leelite.Modules.Dev.Generator
     {
         public GeneratorOptions()
         {
-            TemplateDirectory = Path.Combine(Directory.GetCurrentDirectory(), @"Modules\Leelite.Modules.Dev\netcoreapp3.1\templates");
+            TemplateDirectory = Path.Combine(Directory.GetCurrentDirectory(), @"Modules\Leelite.Modules.Dev\templates");
             OutputDirectory = Path.Combine(Directory.GetCurrentDirectory(), "output");
         }
 
