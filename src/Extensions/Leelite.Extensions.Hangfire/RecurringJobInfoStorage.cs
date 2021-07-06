@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Hangfire.Common;
 using Hangfire.Storage;
+using TimeZoneConverter;
 
 namespace Hangfire.RecurringJobExtensions
 {
@@ -96,7 +97,7 @@ namespace Hangfire.RecurringJobExtensions
 				RecurringJobId = recurringJobId,
 				Cron = recurringJob["Cron"],
 				TimeZone = recurringJob.ContainsKey("TimeZoneId")
-					? TimeZoneInfo.FindSystemTimeZoneById(recurringJob["TimeZoneId"])
+					? TZConvert.GetTimeZoneInfo(recurringJob["TimeZoneId"])
 					: TimeZoneInfo.Utc,
 				Queue = recurringJob["Queue"],
 				Method = job.Method,

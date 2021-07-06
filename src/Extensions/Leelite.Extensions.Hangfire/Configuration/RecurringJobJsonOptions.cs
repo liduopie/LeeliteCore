@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using TimeZoneConverter;
 
 namespace Hangfire.RecurringJobExtensions.Configuration
 {
@@ -35,10 +36,10 @@ namespace Hangfire.RecurringJobExtensions.Configuration
 #endif
 		public string Cron { get; set; }
 
-		/// <summary>  
-		/// The value of <see cref="TimeZoneInfo"/> can be created by <seealso cref="TimeZoneInfo.FindSystemTimeZoneById(string)"/>
-		/// </summary>
-		[JsonProperty("timezone")]
+        /// <summary>  
+        /// The value of <see cref="TimeZoneInfo"/> can be created by <seealso cref="TZConvert.GetTimeZoneInfo(string)"/>
+        /// </summary>
+        [JsonProperty("timezone")]
 		[JsonConverter(typeof(TimeZoneInfoConverter))]
 		public TimeZoneInfo TimeZone { get; set; }
 		/// <summary>

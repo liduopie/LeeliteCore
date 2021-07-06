@@ -1,20 +1,15 @@
 ﻿using System;
 using System.Globalization;
 using Hangfire;
+using Hangfire.Console;
 using Hangfire.PostgreSql;
-
 using Leelite.AspNetCore.Modular;
 using Leelite.Commons.Host;
-
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-
-using Hangfire.RecurringJobExtensions;
-using Hangfire.Console;
 
 namespace Leelite.Modules.Hangfire
 {
@@ -40,7 +35,7 @@ namespace Leelite.Modules.Hangfire
                 configuration.UseConsole();
 
                 // using json config file to build RecurringJob automatically.
-                configuration.UseRecurringJob("recurringjob.json");
+                // configuration.UseRecurringJob("recurringjob.json");
                 // using RecurringJobAttribute to build RecurringJob automatically.
                 // configuration.UseRecurringJob(typeof(RecurringJobService));
 

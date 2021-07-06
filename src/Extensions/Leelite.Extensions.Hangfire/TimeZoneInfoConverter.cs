@@ -1,5 +1,7 @@
 ﻿using System;
 using Newtonsoft.Json;
+using TimeZoneConverter;
+
 namespace Hangfire.RecurringJobExtensions
 {
 	/// <summary>
@@ -30,7 +32,7 @@ namespace Hangfire.RecurringJobExtensions
 
 			if (reader.Value == null) return null;
 
-			return TimeZoneInfo.FindSystemTimeZoneById(reader.Value.ToString());
+			return TZConvert.GetTimeZoneInfo(reader.Value.ToString());
 		}
 		/// <summary>
 		/// Writes the JSON representation of the <see cref="TimeZoneInfo"/>.

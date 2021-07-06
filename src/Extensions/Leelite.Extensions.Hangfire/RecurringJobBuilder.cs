@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Reflection;
 using Hangfire.States;
+using TimeZoneConverter;
 
 namespace Hangfire.RecurringJobExtensions
 {
@@ -57,7 +58,7 @@ namespace Hangfire.RecurringJobExtensions
 						attribute.RecurringJobId,
 						method,
 						attribute.Cron,
-						string.IsNullOrEmpty(attribute.TimeZone) ? TimeZoneInfo.Utc : TimeZoneInfo.FindSystemTimeZoneById(attribute.TimeZone),
+						string.IsNullOrEmpty(attribute.TimeZone) ? TimeZoneInfo.Utc : TZConvert.GetTimeZoneInfo(attribute.TimeZone),
 						attribute.Queue ?? EnqueuedState.DefaultQueue);
 				}
 			}

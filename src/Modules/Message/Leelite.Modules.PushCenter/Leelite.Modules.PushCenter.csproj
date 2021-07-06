@@ -9,25 +9,14 @@
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 	<ItemGroup>
-		<None Remove="Providers\" />
-		<None Remove="Jobs\" />
-		<None Remove="Models\Push\" />
-		<None Remove="Models\PushRecord\" />
-		<None Remove="Hangfire.Core" />
-	</ItemGroup>
-	<ItemGroup>
-		<Folder Include="Providers\" />
-		<Folder Include="Jobs\" />
-		<Folder Include="Models\PushRecordAgg\" />
-	</ItemGroup>
-	<ItemGroup>
-		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-		<ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
-		<ProjectReference Include="..\..\Leelite.Modules.Hangfire\Leelite.Modules.Hangfire.csproj" />
-		<ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.Hangfire\Leelite.Extensions.Hangfire.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj">
+		  <Private>False</Private>
+		</ProjectReference>
+		<ProjectReference Include="..\Leelite.Modules.Message\Leelite.Modules.Message.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<PackageReference Include="Hangfire.Core" Version="1.7.24" />
+		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="module.json">
