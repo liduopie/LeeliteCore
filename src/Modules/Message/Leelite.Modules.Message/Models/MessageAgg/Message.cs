@@ -56,12 +56,12 @@ namespace Leelite.Modules.Message.Models.MessageAgg
         /// <summary>
         /// 阅读时间
         /// </summary>
-        public DateTime? ReadTime { get; set; }
+        public DateTime ReadTime { get; set; }
 
         /// <summary>
         /// 删除时间
         /// </summary>
-        public DateTime? DeleteTime { get; set; }
+        public DateTime DeleteTime { get; set; }
 
         /// <summary>
         /// 过期时间
