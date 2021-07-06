@@ -1,7 +1,7 @@
 ﻿using System;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.PushCenter.Models.PushRecordAgg
+namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
 {
     public class PushRecord : AggregateRoot<long>
     {

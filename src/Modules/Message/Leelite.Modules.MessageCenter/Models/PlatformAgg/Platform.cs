@@ -5,7 +5,7 @@ using System.Text;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Enabled;
 
-namespace Leelite.Modules.PushCenter.Models.PlatformAgg
+namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
 {
     /// <summary>
     /// 平台信息

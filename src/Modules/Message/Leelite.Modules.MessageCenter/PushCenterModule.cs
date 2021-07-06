@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Hosting;
 
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Modules.PushCenter
+namespace Leelite.Modules.MessageCenter
 {
-    public class PushCenterModule : MvcModuleBase
+    public class MessageCenterModule : MvcModuleBase
     {
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
@@ -18,7 +18,7 @@ namespace Leelite.Modules.PushCenter
 
             backgroundJobs.Enqueue(() => Console.WriteLine("Hello Push Center!"));
 
-            RecurringJob.AddOrUpdate("easyjob", () => Console.Write("Easy!"), Cron.Minutely);
+            //RecurringJob.AddOrUpdate("easyjob", () => Console.Write("Easy!"), Cron.Minutely);
         }
     }
 }

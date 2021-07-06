@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Leelite.Modules.PushCenter
+namespace Leelite.Modules.MessageCenter
 {
     public interface IPushJob
     {

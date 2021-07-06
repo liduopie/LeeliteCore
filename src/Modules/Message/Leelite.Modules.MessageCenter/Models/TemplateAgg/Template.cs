@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.PushCenter.Models.TemplateAgg
+namespace Leelite.Modules.MessageCenter.Models.TemplateAgg
 {
     /// <summary>
     /// 消息模版

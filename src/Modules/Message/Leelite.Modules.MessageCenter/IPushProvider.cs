@@ -1,5 +1,5 @@
 ﻿using System;
-namespace Leelite.Modules.PushCenter
+namespace Leelite.Modules.MessageCenter
 {
     public interface IPushProvider
     {
