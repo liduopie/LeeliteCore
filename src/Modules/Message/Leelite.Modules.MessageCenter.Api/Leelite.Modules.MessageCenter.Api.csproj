@@ -10,4 +10,9 @@
     <ProjectReference Include="..\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="module.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

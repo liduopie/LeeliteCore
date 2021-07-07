@@ -11,6 +11,6 @@ namespace Leelite.Modules.MessageCenter.Repositories
 
     public class PlatformRepository : EFRepository<Platform, long>, IPlatformRepository
     {
-        public PlatformRepository(MessageCenterContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
+        public PlatformRepository(MessageContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
 }

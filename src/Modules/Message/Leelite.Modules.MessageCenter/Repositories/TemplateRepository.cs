@@ -11,6 +11,6 @@ namespace Leelite.Modules.MessageCenter.Repositories
 
     public class TemplateRepository : EFRepository<Template, long>, ITemplateRepository
     {
-        public TemplateRepository(MessageCenterContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
+        public TemplateRepository(MessageContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
 }

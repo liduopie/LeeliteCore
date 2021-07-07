@@ -9,24 +9,10 @@
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj">
-		  <Private>False</Private>
-		</ProjectReference>
-		<ProjectReference Include="..\Leelite.Modules.Message\Leelite.Modules.Message.csproj" />
-	</ItemGroup>
-	<ItemGroup>
 		<PackageReference Include="Hangfire.Core" Version="1.7.24" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="Contexts\" />
-	</ItemGroup>
-	<ItemGroup>
-		<None Update="module.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</None>
-	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="Contexts\" />
+	  <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
 	</ItemGroup>
 </Project>

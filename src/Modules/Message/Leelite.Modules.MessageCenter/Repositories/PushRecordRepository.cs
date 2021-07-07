@@ -11,6 +11,6 @@ namespace Leelite.Modules.MessageCenter.Repositories
 
     public class PushRecordRepository : EFRepository<PushRecord, long>, IPushRecordRepository
     {
-        public PushRecordRepository(MessageCenterContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
+        public PushRecordRepository(MessageContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
 }
