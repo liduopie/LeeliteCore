@@ -1,9 +1,9 @@
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Service;
-using Leelite.Modules.Message.Models.SessionAgg.Dtos.SessionDtos;
-using Leelite.Modules.Message.Models.SessionAgg.Interfaces;
-using Leelite.Modules.Message.Models.SessionAgg.Models.SessionAgg;
-using Leelite.Modules.Message.Models.SessionAgg.Repositories;
+using Leelite.Modules.Message.Dtos.SessionDtos;
+using Leelite.Modules.Message.Interfaces;
+using Leelite.Modules.Message.Models.SessionAgg;
+using Leelite.Modules.Message.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Modules.Message.Models.SessionAgg.Services

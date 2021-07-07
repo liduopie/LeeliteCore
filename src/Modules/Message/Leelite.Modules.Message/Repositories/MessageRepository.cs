@@ -1,16 +1,16 @@
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Domain.UnitOfWork;
-using Leelite.Modules.Message.Models.MessageAgg.Contexts;
-using Leelite.Modules.Message.Models.MessageAgg.Models.MessageAgg;
+using Leelite.Modules.Message.Contexts;
+using Leelite.Modules.Message.Models.MessageAgg;
 
-namespace Leelite.Modules.Message.Models.MessageAgg.Repositories
+namespace Leelite.Modules.Message.Repositories
 {
-    public interface IMessageRepository : IRepository<Message, long>
+    public interface IMessageRepository : IRepository<Models.MessageAgg.Message, long>
     {
     }
 
-    public class MessageRepository : EFRepository<Message, long>, IMessageRepository
+    public class MessageRepository : EFRepository<Models.MessageAgg.Message, long>, IMessageRepository
     {
-        public MessageRepository(MessageAggContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
+        public MessageRepository(MessageContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
 }

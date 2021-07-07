@@ -1,7 +1,7 @@
 using FluentValidation;
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 
-namespace Leelite.Modules.Message.Models.MessageTypeAgg.Dtos.MessageTypeDtos
+namespace Leelite.Modules.Message.Dtos.MessageTypeDtos
 {
     public class MessageTypeCreateRequestValidator : Validator<MessageTypeCreateRequest>
     {

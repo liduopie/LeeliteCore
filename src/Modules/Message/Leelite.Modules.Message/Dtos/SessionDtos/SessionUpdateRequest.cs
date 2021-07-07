@@ -1,8 +1,8 @@
 using Leelite.Framework.Service.Dtos;
-
+using Leelite.Modules.Message.Models.SessionAgg;
 using System;
 
-namespace Leelite.Modules.Message.Models.SessionAgg.Dtos.SessionDtos
+namespace Leelite.Modules.Message.Dtos.SessionDtos
 {
     public class SessionUpdateRequest : IUpdateRequest<long>
     {

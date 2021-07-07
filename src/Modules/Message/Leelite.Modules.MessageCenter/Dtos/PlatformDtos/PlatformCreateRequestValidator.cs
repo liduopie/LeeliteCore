@@ -1,7 +1,7 @@
 using FluentValidation;
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 
-namespace Leelite.Modules.MessageCenter.Models.PlatformAgg.Dtos.PlatformDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PlatformDtos
 {
     public class PlatformCreateRequestValidator : Validator<PlatformCreateRequest>
     {

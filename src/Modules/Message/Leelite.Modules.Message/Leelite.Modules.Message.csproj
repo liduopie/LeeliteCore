@@ -9,8 +9,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Remove="Models\SessionAgg\" />
+    <None Remove="Contexts\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\SessionAgg\" />
+    <Folder Include="Contexts\" />
   </ItemGroup>
 </Project>

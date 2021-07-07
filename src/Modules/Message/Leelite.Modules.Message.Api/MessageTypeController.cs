@@ -1,7 +1,7 @@
 using Leelite.Framework.WebApi;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Dtos.MessageTypeDtos;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Interfaces;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Models.MessageTypeAgg;
+using Leelite.Modules.Message.Dtos.MessageTypeDtos;
+using Leelite.Modules.Message.Interfaces;
+using Leelite.Modules.Message.Models.MessageTypeAgg;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Modules.Message.Models.MessageTypeAgg.WebApi

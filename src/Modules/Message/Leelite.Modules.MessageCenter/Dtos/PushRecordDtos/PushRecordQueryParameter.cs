@@ -2,9 +2,9 @@ using System;
 using System.Linq.Expressions;
 using Leelite.Framework.Data.Query.Criteria;
 using Leelite.Framework.Data.Query.Parameters;
-using Leelite.Modules.MessageCenter.Models.PushRecordAgg.Models.PushRecordAgg;
+using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 
-namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.Dtos.PushRecordDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushRecordDtos
 {
     public class PushRecordQueryParameter : PageParameter<PushRecord>
     {

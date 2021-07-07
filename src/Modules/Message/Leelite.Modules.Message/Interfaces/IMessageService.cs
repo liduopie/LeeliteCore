@@ -1,10 +1,10 @@
 using Leelite.Framework.Service;
-using Leelite.Modules.Message.Models.MessageAgg.Dtos.MessageDtos;
-using Leelite.Modules.Message.Models.MessageAgg.Models.MessageAgg;
+using Leelite.Modules.Message.Dtos.MessageDtos;
+using Leelite.Modules.Message.Models.MessageAgg;
 
-namespace Leelite.Modules.Message.Models.MessageAgg.Interfaces
+namespace Leelite.Modules.Message.Interfaces
 {
-    public interface IMessageService : ICrudService<Message, long, MessageDto, MessageCreateRequest, MessageUpdateRequest, MessageQueryParameter>
+    public interface IMessageService : ICrudService<Models.MessageAgg.Message, long, MessageDto, MessageCreateRequest, MessageUpdateRequest, MessageQueryParameter>
     {
     }
 }

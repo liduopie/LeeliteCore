@@ -1,6 +1,6 @@
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.MessageCenter.Models.TemplateAgg.Dtos.TemplateDtos
+namespace Leelite.Modules.MessageCenter.Dtos.TemplateDtos
 {
     public class TemplateCreateRequest : IRequest
     {

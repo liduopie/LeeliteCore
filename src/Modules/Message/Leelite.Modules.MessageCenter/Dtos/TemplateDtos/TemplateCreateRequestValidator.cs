@@ -1,7 +1,7 @@
 using FluentValidation;
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 
-namespace Leelite.Modules.MessageCenter.Models.TemplateAgg.Dtos.TemplateDtos
+namespace Leelite.Modules.MessageCenter.Dtos.TemplateDtos
 {
     public class TemplateCreateRequestValidator : Validator<TemplateCreateRequest>
     {

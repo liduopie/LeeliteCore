@@ -2,9 +2,9 @@ using System;
 using System.Linq.Expressions;
 using Leelite.Framework.Data.Query.Criteria;
 using Leelite.Framework.Data.Query.Parameters;
-using Leelite.Modules.MessageCenter.Models.PlatformAgg.Models.PlatformAgg;
+using Leelite.Modules.MessageCenter.Models.PlatformAgg;
 
-namespace Leelite.Modules.MessageCenter.Models.PlatformAgg.Dtos.PlatformDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PlatformDtos
 {
     public class PlatformQueryParameter : PageParameter<Platform>
     {

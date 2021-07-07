@@ -2,9 +2,9 @@ using System;
 using System.Linq.Expressions;
 using Leelite.Framework.Data.Query.Criteria;
 using Leelite.Framework.Data.Query.Parameters;
-using Leelite.Modules.Message.Models.SessionAgg.Models.SessionAgg;
+using Leelite.Modules.Message.Models.SessionAgg;
 
-namespace Leelite.Modules.Message.Models.SessionAgg.Dtos.SessionDtos
+namespace Leelite.Modules.Message.Dtos.SessionDtos
 {
     public class SessionQueryParameter : PageParameter<Session>
     {

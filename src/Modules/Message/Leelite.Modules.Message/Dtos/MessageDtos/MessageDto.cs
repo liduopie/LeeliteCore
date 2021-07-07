@@ -2,7 +2,7 @@ using Leelite.Framework.Service.Dtos;
 
 using System;
 
-namespace Leelite.Modules.Message.Models.MessageAgg.Dtos.MessageDtos
+namespace Leelite.Modules.Message.Dtos.MessageDtos
 {
     public class MessageDto : IDto<long>
     {

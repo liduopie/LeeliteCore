@@ -1,6 +1,7 @@
 using Leelite.Framework.Service.Dtos;
+using Leelite.Modules.Message.Models.MessageTypeAgg;
 
-namespace Leelite.Modules.Message.Models.MessageTypeAgg.Dtos.MessageTypeDtos
+namespace Leelite.Modules.Message.Dtos.MessageTypeDtos
 {
     public class MessageTypeDto : IDto<int>
     {

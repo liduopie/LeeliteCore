@@ -1,9 +1,9 @@
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Domain.UnitOfWork;
-using Leelite.Modules.MessageCenter.Models.PushRecordAgg.Contexts;
-using Leelite.Modules.MessageCenter.Models.PushRecordAgg.Models.PushRecordAgg;
+using Leelite.Modules.MessageCenter.Contexts;
+using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 
-namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.Repositories
+namespace Leelite.Modules.MessageCenter.Repositories
 {
     public interface IPushRecordRepository : IRepository<PushRecord, long>
     {
@@ -11,6 +11,6 @@ namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.Repositories
 
     public class PushRecordRepository : EFRepository<PushRecord, long>, IPushRecordRepository
     {
-        public PushRecordRepository(PushRecordAggContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
+        public PushRecordRepository(MessageCenterContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
 }

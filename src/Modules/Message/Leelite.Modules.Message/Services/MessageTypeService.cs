@@ -1,9 +1,9 @@
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Service;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Dtos.MessageTypeDtos;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Interfaces;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Models.MessageTypeAgg;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Repositories;
+using Leelite.Modules.Message.Dtos.MessageTypeDtos;
+using Leelite.Modules.Message.Interfaces;
+using Leelite.Modules.Message.Models.MessageTypeAgg;
+using Leelite.Modules.Message.Repositories;
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Modules.Message.Models.MessageTypeAgg.Services

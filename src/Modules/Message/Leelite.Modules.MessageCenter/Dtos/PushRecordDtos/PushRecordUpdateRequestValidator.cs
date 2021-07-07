@@ -1,7 +1,7 @@
 using FluentValidation;
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 
-namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.Dtos.PushRecordDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushRecordDtos
 {
     public class PushRecordUpdateRequestValidator : Validator<PushRecordUpdateRequest>
     {

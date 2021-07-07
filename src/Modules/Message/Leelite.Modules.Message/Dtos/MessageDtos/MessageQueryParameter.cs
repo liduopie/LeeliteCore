@@ -2,15 +2,15 @@ using System;
 using System.Linq.Expressions;
 using Leelite.Framework.Data.Query.Criteria;
 using Leelite.Framework.Data.Query.Parameters;
-using Leelite.Modules.Message.Models.MessageAgg.Models.MessageAgg;
+using Leelite.Modules.Message.Models.MessageAgg;
 
-namespace Leelite.Modules.Message.Models.MessageAgg.Dtos.MessageDtos
+namespace Leelite.Modules.Message.Dtos.MessageDtos
 {
-    public class MessageQueryParameter : PageParameter<Message>
+    public class MessageQueryParameter : PageParameter<Models.MessageAgg.Message>
     {
-        public override Expression<Func<Message, bool>> SatisfiedBy()
+        public override Expression<Func<Models.MessageAgg.Message, bool>> SatisfiedBy()
         {
-            Criterion<Message> c = new TrueCriterion<Message>();
+            Criterion<Models.MessageAgg.Message> c = new TrueCriterion<Models.MessageAgg.Message>();
 
             return c.SatisfiedBy();
         }

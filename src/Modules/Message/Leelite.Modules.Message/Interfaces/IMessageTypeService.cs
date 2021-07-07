@@ -1,8 +1,8 @@
 using Leelite.Framework.Service;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Dtos.MessageTypeDtos;
-using Leelite.Modules.Message.Models.MessageTypeAgg.Models.MessageTypeAgg;
+using Leelite.Modules.Message.Dtos.MessageTypeDtos;
+using Leelite.Modules.Message.Models.MessageTypeAgg;
 
-namespace Leelite.Modules.Message.Models.MessageTypeAgg.Interfaces
+namespace Leelite.Modules.Message.Interfaces
 {
     public interface IMessageTypeService : ICrudService<MessageType, int, MessageTypeDto, MessageTypeCreateRequest, MessageTypeUpdateRequest, MessageTypeQueryParameter>
     {

@@ -1,7 +1,7 @@
 using Leelite.Framework.WebApi;
-using Leelite.Modules.Message.Models.SessionAgg.Dtos.SessionDtos;
-using Leelite.Modules.Message.Models.SessionAgg.Interfaces;
-using Leelite.Modules.Message.Models.SessionAgg.Models.SessionAgg;
+using Leelite.Modules.Message.Dtos.SessionDtos;
+using Leelite.Modules.Message.Interfaces;
+using Leelite.Modules.Message.Models.SessionAgg;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Modules.Message.Models.SessionAgg.WebApi

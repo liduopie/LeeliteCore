@@ -1,6 +1,6 @@
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.Dtos.PushRecordDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushRecordDtos
 {
     public class PushRecordCreateRequest : IRequest
     {
