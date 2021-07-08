@@ -10,7 +10,7 @@ namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
     /// <summary>
     /// 平台信息
     /// </summary>
-    public class Platform : AggregateRoot<long>,
+    public class PushPlatform : AggregateRoot<long>,
         IEnabled
     {
         /// <summary>

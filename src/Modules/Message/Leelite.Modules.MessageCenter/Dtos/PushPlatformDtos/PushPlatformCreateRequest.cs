@@ -1,8 +1,8 @@
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.MessageCenter.Dtos.PlatformDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 {
-    public class PlatformCreateRequest : IRequest
+    public class PushPlatformCreateRequest : IRequest
     {
         public string Name { get; set; }
 

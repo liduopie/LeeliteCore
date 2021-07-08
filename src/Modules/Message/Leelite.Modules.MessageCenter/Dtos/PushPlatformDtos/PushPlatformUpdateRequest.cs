@@ -1,8 +1,8 @@
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.MessageCenter.Dtos.PlatformDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 {
-    public class PlatformUpdateRequest : IUpdateRequest<long>
+    public class PushPlatformUpdateRequest : IUpdateRequest<long>
     {
         public long Id { get; set; }
 

@@ -1,8 +1,11 @@
-﻿using System;
-using Leelite.Framework.Domain.Context;
+﻿using Leelite.Framework.Domain.Context;
+using Leelite.Modules.MessageCenter.Contexts.Configurations;
 using Leelite.Modules.MessageCenter.Models.MessageAgg;
 using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
+using Leelite.Modules.MessageCenter.Models.PlatformAgg;
+using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 using Leelite.Modules.MessageCenter.Models.SessionAgg;
+using Leelite.Modules.MessageCenter.Models.TemplateAgg;
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Modules.MessageCenter.Contexts
@@ -27,21 +30,24 @@ namespace Leelite.Modules.MessageCenter.Contexts
         /// </summary>
         public virtual DbSet<Session> Sessions { get; set; }
 
+        /// <summary>
+        /// 推送平台
+        /// </summary>
+        public virtual DbSet<PushPlatform> PushPlatforms { get; set; }
+
+        /// <summary>
+        /// 推送记录
+        /// </summary>
+        public virtual DbSet<PushRecord> PushRecords { get; set; }
+
+        /// <summary>
+        /// 消息呈现模版
+        /// </summary>
+        public virtual DbSet<Template> Templates { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Models.MessageAgg.Message>(b =>
-            {
-                //b.Ignore("Id");
-                //b.HasKey("_tenantId", "_userId", "_name");
-                //b.ToTable(TableConsts.SettingValue);
-
-                //b.Property("_tenantId").HasColumnName("TenantId");
-                //b.Property("_userId").HasColumnName("UserId");
-                //b.Property("_name").HasColumnName("Name").HasMaxLength(256);
-
-                //b.Property(p => p.Value).HasMaxLength(1024);
-
-            });
+            modelBuilder.ApplyConfiguration(new MessageConfiguration());
         }
     }
 }

@@ -1,8 +1,8 @@
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.MessageCenter.Dtos.PlatformDtos
+namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 {
-    public class PlatformDto : IDto<long>
+    public class PushPlatformDto : IDto<long>
     {
         public long Id { get; set; }
 

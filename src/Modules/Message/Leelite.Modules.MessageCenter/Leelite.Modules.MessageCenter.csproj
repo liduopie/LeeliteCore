@@ -15,4 +15,12 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <None Remove="Contexts\Configurations\" />
+	  <None Remove="Migrations\" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Contexts\Configurations\" />
+	  <Folder Include="Migrations\" />
+	</ItemGroup>
 </Project>

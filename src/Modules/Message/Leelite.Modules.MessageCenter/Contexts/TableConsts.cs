@@ -1,8 +1,12 @@
-﻿using System;
-namespace Leelite.Modules.MessageCenter.Contexts
+﻿namespace Leelite.Modules.MessageCenter.Contexts
 {
     public static class TableConsts
     {
-        public const string IdentityRoles = "Message_Roles";
+        public const string Message = "Message";
+        public const string MessageType = "Message_MessageType";
+        public const string Platform = "Message_Platform";
+        public const string PushRecord = "Message_PushRecord";
+        public const string Session = "Message_Session";
+        public const string Template = "Message_Template";
     }
 }
