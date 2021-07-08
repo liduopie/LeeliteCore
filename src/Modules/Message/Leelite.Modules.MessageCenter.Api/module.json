@@ -1,5 +1,7 @@
 {
   "Name": "Leelite.Modules.MessageCenter",
-  "AssemblyFileName": "Leelite.Modules.MessageCenter.dll",
-  "ReferencedAssemblies": []
+  "AssemblyFileName": "Leelite.Modules.MessageCenter.Api.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Modules.MessageCenter.dll"
+  ]
 }
