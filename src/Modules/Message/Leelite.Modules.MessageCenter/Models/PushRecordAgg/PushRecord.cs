@@ -1,5 +1,6 @@
 ﻿using System;
 using Leelite.Framework.Domain.Aggregate;
+using Leelite.Modules.MessageCenter.Models.MessageAgg;
 
 namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
 {

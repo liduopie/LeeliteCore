@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.Modules.MessageCenter.Models.SessionAgg.WebApi
 {
     [ApiController]
-    [Area("SessionAgg")]
+    [Area("Message")]
     [Route("api/[area]/[controller]")]
     public class SessionController : RESTfulController<Session, long, SessionDto, SessionCreateRequest, SessionUpdateRequest, SessionQueryParameter>
     {

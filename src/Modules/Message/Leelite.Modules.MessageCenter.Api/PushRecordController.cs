@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg.WebApi
 {
     [ApiController]
-    [Area("PushRecordAgg")]
+    [Area("Message")]
     [Route("api/[area]/[controller]")]
     public class PushRecordController : RESTfulController<PushRecord, long, PushRecordDto, PushRecordCreateRequest, PushRecordUpdateRequest, PushRecordQueryParameter>
     {

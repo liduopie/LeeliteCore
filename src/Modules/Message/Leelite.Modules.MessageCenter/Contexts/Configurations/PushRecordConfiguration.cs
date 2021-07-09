@@ -1,5 +1,4 @@
-﻿using System;
-using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
+﻿using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -9,7 +8,18 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
     {
         public void Configure(EntityTypeBuilder<PushRecord> builder)
         {
-            throw new NotImplementedException();
+            builder.HasKey(u => u.Id);
+            builder.ToTable(TableConsts.PushRecord);
+
+            builder.Property(u => u.MessageId);
+            builder.Property(u => u.PlatformId);
+
+            builder.Property(u => u.Content);
+            builder.Property(u => u.Url);
+            builder.Property(u => u.PushState);
+
+            builder.Property(u => u.RetriesNum);
+            builder.Property(u => u.Remark);
         }
     }
 }

@@ -48,6 +48,11 @@ namespace Leelite.Modules.MessageCenter.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
+            modelBuilder.ApplyConfiguration(new MessageTypeConfiguration());
+            modelBuilder.ApplyConfiguration(new PushPlatformConfiguration());
+            modelBuilder.ApplyConfiguration(new PushRecordConfiguration());
+            modelBuilder.ApplyConfiguration(new SessionConfiguration());
+            modelBuilder.ApplyConfiguration(new TemplateConfiguration());
         }
     }
 }

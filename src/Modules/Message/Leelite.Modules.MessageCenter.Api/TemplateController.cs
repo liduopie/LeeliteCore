@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.Modules.MessageCenter.Models.TemplateAgg.WebApi
 {
     [ApiController]
-    [Area("TemplateAgg")]
+    [Area("Message")]
     [Route("api/[area]/[controller]")]
     public class TemplateController : RESTfulController<Template, long, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>
     {

@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.Modules.MessageCenter.Models.MessageAgg.WebApi
 {
     [ApiController]
-    [Area("MessageAgg")]
+    [Area("Message")]
     [Route("api/[area]/[controller]")]
     public class MessageController : RESTfulController<Message, long, MessageDto, MessageCreateRequest, MessageUpdateRequest, MessageQueryParameter>
     {

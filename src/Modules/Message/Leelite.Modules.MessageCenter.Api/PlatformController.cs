@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.Modules.MessageCenter.Models.PlatformAgg.WebApi
 {
     [ApiController]
-    [Area("PlatformAgg")]
+    [Area("Message")]
     [Route("api/[area]/[controller]")]
     public class PlatformController : RESTfulController<PushPlatform, long, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>
     {

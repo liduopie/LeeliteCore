@@ -31,7 +31,7 @@ namespace Leelite.Modules.MessageCenter.Models.TemplateAgg
         public string Description { get; set; }
 
         /// <summary>
-        /// 模版编码
+        /// 第三方模版编码
         /// </summary>
         public string TemplateCode { get; set; }
 

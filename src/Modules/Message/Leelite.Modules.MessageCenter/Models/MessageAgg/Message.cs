@@ -1,6 +1,7 @@
 ﻿using System;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.SoftDelete;
+using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
 
 namespace Leelite.Modules.MessageCenter.Models.MessageAgg
 {

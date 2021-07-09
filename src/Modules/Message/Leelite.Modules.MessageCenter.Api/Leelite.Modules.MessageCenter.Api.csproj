@@ -1,18 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
-  </PropertyGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
-    <ProjectReference Include="..\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="module.json">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
+	<PropertyGroup>
+		<TargetFramework>net5.0</TargetFramework>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.Message\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
 </Project>
