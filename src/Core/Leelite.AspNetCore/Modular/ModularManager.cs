@@ -130,6 +130,17 @@ namespace Leelite.AspNetCore.Modular
                 module.ConfigureConventions();
             }
 
+            var defaultAssemblies = from c in AssemblyLoadContext.Default.Assemblies
+                                    where c.FullName.StartsWith("Leelite")
+                                    select c;
+            // 默认程序集
+            foreach (var item in defaultAssemblies)
+            {
+                // 按照约定注册程序集
+                ConventionManager.RegisterAssembly(item);
+            }
+
+            // 模块中的程序集
             foreach (var item in _moduleContexts)
             {
                 // 按照约定注册程序集

@@ -37,7 +37,6 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
     <ProjectReference Include="..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
-    <ProjectReference Include="..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
   </ItemGroup>
 
 </Project>
