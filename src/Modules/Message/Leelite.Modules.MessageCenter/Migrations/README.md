@@ -18,6 +18,7 @@ SettingsDesignTimeFactory
 命令行
 // 生成迁移文件
 dotnet ef migrations add InitialMessageCenter -o Migrations/PostgreSQL -s ../../../Hosts/AppHost -c MessageContext
+dotnet ef migrations add MySqlInitialMessageCenter -o Migrations/MySql -s ../../../Hosts/AppHost -c MessageContext
 
 生成数据库初始化SQL
 dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -p Leelite.Modules.Settings.csproj -s ../../../Hosts/AppHost/AppHost.csproj
