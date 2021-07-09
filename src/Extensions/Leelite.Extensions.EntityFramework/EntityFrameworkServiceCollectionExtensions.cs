@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Data.Common;
+
 using Leelite.Extensions.EntityFramework;
 using Leelite.Extensions.EntityFramework.Connection;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
@@ -28,6 +30,7 @@ namespace Microsoft.Extensions.DependencyInjection
             DbProviderFactories.RegisterFactory("Npgsql", Npgsql.NpgsqlFactory.Instance);
             DbProviderFactories.RegisterFactory("Sqlite", Data.Sqlite.SqliteFactory.Instance);
             DbProviderFactories.RegisterFactory("SqlClient", Data.SqlClient.SqlClientFactory.Instance);
+            DbProviderFactories.RegisterFactory("MySql", MySqlConnector.MySqlConnectorFactory.Instance);
         }
 
         public static void AddDbContext<TContext>(this IServiceCollection services, string connectionStringName, Action<IServiceProvider, DbContextOptionsBuilder> optionsAction = null)
@@ -54,6 +57,8 @@ namespace Microsoft.Extensions.DependencyInjection
                         builder.UseSqlServer(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(typeof(TContext).Assembly.GetName().Name));
                         break;
                     case DatabaseProviderType.MySql:
+                        var serverVersion = new MySqlServerVersion(new Version(5, 7, 0));
+                        builder.UseMySql(_connectionFactory.GetConnection(connectionStringName), serverVersion, c => c.MigrationsAssembly(typeof(TContext).Assembly.GetName().Name));
                         break;
                     case DatabaseProviderType.Npgsql:
                         builder.UseNpgsql(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(typeof(TContext).Assembly.GetName().Name));
