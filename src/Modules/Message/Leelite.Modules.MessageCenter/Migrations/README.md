@@ -1,26 +1,41 @@
 ﻿# Markdown file
-添加当前项目引用到AppHost
-默认项目选中当前项目
-在程序包管理控制台运行命令：
+在设计模式Factory中增加数据库迁移支持
+MessageDesignTimeFactory
 
-Add-Migration InitialSettings -o Migrations/PostgreSQL -s AppHost -c MessageContext
+添加当前项目引用到 ConsoleHost
 
-Update-Database -s AppHost -c MessageContext
-
-Script-Migration -s AppHost -c MessageContext
-
-Drop-Database -s AppHost -c MessageContext
-
-Remove-Migration Check -s AppHost -c MessageContext
-
-SettingsDesignTimeFactory
+官方文档 使用单独的迁移项目
+https://docs.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/projects?tabs=dotnet-core-cli
+官方文档 迁移多个提供程序
+https://docs.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/providers?tabs=dotnet-core-cli
 
 命令行
-// 生成迁移文件
-dotnet ef migrations add InitialMessageCenter -o Migrations/PostgreSQL -s ../../../Hosts/AppHost -c MessageContext
-dotnet ef migrations add MySqlInitialMessageCenter -o Migrations/MySql -s ../../../Hosts/AppHost -c MessageContext
+
+第一次初始化
+1.在 MessageCenter 项目中生成迁移文件
+PostgreSQL
+dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/PostgreSQL -c MessageContext -- PostgreSQL
+2.将 Migrations 目录移动到 MessageCenter.PostgreSQL 项目中
+
+
+第一次初始化
+1.在 MessageCenter 项目中生成迁移文件
+MySql
+dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/MySql -c MessageContext -- MySql
+2.将 Migrations 目录移动到 MessageCenter.MySql 项目中
+
+
+向项目添加新的迁移
+PostgreSQL
+dotnet ef migrations add ** -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
+
+MySql
+dotnet ef migrations add ** -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
 
 生成数据库初始化SQL
-dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -p Leelite.Modules.Settings.csproj -s ../../../Hosts/AppHost/AppHost.csproj
-简化版本
-dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -s ../../../Hosts/AppHost
+PostgreSQL
+dotnet ef migrations script -i -o ../Leelite.Modules.MessageCenter.PostgreSQL/Sql/install.sql -s ../../../Hosts/ConsoleHost -- PostgreSQL
+
+MySql
+dotnet ef migrations script -i -o ../Leelite.Modules.MessageCenter.MySql/Sql/install.sql -s ../../../Hosts/ConsoleHost -- MySql
+

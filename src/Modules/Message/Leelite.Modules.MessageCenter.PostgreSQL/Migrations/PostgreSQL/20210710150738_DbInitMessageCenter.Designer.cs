@@ -10,8 +10,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 {
     [DbContext(typeof(MessageContext))]
-    [Migration("20210708084612_InitialMessageCenter")]
-    partial class InitialMessageCenter
+    [Migration("20210710150738_DbInitMessageCenter")]
+    partial class DbInitMessageCenter
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

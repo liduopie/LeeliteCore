@@ -1,9 +1,11 @@
 ﻿using System;
+
 using Leelite.Commons.Host;
 using Leelite.Core.Module;
 using Leelite.Core.Module.Dependency;
 using Leelite.Framework;
 using Leelite.Modules.MessageCenter.Contexts;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.MessageCenter
@@ -15,7 +17,7 @@ namespace Leelite.Modules.MessageCenter
         {
             var services = context.ServiceDescriptors;
 
-            services.AddDbContext<MessageContext>("Default");
+            services.AddDbContext<MessageContext>("Default", true);
         }
     }
 }

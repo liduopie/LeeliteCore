@@ -4,7 +4,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 {
-    public partial class InitialMessageCenter : Migration
+    public partial class DbInitMessageCenter : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
