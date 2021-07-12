@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Leelite.Modules.MessageCenter.Migrations.MySql
 {
     [DbContext(typeof(MessageContext))]
-    [Migration("20210710151108_DbInitMessageCenter")]
+    [Migration("20210712033251_DbInitMessageCenter")]
     partial class DbInitMessageCenter
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -112,7 +112,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_MessageType");
+                    b.ToTable("Message_Type");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
@@ -144,7 +144,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushPlatform");
+                    b.ToTable("Message_Push_Platform");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
@@ -176,7 +176,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushRecord");
+                    b.ToTable("Message_Push_Record");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.SessionAgg.Session", b =>

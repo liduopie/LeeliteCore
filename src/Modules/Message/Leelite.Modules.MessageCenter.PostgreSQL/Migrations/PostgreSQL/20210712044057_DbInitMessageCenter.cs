@@ -33,29 +33,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_MessageType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "integer", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Code = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Icon = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    TitleTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    DescriptionTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Schema = table.Column<string>(type: "text", nullable: true),
-                    PushStrategy = table.Column<int>(type: "integer", nullable: false),
-                    PushPlatform = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    ValidDays = table.Column<int>(type: "integer", nullable: false),
-                    IsEnabled = table.Column<bool>(type: "boolean", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Message_MessageType", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Message_PushPlatform",
+                name: "Message_Push_Platform",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -69,11 +47,11 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_PushPlatform", x => x.Id);
+                    table.PrimaryKey("PK_Message_Push_Platform", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_PushRecord",
+                name: "Message_Push_Record",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -88,7 +66,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_PushRecord", x => x.Id);
+                    table.PrimaryKey("PK_Message_Push_Record", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -133,6 +111,28 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 {
                     table.PrimaryKey("PK_Message_Template", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "Message_Type",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Code = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Icon = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    TitleTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    DescriptionTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    Schema = table.Column<string>(type: "text", nullable: true),
+                    PushStrategy = table.Column<int>(type: "integer", nullable: false),
+                    PushPlatform = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    ValidDays = table.Column<int>(type: "integer", nullable: false),
+                    IsEnabled = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message_Type", x => x.Id);
+                });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -141,19 +141,19 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 name: "Message");
 
             migrationBuilder.DropTable(
-                name: "Message_MessageType");
+                name: "Message_Push_Platform");
 
             migrationBuilder.DropTable(
-                name: "Message_PushPlatform");
-
-            migrationBuilder.DropTable(
-                name: "Message_PushRecord");
+                name: "Message_Push_Record");
 
             migrationBuilder.DropTable(
                 name: "Message_Session");
 
             migrationBuilder.DropTable(
                 name: "Message_Template");
+
+            migrationBuilder.DropTable(
+                name: "Message_Type");
         }
     }
 }

@@ -40,37 +40,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Message_MessageType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Code = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Icon = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    TitleTemplate = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    DescriptionTemplate = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    Schema = table.Column<string>(type: "longtext", nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    PushStrategy = table.Column<int>(type: "int", nullable: false),
-                    PushPlatform = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
-                        .Annotation("MySql:CharSet", "utf8mb4"),
-                    ValidDays = table.Column<int>(type: "int", nullable: false),
-                    IsEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Message_MessageType", x => x.Id);
-                })
-                .Annotation("MySql:CharSet", "utf8mb4");
-
-            migrationBuilder.CreateTable(
-                name: "Message_PushPlatform",
+                name: "Message_Push_Platform",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -88,12 +58,12 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_PushPlatform", x => x.Id);
+                    table.PrimaryKey("PK_Message_Push_Platform", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
             migrationBuilder.CreateTable(
-                name: "Message_PushRecord",
+                name: "Message_Push_Record",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -111,7 +81,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_PushRecord", x => x.Id);
+                    table.PrimaryKey("PK_Message_Push_Record", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
 
@@ -170,6 +140,36 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                     table.PrimaryKey("PK_Message_Template", x => x.Id);
                 })
                 .Annotation("MySql:CharSet", "utf8mb4");
+
+            migrationBuilder.CreateTable(
+                name: "Message_Type",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Code = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Icon = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    TitleTemplate = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    DescriptionTemplate = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    Schema = table.Column<string>(type: "longtext", nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    PushStrategy = table.Column<int>(type: "int", nullable: false),
+                    PushPlatform = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
+                    ValidDays = table.Column<int>(type: "int", nullable: false),
+                    IsEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Message_Type", x => x.Id);
+                })
+                .Annotation("MySql:CharSet", "utf8mb4");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -178,19 +178,19 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                 name: "Message");
 
             migrationBuilder.DropTable(
-                name: "Message_MessageType");
+                name: "Message_Push_Platform");
 
             migrationBuilder.DropTable(
-                name: "Message_PushPlatform");
-
-            migrationBuilder.DropTable(
-                name: "Message_PushRecord");
+                name: "Message_Push_Record");
 
             migrationBuilder.DropTable(
                 name: "Message_Session");
 
             migrationBuilder.DropTable(
                 name: "Message_Template");
+
+            migrationBuilder.DropTable(
+                name: "Message_Type");
         }
     }
 }

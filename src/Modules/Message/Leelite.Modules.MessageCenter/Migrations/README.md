@@ -12,14 +12,13 @@ https://docs.microsoft.com/zh-cn/ef/core/managing-schemas/migrations/providers?t
 命令行
 
 第一次初始化
+MessageDesignTimeFactory 类中UseMySql、UseNpgsql MigrationsAssembly使用默认，第二次以后再调整成拆分的项目
+
 1.在 MessageCenter 项目中生成迁移文件
 PostgreSQL
 dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/PostgreSQL -c MessageContext -- PostgreSQL
 2.将 Migrations 目录移动到 MessageCenter.PostgreSQL 项目中
 
-
-第一次初始化
-1.在 MessageCenter 项目中生成迁移文件
 MySql
 dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/MySql -c MessageContext -- MySql
 2.将 Migrations 目录移动到 MessageCenter.MySql 项目中
@@ -30,7 +29,7 @@ PostgreSQL
 dotnet ef migrations add ** -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
 
 MySql
-dotnet ef migrations add ** -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
+dotnet ef migrations remove -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
 
 生成数据库初始化SQL
 PostgreSQL

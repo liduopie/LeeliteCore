@@ -10,7 +10,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 {
     [DbContext(typeof(MessageContext))]
-    [Migration("20210710150738_DbInitMessageCenter")]
+    [Migration("20210712044057_DbInitMessageCenter")]
     partial class DbInitMessageCenter
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -116,7 +116,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_MessageType");
+                    b.ToTable("Message_Type");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
@@ -149,7 +149,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushPlatform");
+                    b.ToTable("Message_Push_Platform");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
@@ -182,7 +182,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushRecord");
+                    b.ToTable("Message_Push_Record");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.SessionAgg.Session", b =>

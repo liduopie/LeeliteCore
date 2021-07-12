@@ -11,7 +11,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
     ALTER DATABASE CHARACTER SET utf8mb4;
 
@@ -26,7 +26,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -56,37 +56,9 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
-    CREATE TABLE `Message_MessageType` (
-        `Id` int NOT NULL AUTO_INCREMENT,
-        `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
-        `Code` varchar(256) CHARACTER SET utf8mb4 NULL,
-        `Icon` varchar(256) CHARACTER SET utf8mb4 NULL,
-        `TitleTemplate` varchar(512) CHARACTER SET utf8mb4 NULL,
-        `DescriptionTemplate` varchar(512) CHARACTER SET utf8mb4 NULL,
-        `Schema` longtext CHARACTER SET utf8mb4 NULL,
-        `PushStrategy` int NOT NULL,
-        `PushPlatform` varchar(512) CHARACTER SET utf8mb4 NULL,
-        `ValidDays` int NOT NULL,
-        `IsEnabled` tinyint(1) NOT NULL,
-        CONSTRAINT `PK_Message_MessageType` PRIMARY KEY (`Id`)
-    ) CHARACTER SET utf8mb4;
-
-    END IF;
-END //
-DELIMITER ;
-CALL MigrationsScript();
-DROP PROCEDURE MigrationsScript;
-
-
-DROP PROCEDURE IF EXISTS MigrationsScript;
-DELIMITER //
-CREATE PROCEDURE MigrationsScript()
-BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
-
-    CREATE TABLE `Message_PushPlatform` (
+    CREATE TABLE `Message_Push_Platform` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
         `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
         `Description` varchar(512) CHARACTER SET utf8mb4 NULL,
@@ -94,7 +66,7 @@ BEGIN
         `Config` longtext CHARACTER SET utf8mb4 NULL,
         `Priority` int NOT NULL,
         `IsEnabled` tinyint(1) NOT NULL,
-        CONSTRAINT `PK_Message_PushPlatform` PRIMARY KEY (`Id`)
+        CONSTRAINT `PK_Message_Push_Platform` PRIMARY KEY (`Id`)
     ) CHARACTER SET utf8mb4;
 
     END IF;
@@ -108,9 +80,9 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
-    CREATE TABLE `Message_PushRecord` (
+    CREATE TABLE `Message_Push_Record` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
         `MessageId` bigint NOT NULL,
         `PlatformId` int NOT NULL,
@@ -119,7 +91,7 @@ BEGIN
         `PushState` tinyint(1) NOT NULL,
         `RetriesNum` int NOT NULL,
         `Remark` longtext CHARACTER SET utf8mb4 NULL,
-        CONSTRAINT `PK_Message_PushRecord` PRIMARY KEY (`Id`)
+        CONSTRAINT `PK_Message_Push_Record` PRIMARY KEY (`Id`)
     ) CHARACTER SET utf8mb4;
 
     END IF;
@@ -133,7 +105,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Session` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -163,7 +135,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Template` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -188,10 +160,38 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210710151108_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+
+    CREATE TABLE `Message_Type` (
+        `Id` int NOT NULL AUTO_INCREMENT,
+        `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
+        `Code` varchar(256) CHARACTER SET utf8mb4 NULL,
+        `Icon` varchar(256) CHARACTER SET utf8mb4 NULL,
+        `TitleTemplate` varchar(512) CHARACTER SET utf8mb4 NULL,
+        `DescriptionTemplate` varchar(512) CHARACTER SET utf8mb4 NULL,
+        `Schema` longtext CHARACTER SET utf8mb4 NULL,
+        `PushStrategy` int NOT NULL,
+        `PushPlatform` varchar(512) CHARACTER SET utf8mb4 NULL,
+        `ValidDays` int NOT NULL,
+        `IsEnabled` tinyint(1) NOT NULL,
+        CONSTRAINT `PK_Message_Type` PRIMARY KEY (`Id`)
+    ) CHARACTER SET utf8mb4;
+
+    END IF;
+END //
+DELIMITER ;
+CALL MigrationsScript();
+DROP PROCEDURE MigrationsScript;
+
+
+DROP PROCEDURE IF EXISTS MigrationsScript;
+DELIMITER //
+CREATE PROCEDURE MigrationsScript()
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
 
     INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
-    VALUES ('20210710151108_DbInitMessageCenter', '5.0.7');
+    VALUES ('20210712033251_DbInitMessageCenter', '5.0.7');
 
     END IF;
 END //

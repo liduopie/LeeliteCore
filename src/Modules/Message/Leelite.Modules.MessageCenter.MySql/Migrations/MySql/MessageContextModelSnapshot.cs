@@ -110,7 +110,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_MessageType");
+                    b.ToTable("Message_Type");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
@@ -142,7 +142,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushPlatform");
+                    b.ToTable("Message_Push_Platform");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
@@ -174,7 +174,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_PushRecord");
+                    b.ToTable("Message_Push_Record");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.SessionAgg.Session", b =>
