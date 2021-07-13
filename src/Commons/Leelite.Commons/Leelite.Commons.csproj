@@ -5,7 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Leelite.Commons.Cache\Leelite.Commons.Cache.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Convention\Leelite.Commons.Convention.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Helpers\Leelite.Commons.Helpers.csproj" />
     <ProjectReference Include="..\Leelite.Commons.Host\Leelite.Commons.Host.csproj" />

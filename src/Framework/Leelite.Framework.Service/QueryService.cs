@@ -38,13 +38,13 @@ namespace Leelite.Framework.Service
 
 
         /// <inheritdoc/>
-        public bool Exists(params TKey[] ids)
+        public virtual bool Exists(params TKey[] ids)
         {
             return Repository.Exists(ids);
         }
 
         /// <inheritdoc/>
-        public IList<TDto> Get(TQueryParameter parameter)
+        public virtual IList<TDto> Get(TQueryParameter parameter)
         {
             var query = new GenericQuery<TEntity, TQueryParameter>(parameter);
 
@@ -52,7 +52,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public async Task<IList<TDto>> GetAsync(TQueryParameter parameter)
+        public virtual async Task<IList<TDto>> GetAsync(TQueryParameter parameter)
         {
             var query = new GenericQuery<TEntity, TQueryParameter>(parameter);
 
@@ -60,7 +60,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public TDto GetById(TKey id)
+        public virtual TDto GetById(TKey id)
         {
             var entity = Repository.FindById(id);
 
@@ -68,7 +68,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public async Task<TDto> GetByIdAsync(TKey id)
+        public virtual async Task<TDto> GetByIdAsync(TKey id)
         {
             var entity = await Repository.FindByIdAsync(id);
 
@@ -76,7 +76,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public IList<TDto> GetByIds(IList<TKey> ids)
+        public virtual IList<TDto> GetByIds(IList<TKey> ids)
         {
             var entities = Repository.FindByIds(ids);
 
@@ -84,7 +84,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public async Task<IList<TDto>> GetByIdsAsync(IList<TKey> ids)
+        public virtual async Task<IList<TDto>> GetByIdsAsync(IList<TKey> ids)
         {
             var entities = await Repository.FindByIdsAsync(ids);
 
@@ -92,7 +92,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public IList<TDto> GetPage(TQueryParameter parameter)
+        public virtual IList<TDto> GetPage(TQueryParameter parameter)
         {
             var query = new PagingQuery<TEntity, TQueryParameter>(parameter);
 
@@ -100,7 +100,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public PageList<TDto> GetPageList(TQueryParameter parameter)
+        public virtual PageList<TDto> GetPageList(TQueryParameter parameter)
         {
             var query = new PagingQuery<TEntity, TQueryParameter>(parameter);
 
@@ -108,7 +108,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public async Task<IList<TDto>> GetPageAsync(TQueryParameter parameter)
+        public virtual async Task<IList<TDto>> GetPageAsync(TQueryParameter parameter)
         {
             var query = new PagingQuery<TEntity, TQueryParameter>(parameter);
 
@@ -116,7 +116,7 @@ namespace Leelite.Framework.Service
         }
 
         /// <inheritdoc/>
-        public async Task<PageList<TDto>> GetPageListAsync(TQueryParameter parameter)
+        public virtual async Task<PageList<TDto>> GetPageListAsync(TQueryParameter parameter)
         {
             var query = new PagingQuery<TEntity, TQueryParameter>(parameter);
 
