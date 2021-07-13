@@ -2,6 +2,8 @@
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Enabled;
 
+using System.Collections.Generic;
+
 namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
         /// <summary>
         /// 配置参数
         /// </summary>
-        public string Config { get; set; }
+        public IDictionary<string, string> Config { get; set; }
 
         /// <summary>
         /// 优先级,数量越小越优先

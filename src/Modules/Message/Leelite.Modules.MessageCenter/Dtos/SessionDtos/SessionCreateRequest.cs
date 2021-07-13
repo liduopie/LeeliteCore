@@ -1,6 +1,7 @@
 using Leelite.Framework.Service.Dtos;
 using Leelite.Modules.MessageCenter.Models.SessionAgg;
 using System;
+using System.Collections.Generic;
 
 namespace Leelite.Modules.MessageCenter.Dtos.SessionDtos
 {
@@ -12,9 +13,9 @@ namespace Leelite.Modules.MessageCenter.Dtos.SessionDtos
 
         public string Description { get; set; }
 
-        public string Data { get; set; }
+        public IDictionary<string, string> Data { get; set; }
 
-        public string UserIds { get; set; }
+        public IList<long> UserIds { get; set; }
 
         public int UserNum { get; set; }
 

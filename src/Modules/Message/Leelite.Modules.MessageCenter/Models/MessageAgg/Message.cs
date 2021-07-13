@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.SoftDelete;
 using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
@@ -34,7 +36,7 @@ namespace Leelite.Modules.MessageCenter.Models.MessageAgg
         /// <summary>
         /// 内容数据Json格式
         /// </summary>
-        public string Data { get; set; }
+        public IDictionary<string, string> Data { get; set; }
 
         /// <summary>
         /// 阅读状态:false未读、true已读

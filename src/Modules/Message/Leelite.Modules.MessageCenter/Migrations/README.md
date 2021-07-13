@@ -26,10 +26,13 @@ dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Mi
 
 向项目添加新的迁移
 PostgreSQL
-dotnet ef migrations add ** -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
+dotnet ef migrations add ChangeDataType -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
+dotnet ef migrations remove -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
 
 MySql
+dotnet ef migrations add ChangeDataType -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
 dotnet ef migrations remove -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
+
 
 生成数据库初始化SQL
 PostgreSQL

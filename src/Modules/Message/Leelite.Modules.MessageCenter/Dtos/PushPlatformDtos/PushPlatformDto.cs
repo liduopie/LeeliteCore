@@ -1,5 +1,7 @@
 using Leelite.Framework.Service.Dtos;
 
+using System.Collections.Generic;
+
 namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 {
     public class PushPlatformDto : IDto<long>
@@ -12,7 +14,7 @@ namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 
         public string ProviderName { get; set; }
 
-        public string Config { get; set; }
+        public IDictionary<string, string> Config { get; set; }
 
         public int Priority { get; set; }
 

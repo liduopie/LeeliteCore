@@ -23,7 +23,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data = table.Column<string>(type: "longtext", nullable: true)
+                    Data = table.Column<string>(type: "json", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ReadState = table.Column<bool>(type: "tinyint(1)", nullable: false),
                     DeliveryState = table.Column<bool>(type: "tinyint(1)", nullable: false),
@@ -51,7 +51,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ProviderName = table.Column<string>(type: "varchar(256)", maxLength: 256, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Config = table.Column<string>(type: "longtext", nullable: true)
+                    Config = table.Column<string>(type: "json", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Priority = table.Column<int>(type: "int", nullable: false),
                     IsEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false)
@@ -96,9 +96,9 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     Description = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    Data = table.Column<string>(type: "longtext", nullable: true)
+                    Data = table.Column<string>(type: "json", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
-                    UserIds = table.Column<string>(type: "longtext", nullable: true)
+                    UserIds = table.Column<string>(type: "json", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     UserNum = table.Column<int>(type: "int", nullable: false),
                     PushNum = table.Column<int>(type: "int", nullable: false),
@@ -160,7 +160,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                     Schema = table.Column<string>(type: "longtext", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     PushStrategy = table.Column<int>(type: "int", nullable: false),
-                    PushPlatform = table.Column<string>(type: "varchar(512)", maxLength: 512, nullable: true)
+                    PushPlatform = table.Column<string>(type: "json", nullable: true)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     ValidDays = table.Column<int>(type: "int", nullable: false),
                     IsEnabled = table.Column<bool>(type: "tinyint(1)", nullable: false)

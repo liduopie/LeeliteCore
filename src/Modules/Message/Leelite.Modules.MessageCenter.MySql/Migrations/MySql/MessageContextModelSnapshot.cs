@@ -27,7 +27,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Data")
-                        .HasColumnType("longtext");
+                        .HasColumnType("json");
 
                     b.Property<DateTime>("DeleteTime")
                         .HasColumnType("datetime(6)");
@@ -92,8 +92,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("PushPlatform")
-                        .HasMaxLength(512)
-                        .HasColumnType("varchar(512)");
+                        .HasColumnType("json");
 
                     b.Property<int>("PushStrategy")
                         .HasColumnType("int");
@@ -120,7 +119,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .HasColumnType("bigint");
 
                     b.Property<string>("Config")
-                        .HasColumnType("longtext");
+                        .HasColumnType("json");
 
                     b.Property<string>("Description")
                         .HasMaxLength(512)
@@ -190,7 +189,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .HasColumnType("datetime(6)");
 
                     b.Property<string>("Data")
-                        .HasColumnType("longtext");
+                        .HasColumnType("json");
 
                     b.Property<string>("Description")
                         .HasMaxLength(512)
@@ -216,7 +215,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                         .HasColumnType("varchar(256)");
 
                     b.Property<string>("UserIds")
-                        .HasColumnType("longtext");
+                        .HasColumnType("json");
 
                     b.Property<int>("UserNum")
                         .HasColumnType("int");

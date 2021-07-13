@@ -11,7 +11,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     ALTER DATABASE CHARACTER SET utf8mb4;
 
@@ -26,7 +26,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -34,7 +34,7 @@ BEGIN
         `MessageTypeId` int NOT NULL,
         `Title` varchar(256) CHARACTER SET utf8mb4 NULL,
         `Description` varchar(512) CHARACTER SET utf8mb4 NULL,
-        `Data` longtext CHARACTER SET utf8mb4 NULL,
+        `Data` json NULL,
         `ReadState` tinyint(1) NOT NULL,
         `DeliveryState` tinyint(1) NOT NULL,
         `IsDeleted` tinyint(1) NOT NULL,
@@ -56,14 +56,14 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Push_Platform` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
         `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
         `Description` varchar(512) CHARACTER SET utf8mb4 NULL,
         `ProviderName` varchar(256) CHARACTER SET utf8mb4 NULL,
-        `Config` longtext CHARACTER SET utf8mb4 NULL,
+        `Config` json NULL,
         `Priority` int NOT NULL,
         `IsEnabled` tinyint(1) NOT NULL,
         CONSTRAINT `PK_Message_Push_Platform` PRIMARY KEY (`Id`)
@@ -80,7 +80,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Push_Record` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -105,15 +105,15 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Session` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
         `MessageTypeId` int NOT NULL,
         `Title` varchar(256) CHARACTER SET utf8mb4 NULL,
         `Description` varchar(512) CHARACTER SET utf8mb4 NULL,
-        `Data` longtext CHARACTER SET utf8mb4 NULL,
-        `UserIds` longtext CHARACTER SET utf8mb4 NULL,
+        `Data` json NULL,
+        `UserIds` json NULL,
         `UserNum` int NOT NULL,
         `PushNum` int NOT NULL,
         `CreateTime` datetime(6) NOT NULL,
@@ -135,7 +135,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Template` (
         `Id` bigint NOT NULL AUTO_INCREMENT,
@@ -160,7 +160,7 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     CREATE TABLE `Message_Type` (
         `Id` int NOT NULL AUTO_INCREMENT,
@@ -171,7 +171,7 @@ BEGIN
         `DescriptionTemplate` varchar(512) CHARACTER SET utf8mb4 NULL,
         `Schema` longtext CHARACTER SET utf8mb4 NULL,
         `PushStrategy` int NOT NULL,
-        `PushPlatform` varchar(512) CHARACTER SET utf8mb4 NULL,
+        `PushPlatform` json NULL,
         `ValidDays` int NOT NULL,
         `IsEnabled` tinyint(1) NOT NULL,
         CONSTRAINT `PK_Message_Type` PRIMARY KEY (`Id`)
@@ -188,10 +188,10 @@ DROP PROCEDURE IF EXISTS MigrationsScript;
 DELIMITER //
 CREATE PROCEDURE MigrationsScript()
 BEGIN
-    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210712033251_DbInitMessageCenter') THEN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210713125102_DbInitMessageCenter') THEN
 
     INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
-    VALUES ('20210712033251_DbInitMessageCenter', '5.0.7');
+    VALUES ('20210713125102_DbInitMessageCenter', '5.0.7');
 
     END IF;
 END //

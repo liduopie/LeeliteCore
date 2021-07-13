@@ -21,7 +21,14 @@ namespace Leelite.Modules.MessageCenter.Contexts
             {
                 case "MySql":
                     var serverVersion = new MySqlServerVersion(new Version(5, 7, 0));
-                    optionsBuilder.UseMySql("server=192.168.1.96;port=3306;user id=root;password=onestop;persistsecurityinfo=True;database=yth_message;Allow User Variables=True;Connection Timeout=180;", serverVersion, c => c.MigrationsAssembly("Leelite.Modules.MessageCenter.MySql"));
+                    optionsBuilder.UseMySql(
+                        "server=192.168.1.96;port=3306;user id=root;password=onestop;persistsecurityinfo=True;database=yth_message;Allow User Variables=True;Connection Timeout=180;",
+                        serverVersion,
+                        c =>
+                        {
+                            c.MigrationsAssembly("Leelite.Modules.MessageCenter.MySql");
+                            c.UseMicrosoftJson();
+                        });
                     break;
                 default:
                     optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=leelite;Username=postgres;Password=pgadmin", c => c.MigrationsAssembly("Leelite.Modules.MessageCenter.PostgreSQL"));

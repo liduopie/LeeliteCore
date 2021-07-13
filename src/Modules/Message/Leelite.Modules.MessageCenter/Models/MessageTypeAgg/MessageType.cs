@@ -1,6 +1,8 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Enabled;
 
+using System.Collections.Generic;
+
 namespace Leelite.Modules.MessageCenter.Models.MessageTypeAgg
 {
     /// <summary>
@@ -48,7 +50,7 @@ namespace Leelite.Modules.MessageCenter.Models.MessageTypeAgg
         /// <summary>
         /// 推送平台,平台名称: XXX,XXX
         /// </summary>
-        public string PushPlatform { get; set; }
+        public IList<string> PushPlatform { get; set; }
 
         /// <summary>
         /// 消息有效时间（单位：天）

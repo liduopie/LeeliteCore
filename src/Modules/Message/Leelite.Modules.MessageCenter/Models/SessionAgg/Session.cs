@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Audit;
 using Leelite.Framework.Models.State;
@@ -28,12 +29,12 @@ namespace Leelite.Modules.MessageCenter.Models.SessionAgg
         /// <summary>
         /// 内容数据Json格式
         /// </summary>
-        public string Data { get; set; }
+        public IDictionary<string, string> Data { get; set; }
 
         /// <summary>
         /// 用户Id串
         /// </summary>
-        public string UserIds { get; set; }
+        public IList<long> UserIds { get; set; }
 
         /// <summary>
         /// 用户数量

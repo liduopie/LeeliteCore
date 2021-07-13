@@ -1,4 +1,5 @@
 ﻿using Leelite.Modules.MessageCenter.Models.SessionAgg;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -14,9 +15,8 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
             builder.Property(u => u.MessageTypeId);
             builder.Property(u => u.Title).HasMaxLength(256);
             builder.Property(u => u.Description).HasMaxLength(512);
-            builder.Property(u => u.Data);
-
-            builder.Property(u => u.UserIds);
+            builder.Property(u => u.Data).HasColumnType("json");
+            builder.Property(u => u.UserIds).HasColumnType("json");
             builder.Property(u => u.UserNum);
             builder.Property(u => u.PushNum);
 

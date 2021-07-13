@@ -1,4 +1,5 @@
 ﻿using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -20,7 +21,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
 
             builder.Property(u => u.Schema);
             builder.Property(u => u.PushStrategy);
-            builder.Property(u => u.PushPlatform).HasMaxLength(512);
+            builder.Property(u => u.PushPlatform).HasColumnType("json");
 
             builder.Property(u => u.ValidDays);
             builder.Property(u => u.IsEnabled);

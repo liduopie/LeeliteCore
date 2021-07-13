@@ -1,6 +1,7 @@
 using Leelite.Framework.Service.Dtos;
 
 using System;
+using System.Collections.Generic;
 
 namespace Leelite.Modules.MessageCenter.Dtos.MessageDtos
 {
@@ -14,7 +15,7 @@ namespace Leelite.Modules.MessageCenter.Dtos.MessageDtos
 
         public string Description { get; set; }
 
-        public string Data { get; set; }
+        public IDictionary<string, string> Data { get; set; }
 
         public bool ReadState { get; set; }
 

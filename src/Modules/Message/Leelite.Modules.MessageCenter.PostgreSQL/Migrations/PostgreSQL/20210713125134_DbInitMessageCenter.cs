@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -18,7 +19,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     MessageTypeId = table.Column<int>(type: "integer", nullable: false),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Data = table.Column<string>(type: "text", nullable: true),
+                    Data = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
                     ReadState = table.Column<bool>(type: "boolean", nullable: false),
                     DeliveryState = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
@@ -41,7 +42,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     ProviderName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Config = table.Column<string>(type: "text", nullable: true),
+                    Config = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
                     Priority = table.Column<int>(type: "integer", nullable: false),
                     IsEnabled = table.Column<bool>(type: "boolean", nullable: false)
                 },
@@ -78,8 +79,8 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     MessageTypeId = table.Column<int>(type: "integer", nullable: false),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Data = table.Column<string>(type: "text", nullable: true),
-                    UserIds = table.Column<string>(type: "text", nullable: true),
+                    Data = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
+                    UserIds = table.Column<IList<long>>(type: "json", nullable: true),
                     UserNum = table.Column<int>(type: "integer", nullable: false),
                     PushNum = table.Column<int>(type: "integer", nullable: false),
                     CreateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
@@ -125,7 +126,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     DescriptionTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     Schema = table.Column<string>(type: "text", nullable: true),
                     PushStrategy = table.Column<int>(type: "integer", nullable: false),
-                    PushPlatform = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    PushPlatform = table.Column<IList<string>>(type: "json", nullable: true),
                     ValidDays = table.Column<int>(type: "integer", nullable: false),
                     IsEnabled = table.Column<bool>(type: "boolean", nullable: false)
                 },

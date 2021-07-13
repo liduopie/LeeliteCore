@@ -65,7 +65,15 @@ namespace Microsoft.Extensions.DependencyInjection
                         break;
                     case DatabaseProviderType.MySql:
                         var serverVersion = new MySqlServerVersion(new Version(5, 7, 0));
-                        builder.UseMySql(_connectionFactory.GetConnection(connectionStringName), serverVersion, c => c.MigrationsAssembly(migrationsAssemblyName));
+                        builder.UseMySql(
+                            _connectionFactory.GetConnection(connectionStringName),
+                            serverVersion,
+                            c =>
+                            {
+                                c.MigrationsAssembly(migrationsAssemblyName);
+
+                                c.UseMicrosoftJson();
+                            });
                         break;
                     case DatabaseProviderType.Npgsql:
                         builder.UseNpgsql(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));

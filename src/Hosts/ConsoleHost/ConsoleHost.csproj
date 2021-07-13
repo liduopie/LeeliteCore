@@ -12,4 +12,10 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Modules\Message\Leelite.Modules.MessageCenter.MySql\Leelite.Modules.MessageCenter.MySql.csproj" />
+    <ProjectReference Include="..\..\Modules\Message\Leelite.Modules.MessageCenter.PostgreSQL\Leelite.Modules.MessageCenter.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\Modules\Message\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -15,7 +15,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
             builder.Property(u => u.Description).HasMaxLength(512);
             builder.Property(u => u.ProviderName).HasMaxLength(256);
 
-            builder.Property(u => u.Config);
+            builder.Property(u => u.Config).HasColumnType("json");
             builder.Property(u => u.Priority);
             builder.Property(u => u.IsEnabled);
         }
