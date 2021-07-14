@@ -16,11 +16,12 @@ namespace Leelite.Core.Cache
         {
             var configuration = HostManager.Context.HostServices.GetService<IConfiguration>();
 
+            services.AddMemoryCache();
+
             // REGISTER REDIS AS A DISTRIBUTED CACHE
             services.AddStackExchangeRedisCache(options =>
             {
                 configuration.GetSection("Cache:RedisCacheOptions").Bind(options);
-                var aa = options.Configuration;
             });
 
             // REGISTER THE FUSION CACHE SERIALIZER

@@ -67,8 +67,7 @@ namespace Leelite.Core.Cache
 
                 var result = cache.GetOrSet(
                     cacheKey,
-                    _ => _asyncHandler.MakeGenericMethod(syncResultType).Invoke(this, new object[] { tgt, arguments, name }),
-                    TimeSpan.FromSeconds(cacheAttr.Duration));
+                    _ => _asyncHandler.MakeGenericMethod(syncResultType).Invoke(this, new object[] { tgt, arguments, name }));
 
                 return result;
             }
@@ -78,8 +77,7 @@ namespace Leelite.Core.Cache
 
                 var result = cache.GetOrSet(
                     cacheKey,
-                    _ => _syncHandler.MakeGenericMethod(retType).Invoke(this, new object[] { method, arguments, name }),
-                    TimeSpan.FromSeconds(cacheAttr.Duration));
+                    _ => _syncHandler.MakeGenericMethod(retType).Invoke(this, new object[] { method, arguments, name }));
 
                 return result;
             }

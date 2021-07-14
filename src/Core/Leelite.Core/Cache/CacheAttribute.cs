@@ -8,19 +8,11 @@ namespace Leelite.Core.Cache
     [Injection(typeof(CacheAspect))]
     public class CacheAttribute : Attribute
     {
-        public CacheAttribute(Type keyType)
+        public CacheAttribute(string key)
         {
-            KeyType = keyType;
-            Key = keyType.Name;
+            Key = key;
         }
 
-        public Type KeyType { get; }
-
         public string Key { get; }
-
-        /// <summary>
-        /// 单位秒
-        /// </summary>
-        public int Duration { get; set; }
     }
 }
