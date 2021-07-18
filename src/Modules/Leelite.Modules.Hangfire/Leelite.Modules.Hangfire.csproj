@@ -19,7 +19,6 @@
 		<ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj">
 			<Private>False</Private>
 		</ProjectReference>
-		<ProjectReference Include="..\..\Extensions\Leelite.Extensions.Hangfire\Leelite.Extensions.Hangfire.csproj" />
 	</ItemGroup>
 	<ItemGroup>
 		<None Update="module.json">

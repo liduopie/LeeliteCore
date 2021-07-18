@@ -1,2 +1,0 @@
-﻿因 Hangfire.RecurringJobExtensions 长时间不更新导致依赖项陈旧
-将代码备份并重新创建项目

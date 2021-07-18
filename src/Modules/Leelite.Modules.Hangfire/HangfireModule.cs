@@ -1,25 +1,34 @@
-﻿using System;
-using System.Globalization;
-using Hangfire;
+﻿using Hangfire;
 using Hangfire.Console;
 using Hangfire.PostgreSql;
+
 using Leelite.AspNetCore.Modular;
 using Leelite.Commons.Host;
+using Leelite.Core.Modular;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using System;
+using System.Globalization;
+using System.Linq;
+using System.Reflection;
+
 namespace Leelite.Modules.Hangfire
 {
     public class HangfireModule : MvcModuleBase
     {
+        private IModularManager _modularManager;
+
         public override void ConfigureServices(HostContext context)
         {
             var services = context.ServiceDescriptors;
 
             var config = context.HostServices.GetService<IConfiguration>();
+            _modularManager = context.HostServices.GetService<IModularManager>();
 
             // Add Hangfire services.
             services.AddHangfire(configuration =>
@@ -30,15 +39,7 @@ namespace Leelite.Modules.Hangfire
                 .UseRecommendedSerializerSettings()
                 .UsePostgreSqlStorage(config.GetConnectionString("HangfireConnection"));
 
-                configuration.UseDefaultActivator();
-
                 configuration.UseConsole();
-
-                // using json config file to build RecurringJob automatically.
-                // configuration.UseRecurringJob("recurringjob.json");
-                // using RecurringJobAttribute to build RecurringJob automatically.
-                // configuration.UseRecurringJob(typeof(RecurringJobService));
-
             });
 
             // Add the processing server as IHostedService
@@ -46,7 +47,6 @@ namespace Leelite.Modules.Hangfire
             {
                 option.ServerName = "Host Server";
             });
-
         }
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -65,17 +65,60 @@ namespace Leelite.Modules.Hangfire
                 SupportedUICultures = supportedCultures
             });
 
-            //app.UseHangfireServer(new BackgroundJobServerOptions
-            //{
-            //    ServerName = "Host Server"
-            //});
-
             // Make `Back to site` link working for subfolder applications
-            //var options = new DashboardOptions { AppPath = "~" };
+            // var options = new DashboardOptions { AppPath = "~" };
             app.UseHangfireDashboard();
 
-            var backgroundJobs = app.ApplicationServices.GetService<IBackgroundJobClient>();
-            backgroundJobs.Enqueue(() => Console.WriteLine("Hello world from Hangfire!"));
+            // 添加类型解释，通过模块加载的dll中查找，默认程序集中是不包含模块dll的
+            GlobalConfiguration.Configuration.UseTypeResolver(DefaultTypeResolver);
+        }
+
+        public Type DefaultTypeResolver(string typeName)
+        {
+            return Type.GetType(
+                typeName,
+                typeResolver: TypeResolver,
+                assemblyResolver: ModuleAssemblyResolver,
+                throwOnError: true);
+        }
+
+        private Assembly ModuleAssemblyResolver(AssemblyName assemblyName)
+        {
+            foreach (var context in _modularManager.ModuleContexts)
+            {
+                var res = context.Assemblies.Where(c => c.GetName().Name == assemblyName.FullName).FirstOrDefault();
+
+                if (res != null)
+                    return res;
+            }
+
+            var publicKeyToken = assemblyName.GetPublicKeyToken();
+
+            try
+            {
+                return Assembly.Load(assemblyName);
+            }
+            catch (Exception)
+            {
+                var shortName = new AssemblyName(assemblyName.Name);
+                if (publicKeyToken != null)
+                {
+                    shortName.SetPublicKeyToken(publicKeyToken);
+                }
+
+                return Assembly.Load(shortName);
+            }
+        }
+
+        private Type TypeResolver(Assembly assembly, string typeName, bool ignoreCase)
+        {
+            if (typeName.Equals("System.Diagnostics.Debug", StringComparison.Ordinal))
+            {
+                return typeof(System.Diagnostics.Debug);
+            }
+
+            assembly = assembly ?? typeof(int).GetTypeInfo().Assembly;
+            return assembly.GetType(typeName, true, ignoreCase);
         }
     }
 }
