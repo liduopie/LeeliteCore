@@ -73,6 +73,8 @@ namespace Microsoft.Extensions.DependencyInjection
                                 c.MigrationsAssembly(migrationsAssemblyName);
 
                                 c.UseMicrosoftJson();
+
+                                c.EnableIndexOptimizedBooleanColumns();
                             });
                         break;
                     case DatabaseProviderType.Npgsql:

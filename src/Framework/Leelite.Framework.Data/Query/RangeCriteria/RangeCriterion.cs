@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+
 using Leelite.Framework.Data.Query.Criteria;
 
 namespace Leelite.Framework.Data.Query.RangeCriteria
@@ -10,7 +11,7 @@ namespace Leelite.Framework.Data.Query.RangeCriteria
     /// <typeparam name="T">实体类型</typeparam>
     /// <typeparam name="TProperty">属性类型</typeparam>
     /// <typeparam name="TValue">值类型</typeparam>
-    public abstract class RangeCriterion<T, TProperty, TValue> : ICriterion<T>
+    public abstract class RangeCriterion<T, TProperty, TValue> : Criterion<T>
         where T : class
         where TValue : struct
     {
@@ -51,7 +52,7 @@ namespace Leelite.Framework.Data.Query.RangeCriteria
         /// <summary>
         /// 获取查询条件
         /// </summary>
-        public Expression<Func<T, bool>> SatisfiedBy()
+        public override Expression<Func<T, bool>> SatisfiedBy()
         {
             Adjust(_min, _max);
 
