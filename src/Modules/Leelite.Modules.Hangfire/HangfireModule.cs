@@ -117,8 +117,19 @@ namespace Leelite.Modules.Hangfire
                 return typeof(System.Diagnostics.Debug);
             }
 
+            Type type = null;
+
             assembly = assembly ?? typeof(int).GetTypeInfo().Assembly;
-            return assembly.GetType(typeName, true, ignoreCase);
+            try
+            {
+                type = assembly.GetType(typeName, true, ignoreCase);
+            }
+            catch (Exception e)
+            {
+
+            }
+
+            return type;
         }
     }
 }
