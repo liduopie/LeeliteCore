@@ -201,3 +201,75 @@ DROP PROCEDURE MigrationsScript;
 
 COMMIT;
 
+START TRANSACTION;
+
+
+DROP PROCEDURE IF EXISTS MigrationsScript;
+DELIMITER //
+CREATE PROCEDURE MigrationsScript()
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210719063606_AddTopic') THEN
+
+    ALTER TABLE `Message_Type` CHANGE `Icon` `Topic` varchar(256) NULL;
+
+    END IF;
+END //
+DELIMITER ;
+CALL MigrationsScript();
+DROP PROCEDURE MigrationsScript;
+
+
+DROP PROCEDURE IF EXISTS MigrationsScript;
+DELIMITER //
+CREATE PROCEDURE MigrationsScript()
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210719063606_AddTopic') THEN
+
+    ALTER TABLE `Message` ADD `SessionId` bigint NOT NULL DEFAULT 0;
+
+    END IF;
+END //
+DELIMITER ;
+CALL MigrationsScript();
+DROP PROCEDURE MigrationsScript;
+
+
+DROP PROCEDURE IF EXISTS MigrationsScript;
+DELIMITER //
+CREATE PROCEDURE MigrationsScript()
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210719063606_AddTopic') THEN
+
+    CREATE TABLE `Message_Topic` (
+        `Id` int NOT NULL AUTO_INCREMENT,
+        `Name` varchar(256) CHARACTER SET utf8mb4 NULL,
+        `Code` varchar(256) CHARACTER SET utf8mb4 NULL,
+        `Icon` varchar(512) CHARACTER SET utf8mb4 NULL,
+        `IsEnabled` tinyint(1) NOT NULL,
+        CONSTRAINT `PK_Message_Topic` PRIMARY KEY (`Id`)
+    ) CHARACTER SET utf8mb4;
+
+    END IF;
+END //
+DELIMITER ;
+CALL MigrationsScript();
+DROP PROCEDURE MigrationsScript;
+
+
+DROP PROCEDURE IF EXISTS MigrationsScript;
+DELIMITER //
+CREATE PROCEDURE MigrationsScript()
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM `__EFMigrationsHistory` WHERE `MigrationId` = '20210719063606_AddTopic') THEN
+
+    INSERT INTO `__EFMigrationsHistory` (`MigrationId`, `ProductVersion`)
+    VALUES ('20210719063606_AddTopic', '5.0.7');
+
+    END IF;
+END //
+DELIMITER ;
+CALL MigrationsScript();
+DROP PROCEDURE MigrationsScript;
+
+COMMIT;
+

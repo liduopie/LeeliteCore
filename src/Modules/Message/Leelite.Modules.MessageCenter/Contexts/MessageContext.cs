@@ -1,11 +1,13 @@
 ﻿using Leelite.Framework.Domain.Context;
 using Leelite.Modules.MessageCenter.Contexts.Configurations;
 using Leelite.Modules.MessageCenter.Models.MessageAgg;
+using Leelite.Modules.MessageCenter.Models.MessageTopicAgg;
 using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
 using Leelite.Modules.MessageCenter.Models.PlatformAgg;
 using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 using Leelite.Modules.MessageCenter.Models.SessionAgg;
 using Leelite.Modules.MessageCenter.Models.TemplateAgg;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Modules.MessageCenter.Contexts
@@ -19,6 +21,11 @@ namespace Leelite.Modules.MessageCenter.Contexts
         /// 系统消息
         /// </summary>
         public virtual DbSet<Message> Messages { get; set; }
+
+        /// <summary>
+        /// 消息主题分组
+        /// </summary>
+        public virtual DbSet<MessageTopic> MessageTopics { get; set; }
 
         /// <summary>
         /// 消息类型
@@ -48,6 +55,7 @@ namespace Leelite.Modules.MessageCenter.Contexts
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfiguration(new MessageConfiguration());
+            modelBuilder.ApplyConfiguration(new MessageTopicConfiguration());
             modelBuilder.ApplyConfiguration(new MessageTypeConfiguration());
             modelBuilder.ApplyConfiguration(new PushPlatformConfiguration());
             modelBuilder.ApplyConfiguration(new PushRecordConfiguration());

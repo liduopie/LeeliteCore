@@ -58,6 +58,9 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     b.Property<DateTime>("ReadTime")
                         .HasColumnType("timestamp without time zone");
 
+                    b.Property<long>("SessionId")
+                        .HasColumnType("bigint");
+
                     b.Property<string>("Title")
                         .HasMaxLength(256)
                         .HasColumnType("character varying(256)");
@@ -68,6 +71,33 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     b.HasKey("Id");
 
                     b.ToTable("Message");
+                });
+
+            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.MessageTopicAgg.MessageTopic", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer")
+                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.Property<string>("Icon")
+                        .HasMaxLength(512)
+                        .HasColumnType("character varying(512)");
+
+                    b.Property<bool>("IsEnabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Message_Topic");
                 });
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.MessageTypeAgg.MessageType", b =>
@@ -84,10 +114,6 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     b.Property<string>("DescriptionTemplate")
                         .HasMaxLength(512)
                         .HasColumnType("character varying(512)");
-
-                    b.Property<string>("Icon")
-                        .HasMaxLength(256)
-                        .HasColumnType("character varying(256)");
 
                     b.Property<bool>("IsEnabled")
                         .HasColumnType("boolean");
@@ -108,6 +134,10 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     b.Property<string>("TitleTemplate")
                         .HasMaxLength(512)
                         .HasColumnType("character varying(512)");
+
+                    b.Property<string>("Topic")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
 
                     b.Property<int>("ValidDays")
                         .HasColumnType("integer");

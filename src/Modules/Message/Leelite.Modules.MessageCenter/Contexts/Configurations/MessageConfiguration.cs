@@ -1,4 +1,5 @@
 ﻿using Leelite.Modules.MessageCenter.Models.MessageAgg;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,6 +12,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
             builder.HasKey(u => u.Id);
             builder.ToTable(TableConsts.Message);
 
+            builder.Property(u => u.SessionId);
             builder.Property(u => u.UserId);
             builder.Property(u => u.MessageTypeId);
             builder.Property(u => u.Title).HasMaxLength(256);

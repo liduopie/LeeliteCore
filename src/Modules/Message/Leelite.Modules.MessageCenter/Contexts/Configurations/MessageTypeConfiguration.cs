@@ -14,7 +14,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
 
             builder.Property(u => u.Name).HasMaxLength(256);
             builder.Property(u => u.Code).HasMaxLength(256);
-            builder.Property(u => u.Icon).HasMaxLength(256);
+            builder.Property(u => u.Topic).HasMaxLength(256);
 
             builder.Property(u => u.TitleTemplate).HasMaxLength(512);
             builder.Property(u => u.DescriptionTemplate).HasMaxLength(512);

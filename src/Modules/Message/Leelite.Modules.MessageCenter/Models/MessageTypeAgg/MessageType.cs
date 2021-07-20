@@ -23,9 +23,9 @@ namespace Leelite.Modules.MessageCenter.Models.MessageTypeAgg
         public string Code { get; set; }
 
         /// <summary>
-        /// 图标
+        /// 所属主题
         /// </summary>
-        public string Icon { get; set; }
+        public string Topic { get; set; }
 
         /// <summary>
         /// 消息标题模板,模版中包含话术及用户名称占位符{{Nick}}

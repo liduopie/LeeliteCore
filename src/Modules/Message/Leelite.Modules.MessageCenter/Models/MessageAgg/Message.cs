@@ -13,6 +13,12 @@ namespace Leelite.Modules.MessageCenter.Models.MessageAgg
     public class Message : AggregateRoot<long>,
         ISoftDelete
     {
+
+        /// <summary>
+        /// 会话Id
+        /// </summary>
+        public long SessionId { get; set; }
+
         /// <summary>
         /// 用户标识
         /// </summary>
