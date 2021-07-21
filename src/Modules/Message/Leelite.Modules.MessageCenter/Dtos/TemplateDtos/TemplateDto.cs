@@ -2,9 +2,9 @@ using Leelite.Framework.Service.Dtos;
 
 namespace Leelite.Modules.MessageCenter.Dtos.TemplateDtos
 {
-    public class TemplateDto : IDto<long>
+    public class TemplateDto : IDto<int>
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public int PlatformId { get; set; }
 

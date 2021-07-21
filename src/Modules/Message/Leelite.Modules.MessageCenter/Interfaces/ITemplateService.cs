@@ -4,7 +4,7 @@ using Leelite.Modules.MessageCenter.Models.TemplateAgg;
 
 namespace Leelite.Modules.MessageCenter.Interfaces
 {
-    public interface ITemplateService : ICrudService<Template, long, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>
+    public interface ITemplateService : ICrudService<Template, int, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>
     {
     }
 }

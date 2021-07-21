@@ -196,3 +196,74 @@ BEGIN
 END $$;
 COMMIT;
 
+START TRANSACTION;
+
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721074611_AddPushRecordExpirationTime') THEN
+    ALTER TABLE "Message_Push_Record" DROP COLUMN "PushState";
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721074611_AddPushRecordExpirationTime') THEN
+    ALTER TABLE "Message_Push_Record" ADD "ExpirationTime" timestamp without time zone NOT NULL DEFAULT TIMESTAMP '0001-01-01 00:00:00';
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721074611_AddPushRecordExpirationTime') THEN
+    ALTER TABLE "Message_Push_Record" ADD "State" integer NOT NULL DEFAULT 0;
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721074611_AddPushRecordExpirationTime') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20210721074611_AddPushRecordExpirationTime', '5.0.7');
+    END IF;
+END $$;
+COMMIT;
+
+START TRANSACTION;
+
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721114813_ChangeTemplateId') THEN
+    ALTER TABLE "Message_Template" ALTER COLUMN "Id" TYPE integer;
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721114813_ChangeTemplateId') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20210721114813_ChangeTemplateId', '5.0.7');
+    END IF;
+END $$;
+COMMIT;
+
+START TRANSACTION;
+
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721122407_AddPushRecordTemplateCode') THEN
+    ALTER TABLE "Message_Push_Record" ADD "TemplateCode" character varying(256) NULL;
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210721122407_AddPushRecordTemplateCode') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20210721122407_AddPushRecordTemplateCode', '5.0.7');
+    END IF;
+END $$;
+COMMIT;
+

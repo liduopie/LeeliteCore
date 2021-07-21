@@ -1,10 +1,13 @@
 ﻿using System;
+
 using Leelite.Framework.Domain.Aggregate;
+using Leelite.Framework.Models.State;
 using Leelite.Modules.MessageCenter.Models.MessageAgg;
 
 namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
 {
-    public class PushRecord : AggregateRoot<long>
+    public class PushRecord : AggregateRoot<long>,
+        IState<PushState>
     {
         /// <summary>
         /// 消息Id
@@ -15,6 +18,11 @@ namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
         /// 平台Id
         /// </summary>
         public int PlatformId { get; set; }
+
+        /// <summary>
+        /// 第三方模版编码
+        /// </summary>
+        public string TemplateCode { get; set; }
 
         /// <summary>
         /// 推送内容
@@ -30,7 +38,7 @@ namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
         /// <summary>
         /// 推送状态
         /// </summary>
-        public bool PushState { get; set; }
+        public PushState State { get; set; }
 
         /// <summary>
         /// 重试次数
@@ -41,5 +49,10 @@ namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
         /// 备注
         /// </summary>
         public string Remark { get; set; }
+
+        /// <summary>
+        /// 过期时间
+        /// </summary>
+        public DateTime ExpirationTime { get; set; }
     }
 }

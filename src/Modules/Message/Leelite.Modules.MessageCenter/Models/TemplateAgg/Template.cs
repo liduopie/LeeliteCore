@@ -8,7 +8,7 @@ namespace Leelite.Modules.MessageCenter.Models.TemplateAgg
     /// <summary>
     /// 消息模版
     /// </summary>
-    public class Template : AggregateRoot<long>
+    public class Template : AggregateRoot<int>
     {
         /// <summary>
         /// 平台Id

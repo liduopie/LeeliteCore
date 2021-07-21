@@ -3,14 +3,16 @@ using System;
 using Leelite.Modules.MessageCenter.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Leelite.Modules.MessageCenter.Migrations.MySql
 {
     [DbContext(typeof(MessageContext))]
-    partial class MessageContextModelSnapshot : ModelSnapshot
+    [Migration("20210721114837_ChangeTemplateId")]
+    partial class ChangeTemplateId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,10 +205,6 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
                     b.Property<int>("State")
                         .HasColumnType("int");
-
-                    b.Property<string>("TemplateCode")
-                        .HasMaxLength(256)
-                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Url")
                         .HasColumnType("longtext");

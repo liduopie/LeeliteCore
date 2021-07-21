@@ -11,9 +11,9 @@ namespace Leelite.Modules.MessageCenter.Dtos.SessionDtos
     {
         public string Keyword { get; set; }
         public CompleteState[] States { get; set; }
-        public DateTime StartCreateTime { get; set; }
-        public DateTime EndCreateTime { get; set; }
-        public bool IgnoreExpires { get; set; }
+        public DateTime? StartCreateTime { get; set; }
+        public DateTime? EndCreateTime { get; set; }
+        public bool? Expired { get; set; }
 
         public override Expression<Func<Session, bool>> SatisfiedBy()
         {
@@ -28,14 +28,14 @@ namespace Leelite.Modules.MessageCenter.Dtos.SessionDtos
 
                 if (EndCreateTime == null) EndCreateTime = DateTime.MaxValue;
 
-                c &= SessionCriteria.CreateTimeRange(StartCreateTime, EndCreateTime);
+                c &= SessionCriteria.CreateTimeRange(StartCreateTime.Value, EndCreateTime.Value);
             }
 
-            if (States.Length > 0)
+            if (States != null && States.Length > 0)
                 c &= SessionCriteria.CompleteStates(States);
 
-            if (!IgnoreExpires)
-                c &= SessionCriteria.Unexpired();
+            if (Expired != null)
+                c &= SessionCriteria.Expired(Expired.Value);
 
             return c.SatisfiedBy();
         }

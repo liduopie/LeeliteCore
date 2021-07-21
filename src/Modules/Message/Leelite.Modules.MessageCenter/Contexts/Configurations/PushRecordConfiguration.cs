@@ -13,13 +13,14 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
 
             builder.Property(u => u.MessageId);
             builder.Property(u => u.PlatformId);
-
+            builder.Property(u => u.TemplateCode).HasMaxLength(256);
             builder.Property(u => u.Content);
             builder.Property(u => u.Url);
-            builder.Property(u => u.PushState);
+            builder.Property(u => u.State);
 
             builder.Property(u => u.RetriesNum);
             builder.Property(u => u.Remark);
+            builder.Property(u => u.ExpirationTime);
         }
     }
 }

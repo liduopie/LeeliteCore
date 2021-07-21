@@ -12,12 +12,12 @@ namespace Leelite.Modules.MessageCenter.Dtos.MessageDtos
         ISoftDeleteParameter
     {
         public string Keyword { get; set; }
-        public DateTime StartCreateTime { get; set; }
-        public DateTime EndCreateTime { get; set; }
+        public DateTime? StartCreateTime { get; set; }
+        public DateTime? EndCreateTime { get; set; }
         public bool? ReadState { get; set; }
-        public bool Delivered { get; set; }
-        public bool IgnoreExpires { get; set; }
-        public bool IgnoreDelete { get; set; }
+        public bool? Delivered { get; set; }
+        public bool? Expired { get; set; }
+        public bool? Deleted { get; set; }
 
         public override Expression<Func<Message, bool>> SatisfiedBy()
         {
@@ -32,7 +32,7 @@ namespace Leelite.Modules.MessageCenter.Dtos.MessageDtos
 
                 if (EndCreateTime == null) EndCreateTime = DateTime.MaxValue;
 
-                c &= MessageCriteria.CreateTimeRange(StartCreateTime, EndCreateTime);
+                c &= MessageCriteria.CreateTimeRange(StartCreateTime.Value, EndCreateTime.Value);
             }
 
             if (ReadState.HasValue && ReadState.Value)
@@ -40,16 +40,14 @@ namespace Leelite.Modules.MessageCenter.Dtos.MessageDtos
             else
                 c &= MessageCriteria.UnRead();
 
-            if (Delivered)
-                c &= MessageCriteria.Delivered();
-            else
-                c &= MessageCriteria.UnDelivered();
+            if (Delivered != null)
+                c &= MessageCriteria.Delivered(Delivered.Value);
 
-            if (!IgnoreExpires)
-                c &= MessageCriteria.UnExpired();
+            if (Expired != null)
+                c &= MessageCriteria.Expired(Expired.Value);
 
-            if (!IgnoreDelete)
-                c &= MessageCriteria.NotDelete();
+            if (Deleted != null)
+                c &= MessageCriteria.Deleted(Deleted.Value);
 
             return c.SatisfiedBy();
         }

@@ -50,12 +50,15 @@ namespace Leelite.Modules.MessageCenter.Models.SessionAgg
         }
 
         /// <summary>
-        /// 未过期
+        /// 过期、未过期
         /// </summary>
         /// <returns></returns>
-        public static Criterion<Session> Unexpired()
+        public static Criterion<Session> Expired(bool state)
         {
-            return new DirectCriterion<Session>(c => c.ExpirationTime > DateTime.Now);
+            if (state)
+                return new DirectCriterion<Session>(c => c.ExpirationTime < DateTime.Now);
+            else
+                return new DirectCriterion<Session>(c => c.ExpirationTime >= DateTime.Now);
         }
     }
 }

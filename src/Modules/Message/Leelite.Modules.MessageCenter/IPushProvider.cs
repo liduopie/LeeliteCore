@@ -1,6 +1,4 @@
 ﻿using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
-
-using System;
 namespace Leelite.Modules.MessageCenter
 {
     public interface IPushProvider

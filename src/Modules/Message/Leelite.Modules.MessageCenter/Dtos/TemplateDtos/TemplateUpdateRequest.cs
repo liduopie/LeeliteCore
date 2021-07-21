@@ -2,9 +2,9 @@ using Leelite.Framework.Service.Dtos;
 
 namespace Leelite.Modules.MessageCenter.Dtos.TemplateDtos
 {
-    public class TemplateUpdateRequest : IUpdateRequest<long>
+    public class TemplateUpdateRequest : IUpdateRequest<int>
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public int PlatformId { get; set; }
 

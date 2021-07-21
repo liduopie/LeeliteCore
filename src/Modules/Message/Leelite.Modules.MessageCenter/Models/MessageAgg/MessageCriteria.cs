@@ -62,36 +62,33 @@ namespace Leelite.Modules.MessageCenter.Models.MessageAgg
         /// 查看已送达
         /// </summary>
         /// <returns>返回已送达条件</returns>
-        public static Criterion<Message> Delivered()
+        public static Criterion<Message> Delivered(bool state)
         {
-            return new DirectCriterion<Message>(c => c.DeliveryState == true);
+            return new DirectCriterion<Message>(c => c.DeliveryState == state);
         }
 
         /// <summary>
-        /// 查看未送达
-        /// </summary>
-        /// <returns>返回未送达条件</returns>
-        public static Criterion<Message> UnDelivered()
-        {
-            return new DirectCriterion<Message>(c => c.DeliveryState == false);
-        }
-
-        /// <summary>
-        /// 未过期
+        /// 过期、未过期
         /// </summary>
         /// <returns>返回未过期条件</returns>
-        public static Criterion<Message> UnExpired()
+        public static Criterion<Message> Expired(bool state)
         {
-            return new DirectCriterion<Message>(c => c.ExpirationTime > DateTime.Now);
+            if (state)
+                return new DirectCriterion<Message>(c => c.ExpirationTime < DateTime.Now);
+            else
+                return new DirectCriterion<Message>(c => c.ExpirationTime >= DateTime.Now);
         }
 
         /// <summary>
-        /// 未删除
+        /// 删除、未删除
         /// </summary>
         /// <returns>返回未删除条件</returns>
-        public static Criterion<Message> NotDelete()
+        public static Criterion<Message> Deleted(bool state)
         {
-            return SoftDeleteCriteria.NotDelete<Message>();
+            if (state)
+                return SoftDeleteCriteria.Deleted<Message>();
+            else
+                return SoftDeleteCriteria.NotDelete<Message>();
         }
     }
 }

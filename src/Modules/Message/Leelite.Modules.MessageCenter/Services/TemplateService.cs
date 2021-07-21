@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Leelite.Modules.MessageCenter.Models.TemplateAgg.Services
 {
-    public class TemplateService : CrudService<Template, long, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>, ITemplateService
+    public class TemplateService : CrudService<Template, int, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>, ITemplateService
     {
         public TemplateService(
             ITemplateRepository repository,

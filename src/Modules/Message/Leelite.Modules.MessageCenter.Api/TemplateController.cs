@@ -9,7 +9,7 @@ namespace Leelite.Modules.MessageCenter.Models.TemplateAgg.WebApi
     [ApiController]
     [Area("Message")]
     [Route("api/[area]/[controller]")]
-    public class TemplateController : RESTfulController<Template, long, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>
+    public class TemplateController : RESTfulController<Template, int, TemplateDto, TemplateCreateRequest, TemplateUpdateRequest, TemplateQueryParameter>
     {
         private readonly ITemplateService _service;
 

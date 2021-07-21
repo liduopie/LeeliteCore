@@ -5,11 +5,11 @@ using Leelite.Modules.MessageCenter.Models.TemplateAgg;
 
 namespace Leelite.Modules.MessageCenter.Repositories
 {
-    public interface ITemplateRepository : IRepository<Template, long>
+    public interface ITemplateRepository : IRepository<Template, int>
     {
     }
 
-    public class TemplateRepository : EFRepository<Template, long>, ITemplateRepository
+    public class TemplateRepository : EFRepository<Template, int>, ITemplateRepository
     {
         public TemplateRepository(MessageContext dbContext, IUnitOfWork unitOfWork) : base(dbContext, unitOfWork) { }
     }
