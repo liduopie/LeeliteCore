@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
+
+using System;
 namespace Leelite.Modules.MessageCenter
 {
     public interface IPushProvider
@@ -12,5 +14,7 @@ namespace Leelite.Modules.MessageCenter
         /// 配置结构描述
         /// </summary>
         public string ConfigSchema { get; set; }
+
+        public void Push(PushRecord record);
     }
 }

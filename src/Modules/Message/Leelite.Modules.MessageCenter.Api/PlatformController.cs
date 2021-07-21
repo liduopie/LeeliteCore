@@ -9,7 +9,7 @@ namespace Leelite.Modules.MessageCenter.Models.PlatformAgg.WebApi
     [ApiController]
     [Area("Message")]
     [Route("api/[area]/[controller]")]
-    public class PlatformController : RESTfulController<PushPlatform, long, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>
+    public class PlatformController : RESTfulController<PushPlatform, int, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>
     {
         private readonly IPushPlatformService _service;
 

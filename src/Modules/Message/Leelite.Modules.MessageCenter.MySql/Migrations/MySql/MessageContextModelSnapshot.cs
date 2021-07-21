@@ -143,9 +143,13 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
 
             modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
                 {
-                    b.Property<long>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
+                        .HasColumnType("int");
+
+                    b.Property<string>("Code")
+                        .HasMaxLength(256)
+                        .HasColumnType("varchar(256)");
 
                     b.Property<string>("Config")
                         .HasColumnType("json");

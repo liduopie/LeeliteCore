@@ -8,7 +8,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Leelite.Modules.MessageCenter.Models.PushPlatformAgg.Services
 {
-    public class PlatformService : CrudService<PushPlatform, long, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>, IPushPlatformService
+    public class PlatformService : CrudService<PushPlatform, int, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>, IPushPlatformService
     {
         public PlatformService(
             IPushPlatformRepository repository,

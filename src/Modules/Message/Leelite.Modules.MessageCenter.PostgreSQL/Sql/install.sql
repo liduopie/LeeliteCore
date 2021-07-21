@@ -170,3 +170,29 @@ BEGIN
 END $$;
 COMMIT;
 
+START TRANSACTION;
+
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210720092237_AddPlatformCode') THEN
+    ALTER TABLE "Message_Push_Platform" ALTER COLUMN "Id" TYPE integer;
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210720092237_AddPlatformCode') THEN
+    ALTER TABLE "Message_Push_Platform" ADD "Code" character varying(256) NULL;
+    END IF;
+END $$;
+
+DO $$
+BEGIN
+    IF NOT EXISTS(SELECT 1 FROM "__EFMigrationsHistory" WHERE "MigrationId" = '20210720092237_AddPlatformCode') THEN
+    INSERT INTO "__EFMigrationsHistory" ("MigrationId", "ProductVersion")
+    VALUES ('20210720092237_AddPlatformCode', '5.0.7');
+    END IF;
+END $$;
+COMMIT;
+

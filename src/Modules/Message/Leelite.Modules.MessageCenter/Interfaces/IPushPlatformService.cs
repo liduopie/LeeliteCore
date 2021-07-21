@@ -4,7 +4,7 @@ using Leelite.Modules.MessageCenter.Models.PlatformAgg;
 
 namespace Leelite.Modules.MessageCenter.Interfaces
 {
-    public interface IPushPlatformService : ICrudService<PushPlatform, long, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>
+    public interface IPushPlatformService : ICrudService<PushPlatform, int, PushPlatformDto, PushPlatformCreateRequest, PushPlatformUpdateRequest, PushPlatformQueryParameter>
     {
     }
 }

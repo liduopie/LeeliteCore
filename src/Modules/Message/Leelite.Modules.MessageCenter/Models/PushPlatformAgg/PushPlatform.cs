@@ -9,7 +9,7 @@ namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
     /// <summary>
     /// 平台信息
     /// </summary>
-    public class PushPlatform : AggregateRoot<long>,
+    public class PushPlatform : AggregateRoot<int>,
         IEnabled
     {
         /// <summary>
@@ -21,6 +21,11 @@ namespace Leelite.Modules.MessageCenter.Models.PlatformAgg
         /// 平台描述
         /// </summary>
         public string Description { get; set; }
+
+        /// <summary>
+        /// 平台编码
+        /// </summary>
+        public string Code { get; set; }
 
         /// <summary>
         /// 提供程序

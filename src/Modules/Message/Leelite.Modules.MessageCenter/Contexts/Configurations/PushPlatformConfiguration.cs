@@ -1,4 +1,5 @@
 ﻿using Leelite.Modules.MessageCenter.Models.PlatformAgg;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -13,6 +14,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
 
             builder.Property(u => u.Name).HasMaxLength(256);
             builder.Property(u => u.Description).HasMaxLength(512);
+            builder.Property(u => u.Code).HasMaxLength(256);
             builder.Property(u => u.ProviderName).HasMaxLength(256);
 
             builder.Property(u => u.Config).HasColumnType("json");

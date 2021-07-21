@@ -1,6 +1,7 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Enabled;
 
+using System;
 using System.Collections.Generic;
 
 namespace Leelite.Modules.MessageCenter.Models.MessageTypeAgg

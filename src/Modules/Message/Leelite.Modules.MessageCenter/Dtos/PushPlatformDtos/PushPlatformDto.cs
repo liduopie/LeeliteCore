@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace Leelite.Modules.MessageCenter.Dtos.PushPlatformDtos
 {
-    public class PushPlatformDto : IDto<long>
+    public class PushPlatformDto : IDto<int>
     {
-        public long Id { get; set; }
+        public int Id { get; set; }
 
         public string Name { get; set; }
 
