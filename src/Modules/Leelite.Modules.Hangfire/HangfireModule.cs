@@ -124,9 +124,8 @@ namespace Leelite.Modules.Hangfire
             {
                 type = assembly.GetType(typeName, true, ignoreCase);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-
             }
 
             return type;
