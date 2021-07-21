@@ -52,7 +52,10 @@ namespace Leelite.Core.BackgroundJob.Services
                     var method = jobType.GetMethod("Execute", new Type[] { typeof(PerformContext) });
                     var jobInfo = new Hangfire.Common.Job(method, new object[] { null });
 
-                    _recurringJobs.AddOrUpdate(attr.RecurringJobId, jobInfo, attr.Cron, TZConvert.GetTimeZoneInfo(attr.TimeZone), attr.Queue);
+                    if (attr.Enabled)
+                        _recurringJobs.AddOrUpdate(attr.RecurringJobId, jobInfo, attr.Cron, TZConvert.GetTimeZoneInfo(attr.TimeZone), attr.Queue);
+                    else
+                        _recurringJobs.RemoveIfExists(attr.RecurringJobId);
                 }
             }
             catch (Exception e)
