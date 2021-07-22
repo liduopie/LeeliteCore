@@ -91,7 +91,7 @@ namespace Leelite.Core.Cache
                 // Console.WriteLine($"Sync method `{name}` completes successfuly.");
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Console.WriteLine($"Sync method `{name}` throws {e.GetType()} exception.");
                 return default;
@@ -106,7 +106,7 @@ namespace Leelite.Core.Cache
                 // Console.WriteLine($"Async method `{name}` completes successfuly.");
                 return result;
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 // Console.WriteLine($"Async method `{name}` throws {e.GetType()} exception.");
                 return default;

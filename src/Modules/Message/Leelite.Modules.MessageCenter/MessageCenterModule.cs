@@ -18,6 +18,8 @@ namespace Leelite.Modules.MessageCenter
             var services = context.ServiceDescriptors;
 
             services.AddDbContext<MessageContext>("Default", true);
+
+            services.AddSingleton<IPushProviderFactory, PushProviderFactory>();
         }
     }
 }

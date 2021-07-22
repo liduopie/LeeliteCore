@@ -11,7 +11,7 @@
         /// </summary>
         Succeed,
         /// <summary>
-        /// 已完成
+        /// 失败
         /// </summary>
         Failed,
         /// <summary>

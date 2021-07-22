@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project Sdk="Microsoft.NET.Sdk">
 	<PropertyGroup>
 		<TargetFramework>net5.0</TargetFramework>
@@ -11,6 +11,9 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS.Ali\Leelite.Modules.MessageCenter.SMS.Ali.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS\Leelite.Modules.MessageCenter.SMS.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UserPhone\Leelite.Modules.MessageCenter.UserPhone.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
 	</ItemGroup>
 	<ItemGroup>

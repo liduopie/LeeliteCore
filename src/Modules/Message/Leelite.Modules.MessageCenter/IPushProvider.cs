@@ -1,4 +1,7 @@
 ﻿using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
+
+using System.Collections.Generic;
+
 namespace Leelite.Modules.MessageCenter
 {
     public interface IPushProvider
@@ -13,6 +16,8 @@ namespace Leelite.Modules.MessageCenter
         /// </summary>
         public string ConfigSchema { get; set; }
 
-        public void Push(PushRecord record);
+        public bool Push(PushRecord record);
+
+        public void SetConfig(IDictionary<string, string> config);
     }
 }

@@ -1,14 +1,18 @@
-﻿using System;
-
-using Leelite.Framework.Domain.Aggregate;
+﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.State;
-using Leelite.Modules.MessageCenter.Models.MessageAgg;
+
+using System;
 
 namespace Leelite.Modules.MessageCenter.Models.PushRecordAgg
 {
     public class PushRecord : AggregateRoot<long>,
         IState<PushState>
     {
+        /// <summary>
+        /// 用户标识
+        /// </summary>
+        public long UserId { get; set; }
+
         /// <summary>
         /// 消息Id
         /// </summary>

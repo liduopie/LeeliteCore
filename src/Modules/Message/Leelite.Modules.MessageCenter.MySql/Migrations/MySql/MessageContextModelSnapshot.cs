@@ -211,6 +211,9 @@ namespace Leelite.Modules.MessageCenter.Migrations.MySql
                     b.Property<string>("Url")
                         .HasColumnType("longtext");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
                     b.ToTable("Message_Push_Record");

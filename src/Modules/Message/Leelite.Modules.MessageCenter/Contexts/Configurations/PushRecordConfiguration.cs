@@ -11,6 +11,7 @@ namespace Leelite.Modules.MessageCenter.Contexts.Configurations
             builder.HasKey(u => u.Id);
             builder.ToTable(TableConsts.PushRecord);
 
+            builder.Property(u => u.UserId);
             builder.Property(u => u.MessageId);
             builder.Property(u => u.PlatformId);
             builder.Property(u => u.TemplateCode).HasMaxLength(256);
