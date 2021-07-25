@@ -9,6 +9,8 @@ using Leelite.Modules.MessageCenter.Dtos.MessageDtos;
 using Leelite.Modules.MessageCenter.Models.MessageAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
+
 namespace Leelite.Modules.MessageCenter.Jobs
 {
     [RecurringJob("*/1 * * * *", RecurringJobId = "软删除过期消息")]
@@ -47,16 +49,23 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var messages = _messageRepository.FindPage(query);
-
-                foreach (var msg in messages)
+                try
                 {
-                    msg.Delete();
+                    var messages = _messageRepository.FindPage(query);
+
+                    foreach (var msg in messages)
+                    {
+                        msg.Delete();
+                    }
+
+                    _messageRepository.UpdateRange(messages);
+
+                    context.WriteLine($"本次处理{messages.Count}消息。");
                 }
-
-                _messageRepository.UpdateRange(messages);
-
-                context.WriteLine($"本次处理{messages.Count}消息。");
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 

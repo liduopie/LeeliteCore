@@ -1,4 +1,6 @@
-﻿using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
+﻿using Hangfire.Server;
+
+using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 
 using System.Collections.Generic;
 
@@ -19,5 +21,7 @@ namespace Leelite.Modules.MessageCenter
         public bool Push(PushRecord record);
 
         public void SetConfig(IDictionary<string, string> config);
+
+        public void SetPerformContext(PerformContext context);
     }
 }

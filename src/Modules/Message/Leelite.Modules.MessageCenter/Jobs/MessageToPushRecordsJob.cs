@@ -81,14 +81,21 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var messages = _messageRepository.FindPage(query);
-
-                context.WriteLine($"本次处理{messages.Count}会话。");
-
-                foreach (var msg in messages)
+                try
                 {
-                    // 根据 message 展开成消息
-                    CreatePushRecords(msg);
+                    var messages = _messageRepository.FindPage(query);
+
+                    context.WriteLine($"本次处理{messages.Count}会话。");
+
+                    foreach (var msg in messages)
+                    {
+                        // 根据 message 展开成消息
+                        CreatePushRecords(msg);
+                    }
+                }
+                catch (Exception e)
+                {
+                    context.WriteLine(e);
                 }
 
                 parameter.Pager.Page++;

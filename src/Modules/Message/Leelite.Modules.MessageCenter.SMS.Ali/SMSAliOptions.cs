@@ -2,10 +2,10 @@
 {
     public class SMSAliOptions
     {
-        public string RegionId { get; set; }
-        public string AccessKeyId { get; set; }
-        public string Secret { get; set; }
-        public string SignName { get; set; }
+        public string RegionId { get; set; } = default!;
+        public string AccessKeyId { get; set; } = default!;
+        public string Secret { get; set; } = default!;
+        public string SignName { get; set; } = default!;
 
     }
 }

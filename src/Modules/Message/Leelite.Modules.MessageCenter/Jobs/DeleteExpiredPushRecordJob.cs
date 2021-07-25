@@ -8,6 +8,8 @@ using Leelite.Modules.MessageCenter.Dtos.PushRecordDtos;
 using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
+
 namespace Leelite.Modules.MessageCenter.Jobs
 {
     [RecurringJob("*/1 * * * *", RecurringJobId = "删除过期推送记录")]
@@ -46,11 +48,18 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var sessions = _pushRecordRepository.FindPage(query);
+                try
+                {
+                    var sessions = _pushRecordRepository.FindPage(query);
 
-                _pushRecordRepository.RemoveRange(sessions);
+                    _pushRecordRepository.RemoveRange(sessions);
 
-                context.WriteLine($"本次处理{sessions.Count}记录。");
+                    context.WriteLine($"本次处理{sessions.Count}记录。");
+                }
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 

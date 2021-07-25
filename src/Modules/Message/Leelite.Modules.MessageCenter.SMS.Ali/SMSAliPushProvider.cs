@@ -7,13 +7,12 @@ using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 
 using Microsoft.Extensions.Configuration;
 
-using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Leelite.Modules.MessageCenter.SMS.Ali
 {
-    public class SMSAliPushProvider : IPushProvider
+    public class SMSAliPushProvider : PushProviderBase
     {
         private readonly IUserPhoneService _userPhoneService;
         private SMSAliOptions _config = new SMSAliOptions();
@@ -21,13 +20,11 @@ namespace Leelite.Modules.MessageCenter.SMS.Ali
         public SMSAliPushProvider(IUserPhoneService userPhoneService)
         {
             _userPhoneService = userPhoneService;
+            ProviderName = "AliSMS";
+            ConfigSchema = "RegionId、AccessKeyId、Secret、SignName";
         }
 
-        public string ProviderName { get; set; } = "AliSMS";
-        public string ConfigSchema { get; set; } = "regionId、accessKeyId、secret、signName";
-
-
-        public bool Push(PushRecord record)
+        public override bool Push(PushRecord record)
         {
             IClientProfile profile = DefaultProfile.GetProfile(_config.RegionId, _config.AccessKeyId, _config.Secret);
             DefaultAcsClient client = new DefaultAcsClient(profile);
@@ -46,21 +43,22 @@ namespace Leelite.Modules.MessageCenter.SMS.Ali
             try
             {
                 CommonResponse response = client.GetCommonResponse(request);
-                Console.WriteLine(Encoding.Default.GetString(response.HttpResponse.Content));
+
+                WriteLineString(Encoding.Default.GetString(response.HttpResponse.Content));
             }
             catch (ServerException e)
             {
-                Console.WriteLine(e);
+                WriteLineObject(e);
             }
             catch (ClientException e)
             {
-                Console.WriteLine(e);
+                WriteLineObject(e);
             }
 
             return true;
         }
 
-        public void SetConfig(IDictionary<string, string> config)
+        public override void SetConfig(IDictionary<string, string> config)
         {
             var builder = new ConfigurationBuilder().AddInMemoryCollection(config);
 

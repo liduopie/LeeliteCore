@@ -5,7 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.MessageCenter.SMS
 {
-    public class MessageCenterSMSModule : ModuleBase
+    public class SMSModule : ModuleBase
     {
         public override void ConfigureServices(HostContext context)
         {

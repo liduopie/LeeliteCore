@@ -8,6 +8,8 @@ using Leelite.Modules.MessageCenter.Dtos.SessionDtos;
 using Leelite.Modules.MessageCenter.Models.SessionAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
+
 namespace Leelite.Modules.MessageCenter.Jobs
 {
     [RecurringJob("*/1 * * * *", RecurringJobId = "删除过期会话")]
@@ -46,11 +48,18 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var sessions = _sessionRepository.FindPage(query);
+                try
+                {
+                    var sessions = _sessionRepository.FindPage(query);
 
-                _sessionRepository.RemoveRange(sessions);
+                    _sessionRepository.RemoveRange(sessions);
 
-                context.WriteLine($"本次处理{sessions.Count}会话。");
+                    context.WriteLine($"本次处理{sessions.Count}会话。");
+                }
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 

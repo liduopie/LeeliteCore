@@ -8,8 +8,8 @@
         /// <summary>
         /// 获取用户手机号
         /// </summary>
-        /// <param name="id">用户Id</param>
+        /// <param name="userId">用户Id</param>
         /// <returns>返回手机号</returns>
-        public string GetPhone(long id);
+        public string GetPhone(long userId);
     }
 }

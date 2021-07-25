@@ -13,13 +13,13 @@ namespace Leelite.Modules.MessageCenter.SMS
             _cache = cache;
         }
 
-        public string GetPhone(long id)
+        public string GetPhone(long userId)
         {
-            var cacheKey = $"MessageCenter:UserPhone:{id}";
+            var cacheKey = $"MessageCenter:UserPhone:{userId}";
 
             var result = _cache.GetOrSet(
                     cacheKey,
-                    _ => _userPhoneFactory.GetPhone(id));
+                    _ => _userPhoneFactory.GetPhone(userId));
 
             return result;
         }

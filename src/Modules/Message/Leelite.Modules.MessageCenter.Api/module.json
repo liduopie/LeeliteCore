@@ -5,6 +5,8 @@
     "Leelite.Modules.MessageCenter.dll",
     "Leelite.Modules.MessageCenter.SMS.dll",
     "Leelite.Modules.MessageCenter.SMS.Ali.dll",
-    "Leelite.Modules.MessageCenter.UserPhone.dll"
+    "Leelite.Modules.MessageCenter.UserPhone.dll",
+    "Leelite.Modules.MessageCenter.UserOpenID.dll",
+    "Leelite.Modules.MessageCenter.Weixin.dll"
   ]
 }

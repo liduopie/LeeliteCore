@@ -8,6 +8,7 @@ using Leelite.Modules.MessageCenter.Dtos.PushRecordDtos;
 using Leelite.Modules.MessageCenter.Models.PushRecordAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
 using System.Collections.Generic;
 
 namespace Leelite.Modules.MessageCenter.Jobs
@@ -65,26 +66,36 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var records = _pushRecordRepository.FindPage(query);
-
-                foreach (var record in records)
+                try
                 {
-                    if (_providerCache.ContainsKey(record.PlatformId))
+                    var records = _pushRecordRepository.FindPage(query);
+
+                    foreach (var record in records)
                     {
-                        if (_providerCache[record.PlatformId].Push(record))
+                        if (!_providerCache.ContainsKey(record.PlatformId))
+                        {
+                            record.State = PushState.Failed;
+                            continue;
+                        }
+
+                        var provider = _providerCache[record.PlatformId];
+
+                        provider.SetPerformContext(context); // 控制台输出必须提前
+
+                        if (provider.Push(record))
                             record.State = PushState.Succeed;
                         else
                             record.State = PushState.Failed;
                     }
-                    else
-                    {
-                        record.State = PushState.Failed;
-                    }
+
+                    _pushRecordRepository.UpdateRange(records);
+
+                    context.WriteLine($"本次处理{records.Count}记录。");
                 }
-
-                _pushRecordRepository.UpdateRange(records);
-
-                context.WriteLine($"本次处理{records.Count}记录。");
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 

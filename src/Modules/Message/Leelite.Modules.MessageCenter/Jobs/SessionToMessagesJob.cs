@@ -11,6 +11,7 @@ using Leelite.Modules.MessageCenter.Models.MessageTypeAgg;
 using Leelite.Modules.MessageCenter.Models.SessionAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -67,23 +68,29 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var sessions = _sessionRepository.FindPage(query);
-
-                context.WriteLine($"本次处理{sessions.Count}会话。");
-
-                foreach (var session in sessions)
+                try
                 {
+                    var sessions = _sessionRepository.FindPage(query);
 
-                    if (!_messageTypes[session.MessageTypeId].IsEnabled) continue;
+                    context.WriteLine($"本次处理{sessions.Count}会话。");
 
-                    // 根据 session 展开成消息
-                    CreateMessages(session);
+                    foreach (var session in sessions)
+                    {
 
-                    session.State = CompleteState.Pushing;
+                        if (!_messageTypes[session.MessageTypeId].IsEnabled) continue;
 
-                    _sessionRepository.Update(session);
+                        // 根据 session 展开成消息
+                        CreateMessages(session);
+
+                        session.State = CompleteState.Pushing;
+
+                        _sessionRepository.Update(session);
+                    }
                 }
-
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 

@@ -8,6 +8,8 @@ using Leelite.Modules.MessageCenter.Dtos.MessageDtos;
 using Leelite.Modules.MessageCenter.Models.MessageAgg;
 using Leelite.Modules.MessageCenter.Repositories;
 
+using System;
+
 namespace Leelite.Modules.MessageCenter.Jobs
 {
     [RecurringJob("*/1 * * * *", RecurringJobId = "删除过期消息")]
@@ -31,7 +33,7 @@ namespace Leelite.Modules.MessageCenter.Jobs
                     PageSize = 100
                 },
                 Expired = true,
-                
+
             };
 
             var query = new PagingQuery<Message, MessageQueryParameter>(parameter);
@@ -47,11 +49,18 @@ namespace Leelite.Modules.MessageCenter.Jobs
 
             do
             {
-                var sessions = _messageRepository.FindPage(query);
+                try
+                {
+                    var sessions = _messageRepository.FindPage(query);
 
-                _messageRepository.RemoveRange(sessions);
+                    _messageRepository.RemoveRange(sessions);
 
-                context.WriteLine($"本次处理{sessions.Count}消息。");
+                    context.WriteLine($"本次处理{sessions.Count}消息。");
+                }
+                catch (Exception e)
+                {
+                    context.WriteLine(e.Message);
+                }
 
                 parameter.Pager.Page++;
 
