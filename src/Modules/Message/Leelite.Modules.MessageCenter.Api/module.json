@@ -3,6 +3,7 @@
   "AssemblyFileName": "Leelite.Modules.MessageCenter.Api.dll",
   "ReferencedAssemblies": [
     "Leelite.Modules.MessageCenter.dll",
+    "Leelite.Modules.MessageCenter.SignalR.dll",
     "Leelite.Modules.MessageCenter.SMS.dll",
     "Leelite.Modules.MessageCenter.SMS.Ali.dll",
     "Leelite.Modules.MessageCenter.UniPush.dll",

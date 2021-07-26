@@ -252,9 +252,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leelite.Modules.MessageCent
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leelite.Modules.MessageCenter.Weixin", "src\Modules\Message\Leelite.Modules.MessageCenter.Weixin\Leelite.Modules.MessageCenter.Weixin.csproj", "{0D0B3032-4561-488F-8A18-68D2F10A3221}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leelite.Modules.MessageCenter.UniPush", "src\Modules\Message\Leelite.Modules.MessageCenter.UniPush\Leelite.Modules.MessageCenter.UniPush.csproj", "{FCC1AA3A-BF68-43AE-8103-AA953300286C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leelite.Modules.MessageCenter.UniPush", "src\Modules\Message\Leelite.Modules.MessageCenter.UniPush\Leelite.Modules.MessageCenter.UniPush.csproj", "{FCC1AA3A-BF68-43AE-8103-AA953300286C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leelite.Modules.MessageCenter.UserClientId", "src\Modules\Message\Leelite.Modules.MessageCenter.UserClientId\Leelite.Modules.MessageCenter.UserClientId.csproj", "{763716B2-9BAF-43C4-9EAB-ED36603BB9F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Leelite.Modules.MessageCenter.UserClientId", "src\Modules\Message\Leelite.Modules.MessageCenter.UserClientId\Leelite.Modules.MessageCenter.UserClientId.csproj", "{763716B2-9BAF-43C4-9EAB-ED36603BB9F0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Leelite.Modules.MessageCenter.SignalR", "src\Modules\Message\Leelite.Modules.MessageCenter.SignalR\Leelite.Modules.MessageCenter.SignalR.csproj", "{DE90AA29-6005-405F-BF39-0E7D69870E0B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1274,6 +1276,18 @@ Global
 		{763716B2-9BAF-43C4-9EAB-ED36603BB9F0}.Release|x64.Build.0 = Release|Any CPU
 		{763716B2-9BAF-43C4-9EAB-ED36603BB9F0}.Release|x86.ActiveCfg = Release|Any CPU
 		{763716B2-9BAF-43C4-9EAB-ED36603BB9F0}.Release|x86.Build.0 = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|x64.Build.0 = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Debug|x86.Build.0 = Debug|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|x64.ActiveCfg = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|x64.Build.0 = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|x86.ActiveCfg = Release|Any CPU
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -1387,6 +1401,7 @@ Global
 		{0D0B3032-4561-488F-8A18-68D2F10A3221} = {D0F1B21D-44C6-414F-B156-107EA8CD6514}
 		{FCC1AA3A-BF68-43AE-8103-AA953300286C} = {D0F1B21D-44C6-414F-B156-107EA8CD6514}
 		{763716B2-9BAF-43C4-9EAB-ED36603BB9F0} = {D0F1B21D-44C6-414F-B156-107EA8CD6514}
+		{DE90AA29-6005-405F-BF39-0E7D69870E0B} = {D0F1B21D-44C6-414F-B156-107EA8CD6514}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {DD9646C5-68C6-4F19-BFFB-7007409F3D53}

@@ -11,6 +11,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SignalR\Leelite.Modules.MessageCenter.SignalR.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS.Ali\Leelite.Modules.MessageCenter.SMS.Ali.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS\Leelite.Modules.MessageCenter.SMS.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UniPush\Leelite.Modules.MessageCenter.UniPush.csproj" />

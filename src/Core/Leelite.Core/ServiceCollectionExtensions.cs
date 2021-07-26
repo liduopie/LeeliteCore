@@ -17,6 +17,8 @@ namespace Leelite.Core
 
             services.AddMapper();
 
+            services.AddSignalR();
+
             var serviceConfig = new MediatRServiceConfiguration();
 
             serviceConfig.AsScoped();

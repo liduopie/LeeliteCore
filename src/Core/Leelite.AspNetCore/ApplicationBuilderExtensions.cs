@@ -27,7 +27,6 @@ namespace Microsoft.AspNetCore.Builder
 
             app.UseStaticFiles();
 
-            app.UseModularMvc(env);
 
             if (!env.IsDevelopment())
             {
@@ -46,6 +45,8 @@ namespace Microsoft.AspNetCore.Builder
                 endpoints.MapControllers();
                 endpoints.MapRazorPages();
             });
+
+            app.UseModularMvc(env);
 
             app.UseSpa(spa =>
             {
