@@ -172,9 +172,16 @@ namespace Leelite.Modules.MessageCenter.Weixin
             }
 
             if (result.errcode == 0)
+            {
+                WriteLineString(result.errmsg);
                 return true;
+            }
             else
+            {
+
+                WriteLineString(result.errmsg);
                 return false;
+            }
         }
 
         public override void SetConfig(IDictionary<string, string> config)

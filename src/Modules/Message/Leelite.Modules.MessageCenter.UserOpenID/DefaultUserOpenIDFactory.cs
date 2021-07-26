@@ -10,7 +10,7 @@ namespace Leelite.Modules.MessageCenter.UserOpenID
     {
         public string GetOpenId(string appId, long userId)
         {
-            return "o_O9H58G6CPojYbv_AWAy_YWXDow";
+            return "oY_Oo5GlUGQpplvowczGhxEZ1S3U";
         }
     }
 }

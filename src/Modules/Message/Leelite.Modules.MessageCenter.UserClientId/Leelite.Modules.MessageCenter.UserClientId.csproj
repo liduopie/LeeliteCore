@@ -2,10 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS\Leelite.Modules.MessageCenter.SMS.csproj" />
+    <ProjectReference Include="..\Leelite.Modules.MessageCenter.UniPush\Leelite.Modules.MessageCenter.UniPush.csproj" />
   </ItemGroup>
 
 </Project>

@@ -161,9 +161,16 @@ namespace Leelite.Modules.MessageCenter.Weixin
             var result = MessageApi.SendSubscribe(_config.AppId, _userOpenIDService.GetOpenID(_config.AppId, record.UserId), record.TemplateCode, new TemplateMessageData(), page: record.Url);
 
             if (result.errcode == 0)
+            {
+                WriteLineString(result.errmsg);
                 return true;
+            }
             else
+            {
+
+                WriteLineString(result.errmsg);
                 return false;
+            }
         }
 
         public override void SetConfig(IDictionary<string, string> config)

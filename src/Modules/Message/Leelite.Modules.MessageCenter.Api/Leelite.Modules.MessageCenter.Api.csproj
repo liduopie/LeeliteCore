@@ -13,6 +13,8 @@
 		<ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS.Ali\Leelite.Modules.MessageCenter.SMS.Ali.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS\Leelite.Modules.MessageCenter.SMS.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UniPush\Leelite.Modules.MessageCenter.UniPush.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UserClientId\Leelite.Modules.MessageCenter.UserClientId.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UserOpenID\Leelite.Modules.MessageCenter.UserOpenID.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.UserPhone\Leelite.Modules.MessageCenter.UserPhone.csproj" />
 		<ProjectReference Include="..\Leelite.Modules.MessageCenter.Weixin\Leelite.Modules.MessageCenter.Weixin.csproj" />
