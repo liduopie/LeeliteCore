@@ -4,9 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading;
 using System.Threading.Tasks;
+
 using Leelite.Framework.Data.Query;
 using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.Data.Store
@@ -78,7 +80,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public IList<TEntity> Find(Expression<Func<TEntity, bool>> predicate = null)
         {
-            return AsQueryable().Where(predicate).ToList();
+            if (predicate == null)
+                return AsQueryable().ToList();
+            else
+                return AsQueryable().Where(predicate).ToList();
         }
 
         /// <inheritdoc/>

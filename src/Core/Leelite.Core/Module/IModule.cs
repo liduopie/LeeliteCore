@@ -6,6 +6,5 @@ namespace Leelite.Core.Module
     {
         void ConfigureConventions();
         void ConfigureServices(HostContext context);
-        void Init();
     }
 }

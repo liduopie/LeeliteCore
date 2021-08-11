@@ -11,15 +11,13 @@ namespace Leelite.Core.Aspects
     [Aspect(Scope.Global)]
     public class DebugLogAspect
     {
-        private ILoggerFactory _loggerFactory;
+        private readonly ILoggerFactory _loggerFactory;
 
         public DebugLogAspect()
         {
             _loggerFactory = LoggerFactory.Create(builder =>
             {
-                builder
-                    .AddConsole()
-                    .AddEventLog();
+                builder.AddConsole();
             });
         }
 

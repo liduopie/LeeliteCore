@@ -1,5 +1,6 @@
 ﻿using System;
 using Leelite.Commons.Host;
+using Microsoft.Extensions.Logging;
 
 namespace Microsoft.Extensions.Hosting
 {
@@ -12,9 +13,20 @@ namespace Microsoft.Extensions.Hosting
 
             // 根据配置调整 Host
 
+            // 配置依赖注入
             builder.ConfigureServices((hostContext, services) =>
             {
                 HostManager.Context.ServiceDescriptors = services;
+            });
+
+            // 配置json配置文件
+            builder.ConfigureAppConfiguration((hostingContext, config) =>
+            {
+            });
+
+            // 配置日志
+            builder.ConfigureLogging(logging =>
+            {
             });
 
             builder.UseServiceProviderFactory(new CoreHostServiceProviderFactory());

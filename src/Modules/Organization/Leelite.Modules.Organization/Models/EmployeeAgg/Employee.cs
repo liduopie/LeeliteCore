@@ -14,7 +14,14 @@ namespace Leelite.Modules.Organization.Models.EmployeeAgg
         IEnabled,
         ISoftDelete
     {
+        /// <summary>
+        /// 组织Id
+        /// </summary>
         public long OrganizationId { get; set; }
+
+        /// <summary>
+        /// 用户Id
+        /// </summary>
         public long UserId { get; set; }
 
         /// <summary>

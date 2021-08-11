@@ -234,11 +234,12 @@ namespace HybridFS.FileSystem
 
             if (src == null) return;
 
-            var dst = new FileIndex();
-
-            dst.Id = IdHelper.GetLongId();
-            dst.Path = PathHelper.NormalizePath(dstPath);
-            dst.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(dstPath));
+            var dst = new FileIndex
+            {
+                Id = IdHelper.GetLongId(),
+                Path = PathHelper.NormalizePath(dstPath),
+                DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(dstPath))
+            };
 
             // 检查并创建目录
             await TryCreateDirectoryAsync(dst.DirectoryPath);

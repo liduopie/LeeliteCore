@@ -7,6 +7,12 @@ namespace Leelite.Extensions.DependencyInjection
 {
     public static class RegistrationExtensions
     {
+        public static RegistrationData AsInterface(this RegistrationData registration)
+        {
+            if (registration == null) throw new ArgumentNullException(nameof(registration));
+
+            return AsInterface(registration, c => true); ;
+        }
 
         public static RegistrationData AsInterface(this RegistrationData registration, Func<Type, bool> predicate)
         {

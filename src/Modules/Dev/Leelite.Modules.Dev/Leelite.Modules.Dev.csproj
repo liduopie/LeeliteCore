@@ -11,10 +11,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Mono.TextTemplatingFix" Version="2.3.0-preview-0000-gb1ee03d9bc" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Mono.TextTemplating" Version="2.2.1" />
+    <PackageReference Include="System.CodeDom" Version="5.0.0" />
   </ItemGroup>
 </Project>

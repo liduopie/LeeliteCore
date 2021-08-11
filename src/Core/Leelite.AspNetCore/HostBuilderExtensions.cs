@@ -31,10 +31,6 @@ namespace Microsoft.Extensions.Hosting
             builder.ConfigureServices((hostContext, services) =>
             {
                 HostManager.Context.HostServices = services.BuildServiceProvider();
-
-                var manager = HostManager.Context.HostServices.GetService<IModularManager>();
-
-                manager.Modules.Add(new FrameworkModule());
             });
 
             // 配置模块

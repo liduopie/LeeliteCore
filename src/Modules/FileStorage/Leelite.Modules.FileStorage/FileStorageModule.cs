@@ -30,12 +30,5 @@ namespace Leelite.Modules.FileStorage
 
             services.AddHybridFS_Sqlite();
         }
-
-        public override void Init()
-        {
-            var dbContext = HostManager.Context.HostServices.GetService<FileStorageContext>();
-
-            dbContext.Database.Migrate();
-        }
     }
 }

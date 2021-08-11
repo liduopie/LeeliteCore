@@ -13,7 +13,7 @@ namespace Leelite.Modules.Dev.Generator.Codes
             _aggregateInfo = info;
 
             // 测试
-            //Options.TemplateDirectory = @"C:\Users\Lee\Documents\GitHub\Leelite\src\Modules\Dev\Leelite.Modules.Dev\templates\code\";
+            // Options.TemplateDirectory = @"E:\GitHub\LeeliteCore\src\Modules\Dev\Leelite.Modules.Dev\templates\code\";
             Options.TemplateDirectory = Path.Combine(Options.TemplateDirectory, "code");
         }
 
@@ -35,8 +35,8 @@ namespace Leelite.Modules.Dev.Generator.Codes
         public override void Generating()
         {
             TemplateGenerator.Refs.Add(_aggregateInfo.AssemblyPath);
-            TemplateGenerator.Refs.Add(Path.Combine(Directory.GetCurrentDirectory(), @"Modules\Leelite.Framework\netcoreapp3.1\Leelite.Framework.Models.dll"));
-            TemplateGenerator.Refs.Add(Path.Combine(Directory.GetCurrentDirectory(), @"Modules\Leelite.Framework\netcoreapp3.1\Leelite.Framework.Domain.dll"));
+            TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, "Leelite.Framework.Models.dll"));
+            TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, "Leelite.Framework.Domain.dll"));
             TemplateGenerator.Imports.Add(_aggregateInfo.Namespace);
 
             base.Generating();

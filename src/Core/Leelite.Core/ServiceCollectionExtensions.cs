@@ -1,6 +1,9 @@
-﻿using Leelite.Core.Mapper;
+﻿using Leelite.Core.Cache;
+using Leelite.Core.Mapper;
+
 using MediatR;
 using MediatR.Registration;
+
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Core
@@ -9,7 +12,12 @@ namespace Leelite.Core
     {
         public static void AddLeeliteCore(this IServiceCollection services)
         {
+
+            services.AddCache();
+
             services.AddMapper();
+
+            services.AddSignalR();
 
             var serviceConfig = new MediatRServiceConfiguration();
 
