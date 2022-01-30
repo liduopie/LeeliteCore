@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HybridFS.FileStore.Models
+﻿namespace HybridFS.FileStore.Models
 {
     /// <summary>
     /// 文件条目
@@ -20,7 +18,7 @@ namespace HybridFS.FileStore.Models
         /// <summary>
         /// 文件MD5
         /// </summary>
-        public string MD5 { get; set; }
+        public string MD5 { get; set; } = "";
 
         /// <summary>
         /// 文件引用次数
@@ -45,11 +43,11 @@ namespace HybridFS.FileStore.Models
         /// <summary>
         /// 文件内容
         /// </summary>
-        public byte[] Content { get; set; }
+        public byte[] Content { get; set; } = new byte[0];
 
         /// <summary>
         /// 文件物理路径
         /// </summary>
-        public string PhysicalPath { get; set; }
+        public string PhysicalPath { get; set; } = "";
     }
 }

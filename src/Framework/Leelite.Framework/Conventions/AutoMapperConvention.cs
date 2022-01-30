@@ -5,7 +5,6 @@ using System.Reflection;
 using AutoMapper;
 
 using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
 using Leelite.Core.Mapper;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -14,9 +13,9 @@ namespace Leelite.Framework.Conventions
 {
     public class AutoMapperConvention : IConventionRegistrar
     {
-        public void RegisterAssembly(Assembly assembly)
+        public void RegisterAssembly(Assembly assembly, IServiceCollection services)
         {
-            var context = HostManager.Context.HostServices.GetService<MapperConfigurationContext>();
+            var context = MapperConfigurationManager.Context;
 
             var types = assembly.GetTypes().Where(c => typeof(Profile).IsAssignableFrom(c));
 

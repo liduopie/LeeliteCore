@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Reflection;
-using System.Text;
+﻿using Leelite.Core.Module.Store;
 
-using Leelite.Core.Module.Store;
+using McMaster.NETCore.Plugins;
+
+using System.Reflection;
 
 namespace Leelite.Core.Modular
 {
@@ -13,6 +12,6 @@ namespace Leelite.Core.Modular
 
         public IList<Assembly> Assemblies { get; set; } = new List<Assembly>();
 
-        public IDisposable Loader { get; set; }
+        public PluginLoader Loader { get; set; }
     }
 }

@@ -30,6 +30,8 @@ namespace Leelite.Modules.Hangfire
             var config = context.HostServices.GetService<IConfiguration>();
             _modularManager = context.HostServices.GetService<IModularManager>();
 
+            //services.AddHostedService<JobsService>();
+
             // Add Hangfire services.
             services.AddHangfire(configuration =>
             {

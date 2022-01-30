@@ -1,7 +1,5 @@
 ﻿using Hangfire.States;
 
-using System;
-
 using TimeZoneConverter;
 
 namespace Leelite.Core.BackgroundJob
@@ -16,7 +14,7 @@ namespace Leelite.Core.BackgroundJob
         /// <summary>
         /// The identifier of the RecurringJob
         /// </summary>
-        public string RecurringJobId { get; set; }
+        public string RecurringJobId { get; set; } = "";
         /// <summary>
         /// Cron expressions
         /// </summary>

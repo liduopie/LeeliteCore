@@ -1,4 +1,4 @@
-﻿using Leelite.Modules.Identity.Extensions;
+﻿//using Leelite.Modules.Identity.Extensions;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -20,7 +20,7 @@ namespace Leelite.Modules.Home.UI.Pages
 
         public void OnGet()
         {
-            var id = User.GetUserId();
+            //var id = User.GetUserId();
         }
     }
 }

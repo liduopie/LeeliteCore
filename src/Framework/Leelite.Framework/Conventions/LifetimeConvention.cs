@@ -1,11 +1,10 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
+﻿using Leelite.Commons.Convention;
 using Leelite.Commons.Lifetime;
 using Leelite.Extensions.DependencyInjection;
+
 using Microsoft.Extensions.DependencyInjection;
+
+using System.Reflection;
 
 namespace Leelite.Framework.Conventions
 {
@@ -20,36 +19,33 @@ namespace Leelite.Framework.Conventions
             typeof(ITransient)
         };
 
-        public void RegisterAssembly(Assembly assembly)
+        public void RegisterAssembly(Assembly assembly, IServiceCollection services)
         {
             if (assembly == null)
             {
                 throw new ArgumentNullException(nameof(assembly));
             }
 
-            var builder = HostManager.Context.ServiceDescriptors;
-
             Type singletonType = typeof(ISingleton);
 
-            builder.RegisterAssemblyTypes(assembly)
+            services.RegisterAssemblyTypes(assembly)
                .Where(type => singletonType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                .AsInterface(i => i.GetInterfaces().Any(c => singletonType.IsAssignableFrom(c)) && !_lifetimeTypes.Contains(i))
                .Singleton();
 
             Type scopeType = typeof(IScope);
 
-            builder.RegisterAssemblyTypes(assembly)
+            services.RegisterAssemblyTypes(assembly)
                 .Where(type => scopeType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                 .AsInterface(i => i.GetInterfaces().Any(c => scopeType.IsAssignableFrom(c)) && !_lifetimeTypes.Contains(i))
                 .Scope();
 
             Type transientType = typeof(ITransient);
 
-            builder.RegisterAssemblyTypes(assembly)
+            services.RegisterAssemblyTypes(assembly)
                 .Where(type => transientType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                 .AsInterface(i => i.GetInterfaces().Any(c => transientType.IsAssignableFrom(c)) && !_lifetimeTypes.Contains(i))
                 .Transient();
-
         }
     }
 }

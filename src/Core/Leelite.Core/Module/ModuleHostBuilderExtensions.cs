@@ -37,7 +37,8 @@ namespace Leelite.Core.Module
 
                 var manager = HostManager.Context.HostServices.GetService<IModularManager>();
 
-                manager.Load(HostManager.Context);
+                // TODO
+                //manager.Load(HostManager.Context);
 
                 services.AddSingleton(manager);
             });

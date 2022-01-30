@@ -1,4 +1,5 @@
-﻿using Leelite.Commons.Host;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Core.Module
 {
@@ -6,6 +7,6 @@ namespace Leelite.Core.Module
     {
         public virtual void ConfigureConventions() { }
 
-        public virtual void ConfigureServices(HostContext context) { }
+        public virtual void ConfigureServices(IServiceCollection services, IConfiguration configuration) { }
     }
 }

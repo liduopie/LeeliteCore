@@ -1,4 +1,6 @@
-﻿using System.Collections.Concurrent;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using System.Collections.Concurrent;
 using System.Reflection;
 
 namespace Leelite.Commons.Convention
@@ -16,6 +18,15 @@ namespace Leelite.Commons.Convention
         static ConventionManager()
         {
             _context = new ConventionContext();
+        }
+
+        /// <summary>
+        /// 设置程序集服务集合.
+        /// </summary>
+        /// <param name="services"></param>
+        public static void SetServices(IServiceCollection services)
+        {
+            _context.SetServices(services);
         }
 
         /// <summary>

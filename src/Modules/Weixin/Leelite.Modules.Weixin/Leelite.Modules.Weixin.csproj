@@ -5,7 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Senparc.Weixin.MP" Version="16.12.501.1" />
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.17.1" />
   </ItemGroup>
 
 </Project>

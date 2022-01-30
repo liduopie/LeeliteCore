@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.AspNetCore.Mvc.ApplicationModels;
+﻿using Microsoft.AspNetCore.Mvc.ApplicationModels;
 
 namespace Leelite.Framework.WebApi
 {
@@ -29,6 +28,8 @@ namespace Leelite.Framework.WebApi
             controller.ControllerName = entityType.Name;
 
             var fullName = entityType.FullName;
+
+            if (fullName == null) fullName = "";
 
             var area = fullName[(fullName.IndexOf("Modules") + 8)..];
 

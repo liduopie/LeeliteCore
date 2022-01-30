@@ -1,11 +1,8 @@
 ﻿using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
 using Leelite.Extensions.DependencyInjection;
 
 using Microsoft.Extensions.DependencyInjection;
 
-using System;
-using System.Linq;
 using System.Reflection;
 
 namespace Leelite.Core.BackgroundJob
@@ -15,20 +12,18 @@ namespace Leelite.Core.BackgroundJob
     /// </summary>
     public class RecurringJobConvention : IConventionRegistrar
     {
-        public void RegisterAssembly(Assembly assembly)
+        public void RegisterAssembly(Assembly assembly, IServiceCollection services)
         {
             if (assembly == null)
             {
                 throw new ArgumentNullException(nameof(assembly));
             }
 
-            var builder = HostManager.Context.ServiceDescriptors;
-
             Type jobType = typeof(IRecurringJob);
 
             var types = assembly.GetTypes().Where(type => jobType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract).ToList();
 
-            builder.RegisterAssemblyTypes(assembly)
+            services.RegisterAssemblyTypes(assembly)
                .Where(type => jobType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                .AsInterface()
                .AsSelf()

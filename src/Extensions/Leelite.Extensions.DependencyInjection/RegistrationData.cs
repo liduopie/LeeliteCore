@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Extensions.DependencyInjection
 {
@@ -24,7 +21,7 @@ namespace Leelite.Extensions.DependencyInjection
         /// <summary>
         /// 构建完成的 Descriptor
         /// </summary>
-        public IList<ServiceDescriptor> Services { get; set; }
+        public IList<ServiceDescriptor> Services { get; set; } = new List<ServiceDescriptor>();
 
         /// <summary>
         /// 源类型条件

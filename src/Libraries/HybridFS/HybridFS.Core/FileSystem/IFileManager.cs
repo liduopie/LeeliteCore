@@ -15,21 +15,21 @@ namespace HybridFS.FileSystem
         /// </summary>
         /// <param name="path">文件路径</param>
         /// <returns>返回文件索引信息，如果不存在返回null</returns>
-        Task<FileIndex> GetFileIndexAsync(string path);
+        Task<FileIndex?> GetFileIndexAsync(string path);
 
         /// <summary>
         /// 获取文件信息
         /// </summary>
         /// <param name="path">文件路径</param>
         /// <returns>返回文件信息，如果不存在返回null</returns>
-        Task<HybridFileInfo> GetFileInfoAsync(string path);
+        Task<HybridFileInfo?> GetFileInfoAsync(string path);
 
         /// <summary>
         /// 返回文件夹信息
         /// </summary>
         /// <param name="path">文件夹路径</param>
         /// <returns>返回文件夹信息，如果不存在返回null</returns>
-        Task<HybridDirectoryInfo> GetDirectoryInfoAsync(string path);
+        Task<HybridDirectoryInfo?> GetDirectoryInfoAsync(string path);
 
         /// <summary>
         /// 获取文件夹内容
@@ -37,7 +37,7 @@ namespace HybridFS.FileSystem
         /// <param name="path">文件夹路径</param>
         /// <param name="includeSubDirectories">是否包含子目录</param>
         /// <returns>返回文件夹中的文件</returns>
-        Task<IEnumerable<FileIndex>> GetDirectoryContentAsync(string path = null, bool includeSubDirectories = false);
+        Task<IEnumerable<FileIndex>> GetDirectoryContentAsync(string path, bool includeSubDirectories = false);
 
 
         /// <summary>
@@ -93,6 +93,6 @@ namespace HybridFS.FileSystem
         /// </summary>
         /// <param name="path">文件路径</param>
         /// <returns>返回一个文件流</returns>
-        Task<Stream> GetFileStreamAsync(string path);
+        Task<Stream?> GetFileStreamAsync(string path);
     }
 }

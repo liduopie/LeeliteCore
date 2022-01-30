@@ -1,4 +1,5 @@
 ﻿using HybridFS.FileSystem.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace HybridFS.FileSystem.Contexts
@@ -13,7 +14,7 @@ namespace HybridFS.FileSystem.Contexts
         /// <summary>
         /// 文件条目集合
         /// </summary>
-        public DbSet<FileIndex> FileIndexs { get; set; }
+        public DbSet<FileIndex> FileIndexs => Set<FileIndex>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

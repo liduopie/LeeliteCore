@@ -1,13 +1,14 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 	</PropertyGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.Home.UI\</OutputPath>
+		<OutputPath>..\..\..\Hosts\Modules\Leelite.Modules.Home.UI\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,14 +16,11 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\..\Identity\Leelite.Modules.Identity.UI\Leelite.Modules.Identity.UI.csproj" />
-		<ProjectReference Include="..\Leelite.Modules.Home\Leelite.Modules.Home.csproj" />
+	  <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="6.0.1" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<Content Update="module.json">
-			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
-		</Content>
+		<ProjectReference Include="..\..\Identity\Leelite.Modules.Identity\Leelite.Modules.Identity.csproj" />
+		<ProjectReference Include="..\Leelite.Modules.Home\Leelite.Modules.Home.csproj" />
 	</ItemGroup>
-
 </Project>

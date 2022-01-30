@@ -1,13 +1,12 @@
-﻿using System.Reflection;
-
-using FluentValidation.AspNetCore;
+﻿using FluentValidation.AspNetCore;
 
 using Leelite.Commons.Host;
 using Leelite.Core.Modular;
 
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
+
+using System.Reflection;
 
 namespace Leelite.AspNetCore.Modular
 {
@@ -15,7 +14,8 @@ namespace Leelite.AspNetCore.Modular
     {
         public static void AddModularPart(this IMvcBuilder builder)
         {
-            var manager = HostManager.Context.HostServices.GetService<IModduleLoaderManager>();
+
+            var manager = ModularManager.Current;
 
             foreach (var loader in manager.GetLoaders())
             {
@@ -56,13 +56,12 @@ namespace Leelite.AspNetCore.Modular
                 //}
             });
 
-            // mvcBuilder.AddControllersAsServices(); // TODO:不确定用途
-            builder.SetCompatibilityVersion(CompatibilityVersion.Latest);
+            builder.AddControllersAsServices(); // TODO:不确定用途
         }
 
         public static void AddBuild(this IMvcBuilder builder)
         {
-            var manager = HostManager.Context.HostServices.GetService<IModularManager>();
+            var manager = ModularManager.Current;
 
             foreach (var module in manager.Modules)
             {

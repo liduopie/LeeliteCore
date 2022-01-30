@@ -1,4 +1,6 @@
-﻿using System.Reflection;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using System.Reflection;
 
 namespace Leelite.Commons.Convention
 {
@@ -14,6 +16,7 @@ namespace Leelite.Commons.Convention
         /// 按照约定注册程序集。
         /// </summary>
         /// <param name="assembly">注册程序集</param>
-        void RegisterAssembly(Assembly assembly);
+        /// <param name="services">依赖注入集合</param>
+        void RegisterAssembly(Assembly assembly, IServiceCollection services);
     }
 }

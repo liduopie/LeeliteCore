@@ -38,7 +38,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var factory = serviceProvider.GetService<IFileStoreContextFactory>();
+            var factory = serviceProvider.GetRequiredService<IFileStoreContextFactory>();
 
             var dbcontext = factory.GetContext(IdHelper.GetLongId());
 
@@ -54,7 +54,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var factory = serviceProvider.GetService<IFileStoreContextFactory>();
+            var factory = serviceProvider.GetRequiredService<IFileStoreContextFactory>();
 
             var result = 0;
 
@@ -86,7 +86,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             var content = new byte[10000];
             FileEntry entry;
@@ -111,20 +111,20 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             var content = new byte[12097152];
-            FileEntry entry;
+            FileEntry? entry;
             using (var stream = new MemoryStream(content))
             {
                 entry = await store.CreateFileFromStreamAsync(stream);
             }
 
-            Assert.NotEqual(0, entry.Id);
+            Assert.NotEqual(0, entry!.Id);
 
             var file = await store.GetFileEntryAsync(entry.Id);
 
-            Assert.Equal(content.Length, file.Length);
+            Assert.Equal(content.Length, file!.Length);
         }
 
         [Fact]
@@ -136,7 +136,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             Random rd = new Random();
 
@@ -165,7 +165,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             for (int i = 0; i < 100; i++)
             {
@@ -189,7 +189,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             Random rd = new Random();
 
@@ -220,7 +220,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            IFileStore store = serviceProvider.GetService<IFileStore>();
+            IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             Random rand = new Random();
 

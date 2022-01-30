@@ -10,7 +10,7 @@ namespace Leelite.AspNetCore.Modular
     {
         public static void UseModularMvc(this IApplicationBuilder app, IWebHostEnvironment env)
         {
-            var manager = app.ApplicationServices.GetService<IModularManager>();
+            var manager = app.ApplicationServices.GetRequiredService<IModularManager>();
 
             foreach (var module in manager.Modules)
             {

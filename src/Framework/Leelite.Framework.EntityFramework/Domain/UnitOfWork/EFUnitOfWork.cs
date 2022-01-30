@@ -49,7 +49,7 @@ namespace Leelite.Framework.Domain.UnitOfWork
                     item.CommitTransaction();
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
 
                 foreach (var item in contexts)
@@ -57,7 +57,7 @@ namespace Leelite.Framework.Domain.UnitOfWork
                     item.RollbackTransaction();
                 }
 
-                throw ex;
+                throw;
             }
 
         }

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Leelite.Commons.Lifetime;
+
 using System.Collections.Immutable;
-using Leelite.Commons.Lifetime;
 
 namespace Leelite.Core.Settings.Definition
 {

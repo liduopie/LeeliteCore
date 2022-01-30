@@ -1,6 +1,4 @@
-﻿using System;
-using System.IO;
-
+﻿
 using HybridFS.FileSystem;
 using HybridFS.FileSystem.Models;
 
@@ -11,12 +9,13 @@ namespace HybridFS.FileProvider
     public class HybridFSFileInfo : IFileInfo
     {
         private readonly IFileManager _manager;
-        private readonly FileIndex _index;
+        private readonly FileIndex? _index;
         private bool? exists;
 
         public HybridFSFileInfo(IFileManager manager, string path)
         {
             _manager = manager;
+
             _index = _manager.GetFileIndexAsync(path).GetAwaiter().GetResult();
         }
 
@@ -41,17 +40,17 @@ namespace HybridFS.FileProvider
             }
         }
 
-        public long Length => _index.Length;
+        public long Length => _index!.Length;
 
-        public string PhysicalPath => _index.Path;
+        public string PhysicalPath => _index!.Path;
 
-        public string Name => _index.Name;
+        public string Name => _index!.Name;
 
-        public DateTimeOffset LastModified => _index.LastModifiedUtc;
+        public DateTimeOffset LastModified => _index!.LastModifiedUtc;
 
-        public bool IsDirectory => _index.IsDirectory;
+        public bool IsDirectory => _index!.IsDirectory;
 
-        public Stream CreateReadStream()
+        public Stream? CreateReadStream()
         {
             if (_index != null && !IsDirectory)
                 return _manager.GetFileStreamAsync(_index.Path).GetAwaiter().GetResult();

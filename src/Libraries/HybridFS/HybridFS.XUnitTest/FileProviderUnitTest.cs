@@ -19,7 +19,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var manager = serviceProvider.GetService<IFileManager>();
+            var manager = serviceProvider.GetRequiredService<IFileManager>();
 
             return manager;
         }

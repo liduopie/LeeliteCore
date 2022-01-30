@@ -1,6 +1,4 @@
-﻿using Leelite.Commons.Host;
-
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Core.Mapper
 {
@@ -8,9 +6,7 @@ namespace Leelite.Core.Mapper
     {
         public static void AddMapper(this IServiceCollection services)
         {
-            var context = HostManager.Context.HostServices.GetService<MapperConfigurationContext>();
-
-            services.AddSingleton(context.CreateMapper());
+            services.AddSingleton(MapperConfigurationManager.Context.CreateMapper());
         }
     }
 }

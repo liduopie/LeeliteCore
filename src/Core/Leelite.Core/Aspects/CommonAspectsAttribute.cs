@@ -1,5 +1,4 @@
-﻿using System;
-using AspectInjector.Broker;
+﻿using AspectInjector.Broker;
 
 namespace Leelite.Core.Aspects
 {

@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>net5.0</TargetFramework>
+    <TargetFramework>net6.0</TargetFramework>
     <UserSecretsId>aspnet-AppHost-F9DD3D18-4B27-4650-BE80-62BDE9C4E468</UserSecretsId>
   </PropertyGroup>
 

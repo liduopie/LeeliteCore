@@ -1,10 +1,6 @@
-﻿using Leelite.Commons.Host;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
-using System;
 
 using ZiggyCreatures.Caching.Fusion;
 
@@ -12,10 +8,8 @@ namespace Leelite.Core.Cache
 {
     public static class CacheServiceCollectionExtensions
     {
-        public static void AddCache(this IServiceCollection services)
+        public static void AddCache(this IServiceCollection services, IConfiguration configuration)
         {
-            var configuration = HostManager.Context.HostServices.GetService<IConfiguration>();
-
             services.AddMemoryCache();
 
             // REGISTER REDIS AS A DISTRIBUTED CACHE

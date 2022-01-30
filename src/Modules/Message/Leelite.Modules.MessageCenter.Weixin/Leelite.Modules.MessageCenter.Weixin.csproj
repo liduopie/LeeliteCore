@@ -5,9 +5,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Senparc.Weixin.Cache.Redis" Version="2.10.501" />
-    <PackageReference Include="Senparc.Weixin.MP" Version="16.12.501.1" />
-    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.11.501" />
+    <PackageReference Include="Senparc.Weixin.Cache.Redis" Version="2.14.0" />
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.17.1" />
+    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.14.1" />
   </ItemGroup>
 
   <ItemGroup>

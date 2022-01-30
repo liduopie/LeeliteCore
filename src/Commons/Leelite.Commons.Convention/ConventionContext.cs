@@ -1,10 +1,14 @@
-﻿using System.Collections.Concurrent;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+using System.Collections.Concurrent;
 using System.Reflection;
 
 namespace Leelite.Commons.Convention
 {
     public class ConventionContext
     {
+        private IServiceCollection? _services;
+
         public ConventionContext()
         {
             Registrars = new BlockingCollection<IConventionRegistrar>();
@@ -14,6 +18,25 @@ namespace Leelite.Commons.Convention
         /// 生命周期约定注册器集合
         /// </summary>
         public BlockingCollection<IConventionRegistrar> Registrars { get; }
+
+        /// <summary>
+        /// 组成应用程序的服务集合.
+        /// </summary>
+        public IServiceCollection Services
+        {
+            get
+            {
+                if (_services == default)
+                {
+                    throw new NullReferenceException("Please initialize Services.");
+                }
+                return _services;
+            }
+            private set
+            {
+                _services = value;
+            }
+        }
 
         /// <summary>
         /// 添加一个约定注册器
@@ -30,20 +53,19 @@ namespace Leelite.Commons.Convention
         /// <param name="assembly">要注册的程序集</param>
         public void RegisterAssembly(Assembly assembly)
         {
-            foreach (var registerer in Registrars)
+            foreach (var registrar in Registrars)
             {
-                RegisterAssembly(assembly, registerer);
+                registrar.RegisterAssembly(assembly, Services);
             }
         }
 
         /// <summary>
-        /// 注册程序集到指定的约定注册器中.
+        /// 设置程序集服务集合.
         /// </summary>
-        /// <param name="assembly">要注册的程序集</param>
-        /// <param name="registrar">指定的约定注册器</param>
-        private static void RegisterAssembly(Assembly assembly, IConventionRegistrar registrar)
+        /// <param name="services"></param>
+        public void SetServices(IServiceCollection services)
         {
-            registrar.RegisterAssembly(assembly);
+            Services = services;
         }
     }
 }

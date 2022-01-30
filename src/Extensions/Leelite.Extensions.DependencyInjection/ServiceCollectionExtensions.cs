@@ -1,7 +1,6 @@
-﻿using System;
-using System.Linq;
+﻿using Leelite.Extensions.DependencyInjection;
+
 using System.Reflection;
-using Leelite.Extensions.DependencyInjection;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

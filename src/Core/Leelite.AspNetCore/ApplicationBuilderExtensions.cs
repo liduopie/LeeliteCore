@@ -14,7 +14,7 @@ namespace Microsoft.AspNetCore.Builder
             {
                 app.UseDeveloperExceptionPage();
 
-                // 动态加载的dll 会出现无法获取程序集错误
+                // TODO:动态加载的dll 会出现无法获取程序集错误
                 // app.UseDatabaseErrorPage();
             }
             else
@@ -48,18 +48,18 @@ namespace Microsoft.AspNetCore.Builder
 
             app.UseModularMvc(env);
 
-            app.UseSpa(spa =>
-            {
-                // To learn more about options for serving an Angular SPA from ASP.NET Core,
-                // see https://go.microsoft.com/fwlink/?linkid=864501
+            //app.UseSpa(spa =>
+            //{
+            //    // To learn more about options for serving an Angular SPA from ASP.NET Core,
+            //    // see https://go.microsoft.com/fwlink/?linkid=864501
 
-                spa.Options.SourcePath = "ClientApp";
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
-                {
-                    spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
-                }
-            });
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
+            //    }
+            //});
         }
     }
 }

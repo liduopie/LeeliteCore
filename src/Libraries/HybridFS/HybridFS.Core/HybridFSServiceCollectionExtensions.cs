@@ -8,7 +8,7 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class HybridFSServiceCollectionExtensions
     {
-        public static void AddHybridFS(this IServiceCollection service, Action<HybridFSOptions> action = null)
+        public static void AddHybridFS(this IServiceCollection service, Action<HybridFSOptions>? action = null)
         {
 
             var options = new HybridFSOptions();

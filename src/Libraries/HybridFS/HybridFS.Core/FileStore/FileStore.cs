@@ -20,7 +20,7 @@ namespace HybridFS.FileStore
             _factory = factory;
         }
 
-        public async Task<FileEntry> CreateFileFromStreamAsync(Stream inputStream)
+        public async Task<FileEntry?> CreateFileFromStreamAsync(Stream inputStream)
         {
             if (inputStream.Length == 0) return null;
 
@@ -43,7 +43,7 @@ namespace HybridFS.FileStore
                 } while (File.Exists(filePath));
 
                 if (!Directory.Exists(Path.GetDirectoryName(filePath)))
-                    Directory.CreateDirectory(Path.GetDirectoryName(filePath));
+                    Directory.CreateDirectory(Path.GetDirectoryName(filePath)!);
 
                 using (var fileStream = File.Create(filePath))
                 {
@@ -71,7 +71,7 @@ namespace HybridFS.FileStore
             return entry;
         }
 
-        public async Task<FileEntry> GetFileEntryAsync(long id)
+        public async Task<FileEntry?> GetFileEntryAsync(long id)
         {
             var context = _factory.GetContext(id);
 
@@ -96,7 +96,7 @@ namespace HybridFS.FileStore
         {
             var entry = await GetFileEntryAsync(id);
 
-            return await GetFileStreamAsync(entry);
+            return await GetFileStreamAsync(entry!);
         }
 
         public async Task<bool> TryDeleteFileEntryAsync(long id)

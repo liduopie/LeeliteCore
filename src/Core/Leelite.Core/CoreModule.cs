@@ -1,9 +1,10 @@
 ﻿using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
 using Leelite.Core.BackgroundJob;
 using Leelite.Core.BackgroundJob.Services;
 using Leelite.Core.Module;
+using Leelite.Core.Settings;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Core
@@ -15,11 +16,10 @@ namespace Leelite.Core
             ConventionManager.AddRegistrar(new RecurringJobConvention());
         }
 
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
-            services.AddHostedService<JobsService>();
+            //services.AddSingleton<ISettingManager, InMemorySettingManager>();
+            //services.AddHostedService<JobsService>();
         }
     }
 }

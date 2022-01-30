@@ -1,15 +1,19 @@
-﻿using System.Reflection;
-using FluentValidation;
+﻿using FluentValidation;
+
 using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
+
+using Microsoft.Extensions.DependencyInjection;
+
+using System.Reflection;
 
 namespace Leelite.Framework.Conventions
 {
     public class ValidationConvention : IConventionRegistrar
     {
-        public void RegisterAssembly(Assembly assembly)
+
+        public void RegisterAssembly(Assembly assembly, IServiceCollection services)
         {
-            HostManager.Context.ServiceDescriptors.AddValidatorsFromAssembly(assembly);
+            services.AddValidatorsFromAssembly(assembly);
         }
     }
 }

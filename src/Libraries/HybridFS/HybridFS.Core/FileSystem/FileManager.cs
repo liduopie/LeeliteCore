@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
-
-using Coldairarrow.Util;
+﻿using Coldairarrow.Util;
 
 using HybridFS.FileStore;
 using HybridFS.FileSystem.Contexts;
 using HybridFS.FileSystem.Exceptions;
 using HybridFS.FileSystem.Models;
 using HybridFS.Utility;
+
 using Microsoft.EntityFrameworkCore;
+
+using System.Security.Cryptography;
 
 namespace HybridFS.FileSystem
 {
@@ -29,13 +25,13 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<FileIndex> GetFileIndexAsync(string path)
+        public async Task<FileIndex?> GetFileIndexAsync(string path)
         {
             return await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
         }
 
         /// <inheritdoc/>
-        public async Task<HybridFileInfo> GetFileInfoAsync(string path)
+        public async Task<HybridFileInfo?> GetFileInfoAsync(string path)
         {
             var index = await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
 
@@ -45,7 +41,7 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<HybridDirectoryInfo> GetDirectoryInfoAsync(string path)
+        public async Task<HybridDirectoryInfo?> GetDirectoryInfoAsync(string path)
         {
             var index = await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
 
@@ -55,7 +51,7 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<IEnumerable<FileIndex>> GetDirectoryContentAsync(string path = null, bool includeSubDirectories = false)
+        public async Task<IEnumerable<FileIndex>> GetDirectoryContentAsync(string path, bool includeSubDirectories = false)
         {
             if (includeSubDirectories)
             {
@@ -76,7 +72,7 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<Stream> GetFileStreamAsync(string path)
+        public async Task<Stream?> GetFileStreamAsync(string path)
         {
             if (string.IsNullOrEmpty(path)) return null;
 
@@ -103,7 +99,7 @@ namespace HybridFS.FileSystem
 
                 index.Id = IdHelper.GetLongId();
                 index.Path = PathHelper.NormalizePath(path);
-                index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(path));
+                index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(path) ?? "");
                 index.IsDirectory = true;
 
                 var nowTime = DateTime.UtcNow;
@@ -138,7 +134,7 @@ namespace HybridFS.FileSystem
 
             index.Id = IdHelper.GetLongId();
             index.Path = PathHelper.NormalizePath(path);
-            index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(path));
+            index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(path) ?? "");
 
             // 检查并创建目录
             await TryCreateDirectoryAsync(index.DirectoryPath);
@@ -163,7 +159,7 @@ namespace HybridFS.FileSystem
                 // 把文件流交给文件存储保存
                 var entry = await _store.CreateFileFromStreamAsync(inputStream);
 
-                index.MD5 = entry.MD5;
+                index.MD5 = entry!.MD5;
                 index.FileEntryId = entry.Id;
             }
             else
@@ -238,7 +234,7 @@ namespace HybridFS.FileSystem
             {
                 Id = IdHelper.GetLongId(),
                 Path = PathHelper.NormalizePath(dstPath),
-                DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(dstPath))
+                DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(dstPath) ?? "")
             };
 
             // 检查并创建目录
@@ -267,8 +263,10 @@ namespace HybridFS.FileSystem
         {
             var index = await _context.FileIndexs.Where(c => c.Path == oldPath).FirstOrDefaultAsync();
 
+            if (index == null) return;
+
             index.Path = PathHelper.NormalizePath(newPath);
-            index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(newPath));
+            index.DirectoryPath = PathHelper.NormalizePath(Path.GetDirectoryName(newPath) ?? "");
 
             await _context.SaveChangesAsync();
         }

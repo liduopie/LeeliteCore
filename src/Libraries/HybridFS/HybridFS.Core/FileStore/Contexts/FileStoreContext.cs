@@ -1,4 +1,5 @@
 ﻿using HybridFS.FileStore.Models;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace HybridFS.FileStore.Contexts
@@ -8,15 +9,17 @@ namespace HybridFS.FileStore.Contexts
     /// </summary>
     public class FileStoreContext : DbContext
     {
+
+        /// <summary>
+        /// 文件条目集合
+        /// </summary>
+        public DbSet<FileEntry> FileEntries => Set<FileEntry>();
+
         public FileStoreContext(DbContextOptions<FileStoreContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
 
-        /// <summary>
-        /// 文件条目集合
-        /// </summary>
-        public DbSet<FileEntry> FileEntries { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

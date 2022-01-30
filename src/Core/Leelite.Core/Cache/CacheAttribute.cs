@@ -1,11 +1,9 @@
 ﻿using AspectInjector.Broker;
 
-using System;
-
 namespace Leelite.Core.Cache
 {
 
-    [Injection(typeof(CacheAspect))]
+    //[Injection(typeof(CacheAspect))]
     public class CacheAttribute : Attribute
     {
         public CacheAttribute(string key)

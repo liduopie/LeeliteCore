@@ -14,7 +14,8 @@ namespace Microsoft.Extensions.Hosting
     {
         public static IHostBuilder ConfigureLeeliteWebCore(this IHostBuilder builder)
         {
-            builder.ConfigureMapper();
+            // 2022-01-08 注释
+            // builder.ConfigureMapper();
 
             // 模块化加载的配置选项
             builder.ConfigureModuleOptions();
@@ -23,15 +24,16 @@ namespace Microsoft.Extensions.Hosting
             // 模块仓库
             builder.ConfigureModuleStore();
 
-            // 模块化管理器
-            builder.ConfigureModular();
+            // 模块化管理器 TODO:
+            //builder.ConfigureModular();
 
             builder.ConfigurePlugin();
 
-            builder.ConfigureServices((hostContext, services) =>
-            {
-                HostManager.Context.HostServices = services.BuildServiceProvider();
-            });
+            // 2022-01-08 注释
+            //builder.ConfigureServices((hostContext, services) =>
+            //{
+            //    HostManager.Context.HostServices = services.BuildServiceProvider();
+            //});
 
             // 配置模块
             builder.ConfigureModules();

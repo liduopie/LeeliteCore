@@ -12,3 +12,6 @@ Remove-Migration InitialCreate -s AppHost -c IdentityContext
 
 Migrations
 CreateIdentitySchema
+
+生成sql
+ dotnet ef migrations script -i -o Sql/install.sql -s ../../../Hosts/ConsoleHost -- PostgreSQL

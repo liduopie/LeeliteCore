@@ -1,10 +1,9 @@
-﻿using System;
-using System.Diagnostics;
-using System.Text.Json;
-
-using AspectInjector.Broker;
+﻿using AspectInjector.Broker;
 
 using Microsoft.Extensions.Logging;
+
+using System.Diagnostics;
+using System.Text.Json;
 
 namespace Leelite.Core.Aspects
 {

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-
-namespace Leelite.Core.Module.Store
+﻿namespace Leelite.Core.Module.Store
 {
     /// <summary>
     /// 模块描述信息
@@ -11,12 +8,12 @@ namespace Leelite.Core.Module.Store
         /// <summary>
         /// 模块名称
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
         /// <summary>
         /// 应用程序集文件
         /// </summary>
-        public string AssemblyFileName { get; set; }
+        public string AssemblyFileName { get; set; } = "";
 
         /// <summary>
         /// 模块自身的程序集
@@ -26,7 +23,7 @@ namespace Leelite.Core.Module.Store
         /// <summary>
         /// 模块所在路径
         /// </summary>
-        public string DirectoryPath { get; set; }
+        public string DirectoryPath { get; set; } = "";
 
         /// <summary>
         /// 获取应用程序集路径

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace HybridFS.FileSystem.Models
+﻿namespace HybridFS.FileSystem.Models
 {
     public class HybridDirectoryInfo
     {
@@ -12,17 +10,17 @@ namespace HybridFS.FileSystem.Models
         /// <summary>
         /// 文件完整路径
         /// </summary>
-        public string Path { get; set; }
+        public string Path { get; set; } = "";
 
         /// <summary>
         /// 文件所在文件夹路径
         /// </summary>
-        public string DirectoryPath { get; set; }
+        public string DirectoryPath { get; set; } = "";
 
         /// <summary>
         /// 文件名称
         /// </summary>
-        public string Name { get; set; }
+        public string Name { get; set; } = "";
 
         /// <summary>
         /// 内容长度

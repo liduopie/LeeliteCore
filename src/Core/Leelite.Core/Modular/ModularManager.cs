@@ -1,25 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
-using System.Runtime.Loader;
-
-using Leelite.Commons.Convention;
+﻿using Leelite.Commons.Convention;
 using Leelite.Commons.Host;
-using Leelite.Core.Modular;
 using Leelite.Core.Module;
 using Leelite.Core.Module.Dependency;
 using Leelite.Core.Module.Store;
 
 using McMaster.NETCore.Plugins;
 
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
 
-namespace Leelite.AspNetCore.Modular
+using System.Reflection;
+using System.Runtime.Loader;
+
+namespace Leelite.Core.Modular
 {
-    public class ModularManager : IModularManager, IModduleLoaderManager
+    public class ModularManager : IModularManager
     {
         private readonly ModularOptions _options;
         private readonly IModuleStore _store;
@@ -30,9 +26,9 @@ namespace Leelite.AspNetCore.Modular
         private readonly IList<ModuleInfo> _infos;
         private readonly IList<IModule> _modules = new List<IModule>();
 
-        public ModularManager(IOptions<ModularOptions> options, IModuleStore store)
+        public ModularManager(IModuleStore store, ModularOptions options)
         {
-            _options = options.Value;
+            _options = options;
             _store = store;
 
             _moduleLoadContext = new AssemblyLoadContext("Modules", true);
@@ -45,12 +41,43 @@ namespace Leelite.AspNetCore.Modular
                 builder.AddConsole();
             });
             _logger = loggerFactory.CreateLogger<ModularManager>();
+
+            Current = this;
         }
+
+        public static ModularManager Current { get; private set; }
 
         public IList<ModuleContext> ModuleContexts { get { return _moduleContexts; } }
         public IList<IModule> Modules { get { return _modules; } }
 
-        public void Load(HostContext context)
+        public void Loading(IServiceCollection services, IConfiguration configuration)
+        {
+            // 加载模块
+            LoadModules();
+
+            // 加载约定规则
+            LoadConvention(services);
+
+            // 加载模块的依赖注入注册
+            LoadStartup(services, configuration);
+        }
+
+        public IList<PluginLoader> GetLoaders()
+        {
+            var res = new List<PluginLoader>();
+
+            foreach (var c in _moduleContexts)
+            {
+                res.Add(c.Loader);
+            }
+
+            return res;
+        }
+
+        /// <summary>
+        /// 发现模块
+        /// </summary>
+        private void LoadModules()
         {
             _logger.LogInformation($"Find module infos {_infos.Count}.");
 
@@ -123,6 +150,16 @@ namespace Leelite.AspNetCore.Modular
 
                 _modules.Add((IModule)Activator.CreateInstance(c));
             });
+        }
+
+        /// <summary>
+        /// 加载约定规则
+        /// </summary>
+        /// <param name="services"></param>
+        private void LoadConvention(IServiceCollection services)
+        {
+            // 初始化规则注册管理器
+            ConventionManager.SetServices(services);
 
             // 注册约定
             foreach (var module in _modules)
@@ -149,24 +186,18 @@ namespace Leelite.AspNetCore.Modular
                     ConventionManager.RegisterAssembly(assembly);
                 }
             }
-
-            // 加载模块的依赖注入注册
-            foreach (var startup in _modules)
-            {
-                startup.ConfigureServices(context);
-            }
         }
 
-        public IList<PluginLoader> GetLoaders()
+        /// <summary>
+        /// 加载模块的依赖注入注册
+        /// </summary>
+        /// <param name="services"></param>
+        private void LoadStartup(IServiceCollection services, IConfiguration configuration)
         {
-            var res = new List<PluginLoader>();
-
-            foreach (var c in _moduleContexts)
+            foreach (var startup in _modules)
             {
-                res.Add((PluginLoader)c.Loader);
+                startup.ConfigureServices(services, configuration);
             }
-
-            return res;
         }
 
         private void Loader_Reloaded(object sender, PluginReloadedEventArgs eventArgs)

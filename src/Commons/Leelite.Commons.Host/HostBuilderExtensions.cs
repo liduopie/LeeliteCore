@@ -1,6 +1,4 @@
-﻿using System;
-using Leelite.Commons.Host;
-using Microsoft.Extensions.Logging;
+﻿using Leelite.Commons.Host;
 
 namespace Microsoft.Extensions.Hosting
 {
@@ -16,7 +14,8 @@ namespace Microsoft.Extensions.Hosting
             // 配置依赖注入
             builder.ConfigureServices((hostContext, services) =>
             {
-                HostManager.Context.ServiceDescriptors = services;
+                // 2022-01-08 注释
+                // HostManager.Context.ServiceDescriptors = services;
             });
 
             // 配置json配置文件
@@ -29,7 +28,8 @@ namespace Microsoft.Extensions.Hosting
             {
             });
 
-            builder.UseServiceProviderFactory(new CoreHostServiceProviderFactory());
+            // 2022-01-08 注释
+            // builder.UseServiceProviderFactory(new CoreHostServiceProviderFactory());
 
             return builder;
         }

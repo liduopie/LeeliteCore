@@ -5,11 +5,7 @@ using Hangfire.Server;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Threading;
-using System.Threading.Tasks;
 
 using TimeZoneConverter;
 
@@ -50,7 +46,7 @@ namespace Leelite.Core.BackgroundJob.Services
                     if (attr == null) continue;
 
                     var method = jobType.GetMethod("Execute", new Type[] { typeof(PerformContext) });
-                    var jobInfo = new Hangfire.Common.Job(method, new object[] { null });
+                    var jobInfo = new Hangfire.Common.Job(method, new object[] { });
 
                     if (attr.Enabled)
                         _recurringJobs.AddOrUpdate(attr.RecurringJobId, jobInfo, attr.Cron, TZConvert.GetTimeZoneInfo(attr.TimeZone), attr.Queue);

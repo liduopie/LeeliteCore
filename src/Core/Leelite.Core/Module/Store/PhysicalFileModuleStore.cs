@@ -1,8 +1,4 @@
-﻿using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Options;
 
@@ -12,9 +8,9 @@ namespace Leelite.Core.Module.Store
     {
         private readonly ModuleOptions _options;
 
-        public PhysicalFileModuleStore(IOptions<ModuleOptions> options)
+        public PhysicalFileModuleStore(ModuleOptions options)
         {
-            _options = options.Value;
+            _options = options;
         }
 
         public IList<ModuleInfo> Find()

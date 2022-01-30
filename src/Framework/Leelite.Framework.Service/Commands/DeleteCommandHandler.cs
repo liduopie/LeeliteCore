@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Leelite.Framework.Domain.Aggregate;
+﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;
 using Leelite.Framework.Domain.Repository;
@@ -27,6 +24,8 @@ namespace Leelite.Framework.Service.Commands
         public async Task<bool> Handle(DeleteCommand<TEntity, TKey> request, CancellationToken cancellationToken)
         {
             var entity = await _repository.FindByIdAsync(request.Source, cancellationToken);
+
+            if (entity == null) return true;
 
             await _repository.RemoveAsync(entity);
 

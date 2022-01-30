@@ -47,7 +47,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var manager = serviceProvider.GetService<IFileManager>();
+            var manager = serviceProvider.GetRequiredService<IFileManager>();
 
             Random rd = new Random();
 
@@ -72,7 +72,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var manager = serviceProvider.GetService<IFileManager>();
+            var manager = serviceProvider.GetRequiredService<IFileManager>();
 
             Random rand = new Random();
 
@@ -101,9 +101,11 @@ namespace HybridFS.XUnitTest
 
             var file = await manager.GetFileInfoAsync(filePath);
 
-            Assert.Equal(filemd5, file.MD5);
+            Assert.Equal(filemd5, file?.MD5);
 
             var ouputStream = await manager.GetFileStreamAsync(filePath);
+
+            if (ouputStream == null) return;
 
             string outputmd5;
             using (MD5 md5 = MD5.Create())
@@ -126,7 +128,7 @@ namespace HybridFS.XUnitTest
 
             var serviceProvider = services.BuildServiceProvider();
 
-            var manager = serviceProvider.GetService<IFileManager>();
+            var manager = serviceProvider.GetRequiredService<IFileManager>();
 
             Random rd = new Random();
 

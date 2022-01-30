@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net5.0</TargetFramework>
+		<TargetFramework>net6.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -15,7 +15,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.7.501" />
+		<PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.11.0" />
 	</ItemGroup>
 
 	<ItemGroup>

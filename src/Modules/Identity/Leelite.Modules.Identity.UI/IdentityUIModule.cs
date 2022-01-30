@@ -25,16 +25,12 @@ namespace Leelite.Modules.Identity.UI
     [DependsOn(typeof(IdentityModule), typeof(SettingsModule))]
     public class IdentityUIModule : MvcModuleBase
     {
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
             services.AddIdentity<User, Role>(o =>
             {
                 o.Stores.MaxLengthForKeys = 256;
             }).AddDefaultTokenProviders();
-
-            var configuration = context.HostServices.GetService<IConfiguration>();
 
             services.Configure<IdentityOptions>(options => configuration.Bind(nameof(IdentityOptions), options));
             services.ConfigureApplicationCookie(options => configuration.Bind(nameof(CookieAuthenticationOptions), options));

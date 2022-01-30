@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
-using HybridFS.FileSystem;
+﻿using HybridFS.FileSystem;
 using HybridFS.FileSystem.Models;
 
 using Microsoft.Extensions.FileProviders;
+
+using System.Collections;
 
 namespace HybridFS.FileProvider
 {
@@ -18,13 +15,13 @@ namespace HybridFS.FileProvider
 
         private bool? exists;
 
-        private IEnumerable<IFileInfo> contents;
+        private IEnumerable<IFileInfo>? contents;
 
         public HybridFSDirectoryContents(IFileManager manager, string path)
         {
             _manager = manager;
             _path = path;
-            _dirInfo = _manager.GetDirectoryInfoAsync(_path).GetAwaiter().GetResult();
+            _dirInfo = _manager.GetDirectoryInfoAsync(_path).GetAwaiter().GetResult()!;
         }
 
         public bool Exists
@@ -54,22 +51,20 @@ namespace HybridFS.FileProvider
         public IEnumerator<IFileInfo> GetEnumerator()
         {
             if (contents == null)
-                EnumerateContents();
+            {
+                var files = _manager.GetDirectoryContentAsync(_path).GetAwaiter().GetResult();
+
+                contents = files.Select(c => new HybridFSFileInfo(_manager, c));
+
+                return contents.GetEnumerator();
+            }
+
             return contents.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            if (contents == null)
-                EnumerateContents();
-            return contents.GetEnumerator();
-        }
-
-        private void EnumerateContents()
-        {
-            var files = _manager.GetDirectoryContentAsync(_path).GetAwaiter().GetResult();
-
-            contents = files.Select(c => new HybridFSFileInfo(_manager, c));
+            return GetEnumerator();
         }
     }
 }

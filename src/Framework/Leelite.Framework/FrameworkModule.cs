@@ -1,9 +1,9 @@
 ﻿using Leelite.Commons.Convention;
-using Leelite.Commons.Host;
 using Leelite.Core.Module;
 using Leelite.Framework.Conventions;
 using Leelite.Framework.Domain;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Framework
@@ -19,10 +19,8 @@ namespace Leelite.Framework
             ConventionManager.AddRegistrar(new CommandsConvention());
         }
 
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
             services.AddEFUnitOfWork();
             services.AddDomain();
         }
