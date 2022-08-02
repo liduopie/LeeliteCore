@@ -23,6 +23,16 @@
         /// <summary>
         /// 排序号
         /// </summary>
-        int? SortId { get; set; }
+        int Sort { get; set; }
+
+        /// <summary>
+        /// 是叶子节点
+        /// </summary>
+        bool IsLeaf { get; set; }
+
+        /// <summary>
+        /// 子节点数量
+        /// </summary>
+        int ChildrenCount { get; set; }
     }
 }

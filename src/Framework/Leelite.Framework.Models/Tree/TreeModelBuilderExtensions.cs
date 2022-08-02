@@ -17,7 +17,7 @@ namespace Microsoft.EntityFrameworkCore
 
             typeBuilder.Property(p => p.Path).HasMaxLength(1024);
             typeBuilder.Property(p => p.Level);
-            typeBuilder.Property(p => p.SortId);
+            typeBuilder.Property(p => p.Sort);
         }
     }
 }

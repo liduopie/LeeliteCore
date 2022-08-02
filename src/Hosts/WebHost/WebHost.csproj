@@ -11,4 +11,8 @@
     <ProjectReference Include="..\..\Modules\Identity\Leelite.Modules.Identity\Leelite.Modules.Identity.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>
