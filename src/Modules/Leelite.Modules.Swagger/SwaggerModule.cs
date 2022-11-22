@@ -1,20 +1,17 @@
 ﻿using Leelite.AspNetCore.Modular;
-using Leelite.Commons.Host;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 
 namespace Leelite.Modules.Swagger
 {
     public class SwaggerModule : MvcModuleBase
     {
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {

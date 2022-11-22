@@ -1,10 +1,6 @@
-﻿using System.IO;
-
-using HealthChecks.UI.Client;
+﻿using HealthChecks.UI.Client;
 
 using Leelite.AspNetCore.Modular;
-using Leelite.Commons.Host;
-using Leelite.Core.Module;
 using Leelite.Core.Module.Dependency;
 
 using Microsoft.AspNetCore.Builder;
@@ -20,12 +16,9 @@ namespace Leelite.Modules.HealthChecks.UI
     {
         private bool _enabled = false;
 
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
-            var config = context.HostServices.GetService<IConfiguration>();
-            _enabled = config.GetValue<bool>("HealthChecks");
+            _enabled = configuration.GetValue<bool>("HealthChecks");
 
             if (!_enabled) return;
 
@@ -50,7 +43,7 @@ namespace Leelite.Modules.HealthChecks.UI
 
                 config.MapHealthChecksUI(setup =>
                 {
-                    setup.AddCustomStylesheet(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "assets/dotnet.css"));
+                    // setup.AddCustomStylesheet(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "assets/dotnet.css"));
                 });
 
                 config.MapHealthChecks("/healthz", new HealthCheckOptions

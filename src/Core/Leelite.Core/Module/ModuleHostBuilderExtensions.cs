@@ -35,7 +35,7 @@ namespace Leelite.Core.Module
             builder.ConfigureServices((hostContext, services) =>
             {
 
-                var manager = HostManager.Context.HostServices.GetService<IModularManager>();
+                var manager = HostManager.WebApplication.Services.GetService<IModularManager>();
 
                 // TODO
                 //manager.Load(HostManager.Context);

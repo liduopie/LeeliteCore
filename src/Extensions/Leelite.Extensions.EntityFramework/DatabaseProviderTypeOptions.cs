@@ -2,6 +2,6 @@
 {
     public class DatabaseProviderTypeOptions : IProviderTypeOptions
     {
-        public DatabaseProviderType ProviderType { get; set; } = DatabaseProviderType.Npgsql;
+        public DatabaseProviderType ConnectionProviderType { get; set; } = DatabaseProviderType.Npgsql;
     }
 }

@@ -15,7 +15,7 @@ namespace Leelite.Extensions.EntityFramework.Connection
 
             _storage = new Dictionary<string, DbConnection>();
 
-            _dbProviderFactory = DbProviderFactories.GetFactory(options.ProviderType.ToString());
+            _dbProviderFactory = DbProviderFactories.GetFactory(options.ConnectionProviderType.ToString());
         }
 
         public DbConnection GetConnection(string name)

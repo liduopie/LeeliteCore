@@ -36,11 +36,7 @@ namespace Leelite.Core.Modular
             // 发现所有模块信息
             _infos = _store.Find();
 
-            var loggerFactory = LoggerFactory.Create(builder =>
-            {
-                builder.AddConsole();
-            });
-            _logger = loggerFactory.CreateLogger<ModularManager>();
+            _logger = HostManager.DefaultHost.Services.GetService<ILoggerFactory>().CreateLogger<ModularManager>();
 
             Current = this;
         }
@@ -88,7 +84,7 @@ namespace Leelite.Core.Modular
             {
                 foreach (var type in item.GetTypes().Where(t => typeof(IModule).IsAssignableFrom(t) && !t.IsAbstract))
                 {
-                    _logger.LogInformation($"Default AssemblyLoadContext {item.FullName} found module {type.Name}");
+                    _logger.LogInformation($"Default AssemblyLoadContext {item.GetName().Name}:{item.GetName().Version} found module {type.Name}.");
 
                     moduleTypes.Add(type);
                 }
@@ -127,7 +123,7 @@ namespace Leelite.Core.Modular
                 {
                     foreach (var type in item.GetTypes().Where(t => typeof(IModule).IsAssignableFrom(t) && !t.IsAbstract))
                     {
-                        _logger.LogInformation($"{item.FullName} found module {type.Name}");
+                        _logger.LogInformation($"{item.GetName().Name}:{item.GetName().Version} assembly found module {type.Name}");
 
                         moduleTypes.Add(type);
                     }
@@ -136,17 +132,19 @@ namespace Leelite.Core.Modular
                 _moduleContexts.Add(moduleContext);
             }
 
+            _logger.LogInformation($"Find module types {moduleTypes.Count}.");
+
             moduleTypes = moduleTypes.Union(FindAllDependedTypes(moduleTypes)).ToList();
 
-            _logger.LogInformation($"Union module types {moduleTypes.Count}.");
+            _logger.LogInformation($"Find depended module types {moduleTypes.Count}.");
 
-            moduleTypes = moduleTypes.SortByDependencies(x => FindDependedModuleTypes(x));
+            moduleTypes = moduleTypes.SortByDependencies(FindDependedModuleTypes);
 
             _logger.LogInformation($"Sort module types {moduleTypes.Count}.");
 
             moduleTypes.ForEach(c =>
             {
-                _logger.LogInformation($"load module {c.FullName},hash {c.GetHashCode()}");
+                _logger.LogInformation($"Load module {c.FullName},hash {c.GetHashCode()}");
 
                 _modules.Add((IModule)Activator.CreateInstance(c));
             });
@@ -173,6 +171,8 @@ namespace Leelite.Core.Modular
             // 默认程序集
             foreach (var item in defaultAssemblies)
             {
+                _logger.LogInformation($"RegisterAssembly {item.GetName().Name}");
+
                 // 按照约定注册程序集
                 ConventionManager.RegisterAssembly(item);
             }
@@ -203,7 +203,9 @@ namespace Leelite.Core.Modular
         private void Loader_Reloaded(object sender, PluginReloadedEventArgs eventArgs)
         {
             if (_options.EnableHotStart)
-                HostManager.Restart();
+            {
+                HostManager.WebApplication.StopAsync();
+            }
         }
 
         private static List<Type> FindAllDependedTypes(List<Type> types)

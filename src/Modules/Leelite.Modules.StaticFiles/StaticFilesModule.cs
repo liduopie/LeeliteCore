@@ -1,6 +1,6 @@
-﻿using System.IO;
-using Leelite.AspNetCore.Modular;
+﻿using Leelite.AspNetCore.Modular;
 using Leelite.Modules.StaticFiles.Options;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;

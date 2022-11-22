@@ -1,6 +1,5 @@
 ﻿using FluentValidation.AspNetCore;
 
-using Leelite.Commons.Host;
 using Leelite.Core.Modular;
 
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -45,7 +44,8 @@ namespace Leelite.AspNetCore.Modular
         public static void AddConfig(this IMvcBuilder builder)
         {
             // 添加 Mvc 其他配置
-            builder.AddFluentValidation();
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddFluentValidationClientsideAdapters();
 
             // 运行时编译
             builder.AddRazorRuntimeCompilation(o =>

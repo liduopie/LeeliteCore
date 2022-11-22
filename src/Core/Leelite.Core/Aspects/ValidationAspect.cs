@@ -18,10 +18,12 @@ namespace Leelite.Core.Aspects
     public class ValidationAspect
     {
         private readonly ILoggerFactory _loggerFactory;
+        private IServiceProvider _services;
 
         public ValidationAspect()
         {
-            _loggerFactory = HostManager.Context.HostServices.GetService<ILoggerFactory>();
+            _services = HostManager.WebApplication.Services;
+            _loggerFactory = _services.GetService<ILoggerFactory>();
         }
 
         [Advice(Kind.Before, Targets = Target.Public | Target.Method)]
@@ -43,7 +45,7 @@ namespace Leelite.Core.Aspects
 
                 var validatorType = validatorInterfaceType.MakeGenericType(parameter.ParameterType);
 
-                var validator = HostManager.Context.HostServices.GetService(validatorType);
+                var validator = _services.GetService(validatorType);
 
                 MethodInfo validateMethod = validatorType.GetMethod("Validate");
 

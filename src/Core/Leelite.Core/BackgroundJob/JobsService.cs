@@ -12,7 +12,7 @@ using TimeZoneConverter;
 namespace Leelite.Core.BackgroundJob.Services
 {
     /// <summary>
-    /// 任务自从注册服务
+    /// 任务自动注册服务
     /// </summary>
     public class JobsService : BackgroundService
     {

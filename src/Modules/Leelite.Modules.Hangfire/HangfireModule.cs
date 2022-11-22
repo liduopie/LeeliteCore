@@ -12,25 +12,13 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using System;
-using System.Globalization;
-using System.Linq;
-using System.Reflection;
-
 namespace Leelite.Modules.Hangfire
 {
     public class HangfireModule : MvcModuleBase
     {
-        private IModularManager _modularManager;
-
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
-            var config = context.HostServices.GetService<IConfiguration>();
-            _modularManager = context.HostServices.GetService<IModularManager>();
-
-            //services.AddHostedService<JobsService>();
+            var config = HostManager.DefaultHost.Services.GetService<IConfiguration>();
 
             // Add Hangfire services.
             services.AddHangfire(configuration =>
@@ -39,9 +27,7 @@ namespace Leelite.Modules.Hangfire
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
-                .UsePostgreSqlStorage(config.GetConnectionString("HangfireConnection"));
-
-                configuration.UseConsole();
+                .UsePostgreSqlStorage(config?.GetConnectionString("HangfireConnection"));
             });
 
             // Add the processing server as IHostedService
@@ -67,6 +53,8 @@ namespace Leelite.Modules.Hangfire
                 SupportedUICultures = supportedCultures
             });
 
+            GlobalConfiguration.Configuration.UseConsole();
+
             // Make `Back to site` link working for subfolder applications
             // var options = new DashboardOptions { AppPath = "~" };
             app.UseHangfireDashboard();
@@ -75,7 +63,7 @@ namespace Leelite.Modules.Hangfire
             GlobalConfiguration.Configuration.UseTypeResolver(DefaultTypeResolver);
         }
 
-        public Type DefaultTypeResolver(string typeName)
+        public Type? DefaultTypeResolver(string typeName)
         {
             return Type.GetType(
                 typeName,
@@ -86,6 +74,8 @@ namespace Leelite.Modules.Hangfire
 
         private Assembly ModuleAssemblyResolver(AssemblyName assemblyName)
         {
+            var _modularManager = HostManager.WebApplication.Services.GetRequiredService<IModularManager>();
+
             foreach (var context in _modularManager.ModuleContexts)
             {
                 var res = context.Assemblies.Where(c => c.GetName().Name == assemblyName.FullName).FirstOrDefault();
@@ -102,7 +92,7 @@ namespace Leelite.Modules.Hangfire
             }
             catch (Exception)
             {
-                var shortName = new AssemblyName(assemblyName.Name);
+                var shortName = new AssemblyName(assemblyName.Name ?? "");
                 if (publicKeyToken != null)
                 {
                     shortName.SetPublicKeyToken(publicKeyToken);
@@ -112,14 +102,14 @@ namespace Leelite.Modules.Hangfire
             }
         }
 
-        private Type TypeResolver(Assembly assembly, string typeName, bool ignoreCase)
+        private Type? TypeResolver(Assembly? assembly, string typeName, bool ignoreCase)
         {
             if (typeName.Equals("System.Diagnostics.Debug", StringComparison.Ordinal))
             {
                 return typeof(System.Diagnostics.Debug);
             }
 
-            Type type = null;
+            Type? type = null;
 
             assembly = assembly ?? typeof(int).GetTypeInfo().Assembly;
             try

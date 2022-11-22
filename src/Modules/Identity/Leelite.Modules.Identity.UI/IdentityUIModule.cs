@@ -1,7 +1,4 @@
-﻿using System.IO;
-
-using Leelite.AspNetCore.Modular;
-using Leelite.Commons.Host;
+﻿using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module;
 using Leelite.Core.Module.Dependency;
 using Leelite.Modules.Identity.Models.RoleAgg;
@@ -32,14 +29,16 @@ namespace Leelite.Modules.Identity.UI
                 o.Stores.MaxLengthForKeys = 256;
             }).AddDefaultTokenProviders();
 
-            services.Configure<IdentityOptions>(options => configuration.Bind(nameof(IdentityOptions), options));
-            services.ConfigureApplicationCookie(options => configuration.Bind(nameof(CookieAuthenticationOptions), options));
+            var authenticationConfig = configuration.GetSection("Authentication");
 
-            var externalLogins = configuration.GetSection("ExternalLogins");
+            services.Configure<IdentityOptions>(options => authenticationConfig.Bind(nameof(IdentityOptions), options));
+            services.ConfigureApplicationCookie(options => authenticationConfig.Bind(nameof(CookieAuthenticationOptions), options));
 
             var authBuilder = services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => configuration.Bind("JwtSettings", options))
-                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => configuration.Bind("CookieSettings", options));
+                .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options => authenticationConfig.Bind(nameof(JwtBearerOptions), options))
+                .AddCookie(CookieAuthenticationDefaults.AuthenticationScheme, options => authenticationConfig.Bind(nameof(CookieAuthenticationOptions), options));
+
+            var externalLogins = authenticationConfig.GetSection("ExternalLogins");
 
             if (externalLogins.GetSection("MicrosoftAccount").Exists())
             {

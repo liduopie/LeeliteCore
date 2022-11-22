@@ -1,11 +1,10 @@
-﻿using System;
-using System.Data.Common;
-
-using Leelite.Extensions.EntityFramework;
+﻿using Leelite.Extensions.EntityFramework;
 using Leelite.Extensions.EntityFramework.Connection;
 
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+
+using System.Data.Common;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -30,7 +29,7 @@ namespace Microsoft.Extensions.DependencyInjection
             DbProviderFactories.RegisterFactory("Npgsql", Npgsql.NpgsqlFactory.Instance);
             DbProviderFactories.RegisterFactory("Sqlite", Data.Sqlite.SqliteFactory.Instance);
             DbProviderFactories.RegisterFactory("SqlClient", Data.SqlClient.SqlClientFactory.Instance);
-            DbProviderFactories.RegisterFactory("MySql", MySqlConnector.MySqlConnectorFactory.Instance);
+            DbProviderFactories.RegisterFactory("MySql", MySql.Data.MySqlClient.MySqlClientFactory.Instance);
         }
 
         public static void AddDbContext<TContext>(this IServiceCollection services, string connectionStringName, bool separateMigrations = false, Action<IServiceProvider, DbContextOptionsBuilder> optionsAction = null)
@@ -43,7 +42,7 @@ namespace Microsoft.Extensions.DependencyInjection
 
                 var options = serviceProvider.GetRequiredService<IProviderTypeOptions>();
 
-                var dbProviderName = options.ProviderType;
+                var dbProviderName = options.ConnectionProviderType;
 
                 // 如果是使用独立项目存放迁移，自动按照.**格式进行默认规则处理
                 var migrationsAssemblyName = typeof(TContext).Assembly.GetName().Name;
@@ -64,18 +63,7 @@ namespace Microsoft.Extensions.DependencyInjection
                         builder.UseSqlServer(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));
                         break;
                     case DatabaseProviderType.MySql:
-                        var serverVersion = new MySqlServerVersion(new Version(5, 7, 0));
-                        builder.UseMySql(
-                            _connectionFactory.GetConnection(connectionStringName),
-                            serverVersion,
-                            c =>
-                            {
-                                c.MigrationsAssembly(migrationsAssemblyName);
-
-                                c.UseMicrosoftJson();
-
-                                c.EnableIndexOptimizedBooleanColumns();
-                            });
+                        builder.UseMySQL(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));
                         break;
                     case DatabaseProviderType.Npgsql:
                         builder.UseNpgsql(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));

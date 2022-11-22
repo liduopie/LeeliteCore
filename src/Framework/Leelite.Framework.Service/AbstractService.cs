@@ -11,7 +11,7 @@ namespace Leelite.Framework.Service
 
         protected AbstractService(ILogger logger)
         {
-            _mapper = HostManager.Context.HostServices.GetService<IMapper>();
+            _mapper = HostManager.WebApplication.Services.GetService<IMapper>();
             Logger = logger;
         }
 

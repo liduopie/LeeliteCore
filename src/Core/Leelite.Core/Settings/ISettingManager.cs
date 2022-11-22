@@ -7,7 +7,7 @@ namespace Leelite.Core.Settings
     /// <summary>
     /// 配置管理
     /// </summary>
-    public interface ISettingManager : ISingleton
+    public interface ISettingManager : IScope
     {
         /// <summary>
         /// 获取应用程序配置

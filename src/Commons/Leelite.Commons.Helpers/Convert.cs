@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace Leelite.Commons.Helpers
+﻿namespace Leelite.Commons.Helpers
 {
     public static class Convert
     {
@@ -26,7 +22,7 @@ namespace Leelite.Commons.Helpers
         /// </summary>
         /// <typeparam name="T">目标类型</typeparam>
         /// <param name="input">输入值</param>
-        public static T To<T>(string input)
+        public static T? To<T>(string input)
         {
             if (string.IsNullOrWhiteSpace(input))
                 return default;

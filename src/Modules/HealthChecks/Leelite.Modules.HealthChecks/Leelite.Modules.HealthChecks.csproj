@@ -1,11 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net7.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="AspNetCore.HealthChecks.System" Version="5.0.1" />
+		<PackageReference Include="AspNetCore.HealthChecks.System" Version="6.0.5" />
 	</ItemGroup>
 
 	<ItemGroup>

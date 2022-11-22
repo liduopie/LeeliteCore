@@ -1,8 +1,10 @@
 ﻿using Leelite.Commons.Convention;
+using Leelite.Commons.Host;
 using Leelite.Commons.Lifetime;
 using Leelite.Extensions.DependencyInjection;
 
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
 using System.Reflection;
 
@@ -28,12 +30,20 @@ namespace Leelite.Framework.Conventions
 
             Type singletonType = typeof(ISingleton);
 
+#if DEBUG
+            DebugLog(assembly, singletonType);
+#endif
+
             services.RegisterAssemblyTypes(assembly)
                .Where(type => singletonType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                .AsInterface(i => i.GetInterfaces().Any(c => singletonType.IsAssignableFrom(c)) && !_lifetimeTypes.Contains(i))
                .Singleton();
 
             Type scopeType = typeof(IScope);
+
+#if DEBUG
+            DebugLog(assembly, scopeType);
+#endif
 
             services.RegisterAssemblyTypes(assembly)
                 .Where(type => scopeType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
@@ -42,10 +52,42 @@ namespace Leelite.Framework.Conventions
 
             Type transientType = typeof(ITransient);
 
+#if DEBUG
+            DebugLog(assembly, transientType);
+#endif
+
             services.RegisterAssemblyTypes(assembly)
                 .Where(type => transientType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract)
                 .AsInterface(i => i.GetInterfaces().Any(c => transientType.IsAssignableFrom(c)) && !_lifetimeTypes.Contains(i))
                 .Transient();
+        }
+
+        private void DebugLog(Assembly assembly, Type lifetimeType)
+        {
+            var logger = HostManager.DefaultHost.Services.GetService<ILoggerFactory>().CreateLogger<LifetimeConvention>();
+
+            var scopeTypeList = assembly.GetTypes().Where(type => lifetimeType.IsAssignableFrom(type) && type.IsClass && !type.IsAbstract);
+
+            if (scopeTypeList.Count() > 0)
+            {
+                logger.LogDebug($"{assembly.GetName().Name} {lifetimeType.Name} type counts:{scopeTypeList.Count()}");
+
+                foreach (var item in scopeTypeList)
+                {
+                    var interfacType = item.GetInterfaces().Where(i => !_lifetimeTypes.Contains(i)).FirstOrDefault();
+
+                    if (interfacType == null) continue;
+
+                    var interfaceName = interfacType.Name;
+
+                    if (interfacType.IsGenericType)
+                    {
+                        interfaceName = interfacType.GetGenericTypeName();
+                    }
+
+                    logger.LogDebug($"{lifetimeType.Name} # {item.FullName} ==> {interfaceName}");
+                }
+            }
         }
     }
 }

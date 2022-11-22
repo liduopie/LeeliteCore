@@ -1,22 +1,16 @@
-﻿using System;
-using Leelite.AspNetCore.Modular;
-using Leelite.Commons.Host;
+﻿using Leelite.AspNetCore.Modular;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using StackExchange.Profiling.Storage;
 
 namespace Leelite.Modules.MiniProfiler
 {
     public class MiniProfilerModule : MvcModuleBase
     {
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
-            var configuration = context.HostServices.GetService<IConfiguration>();
-
             var miniProfilerOptions = new MiniProfilerOptions();
 
             var staticFileConfiguration = configuration.GetSection("MiniProfiler");

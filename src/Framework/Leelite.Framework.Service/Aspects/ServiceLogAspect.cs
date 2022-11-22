@@ -13,7 +13,7 @@ namespace Leelite.Framework.Service.Aspects
 
         public ServiceLogAspect()
         {
-            _loggerFactory = HostManager.Context.HostServices.GetService<ILoggerFactory>();
+            _loggerFactory = HostManager.WebApplication.Services.GetService<ILoggerFactory>();
         }
 
         [Advice(Kind.Before, Targets = Target.Public | Target.Method)]

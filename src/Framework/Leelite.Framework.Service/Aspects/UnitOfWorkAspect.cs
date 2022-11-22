@@ -18,7 +18,7 @@ namespace Leelite.Framework.Service.Aspects
 
         public UnitOfWorkAspect()
         {
-            _loggerFactory = HostManager.Context.HostServices.GetService<ILoggerFactory>();
+            _loggerFactory = HostManager.WebApplication.Services.GetService<ILoggerFactory>();
         }
 
         [Advice(Kind.Around, Targets = Target.Public | Target.Method)]
@@ -38,7 +38,7 @@ namespace Leelite.Framework.Service.Aspects
 
             if (uowAttr != null)
             {
-                unitOfWork = (IUnitOfWork)HostManager.Context.HostServices.GetService(typeof(IUnitOfWork));
+                unitOfWork = (IUnitOfWork)HostManager.WebApplication.Services.GetService(typeof(IUnitOfWork));
 
                 // 启动工作单元
                 unitOfWork.Begin();

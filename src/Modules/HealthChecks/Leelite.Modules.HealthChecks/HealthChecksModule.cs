@@ -1,16 +1,15 @@
 ﻿using Leelite.Commons.Host;
 using Leelite.Core.Module;
 
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Leelite.Modules.HealthChecks
 {
     public class HealthChecksModule : ModuleBase
     {
-        public override void ConfigureServices(HostContext context)
+        public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            var services = context.ServiceDescriptors;
-
             services.AddHealthChecks()
                 .AddDiskStorageHealthCheck(c => { }, tags: new[] { "process" })
                 .AddPrivateMemoryHealthCheck(maximumMemoryBytes: 1024 * 1024 * 1024, tags: new[] { "process" })

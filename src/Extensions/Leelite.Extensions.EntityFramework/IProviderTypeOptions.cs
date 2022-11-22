@@ -2,6 +2,6 @@
 {
     public interface IProviderTypeOptions
     {
-        DatabaseProviderType ProviderType { get; }
+        DatabaseProviderType ConnectionProviderType { get; }
     }
 }

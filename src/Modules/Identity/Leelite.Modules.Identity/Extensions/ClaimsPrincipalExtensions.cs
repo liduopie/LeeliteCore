@@ -18,7 +18,7 @@ namespace Leelite.Modules.Identity.Extensions
         public static T GetUserId<T>(this ClaimsPrincipal claims)
         {
 
-            var options = HostManager.Context.HostServices.GetService<IOptionsMonitor<IdentityOptions>>().CurrentValue;
+            var options = HostManager.WebApplication.Services.GetService<IOptionsMonitor<IdentityOptions>>().CurrentValue;
 
             var id = claims.FindFirstValue(options.ClaimsIdentity.UserIdClaimType);
 

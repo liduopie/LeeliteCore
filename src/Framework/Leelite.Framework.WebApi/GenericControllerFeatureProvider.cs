@@ -17,7 +17,7 @@ namespace Leelite.Framework.WebApi
     {
         public void PopulateFeature(IEnumerable<ApplicationPart> parts, ControllerFeature feature)
         {
-            var manager = HostManager.Context.HostServices.GetService<IModularManager>();
+            var manager = HostManager.WebApplication.Services.GetService<IModularManager>();
 
             var serviceTypes = new List<Type>();
 
