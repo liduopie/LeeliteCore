@@ -1,7 +1,0 @@
-{
-  "Name": "Leelite.Modules.Settings",
-  "AssemblyFileName": "Leelite.Modules.Settings.Api.dll",
-  "ReferencedAssemblies": [
-    "Leelite.Modules.Settings.dll"
-  ]
-}

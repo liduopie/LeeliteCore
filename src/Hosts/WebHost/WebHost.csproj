@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-    <ProjectReference Include="..\..\Modules\Identity\Leelite.Modules.Identity\Leelite.Modules.Identity.csproj" />
+    <ProjectReference Include="..\..\Modules\Identity\Leelite.Identity\Leelite.Identity.csproj" />
   </ItemGroup>
 
   <ItemGroup>

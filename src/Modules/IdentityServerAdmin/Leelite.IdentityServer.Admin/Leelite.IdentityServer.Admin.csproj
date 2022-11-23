@@ -1,0 +1,19 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="5.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="5.0.7" />
+		<PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="5.0.7" />
+		<PackageReference Include="Skoruba.IdentityServer4.Admin.EntityFramework" Version="2.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Core\Leelite.Core\Leelite.Core.csproj" />
+	  <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
+	  <ProjectReference Include="..\..\Identity\Leelite.Modules.Identity\Leelite.Modules.Identity.csproj" />
+	</ItemGroup>
+</Project>

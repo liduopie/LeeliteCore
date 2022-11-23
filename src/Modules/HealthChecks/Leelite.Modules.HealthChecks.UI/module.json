@@ -1,7 +1,0 @@
-{
-  "Name": "Leelite.Modules.HealthChecks",
-  "AssemblyFileName": "Leelite.Modules.HealthChecks.UI.dll",
-  "ReferencedAssemblies": [
-    "Leelite.Modules.HealthChecks.dll"
-  ]
-}

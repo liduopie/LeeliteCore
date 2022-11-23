@@ -1,0 +1,12 @@
+﻿using Leelite.Framework.Service.Dtos;
+using Leelite.Settings.Models.SettingValueAgg;
+
+namespace Leelite.Settings.Dtos.SettingValueDtos
+{
+    public class SettingValueCreateRequest : IRequest
+    {
+        public SettingValueKey Id { get; set; }
+
+        public string Value { get; set; }
+    }
+}

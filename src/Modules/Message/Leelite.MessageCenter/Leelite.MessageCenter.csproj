@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net7.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<PackageReference Include="Hangfire.Core" Version="1.7.27" />
+		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
+	</ItemGroup>
+</Project>

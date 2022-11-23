@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="aliyun-net-sdk-core" Version="1.5.10" />
+    <PackageReference Include="System.Configuration.ConfigurationManager" Version="5.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.Modules.MessageCenter.SMS\Leelite.Modules.MessageCenter.SMS.csproj" />
+    <ProjectReference Include="..\Leelite.Modules.MessageCenter\Leelite.Modules.MessageCenter.csproj" />
+  </ItemGroup>
+
+</Project>

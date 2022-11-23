@@ -1,0 +1,7 @@
+{
+  "Name": "Leelite.Home",
+  "AssemblyFileName": "Leelite.Home.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Home.dll"
+  ]
+}

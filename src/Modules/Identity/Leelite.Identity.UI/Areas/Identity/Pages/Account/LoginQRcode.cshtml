@@ -1,0 +1,14 @@
+﻿@page
+@using Leelite.Identity.SignIn.Options
+@model LoginQRcodeModel
+@{
+    Layout = "_LoginLayout.cshtml";
+    ViewData["Title"] = "扫码登录";
+}
+@section LoginTabs {
+    <vc:login-tabs current="@LoginType.QRcode"></vc:login-tabs>
+}
+扫码登录
+@section Register{
+    <vc:register return-url=""></vc:register>
+}

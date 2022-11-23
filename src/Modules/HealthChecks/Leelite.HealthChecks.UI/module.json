@@ -1,0 +1,7 @@
+{
+  "Name": "Leelite.HealthChecks",
+  "AssemblyFileName": "Leelite.HealthChecks.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.HealthChecks.dll"
+  ]
+}

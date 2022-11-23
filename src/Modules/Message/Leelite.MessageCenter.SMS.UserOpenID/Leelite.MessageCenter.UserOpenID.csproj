@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.Modules.MessageCenter.Weixin\Leelite.Modules.MessageCenter.Weixin.csproj" />
+  </ItemGroup>
+
+</Project>
