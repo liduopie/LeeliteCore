@@ -8,11 +8,11 @@ namespace Leelite.Modules.Dev.UI.Pages
 {
     public class ProjectModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
+        private readonly ILogger<ProjectModel> _logger;
 
         public StringBuilder Logs { get; set; }
 
-        public ProjectModel(ILogger<IndexModel> logger)
+        public ProjectModel(ILogger<ProjectModel> logger)
         {
             _logger = logger;
         }
