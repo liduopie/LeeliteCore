@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+<html lang="zh-cn" dir="ltr">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>@ViewData["Title"]</title>
+
+    <!-- Global stylesheets -->
+    <link href="~/global_assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+    <link href="~/global_assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+    @RenderSection("GlobalStyles", required: false)
+    <!-- /global stylesheets -->
+    @RenderSection("Styles", required: false)
+</head>
+<body>
+    @RenderBody()
+    <!-- Core JS files -->
+    <script src="~/global_assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+    <!-- /core JS files -->
+    <!-- Plugins JS files -->
+    @RenderSection("ScriptsPlugins", required: false)
+    <!-- /plugins JS files -->
+    <!-- Page JS files -->
+    <script src="~/assets/js/app.js"></script>
+    @RenderSection("Scripts", required: false)
+    <!-- /page Js files-->
+</body>
+</html>

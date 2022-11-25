@@ -1,7 +1,7 @@
 {
-  "Name": "Leelite.Modules.Dev",
-  "AssemblyFileName": "Leelite.Modules.Dev.UI.dll",
+  "Name": "Leelite.Dev",
+  "AssemblyFileName": "Leelite.Dev.UI.dll",
   "ReferencedAssemblies": [
-    "Leelite.Modules.Dev.dll"
+    "Leelite.Dev.dll"
   ]
 }
