@@ -3,59 +3,8 @@
 @{
     ViewData["Title"] = "账号锁定";
 }
-<!-- Unlock form -->
-<form class="login-form" action="index.html">
-    <div class="card mb-0">
-        <div class="card-body">
-            <div class="text-center">
-                @{
-                    if (string.IsNullOrEmpty(Model.ProfilePicture))
-                    {
-                        <i class="icon-user-lock icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
-                    }
-                    else
-                    {
 
-                        <div class="card-img-actions d-inline-block mb-3">
-                            <img class="rounded-circle" src="@Model.ProfilePicture" width="160" height="160" alt="头像">
-                            <div class="card-img-actions-overlay card-img rounded-circle">
-                                <a href="#" class="btn btn-outline bg-white text-white border-white border-2 btn-icon rounded-round">
-                                    <i class="icon-question7"></i>
-                                </a>
-                            </div>
-                        </div>
-                    }
-                }
-            </div>
-
-            <div class="text-center mb-3">
-                <h6 class="font-weight-semibold mb-0">@Model.UserName</h6>
-                <span class="d-block text-muted">解锁账号</span>
-            </div>
-
-            <div class="form-group form-group-feedback form-group-feedback-right">
-                <input type="password" class="form-control" placeholder="密码">
-                <div class="form-control-feedback">
-                    <i class="icon-user-lock text-muted"></i>
-                </div>
-            </div>
-
-            <div class="form-group d-flex align-items-center">
-                <div class="form-check mb-0">
-                    <label class="form-check-label">
-                        <input type="checkbox" name="remember" class="form-input-styled" data-fouc>
-                        自动登录
-                    </label>
-                </div>
-
-                <a id="forgot-password" asp-page="./ForgotPassword" class="ml-auto">忘记密码?</a>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-block"><i class="icon-unlocked mr-2"></i> 解锁</button>
-        </div>
-    </div>
-</form>
-<!-- /unlock form -->
-@section Scripts {
-    <script src="~/identity/pages/login.js"></script>
-}
+<header>
+    <h1 class="text-danger">@ViewData["Title"]</h1>
+    <p class="text-danger">This account has been locked out, please try again later.</p>
+</header>

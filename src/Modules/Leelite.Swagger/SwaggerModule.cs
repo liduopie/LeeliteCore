@@ -1,4 +1,5 @@
-﻿using Leelite.AspNetCore.Modular;
+﻿using Leelite.Application;
+using Leelite.AspNetCore.Modular;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -30,6 +31,13 @@ namespace Leelite.Swagger
             {
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "Leelite API V1");
             });
+
+            var client = ApplicationManager.Clients.Find(c => c.Code == "Admin");
+
+            if (client != null)
+            {
+                client.Shortcuts.Add(new Application.Clients.NavItem("_blank", "/global_assets/images/logos/1.svg", "Swagger", "API 帮助文档", "/swagger", "Admin", ""));
+            }
         }
     }
 }

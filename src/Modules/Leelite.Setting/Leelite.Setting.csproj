@@ -13,6 +13,7 @@
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 	<ItemGroup>
+	  <ProjectReference Include="..\..\Core\Leelite.Application\Leelite.Application.csproj" />
 	  <ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 	</ItemGroup>
 

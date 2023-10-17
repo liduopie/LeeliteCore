@@ -10,67 +10,251 @@
 }
 
 @section Styles{
-    <link href="~/assets/css/home.css" rel="stylesheet" type="text/css">
-        @RenderSection("Styles", required: false)
+    @RenderSection("Styles", required: false)
 }
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Leelite</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                @RenderSection("LoginNavbar", required: false)
-                @*<partial name="_LoginPartial" />*@
-                <ul class="navbar-nav flex-grow-1">
+<div class="navbar-top">
+    <!-- Main navbar -->
+    <div class="navbar navbar-dark bg-secondary navbar-expand-lg fixed-top px-lg-0">
+        <div class="container-fluid container-boxed jusitfy-content-start">
+            <div class="navbar-brand">
+                <a href="index.html" class="d-inline-flex align-items-center">
+                    <img src="~/global_assets/images/logo_icon.svg" alt="">
+                    <img src="~/global_assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">
+                </a>
+            </div>
+
+            <div class="d-lg-none">
+                <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-mobile" aria-expanded="false">
+                    <i class="ph-squares-four"></i>
+                </button>
+            </div>
+
+            <div class="navbar-collapse order-2 order-lg-1 collapse" id="navbar-mobile" style="">
+                <ul class="navbar-nav gap-lg-2 mt-2 mt-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+                        <a href="#" class="navbar-nav-link rounded">Link</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Dev">Dev</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Admin">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/swagger">Swagger</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/healthchecks-ui">HealthChecks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/hangfire">Hangfire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/profiler/results-index">MiniProfiler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="navbar-nav-link rounded dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                        <div class="dropdown-menu">
+                            <a href="#" class="dropdown-item">Action</a>
+                            <a href="#" class="dropdown-item">Another action</a>
+                            <a href="#" class="dropdown-item">Something else here</a>
+                            <a href="#" class="dropdown-item">One more line</a>
+                        </div>
                     </li>
                 </ul>
             </div>
+
+            <ul class="nav gap-sm-2 order-1 order-lg-2 ms-auto">
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                        <i class="ph-bell"></i>
+                        <span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                        <i class="ph-chats"></i>
+                    </a>
+                </li>
+
+                <partial name="_LoginPartial" />
+            </ul>
         </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
+    </div>
+    <!-- /main navbar -->
+    <!-- Page header -->
+    <div class="page-header page-header-light shadow">
+        <div class="page-header-content container-boxed d-lg-flex">
+            <div class="d-flex">
+                <h4 class="page-title mb-0">
+                    General Pages - <span class="fw-normal">Feed</span>
+                </h4>
+
+                <a href="#page_header" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+                    <i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+                </a>
+            </div>
+
+            <div class="collapse d-lg-block my-lg-auto ms-lg-auto" id="page_header">
+                <div class="d-sm-flex align-items-center mb-3 mb-lg-0 ms-lg-3">
+                    <div class="dropdown w-100 w-sm-auto">
+                        <a href="#" class="d-flex align-items-center text-body lh-1 dropdown-toggle py-sm-2" data-bs-toggle="dropdown" data-bs-display="static">
+                            <img src="~/global_assets/images/brands/tesla.svg" class="w-32px h-32px me-2" alt="">
+                            <div class="me-auto me-lg-1">
+                                <div class="fs-sm text-muted mb-1">Customer</div>
+                                <div class="fw-semibold">Tesla Motors Inc</div>
+                            </div>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-lg-end w-100 w-lg-auto wmin-300 wmin-sm-350 pt-0">
+                            <div class="d-flex align-items-center p-3">
+                                <h6 class="fw-semibold mb-0">Customers</h6>
+                                <a href="#" class="ms-auto">
+                                    View all
+                                    <i class="ph-arrow-circle-right ms-1"></i>
+                                </a>
+                            </div>
+                            <a href="#" class="dropdown-item active py-2">
+                                <img src="~/global_assets/images/brands/tesla.svg" class="w-32px h-32px me-2" alt="">
+                                <div>
+                                    <div class="fw-semibold">Tesla Motors Inc</div>
+                                    <div class="fs-sm text-muted">42 users</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-2">
+                                <img src="~/global_assets/images/brands/debijenkorf.svg" class="w-32px h-32px me-2" alt="">
+                                <div>
+                                    <div class="fw-semibold">De Bijenkorf</div>
+                                    <div class="fs-sm text-muted">49 users</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-2">
+                                <img src="~/global_assets/images/brands/klm.svg" class="w-32px h-32px me-2" alt="">
+                                <div>
+                                    <div class="fw-semibold">Royal Dutch Airlines</div>
+                                    <div class="fs-sm text-muted">18 users</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-2">
+                                <img src="~/global_assets/images/brands/shell.svg" class="w-32px h-32px me-2" alt="">
+                                <div>
+                                    <div class="fw-semibold">Royal Dutch Shell</div>
+                                    <div class="fs-sm text-muted">54 users</div>
+                                </div>
+                            </a>
+                            <a href="#" class="dropdown-item py-2">
+                                <img src="~/global_assets/images/brands/bp.svg" class="w-32px h-32px me-2" alt="">
+                                <div>
+                                    <div class="fw-semibold">BP plc</div>
+                                    <div class="fs-sm text-muted">23 users</div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="vr d-none d-sm-block flex-shrink-0 my-2 mx-3"></div>
+
+                    <div class="d-inline-flex mt-3 mt-sm-0">
+                        <a href="#" class="status-indicator-container ms-1">
+                            <img src="~/global_assets/images/users/face24.jpg" class="w-32px h-32px rounded-pill" alt="">
+                            <span class="status-indicator bg-warning"></span>
+                        </a>
+                        <a href="#" class="status-indicator-container ms-1">
+                            <img src="~/global_assets/images/users/face1.jpg" class="w-32px h-32px rounded-pill" alt="">
+                            <span class="status-indicator bg-success"></span>
+                        </a>
+                        <a href="#" class="status-indicator-container ms-1">
+                            <img src="~/global_assets/images/users/face3.jpg" class="w-32px h-32px rounded-pill" alt="">
+                            <span class="status-indicator bg-danger"></span>
+                        </a>
+                        <a href="#" class="btn btn-outline-primary btn-icon w-32px h-32px rounded-pill ms-3">
+                            <i class="ph-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="page-header-content container-boxed d-lg-flex border-top">
+            <div class="d-flex">
+                <div class="breadcrumb py-2">
+                    <a href="index.html" class="breadcrumb-item"><i class="ph-house"></i></a>
+                    <a href="#" class="breadcrumb-item">General pages</a>
+                    <span class="breadcrumb-item active">Feed</span>
+                </div>
+
+                <a href="#breadcrumb_elements" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+                    <i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+                </a>
+            </div>
+
+            <div class="collapse d-lg-block ms-lg-auto" id="breadcrumb_elements">
+                <div class="d-lg-flex mb-2 mb-lg-0">
+                    <a href="#" class="d-flex align-items-center text-body py-2">
+                        <i class="ph-lifebuoy me-2"></i>
+                        Support
+                    </a>
+
+                    <div class="dropdown ms-lg-3">
+                        <a href="#" class="d-flex align-items-center text-body dropdown-toggle py-2" data-bs-toggle="dropdown">
+                            <i class="ph-gear me-2"></i>
+                            <span class="flex-1">Settings</span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end w-100 w-lg-auto">
+                            <a href="#" class="dropdown-item">
+                                <i class="ph-shield-warning me-2"></i>
+                                Account security
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="ph-chart-bar me-2"></i>
+                                Analytics
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="ph-lock-key me-2"></i>
+                                Privacy
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item">
+                                <i class="ph-gear me-2"></i>
+                                All settings
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /page header -->
 </div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2019 - Leelite.Home.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
-    </div>
-</footer>
+<!-- Page content -->
+<div class="page-content">
+    @RenderBody()
+</div>
+<!-- /page content -->
+<!-- Footer -->
+<div class="navbar navbar-sm navbar-footer border-top px-lg-0">
+    <div class="container-fluid container-boxed">
+        <span>&copy; 2022 <a asp-area="" asp-page="">Leelite Home</a></span>
 
+        <ul class="nav">
+            <li class="nav-item">
+                <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                    <div class="d-flex align-items-center mx-md-1">
+                        <i class="ph-lifebuoy"></i>
+                        <span class="d-none d-md-inline-block ms-2">Support</span>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item ms-md-1">
+                <a href="https://demo.interface.club/limitless/demo/Documentation/index.html" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                    <div class="d-flex align-items-center mx-md-1">
+                        <i class="ph-file-text"></i>
+                        <span class="d-none d-md-inline-block ms-2">Docs</span>
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item ms-md-1">
+                <a asp-area="" asp-page="/Privacy" class="navbar-nav-link navbar-nav-link-icon text-primary bg-primary bg-opacity-10 fw-semibold rounded" target="_blank">
+                    <div class="d-flex align-items-center mx-md-1">
+                        <i class="ph-shield-chevron"></i>
+                        <span class="d-none d-md-inline-block ms-2">Privacy</span>
+                    </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- /footer -->
 @section ScriptsPlugins {
     @RenderSection("ScriptsPlugins", required: false)
 }
 
 @section Scripts {
+    <script src="~/home_assets/js/app.js"></script>
     @RenderSection("Scripts", required: false)
 }

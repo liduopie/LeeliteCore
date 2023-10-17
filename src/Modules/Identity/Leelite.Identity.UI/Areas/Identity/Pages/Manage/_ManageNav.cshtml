@@ -1,16 +1,46 @@
-﻿
-@inject SignInManager<User> SignInManager
+﻿@inject SignInManager<User> SignInManager
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
-<ul class="nav nav-pills flex-column">
-    <li class="nav-item"><a class="nav-link @ManageNavPages.IndexNavClass(ViewContext)" id="profile" asp-page="./Index">Profile</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.EmailNavClass(ViewContext)" id="email" asp-page="./Email">Email</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)" id="change-password" asp-page="./ChangePassword">Password</a></li>
+
+<ul class="nav nav-sidebar">
+    <li class="nav-item">
+        <a id="profile" asp-page="./Index" class="nav-link @ManageNavPages.IndexNavClass(ViewContext)">
+            <i class="ph-user me-2"></i>
+            My profile
+        </a>
+    </li>
+    <li class="nav-item">
+        <a id="email" asp-page="./Email" class="nav-link @ManageNavPages.EmailNavClass(ViewContext)">
+            <i class="ph-calendar me-2"></i>
+            Email
+        </a>
+    </li>
+    <li class="nav-item">
+        <a id="change-password" asp-page="./ChangePassword" class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)">
+            <i class="ph-password me-2"></i>
+            Password
+        </a>
+    </li>
     @if (hasExternalLogins)
     {
-        <li id="external-logins" class="nav-item"><a id="external-login" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)" asp-page="./ExternalLogins">External logins</a></li>
+        <li id="external-logins" class="nav-item">
+            <a id="external-login" asp-page="./ExternalLogins" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)">
+                <i class="ph-codesandbox-logo me-2"></i>
+                External logins
+            </a>
+        </li>
     }
-    <li class="nav-item"><a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">Two-factor authentication</a></li>
-    <li class="nav-item"><a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">Personal data</a></li>
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
+            <i class="ph-key me-2"></i>
+            Two-factor authentication
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
+            <i class="ph-database me-2"></i>
+            Personal data
+        </a>
+    </li>
 </ul>

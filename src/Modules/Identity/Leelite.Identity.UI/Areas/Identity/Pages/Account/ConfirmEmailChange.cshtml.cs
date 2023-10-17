@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace Leelite.Identity.UI.Areas.Identity.Pages.Account
 {
-    [AllowAnonymous]
     public class ConfirmEmailChangeModel : PageModel
     {
         private readonly UserManager<User> _userManager;
@@ -24,6 +23,10 @@ namespace Leelite.Identity.UI.Areas.Identity.Pages.Account
             _signInManager = signInManager;
         }
 
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
         [TempData]
         public string StatusMessage { get; set; }
 

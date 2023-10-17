@@ -7,6 +7,8 @@ namespace Leelite.Framework.Domain.Context
 {
     public interface IDbContext : IContext
     {
+        Guid GetContextId();
+
         DbConnection GetConnection();
 
         /// <summary>

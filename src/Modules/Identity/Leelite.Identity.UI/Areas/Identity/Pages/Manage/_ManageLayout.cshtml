@@ -1,58 +1,144 @@
-﻿@{
-    Layout = "/Areas/Identity/Pages/_Layout.cshtml";
+﻿@inject UserManager<User> UserManager
+
+@{
+    Layout = "_Layout";
 }
+
+@{
+    var user = UserManager.GetUserAsync(User).Result;
+}
+<!-- Main navbar -->
+<div class="navbar navbar-dark navbar-expand-lg navbar-static border-bottom border-bottom-white border-opacity-10">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-flex align-items-center">
+                <img src="~/global_assets/images/logo_icon.svg" alt="">
+                <img src="~/global_assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">
+            </a>
+        </div>
+
+        <ul class="nav flex-row justify-content-end order-1 order-lg-2">
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                    <i class="ph-bell"></i>
+                    <span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                    <i class="ph-chats"></i>
+                </a>
+            </li>
+
+            <partial name="_LoginPartial" />
+        </ul>
+    </div>
+</div>
+<!-- /main navbar -->
 <!-- Page content -->
 <div class="page-content">
-
     <!-- Main content -->
     <div class="content-wrapper">
-        <!-- Main navbar -->
-        <div class="navbar navbar-expand-md navbar-dark">
-            <div class="navbar-brand">
-                <a href="index.html" class="d-inline-block">
-                    <img src="~/global_assets/images/logo_light.png" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /main navbar -->
-        <!-- Content area -->
-        <div class="content d-flex justify-content-center align-items-center">
-            <h1>Manage your account</h1>
-            <div>
-                <h4>Change your account settings</h4>
-                <hr />
-                <div class="row">
-                    <div class="col-md-3">
-                        <partial name="_ManageNav" />
+
+        <!-- Inner content -->
+        <div class="content-inner">
+
+            <!-- Content area -->
+            <div class="content">
+
+                <!-- Inner container -->
+                <div class="d-lg-flex align-items-lg-start">
+
+                    <!-- Left sidebar component -->
+                    <div class="sidebar sidebar-component sidebar-expand-lg bg-transparent shadow-none me-lg-3">
+
+                        <!-- Sidebar content -->
+                        <div class="sidebar-content">
+
+                            <!-- Navigation -->
+                            <div class="card">
+                                <div class="sidebar-section-body text-center">
+                                    <div class="card-img-actions d-inline-block mb-3">
+                                        @if (string.IsNullOrEmpty(user.ProfilePicture))
+                                        {
+                                            <img src="~/global_assets/images/users/face1.jpg" class="img-fluid rounded-circle" width="150" height="150" alt="">
+                                        }
+                                        else
+                                        {
+                                            <img src="@user.ProfilePicture" class="img-fluid rounded-circle" width="150" height="150" alt="">
+                                        }
+                                        <div class="card-img-actions-overlay card-img rounded-circle">
+                                            <a href="#" class="btn btn-outline-white btn-icon rounded-pill">
+                                                <i class="ph-pencil"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <h6 class="mb-0">@user.NickName</h6>
+                                    <span class="text-muted">Head of UX</span>
+                                </div>
+
+                                <partial name="_ManageNav" />
+                            </div>
+                            <!-- /navigation -->
+
+                        </div>
+                        <!-- /sidebar content -->
+
                     </div>
-                    <div class="col-md-9">
+                    <!-- /left sidebar component -->
+                    <!-- Right content -->
+                    <div class="tab-content flex-fill">
                         @RenderBody()
                     </div>
+                    <!-- /right content -->
+
+                </div>
+                <!-- /inner container -->
+
+            </div>
+            <!-- /content area -->
+            <!-- Footer -->
+            <div class="navbar navbar-sm navbar-footer border-top">
+                <div class="container-fluid">
+                    <span>&copy; 2022 <a asp-area="" asp-page="">Leelite Home</a></span>
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-lifebuoy"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Support</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-md-1">
+                            <a href="https://demo.interface.club/limitless/demo/Documentation/index.html" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-file-text"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Docs</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-md-1">
+                            <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov" class="navbar-nav-link navbar-nav-link-icon text-primary bg-primary bg-opacity-10 fw-semibold rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-shopping-cart"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Purchase</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
-        </div>
-        <!-- /content area -->
-        <!-- Footer -->
-        <div class="navbar navbar-expand-lg navbar-light">
-            <div class="text-center d-lg-none w-100">
-                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
-                    <i class="icon-unfold mr-2"></i>
-                    Footer
-                </button>
-            </div>
+            <!-- /footer -->
 
-            <div class="navbar-collapse collapse" id="navbar-footer">
-                <span class="navbar-text">
-                    &copy; 2015 - 2018. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a>
-                </span>
-            </div>
         </div>
-        <!-- /footer -->
+        <!-- /inner content -->
     </div>
     <!-- /main content -->
 </div>
 <!-- /page content -->
-
 @section Scripts {
     @RenderSection("Scripts", required: false)
 }

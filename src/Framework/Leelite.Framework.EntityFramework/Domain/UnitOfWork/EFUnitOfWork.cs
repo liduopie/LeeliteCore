@@ -64,6 +64,8 @@ namespace Leelite.Framework.Domain.UnitOfWork
 
         public void Register(IDbContext context)
         {
+            if (contexts.Any(c => c.GetContextId() == context.GetContextId())) return;
+
             contexts.Add(context);
         }
     }

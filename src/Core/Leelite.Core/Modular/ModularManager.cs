@@ -45,6 +45,7 @@ namespace Leelite.Core.Modular
 
         public IList<ModuleContext> ModuleContexts { get { return _moduleContexts; } }
         public IList<IModule> Modules { get { return _modules; } }
+        public IList<ModuleInfo> ModuleInfos { get { return _infos; } }
 
         public void Loading(IServiceCollection services, IConfiguration configuration)
         {

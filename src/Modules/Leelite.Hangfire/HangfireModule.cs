@@ -2,6 +2,7 @@
 using Hangfire.Console;
 using Hangfire.PostgreSql;
 
+using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Commons.Host;
 using Leelite.Core.Modular;
@@ -27,7 +28,10 @@ namespace Leelite.Hangfire
                 .SetDataCompatibilityLevel(CompatibilityLevel.Version_170)
                 .UseSimpleAssemblyNameTypeSerializer()
                 .UseRecommendedSerializerSettings()
-                .UsePostgreSqlStorage(config?.GetConnectionString("HangfireConnection"));
+                .UsePostgreSqlStorage(configure =>
+                {
+                    configure.UseNpgsqlConnection(config?.GetConnectionString("HangfireConnection"));
+                });
             });
 
             // Add the processing server as IHostedService
@@ -61,6 +65,13 @@ namespace Leelite.Hangfire
 
             // 添加类型解释，通过模块加载的dll中查找，默认程序集中是不包含模块dll的
             GlobalConfiguration.Configuration.UseTypeResolver(DefaultTypeResolver);
+
+            var client = ApplicationManager.Clients.Find(c => c.Code == "Admin");
+
+            if (client != null)
+            {
+                client.Shortcuts.Add(new Application.Clients.NavItem("_blank", "/global_assets/images/logos/3.svg", "Hangfire", "后台作业任务", "/hangfire", "Admin", ""));
+            }
         }
 
         public Type? DefaultTypeResolver(string typeName)

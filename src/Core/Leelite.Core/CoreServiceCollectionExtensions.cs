@@ -5,9 +5,6 @@ using Leelite.Core.Modular;
 using Leelite.Core.Module;
 using Leelite.Core.Module.Store;
 
-using MediatR;
-using MediatR.Registration;
-
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
@@ -68,14 +65,6 @@ namespace Leelite.Core
             // services.AddSignalR();
 
             // Logger.LogInformation($"AddLeeliteCore add SignalR.");
-
-            var serviceConfig = new MediatRServiceConfiguration();
-
-            serviceConfig.AsScoped();
-
-            ServiceRegistrar.AddRequiredServices(services, serviceConfig);
-
-            Logger.LogInformation($"AddLeeliteCore add MediatR.");
         }
     }
 }

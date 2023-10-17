@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
-using Leelite.Core.Settings;
+﻿using Leelite.Application.Settings;
 
 using Microsoft.AspNetCore.Mvc;
+
+using System.Collections.Generic;
 
 namespace Leelite.Setting
 {

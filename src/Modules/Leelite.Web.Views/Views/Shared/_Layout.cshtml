@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Hosting;
+@using Microsoft.Extensions.Hosting;
+@inject IWebHostEnvironment env
+<!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
 <head>
     <meta charset="utf-8" />
@@ -8,22 +11,75 @@
     <title>@ViewData["Title"]</title>
 
     <!-- Global stylesheets -->
+    @RenderSection("GlobalStyles", required: false)
     <link href="~/global_assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
     <link href="~/global_assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
-    @RenderSection("GlobalStyles", required: false)
+    <link href="~/global_assets/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
     @RenderSection("Styles", required: false)
 </head>
 <body>
     @RenderBody()
+
+    @if (env.IsDevelopment())
+    {
+        <!-- Dev config -->
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="dev_config">
+            <div class="position-absolute top-50 end-100 visible">
+                <button type="button" class="btn btn-primary btn-icon translate-middle-y rounded-end-0" data-bs-toggle="offcanvas" data-bs-target="#dev_config">
+                    <i class="ph-gear"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas-header border-bottom py-0">
+                <h5 class="offcanvas-title py-3">开发者模式</h5>
+                <button type="button" class="btn btn-light btn-sm btn-icon border-transparent rounded-pill" data-bs-dismiss="offcanvas">
+                    <i class="ph-x"></i>
+                </button>
+            </div>
+
+            <div class="offcanvas-body">
+                <div class="list-group mb-3">
+                    @{
+                        var clients = Leelite.Application.ApplicationManager.Clients;
+
+                        @foreach (var item in clients)
+                        {
+                            <dev class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2">
+                                <div class="d-flex flex-fill my-1">
+                                    <a href="@item.DefaultUrl" class="d-flex me-2">
+                                        <i class="@item.Logo ph-2x me-3"></i>
+                                        <div>
+                                            <span class="fw-bold">@item.Name</span>
+                                            <div class="fs-sm text-muted">@item.Description</div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </dev>
+                        }
+                    }
+
+                </div>
+            </div>
+
+            <div class="border-top text-center py-2 px-3">
+                <a href="https://themeforest.net/item/limitless-responsive-web-application-kit/13080328?ref=kopyov" class="btn btn-yellow fw-semibold w-100 my-1" target="_blank">
+                    <i class="ph-shopping-cart me-2"></i>
+                    Purchase Limitless
+                </a>
+            </div>
+        </div>
+        <!-- /dev config -->
+    }
+
     <!-- Core JS files -->
+    <script src="~/global_assets/js/jquery/jquery.min.js"></script>
     <script src="~/global_assets/js/bootstrap/bootstrap.bundle.min.js"></script>
     <!-- /core JS files -->
     <!-- Plugins JS files -->
     @RenderSection("ScriptsPlugins", required: false)
     <!-- /plugins JS files -->
     <!-- Page JS files -->
-    <script src="~/assets/js/app.js"></script>
     @RenderSection("Scripts", required: false)
     <!-- /page Js files-->
 </body>

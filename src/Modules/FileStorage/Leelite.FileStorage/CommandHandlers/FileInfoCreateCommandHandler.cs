@@ -1,15 +1,15 @@
 ﻿using System;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 
 using AutoMapper;
+
 using HybridFS.FileSystem;
 using HybridFS.FileSystem.Exceptions;
 using HybridFS.FileSystem.Models;
 using HybridFS.Utility;
 
-using Leelite.Core.Settings;
+using Leelite.Application.Settings;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;
 using Leelite.Framework.Domain.Repository;
@@ -19,7 +19,6 @@ using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
 using Leelite.Modules.FileStorage.Models.FileItemAgg;
 using Leelite.Modules.FileStorage.Options;
 using Leelite.Modules.FileStorage.Utility;
-using Leelite.Modules.Settings.Interfaces;
 
 namespace Leelite.Modules.FileStorage.CommandHandlers
 {
@@ -44,7 +43,7 @@ namespace Leelite.Modules.FileStorage.CommandHandlers
             _domainEventBus = domainEventBus;
             _mapper = mapper;
 
-            _options = settingManage.GetApplicationOptions<FileStorageOptions>(nameof(FileStorageOptions));
+            _options = settingManage.GetApplicationOptions<FileStorageOptions>();
 
             _fileManager = fileManager;
         }

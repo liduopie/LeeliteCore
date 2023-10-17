@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Text;
+
 using Mono.TextTemplating;
 
 namespace Leelite.Modules.Dev.Generator
@@ -85,7 +86,7 @@ namespace Leelite.Modules.Dev.Generator
                     Directory.CreateDirectory(Path.GetDirectoryName(file.AbsolutePath));
                 }
 
-                TemplateGenerator.ProcessTemplate(file.TemplatePath, file.AbsolutePath);
+                TemplateGenerator.ProcessTemplateAsync(file.TemplatePath, file.AbsolutePath);
                 if (TemplateGenerator.Errors.HasErrors)
                 {
                     Logs.AppendLine($"Processing '{file.TemplatePath}' failed.");

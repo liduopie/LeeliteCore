@@ -1,5 +1,8 @@
-﻿using HealthChecks.UI.Client;
+﻿using System.Linq;
 
+using HealthChecks.UI.Client;
+
+using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module.Dependency;
 
@@ -43,7 +46,7 @@ namespace Leelite.HealthChecks.UI
 
                 config.MapHealthChecksUI(setup =>
                 {
-                    // setup.AddCustomStylesheet(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "assets/dotnet.css"));
+                    //setup.AddCustomStylesheet(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "assets/dotnet.css"));
                 });
 
                 config.MapHealthChecks("/healthz", new HealthCheckOptions
@@ -64,6 +67,13 @@ namespace Leelite.HealthChecks.UI
                     ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
                 });
             });
+
+            var client = ApplicationManager.Clients.Find(c => c.Code == "Admin");
+
+            if (client != null)
+            {
+                client.Shortcuts.Add(new Application.Clients.NavItem("_blank", "/global_assets/images/logos/2.svg", "HealthChecks", "运行状况检查", "/healthchecks-ui", "Admin", ""));
+            }
         }
     }
 }

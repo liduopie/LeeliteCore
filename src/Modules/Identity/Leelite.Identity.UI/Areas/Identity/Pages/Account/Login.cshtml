@@ -5,45 +5,49 @@
     Layout = "_LoginLayout.cshtml";
     ViewData["Title"] = "登录";
 }
-@section LoginTabs {
-    <vc:login-tabs current="@LoginType.Password"></vc:login-tabs>
-}
+
 <form method="post">
     <div class="text-center mb-3">
-        <i class="icon-reading icon-2x text-slate-300 border-slate-300 border-3 rounded-round p-3 mb-3 mt-1"></i>
+        <div class="d-inline-flex align-items-center justify-content-center mb-4 mt-2">
+            <img src="~/global_assets/images/logo_icon.svg" class="h-48px" alt="">
+        </div>
         <h5 class="mb-0">登录您的账号</h5>
         <span class="d-block text-muted">账号/邮箱</span>
     </div>
     <div asp-validation-summary="ModelOnly" class="validation-invalid-label"></div>
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <input asp-for="Input.UserName" class="form-control" placeholder="账号/邮箱" />
-        <div class="form-control-feedback">
-            <i class="icon-user text-muted"></i>
+    <div class="mb-3">
+        <label asp-for="Input.UserName" class="form-label">账号/邮箱</label>
+        <div class="form-control-feedback form-control-feedback-start">
+            <input asp-for="Input.UserName" class="form-control" placeholder="john@doe.com" />
+            <div class="form-control-feedback-icon">
+                <i class="ph-user-circle text-muted"></i>
+            </div>
         </div>
         <span asp-validation-for="Input.UserName" class="validation-invalid-label"></span>
     </div>
 
-    <div class="form-group form-group-feedback form-group-feedback-left">
-        <input asp-for="Input.Password" class="form-control" placeholder="密码" />
-        <div class="form-control-feedback">
-            <i class="icon-lock2 text-muted"></i>
+    <div class="mb-3">
+        <label asp-for="Input.Password" class="form-label">密码</label>
+        <div class="form-control-feedback form-control-feedback-start">
+            <input asp-for="Input.Password" class="form-control" placeholder="•••••••••••" />
+            <div class="form-control-feedback-icon">
+                <i class="ph-lock text-muted"></i>
+            </div>
         </div>
         <span asp-validation-for="Input.Password" class="validation-invalid-label"></span>
     </div>
 
-    <div class="form-group d-flex align-items-center">
-        <div class="form-check mb-0">
-            <label asp-for="Input.RememberMe" class="form-check-label">
-                <input asp-for="Input.RememberMe" class="form-input-styled" checked data-fouc />
-                自动登录
-            </label>
-        </div>
+    <div class="d-flex align-items-center mb-3">
+        <label asp-for="Input.RememberMe" class="form-check">
+            <input asp-for="Input.RememberMe" class="form-check-input" checked>
+            <span class="form-check-label">自动登录</span>
+        </label>
 
-        <a id="forgot-password" asp-page="./ForgotPassword" class="ml-auto">忘记密码?</a>
+        <a id="forgot-password" asp-page="./ForgotPassword" class="ms-auto">忘记密码?</a>
     </div>
 
-    <div class="form-group">
-        <button type="submit" class="btn btn-primary btn-block">登录 <i class="icon-circle-right2 ml-2"></i></button>
+    <div class="mb-3">
+        <button type="submit" class="btn btn-primary w-100">登录</button>
     </div>
 </form>
 @section Register{

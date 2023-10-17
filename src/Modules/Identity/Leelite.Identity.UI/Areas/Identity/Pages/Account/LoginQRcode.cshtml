@@ -5,10 +5,8 @@
     Layout = "_LoginLayout.cshtml";
     ViewData["Title"] = "扫码登录";
 }
-@section LoginTabs {
-    <vc:login-tabs current="@LoginType.QRcode"></vc:login-tabs>
-}
-扫码登录
+
+<div>扫码登录</div>
 @section Register{
     <vc:register return-url=""></vc:register>
 }

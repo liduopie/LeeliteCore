@@ -34,7 +34,7 @@ namespace Leelite.Framework.Service
         where TUpdateRequest : IUpdateRequest<TKey>
         where TQueryParameter : PageParameter<TEntity>
     {
-        private readonly ICommandBus _commandBus;
+        protected readonly ICommandBus _commandBus;
 
         public CrudService(
             IRepository<TEntity, TKey> repository,

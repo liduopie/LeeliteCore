@@ -4,28 +4,68 @@
     ViewData["Title"] = "项目生成工具";
 }
 
-<form method="post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group">
-        <label asp-for="Info.Namespace" class="control-label"></label>
-        <input asp-for="Info.Namespace" class="form-control" required />
-        <span asp-validation-for="Info.Namespace" class="text-danger"></span>
+
+<!-- Content area -->
+<div class="content container">
+
+    <!-- Centered card -->
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0">DDD代码生成器</h5>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="card-body validation-invalid-label"></div>
+
+                <div class="card-body border-top">
+                    <form method="post">
+                        <div class="row mb-3">
+                            <label asp-for="Info.Namespace" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Info.Namespace" class="form-control" required>
+                                <span asp-validation-for="Info.Namespace" class="validation-invalid-label"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Info.ProjectType" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <select asp-for="Info.ProjectType" class="form-control form-control-select2">
+                                    <option value="lib">Lib</option>
+                                    <option value="web">Web</option>
+                                    <option value="webapi">WebApi</option>
+                                </select>
+                                <span asp-validation-for="Info.ProjectType" class="validation-invalid-label"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <div class="form-check">
+                                    <input asp-for="Info.IsModule" type="checkbox" class="form-check-input" checked>
+                                    <label asp-for="Info.IsModule" class="form-check-label"></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">生成代码 <i class="ph-paper-plane-tilt ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="form-group">
-        <label asp-for="Info.ProjectType" class="control-label"></label>
-        <select asp-for="Info.ProjectType" class="form-control">
-            <option value="lib">Lib</option>
-            <option value="web">Web</option>
-            <option value="webapi">WebApi</option>
-        </select>
-        <span asp-validation-for="Info.ProjectType" class="text-danger"></span>
-    </div>
-    <div class="form-check">
-        <input asp-for="Info.IsModule" type="checkbox" class="form-check-input" />
-        <label asp-for="Info.IsModule" class="form-check-label"></label>
-    </div>
-    <input type="submit" value="生成代码" />
-</form>
+    <!-- /centered card -->
+</div>
+<!-- /content area -->
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
 
 <div>
     <em>Logs:</em>

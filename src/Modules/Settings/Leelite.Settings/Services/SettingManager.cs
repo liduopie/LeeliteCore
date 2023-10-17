@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-
-using Leelite.Core.Settings;
+﻿using Leelite.Application.Settings;
 using Leelite.Settings.Dtos.SettingValueDtos;
 using Leelite.Settings.Interfaces;
 
 using Microsoft.Extensions.Configuration;
+
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Leelite.Settings.Services
 {
@@ -97,8 +97,10 @@ namespace Leelite.Settings.Services
         }
 
         /// <inheritdoc/>
-        public TOptions GetApplicationOptions<TOptions>(string name)
+        public TOptions GetApplicationOptions<TOptions>()
         {
+            var name = nameof(TOptions);
+
             var config = GetApplicationConfig();
 
             var options = (TOptions)typeof(TOptions).Assembly.CreateInstance(typeof(TOptions).FullName);
@@ -109,8 +111,10 @@ namespace Leelite.Settings.Services
         }
 
         /// <inheritdoc/>
-        public TOptions GetTenantOptions<TOptions>(long tenantId, string name)
+        public TOptions GetTenantOptions<TOptions>(long tenantId)
         {
+            var name = nameof(TOptions);
+
             var config = GetTenantConfig(tenantId);
 
             var options = (TOptions)typeof(TOptions).Assembly.CreateInstance(typeof(TOptions).FullName);
@@ -121,8 +125,10 @@ namespace Leelite.Settings.Services
         }
 
         /// <inheritdoc/>
-        public TOptions GetUserOptions<TOptions>(long userId, string name)
+        public TOptions GetUserOptions<TOptions>(long userId)
         {
+            var name = nameof(TOptions);
+
             var config = GetUserConfig(userId);
 
             var options = (TOptions)typeof(TOptions).Assembly.CreateInstance(typeof(TOptions).FullName);

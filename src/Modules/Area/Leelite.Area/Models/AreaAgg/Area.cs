@@ -9,5 +9,8 @@ namespace Leelite.Modules.Area.Models.AreaAgg
         public string Path { get; set; }
         public int Level { get; set; }
         public int? SortId { get; set; }
+        public int Sort { get; set; }
+        public bool IsLeaf { get; set; }
+        public int ChildrenCount { get; set; }
     }
 }

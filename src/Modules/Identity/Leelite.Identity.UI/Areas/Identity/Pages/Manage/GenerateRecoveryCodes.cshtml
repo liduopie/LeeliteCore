@@ -5,23 +5,35 @@
     ViewData["ActivePage"] = ManageNavPages.TwoFactorAuthentication;
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
-<h4>@ViewData["Title"]</h4>
-<div class="alert alert-warning" role="alert">
-    <p>
-        <span class="glyphicon glyphicon-warning-sign"></span>
-        <strong>Put these codes in a safe place.</strong>
-    </p>
-    <p>
-        If you lose your device and don't have the recovery codes you will lose access to your account.
-    </p>
-    <p>
-        Generating new recovery codes does not change the keys used in authenticator apps. If you wish to change the key
-        used in an authenticator app you should <a asp-page="./ResetAuthenticator">reset your authenticator keys.</a>
-    </p>
-</div>
-<div>
-    <form method="post" class="form-group">
-        <button class="btn btn-danger" type="submit">Generate Recovery Codes</button>
-    </form>
+<div class="tab-pane fade active show" id="two-factor">
+
+    <!-- Profile info -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">@ViewData["Title"]</h5>
+        </div>
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <div class="card-body">
+            <div class="alert alert-warning" role="alert">
+                <p>
+                    <span class="glyphicon glyphicon-warning-sign"></span>
+                    <strong>Put these codes in a safe place.</strong>
+                </p>
+                <p>
+                    If you lose your device and don't have the recovery codes you will lose access to your account.
+                </p>
+                <p>
+                    Generating new recovery codes does not change the keys used in authenticator apps. If you wish to change the key
+                    used in an authenticator app you should <a asp-page="./ResetAuthenticator">reset your authenticator keys.</a>
+                </p>
+            </div>
+            <div>
+                <form method="post">
+                    <button class="btn btn-danger" type="submit">Generate Recovery Codes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- /profile info -->
+
 </div>

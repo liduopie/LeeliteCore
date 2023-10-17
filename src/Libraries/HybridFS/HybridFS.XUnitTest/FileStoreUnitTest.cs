@@ -114,7 +114,7 @@ namespace HybridFS.XUnitTest
             IFileStore store = serviceProvider.GetRequiredService<IFileStore>();
 
             var content = new byte[12097152];
-            FileEntry? entry;
+            FileEntry entry;
             using (var stream = new MemoryStream(content))
             {
                 entry = await store.CreateFileFromStreamAsync(stream);

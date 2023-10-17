@@ -1,12 +1,7 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-using Leelite.Core.Settings;
+﻿using Leelite.Application.Settings;
 using Leelite.Identity.Models.UserAgg;
 using Leelite.Identity.SignIn.Options;
 using Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models;
-using Leelite.Settings.Interfaces;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -25,6 +20,10 @@ namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents
             _settingManager = settingManager;
         }
 
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
         public IList<AuthenticationScheme> Logins { get; set; }
 
         public async Task<IViewComponentResult> InvokeAsync()
@@ -32,7 +31,7 @@ namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents
             var model = new ExternalLoginsViewModel
             {
                 ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList(),
-                Options = _settingManager.GetApplicationOptions<LoginOptions>(nameof(LoginOptions))
+                Options = _settingManager.GetApplicationOptions<LoginOptions>()
             };
 
             return View(model);

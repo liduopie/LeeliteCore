@@ -1,39 +1,21 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Leelite.Identity.Models.UserAgg;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Logging;
 
 namespace Leelite.Identity.UI.Areas.Identity.Pages.Account
 {
+    /// <summary>
+    ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+    ///     directly from your code. This API may change or be removed in future releases.
+    /// </summary>
     [AllowAnonymous]
     public class LockoutModel : PageModel
     {
-        private readonly UserManager<User> _userManager;
-        private readonly ILogger<LockoutModel> _logger;
-
-        public LockoutModel(UserManager<User> userManager, ILogger<LockoutModel> logger)
+        /// <summary>
+        ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
+        ///     directly from your code. This API may change or be removed in future releases.
+        /// </summary>
+        public void OnGet()
         {
-            _userManager = userManager;
-            _logger = logger;
-        }
-
-
-        public string UserName { get; set; }
-
-        public string ProfilePicture { get; set; }
-
-        public async Task OnGetAsync(string userName)
-        {
-            UserName = userName;
-
-            var user = await _userManager.FindByNameAsync(UserName);
-            ProfilePicture = user.ProfilePicture;
         }
     }
 }

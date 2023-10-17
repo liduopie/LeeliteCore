@@ -3,45 +3,79 @@
 }
 @section Styles{
     <link href="~/identity/css/identity.css" rel="stylesheet" type="text/css">
-    @RenderSection("Styles", required: false)
+        @RenderSection("Styles", required: false)
 }
+<!-- Main navbar -->
+<div class="navbar navbar-dark navbar-static py-2">
+    <div class="container-fluid">
+        <div class="navbar-brand">
+            <a href="index.html" class="d-inline-flex align-items-center">
+                <img src="~/global_assets/images/logo_icon.svg" alt="">
+                <img src="~/global_assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">
+            </a>
+        </div>
+
+        <div class="d-flex justify-content-end align-items-center ms-auto">
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+                        <div class="d-flex align-items-center mx-md-1">
+                            <i class="ph-lifebuoy"></i>
+                            <span class="d-none d-md-inline-block ms-2">Support</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+                        <div class="d-flex align-items-center mx-md-1">
+                            <i class="ph-user-circle-plus"></i>
+                            <span class="d-none d-md-inline-block ms-2">Register</span>
+                        </div>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+                        <div class="d-flex align-items-center mx-md-1">
+                            <i class="ph-user-circle"></i>
+                            <span class="d-none d-md-inline-block ms-2">Login</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- /main navbar -->
 <!-- Page content -->
 <div class="page-content">
 
     <!-- Main content -->
-    <div class="content-wrapper gradient-1">
-        <!-- Main navbar -->
-        <div class="navbar navbar-expand-md navbar-dark" style="background-color: rgba(0,0,0,0.075); border-bottom-color: rgba(255,255,255,0.35);">
-            <div class="navbar-brand">
-                <a href="index.html" class="d-inline-block">
-                    <img src="~/global_assets/images/logo_light.png" alt="">
-                </a>
-            </div>
-        </div>
-        <!-- /main navbar -->
-        <!-- Content area -->
-        <div class="content d-flex justify-content-center align-items-center">
-            @RenderBody()
-        </div>
-        <!-- /content area -->
-        <!-- Footer -->
-        <div class="navbar navbar-expand-lg navbar-dark bg-dark-alpha border-0">
-            <div class="text-center d-lg-none w-100">
-                <button type="button" class="navbar-toggler dropdown-toggle" data-toggle="collapse" data-target="#navbar-footer">
-                    <i class="icon-unfold mr-2"></i>
-                    Footer
-                </button>
-            </div>
+    <div class="content-wrapper">
 
-            <div class="navbar-collapse collapse" id="navbar-footer">
-                <span class="navbar-text">
-                    &copy; @DateTime.Now.Year. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a>
-                </span>
+        <!-- Inner content -->
+        <div class="content-inner">
+
+            <!-- Content area -->
+            <div class="content d-flex justify-content-center align-items-center">
+
+                @RenderBody()
+
             </div>
+            <!-- /content area -->
+            <!-- Footer -->
+            <div class="navbar navbar-sm navbar-footer border-top">
+                <div class="container-fluid">
+                    <span>&copy; @DateTime.Now.Year. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a></span>
+                </div>
+            </div>
+            <!-- /footer -->
+
         </div>
-        <!-- /footer -->
+        <!-- /inner content -->
+
     </div>
     <!-- /main content -->
+
 </div>
 <!-- /page content -->
 @section ScriptsPlugins {

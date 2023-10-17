@@ -18,5 +18,14 @@ namespace Leelite.Modules.Organization.Models.OrganizationNodeAgg
 
         /// <inheritdoc/>
         public int? SortId { get; set; }
+
+        /// <inheritdoc/>
+        public int Sort { get; set; }
+
+        /// <inheritdoc/>
+        public bool IsLeaf { get; set; }
+
+        /// <inheritdoc/>
+        public int ChildrenCount { get; set; }
     }
 }

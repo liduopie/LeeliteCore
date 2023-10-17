@@ -3,7 +3,6 @@
 	<PropertyGroup>
 		<TargetFramework>net7.0</TargetFramework>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
-		<Nullable>enable</Nullable>
 		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
@@ -14,29 +13,27 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <Content Remove="module.json" />
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Content Remove="module.json" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<SupportedPlatform Include="browser" />
 	</ItemGroup>
 
-
 	<ItemGroup>
-		<Folder Include="Areas\Admin\Models\" />
+		<None Include="module.json">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
 	</ItemGroup>
 
-
 	<ItemGroup>
-	  <None Include="module.json">
-	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-	  </None>
-	</ItemGroup>
-
-
-	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
-	  <ProjectReference Include="..\Leelite.Admin\Leelite.Admin.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\Leelite.Admin\Leelite.Admin.csproj" />
 	</ItemGroup>
 
 </Project>

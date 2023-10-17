@@ -1,13 +1,36 @@
 ﻿@model ExternalLoginsViewModel
 
 @{
-    if (Model.Options.EnabledExternalLogins && Model.ExternalLogins.Any())
+    if (Model.Options.Logins.Count > 0 || (Model.Options.EnabledExternalLogins && Model.ExternalLogins.Any()))
     {
-        <div class="form-group text-center text-muted content-divider">
-            <span class="px-2">社交帐号登录</span>
+        <div class="text-center text-muted content-divider mb-3">
+            <span class="px-2">其他登录</span>
         </div>
 
-        <form id="external-account" asp-page="/SignIn/ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-group text-center">
+        <form id="external-account" asp-page="/SignIn/ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="text-center mb-3">
+            @foreach (var loginType in Model.Options.Logins)
+            {
+                switch (loginType)
+                {
+                    case Leelite.Identity.SignIn.Options.LoginType.Password:
+                        <a asp-page="./Login" class="btn btn-outline bg-slate-600 text-slate-600 btn-icon rounded-round ml-2">
+                            <i class="icon-lock5"></i>
+                        </a>
+                        break;
+                    case Leelite.Identity.SignIn.Options.LoginType.Mobile:
+                        <a asp-page="./LoginMobile" class="btn btn-outline bg-slate-600 text-slate-600 btn-icon rounded-round ml-2">
+                            <i class="icon-mobile"></i>
+                        </a>
+                        break;
+                    case Leelite.Identity.SignIn.Options.LoginType.QRcode:
+                        <a asp-page="./LoginQrcode" class="btn btn-outline bg-slate-600 text-slate-600 btn-icon rounded-round ml-2">
+                            <i class="icon-qrcode"></i>
+                        </a>
+                        break;
+                    default:
+                        break;
+                }
+            }
             @foreach (var provider in Model.ExternalLogins)
             {
                 switch (provider.Name)

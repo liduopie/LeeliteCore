@@ -5,7 +5,21 @@
     ViewData["ActivePage"] = ManageNavPages.PersonalData;
 }
 
-<h4>@ViewData["Title"]</h4>
+<div class="tab-pane fade active show" id="download">
+
+    <!-- Profile info -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">@ViewData["Title"]</h5>
+        </div>
+        
+        <div class="card-body">
+            
+        </div>
+    </div>
+    <!-- /profile info -->
+
+</div>
 
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />

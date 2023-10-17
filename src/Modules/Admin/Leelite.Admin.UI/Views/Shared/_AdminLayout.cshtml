@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Leelite.Application.Clients;
+@{
     Layout = "_Layout";
 }
 
@@ -13,62 +14,262 @@
     @RenderSection("Styles", required: false)
 }
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Leelite</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                @*<partial name="_LoginPartial" />*@
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
+@{
+    var client = Leelite.Application.ApplicationManager.Clients.Find(c => c.Code == "Admin");
+    if (client == null)
+    {
+        client = new Leelite.Application.Clients.Client();
+    }
+
+    var currentPath = ViewContext.HttpContext.Request.Path.Value;
+}
+
+<!-- Page content -->
+<div class="page-content">
+
+    <!-- Main sidebar -->
+    <div class="sidebar sidebar-dark sidebar-main sidebar-expand-lg">
+
+        <!-- Sidebar header -->
+        <div class="sidebar-section bg-black bg-opacity-10 border-bottom border-bottom-white border-opacity-10">
+            <div class="sidebar-logo d-flex justify-content-center align-items-center">
+                <a href="index.html" class="d-inline-flex align-items-center py-2">
+                    <img src="~/global_assets/images/logo_icon.svg" class="sidebar-logo-icon" alt="">
+                    <img src="~/global_assets/images/logo_text_light.svg" class="sidebar-resize-hide ms-3" height="14" alt="">
+                </a>
+
+                <div class="sidebar-resize-hide ms-auto">
+                    <button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+                        <i class="ph-arrows-left-right"></i>
+                    </button>
+
+                    <button type="button" class="btn btn-flat-white btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+                        <i class="ph-x"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- /sidebar header -->
+        <!-- Sidebar content -->
+        <div class="sidebar-content">
+
+            <!-- Main navigation -->
+            <div class="sidebar-section">
+                <ul class="nav nav-sidebar" data-nav-type="accordion">
+                    @{
+                        @functions
+                        {
+                            private void NavItem(NavItem item, string currentPath)
+                            {
+                                if (item.Items.Count > 0)
+                                {
+                                    <li class="nav-item nav-item-submenu">
+                                        <a href="#" class="nav-link">
+                                            <i class="@item.Icon"></i>
+                                            <span>@item.Name</span>
+                                        </a>
+
+                                        <ul class="nav-group-sub collapse">
+                                            @foreach (var subItem in item.Items)
+                                            {
+                                                NavItem(subItem, currentPath);
+                                            }
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    if (string.IsNullOrEmpty(item.Name))
+                                    {
+                                        <li class="nav-item-divider"></li>
+                                    }
+                                    else
+                                    {
+                                        <li class="nav-item">
+                                            <a target="@item.Target" href="@item.Url" class="nav-link @(currentPath.Contains(item.Url)?"active":"")">
+                                                <i class="@item.Icon"></i>
+                                                <span>@item.Name</span>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            }
+                        }
+
+                        @foreach (var item in client.NavMenus)
+                        {
+                            if (string.IsNullOrEmpty(item.Url))
+                            {
+                                <li class="nav-item-header">
+                                    <div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">@item.Name</div>
+                                    <i class="@item.Icon sidebar-resize-show"></i>
+                                </li>
+                                continue;
+                            }
+
+                            NavItem(item, currentPath);
+                        }
+                    }
+                </ul>
+            </div>
+            <!-- /main navigation -->
+
+        </div>
+        <!-- /sidebar content -->
+
+    </div>
+    <!-- /main sidebar -->
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+        <!-- Main navbar -->
+        <div class="navbar navbar-expand-lg navbar-static shadow">
+            <div class="container-fluid">
+                <div class="d-flex d-lg-none">
+                    <button type="button" class="navbar-toggler sidebar-mobile-main-toggle rounded">
+                        <i class="ph-list"></i>
+                    </button>
+                    <button type="button" class="navbar-toggler sidebar-mobile-secondary-toggle rounded">
+                        <i class="ph-arrow-left"></i>
+                    </button>
+                    <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-mobile" aria-expanded="false">
+                        <i class="ph-squares-four"></i>
+                    </button>
+                </div>
+
+                <div class="navbar-collapse order-2 order-lg-1 collapse" id="navbar-mobile" style="">
+                    <ul class="navbar-nav mt-2 mt-lg-0">
+                        <li class="nav-item">
+                            <a href="#" class="navbar-nav-link rounded">Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a href="#" class="navbar-nav-link rounded dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Action</a>
+                                <a href="#" class="dropdown-item">Another action</a>
+                                <a href="#" class="dropdown-item">Something else here</a>
+                                <a href="#" class="dropdown-item">One more line</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <ul class="nav gap-sm-2 order-1 order-lg-2 ms-auto">
+                    <li class="nav-item nav-item-dropdown-lg dropdown">
+                        <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="dropdown">
+                            <i class="ph-squares-four"></i>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end dropdown-menu-scrollable-sm wmin-lg-600 p-0">
+                            <div class="d-flex align-items-center border-bottom p-3">
+                                <h6 class="mb-0">工具箱</h6>
+                                <a href="#" class="ms-auto">
+                                    查看全部
+                                    <i class="ph-arrow-circle-right ms-1"></i>
+                                </a>
+                            </div>
+
+                            <div class="row row-cols-1 row-cols-sm-2 g-0">
+                                @for (int i = 0; i < client.Shortcuts.Count; i++)
+                                {
+                                    var item = client.Shortcuts[i];
+
+                                    <div class="col">
+                                        <a class="dropdown-item text-wrap h-100 align-items-start @(i%2==0?"border-end-sm ":"")@(client.Shortcuts.Count-i!=1?"border-bottom ":"")@(client.Shortcuts.Count-i==2?"border-bottom-sm-0 rounded-bottom-start ":"")@(client.Shortcuts.Count-i==1?"rounded-bottom-end ":"")p-3" href="@item.Url" target="_blank">
+                                            <div>
+                                                <img src="@item.Icon" class="h-40px mb-2" alt="">
+                                                <div class="fw-semibold my-1">@item.Name</div>
+                                                <div class="text-muted">@item.Description</div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                }
+                            </div>
+                        </div>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Dev">Dev</a>
+                        <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                            <i class="ph-bell"></i>
+                            <span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Admin">Admin</a>
+                        <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                            <i class="ph-chats"></i>
+                        </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/swagger">Swagger</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/healthchecks-ui">HealthChecks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/hangfire">Hangfire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/profiler/results-index">MiniProfiler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
+                    <li class="nav-item nav-item-dropdown-lg dropdown">
+                        <a href="#" class="navbar-nav-link align-items-center rounded p-1" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="status-indicator-container">
+                                <img src="~/global_assets/images/users/face11.jpg" class="w-32px h-32px rounded" alt="">
+                                <span class="status-indicator bg-success"></span>
+                            </div>
+                            <span class="d-none d-lg-inline-block mx-lg-2">Victoria</span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-end">
+                            <a href="#" class="dropdown-item">Action</a>
+                            <a href="#" class="dropdown-item">Another action</a>
+                            <a href="#" class="dropdown-item">Something else here</a>
+                            <a href="#" class="dropdown-item">One more line</a>
+                        </div>
                     </li>
                 </ul>
             </div>
         </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
+        <!-- /main navbar -->
+        <!-- Inner content -->
+        <div class="content-inner">
+            @RenderBody()
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2019 - Leelite.Home.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <!-- Footer -->
+            <div class="navbar navbar-sm navbar-footer border-top">
+                <div class="container-fluid">
+                    <span>&copy; 2022 <a asp-area="Admin" asp-page="">Leelite Admin</a></span>
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-lifebuoy"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Support</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-md-1">
+                            <a href="https://demo.interface.club/limitless/demo/Documentation/index.html" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-file-text"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Docs</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-md-1">
+                            <a asp-area="" asp-page="/Privacy" class="navbar-nav-link navbar-nav-link-icon text-primary bg-primary bg-opacity-10 fw-semibold rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-shield-chevron"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Privacy</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /footer -->
+
+        </div>
+        <!-- /inner content -->
+
     </div>
-</footer>
+    <!-- /main content -->
 
+</div>
+<!-- /page content -->
 @section ScriptsPlugins {
     @RenderSection("ScriptsPlugins", required: false)
 }
 
 @section Scripts {
+    <script src="~/admin_assets/js/app.js"></script>
     @RenderSection("Scripts", required: false)
 }

@@ -5,21 +5,39 @@
     ViewData["ActivePage"] = "TwoFactorAuthentication";
 }
 
-<partial name="_StatusMessage" for="StatusMessage" />
-<h4>@ViewData["Title"]</h4>
-<div class="alert alert-warning" role="alert">
-    <p>
-        <strong>Put these codes in a safe place.</strong>
-    </p>
-    <p>
-        If you lose your device and don't have the recovery codes you will lose access to your account.
-    </p>
-</div>
-<div class="row">
-    <div class="col-md-12">
-        @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
-        {
-            <code class="recovery-code">@Model.RecoveryCodes[row]</code><text>&nbsp;</text><code class="recovery-code">@Model.RecoveryCodes[row + 1]</code><br />
-        }
+<div class="tab-pane fade active show" id="codes">
+
+    <!-- Profile info -->
+    <div class="card">
+        <div class="card-header">
+            <h5 class="mb-0">@ViewData["Title"]</h5>
+        </div>
+        <partial name="_StatusMessage" for="StatusMessage" />
+        <div class="card-body">
+            <div class="alert alert-warning" role="alert">
+                <p>
+                    <strong>Put these codes in a safe place.</strong>
+                </p>
+                <p>
+                    If you lose your device and don't have the recovery codes you will lose access to your account.
+                </p>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    @for (var row = 0; row < Model.RecoveryCodes.Length; row += 2)
+                    {
+                        <code class="recovery-code">@Model.RecoveryCodes[row]</code>
+
+                        <text>&nbsp;</text>
+
+                        <code class="recovery-code">@Model.RecoveryCodes[row + 1]</code>
+
+                        <br />
+                    }
+                </div>
+            </div>
+        </div>
     </div>
+    <!-- /profile info -->
+
 </div>

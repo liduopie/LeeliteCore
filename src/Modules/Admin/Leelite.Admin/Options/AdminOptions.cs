@@ -1,8 +1,8 @@
-﻿using Leelite.Core.Options;
+﻿using Leelite.Application.Options;
 
 namespace Leelite.Admin.Options
 {
-    public class AdminOptions : ApplicationOptions
+    public class AdminOptions
     {
     }
 }

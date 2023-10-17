@@ -22,44 +22,45 @@ namespace Leelite.Core.Cache
             services.AddFusionCacheSystemTextJsonSerializer();
 
             // REGISTER FUSION CACHE
-            services.AddFusionCache(options =>
-            {
-                configuration.GetSection("Cache:FusionCacheEntryOptions").Bind(options);
-
-                options.DefaultEntryOptions = new FusionCacheEntryOptions
+            services.AddFusionCache()
+                .WithOptions(options =>
                 {
-                    // CACHE DURATION
-                    Duration = TimeSpan.FromMinutes(1),
+                    configuration.GetSection("Cache:FusionCacheEntryOptions").Bind(options);
 
-                    // FAIL-SAFE OPTIONS
-                    IsFailSafeEnabled = true,
-                    FailSafeMaxDuration = TimeSpan.FromHours(2),
-                    FailSafeThrottleDuration = TimeSpan.FromSeconds(30),
+                    options.DefaultEntryOptions = new FusionCacheEntryOptions
+                    {
+                        // CACHE DURATION
+                        Duration = TimeSpan.FromMinutes(1),
 
-                    // FACTORY TIMEOUTS
-                    FactorySoftTimeout = TimeSpan.FromMilliseconds(100),
-                    FactoryHardTimeout = TimeSpan.FromMilliseconds(1500),
+                        // FAIL-SAFE OPTIONS
+                        IsFailSafeEnabled = true,
+                        FailSafeMaxDuration = TimeSpan.FromHours(2),
+                        FailSafeThrottleDuration = TimeSpan.FromSeconds(30),
 
-                    // DISTRIBUTED CACHE
-                    DistributedCacheSoftTimeout = TimeSpan.FromSeconds(1),
-                    DistributedCacheHardTimeout = TimeSpan.FromSeconds(2),
-                    AllowBackgroundDistributedCacheOperations = true,
+                        // FACTORY TIMEOUTS
+                        FactorySoftTimeout = TimeSpan.FromMilliseconds(100),
+                        FactoryHardTimeout = TimeSpan.FromMilliseconds(1500),
 
-                    // JITTERING
-                    JitterMaxDuration = TimeSpan.FromSeconds(2)
-                };
+                        // DISTRIBUTED CACHE
+                        DistributedCacheSoftTimeout = TimeSpan.FromSeconds(1),
+                        DistributedCacheHardTimeout = TimeSpan.FromSeconds(2),
+                        AllowBackgroundDistributedCacheOperations = true,
 
-                // DISTIBUTED CACHE CIRCUIT-BREAKER
-                options.DistributedCacheCircuitBreakerDuration = TimeSpan.FromSeconds(2);
+                        // JITTERING
+                        JitterMaxDuration = TimeSpan.FromSeconds(2)
+                    };
 
-                // CUSTOM LOG LEVELS
-                options.FailSafeActivationLogLevel = LogLevel.Debug;
-                options.SerializationErrorsLogLevel = LogLevel.Warning;
-                options.DistributedCacheSyntheticTimeoutsLogLevel = LogLevel.Debug;
-                options.DistributedCacheErrorsLogLevel = LogLevel.Error;
-                options.FactorySyntheticTimeoutsLogLevel = LogLevel.Debug;
-                options.FactoryErrorsLogLevel = LogLevel.Error;
-            });
+                    // DISTIBUTED CACHE CIRCUIT-BREAKER
+                    options.DistributedCacheCircuitBreakerDuration = TimeSpan.FromSeconds(2);
+
+                    // CUSTOM LOG LEVELS
+                    options.FailSafeActivationLogLevel = LogLevel.Debug;
+                    options.SerializationErrorsLogLevel = LogLevel.Warning;
+                    options.DistributedCacheSyntheticTimeoutsLogLevel = LogLevel.Debug;
+                    options.DistributedCacheErrorsLogLevel = LogLevel.Error;
+                    options.FactorySyntheticTimeoutsLogLevel = LogLevel.Debug;
+                    options.FactoryErrorsLogLevel = LogLevel.Error;
+                });
         }
     }
 }

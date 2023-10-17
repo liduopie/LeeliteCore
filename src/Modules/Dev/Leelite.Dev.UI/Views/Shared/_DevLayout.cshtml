@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Leelite.Application.Clients;
+@{
     Layout = "_Layout";
 }
 
@@ -13,62 +14,174 @@
     @RenderSection("Styles", required: false)
 }
 
-<header>
-    <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-        <div class="container">
-            <a class="navbar-brand" asp-area="" asp-page="/Index">Leelite</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                @*<partial name="_LoginPartial" />*@
-                <ul class="navbar-nav flex-grow-1">
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Index">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Dev">Dev</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/Admin">Admin</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/swagger">Swagger</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/healthchecks-ui">HealthChecks</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/hangfire">Hangfire</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" href="~/profiler/results-index">MiniProfiler</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link text-dark" asp-area="" asp-page="/Privacy">Privacy</a>
-                    </li>
-                </ul>
-            </div>
+@{
+    var client = Leelite.Application.ApplicationManager.Clients.Find(c => c.Code == "Dev");
+    if (client == null)
+    {
+        client = new Leelite.Application.Clients.Client();
+    }
+
+    var currentPath = ViewContext.HttpContext.Request.Path.Value;
+}
+
+<!-- Main navbar -->
+<div class="navbar navbar-expand-xl navbar-static shadow">
+    <div class="container-fluid">
+        <div class="navbar-brand flex-1">
+            <a href="index.html" class="d-inline-flex align-items-center">
+                <img src="~/global_assets/images/logo_icon.svg" alt="">
+                <img src="~/global_assets/images/logo_text_dark.svg" class="d-none d-sm-inline-block h-16px invert-dark ms-3" alt="">
+            </a>
         </div>
-    </nav>
-</header>
-<div class="container">
-    <main role="main" class="pb-3">
-        @RenderBody()
-    </main>
-</div>
 
-<footer class="border-top footer text-muted">
-    <div class="container">
-        &copy; 2019 - Leelite.Home.UI - <a asp-area="" asp-page="/Privacy">Privacy</a>
+        <div class="d-flex w-100 w-xl-auto overflow-auto overflow-xl-visible scrollbar-hidden border-top border-top-xl-0 order-1 order-xl-0 pt-2 pt-xl-0 mt-2 mt-xl-0">
+
+            <ul class="nav gap-1 justify-content-center flex-nowrap flex-xl-wrap mx-auto">
+                @foreach (var item in client.NavMenus)
+                {
+                    if (item.Items.Count > 0)
+                    {
+                        <li class="nav-item nav-item-dropdown-xl dropdown">
+                            <a href="@item.Url" class="navbar-nav-link rounded dropdown-toggle" data-bs-toggle="dropdown">
+                                @item.Name
+                            </a>
+
+                            <div class="dropdown-menu">
+                                @foreach (var subItem in item.Items)
+                                {
+                                    <a href="@subItem.Url" class="dropdown-item">@subItem.Name</a>
+                                }
+                            </div>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="nav-item">
+                            <a href="@item.Url" class="navbar-nav-link rounded">
+                                首页
+                            </a>
+                        </li>
+                    }
+                }
+
+                <li class="nav-item nav-item-dropdown-xl dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle rounded" data-bs-toggle="dropdown">
+                        Dropdown
+                    </a>
+
+                    <div class="dropdown-menu">
+                        <a href="#" class="dropdown-item">Menu item 1</a>
+                        <a href="#" class="dropdown-item">Menu item 2</a>
+                        <a href="#" class="dropdown-item">Menu item 3</a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">Menu item 4</a>
+                    </div>
+                </li>
+
+                <li class="nav-item nav-item-dropdown-xl dropdown">
+                    <a href="#" class="navbar-nav-link dropdown-toggle rounded" data-bs-toggle="dropdown">
+                        Menu levels
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <div class="dropdown-header">Header</div>
+                        <a href="#" class="dropdown-item">Item 1</a>
+                        <div class="dropdown-submenu dropdown-submenu-start">
+                            <a href="#" class="dropdown-item dropdown-toggle">Item 2</a>
+                            <div class="dropdown-menu">
+                                <a href="#" class="dropdown-item">Item 1.1</a>
+                                <a href="#" class="dropdown-item">Item 1.2</a>
+                                <div class="dropdown-submenu dropdown-submenu-start">
+                                    <a href="#" class="dropdown-item dropdown-toggle">Item 1.3</a>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">Item 1.3.1</a>
+                                        <a href="#" class="dropdown-item">Item 1.3.2</a>
+                                    </div>
+                                </div>
+                                <div class="dropdown-submenu dropdown-submenu-start">
+                                    <a href="#" class="dropdown-item dropdown-toggle">Item 1.4</a>
+                                    <div class="dropdown-menu">
+                                        <a href="#" class="dropdown-item">Item 1.4.1</a>
+                                        <a href="#" class="dropdown-item">Item 1.4.2</a>
+                                    </div>
+                                </div>
+                                <a href="#" class="dropdown-item">Item 1.5</a>
+                            </div>
+                        </div>
+                        <div class="dropdown-header">Header</div>
+                        <a href="#" class="dropdown-item">Item 3</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <ul class="nav gap-1 flex-xl-1 justify-content-end order-0 order-xl-1">
+            <li class="nav-item nav-item-dropdown-xl dropdown">
+                <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                    <i class="ph-squares-four"></i>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
+                    <i class="ph-bell"></i>
+                    <span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+                </a>
+            </li>
+        </ul>
     </div>
-</footer>
+</div>
+<!-- /main navbar -->
+<!-- Page content -->
+<div class="page-content">
 
+    <!-- Main content -->
+    <div class="content-wrapper">
+
+        <!-- Inner content -->
+        <div class="content-inner">
+            @RenderBody()
+
+            <!-- Footer -->
+            <div class="navbar navbar-sm navbar-footer border-top">
+                <div class="container-fluid">
+                    <span>&copy; 2022 <a asp-area="Dev" asp-page="">Leelite Dev</a></span>
+
+                    <ul class="nav">
+                        <li class="nav-item">
+                            <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-lifebuoy"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Support</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="nav-item ms-md-1">
+                            <a href="https://demo.interface.club/limitless/demo/Documentation/index.html" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
+                                <div class="d-flex align-items-center mx-md-1">
+                                    <i class="ph-file-text"></i>
+                                    <span class="d-none d-md-inline-block ms-2">Docs</span>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /footer -->
+
+        </div>
+        <!-- /inner content -->
+
+    </div>
+    <!-- /main content -->
+
+</div>
+<!-- /page content -->
 @section ScriptsPlugins {
     @RenderSection("ScriptsPlugins", required: false)
 }
 
 @section Scripts {
+    <script src="~/dev_assets/js/app.js"></script>
     @RenderSection("Scripts", required: false)
 }

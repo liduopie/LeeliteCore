@@ -1,14 +1,17 @@
 ﻿@{
     Layout = "_Layout.cshtml";
 }
-<div class="card mb-0 login-form">
-    @RenderSection("LoginTabs")
-    <div class="card-body">
-        @RenderBody()
-        <vc:external-logins></vc:external-logins>
-        @RenderSection("Register", required: false)
+<!-- Login form -->
+<div class="login-form">
+    <div class="card mb-0">
+        <div class="card-body">
+            @RenderBody()
+            <vc:external-logins></vc:external-logins>
+            @RenderSection("Register", required: false)
+        </div>
     </div>
 </div>
+<!-- /login form -->
 @section Scripts {
     <partial name="_ValidationScriptsPartial" />
     @RenderSection("Scripts", required: false)

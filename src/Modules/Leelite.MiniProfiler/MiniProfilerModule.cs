@@ -1,4 +1,5 @@
-﻿using Leelite.AspNetCore.Modular;
+﻿using Leelite.Application;
+using Leelite.AspNetCore.Modular;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -91,6 +92,13 @@ namespace Leelite.MiniProfiler
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseMiniProfiler();
+
+            var client = ApplicationManager.Clients.Find(c => c.Code == "Admin");
+
+            if (client != null)
+            {
+                client.Shortcuts.Add(new Application.Clients.NavItem("_blank", "/global_assets/images/logos/4.svg", "MiniProfiler", "一个简单但有效的迷你分析器", "/profiler/results-index", "Admin", ""));
+            }
         }
     }
 }

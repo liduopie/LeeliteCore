@@ -9,6 +9,13 @@ namespace Leelite.Framework.Domain.Context
 {
     public class EFDbContext : DbContext, IDbContext
     {
+        private readonly Guid _contextId = Guid.NewGuid();
+
+        public Guid GetContextId()
+        {
+            return _contextId;
+        }
+
         public EFDbContext(DbContextOptions options) : base(options) { }
 
         public DbConnection GetConnection()
@@ -35,12 +42,28 @@ namespace Leelite.Framework.Domain.Context
 
         public void RollbackTransaction()
         {
-            Database.RollbackTransaction();
+            try
+            {
+                Database.RollbackTransaction();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
 
         public void UseTransaction(DbTransaction transaction)
         {
-            Database.UseTransaction(transaction);
+            try
+            {
+                Database.UseTransaction(transaction);
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+            }
+
         }
     }
 }

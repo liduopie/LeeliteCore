@@ -3,14 +3,14 @@
 @{
     if (Model.Options.UserOptions.Register)
     {
-        <div class="form-group text-center text-muted content-divider">
+        <div class="text-center text-muted content-divider mb-3">
             <span class="px-2">没有帐号?</span>
         </div>
 
-        <div class="form-group">
-            <a asp-page="../Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-light btn-block">注册</a>
+        <div class="mb-3">
+            <a asp-page="../Account/Register" asp-route-returnUrl="@Model.ReturnUrl" class="btn btn-light w-100">注册</a>
         </div>
 
-        <span class="form-text text-center text-muted">By continuing, you're confirming that you've read our <a href="#">Terms &amp; Conditions</a> and <a href="#">Cookie Policy</a></span>
+        <span class="form-text text-center text-muted">继续阅读即表示您确认已阅读 <a href="#">用户服务协议</a> 及 <a href="#">隐私政策条款</a></span>
     }
 }
