@@ -2,15 +2,10 @@
 
 namespace Leelite.Core.Cache
 {
-
     //[Injection(typeof(CacheAspect))]
-    public class CacheAttribute : Attribute
+    [AttributeUsage(AttributeTargets.Method)]
+    public class CacheAttribute(string key) : Attribute
     {
-        public CacheAttribute(string key)
-        {
-            Key = key;
-        }
-
-        public string Key { get; }
+        public string Key { get; } = key;
     }
 }

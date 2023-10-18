@@ -11,7 +11,7 @@ namespace Leelite.Commons.Convention
 
         public ConventionContext()
         {
-            Registrars = new BlockingCollection<IConventionRegistrar>();
+            Registrars = [];
         }
 
         /// <summary>

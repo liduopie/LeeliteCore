@@ -17,16 +17,13 @@ namespace Leelite.Identity.Contexts.Configurations
         public void Configure(EntityTypeBuilder<UserLogin> builder)
         {
             builder.Ignore("Id");
-            builder.HasKey("_loginProvider", "_providerKey");
+            builder.HasKey(c => new { c.LoginProvider, c.ProviderKey });
             builder.ToTable(TableConsts.IdentityUserLogins);
-
-            builder.Property("_loginProvider").HasColumnName("LoginProvider");
-            builder.Property("_providerKey").HasColumnName("ProviderKey");
 
             if (_storeOptions.MaxLengthForKeys > 0)
             {
-                builder.Property("_loginProvider").HasMaxLength(_storeOptions.MaxLengthForKeys);
-                builder.Property("_providerKey").HasMaxLength(_storeOptions.MaxLengthForKeys);
+                builder.Property(c => c.LoginProvider).HasMaxLength(_storeOptions.MaxLengthForKeys);
+                builder.Property(c => c.ProviderKey).HasMaxLength(_storeOptions.MaxLengthForKeys);
             }
 
             builder.Property(l => l.ProviderDisplayName).HasMaxLength(256);

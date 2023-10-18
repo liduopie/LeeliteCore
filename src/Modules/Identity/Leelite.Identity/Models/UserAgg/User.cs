@@ -1,8 +1,10 @@
 ﻿using System;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Audit;
 using Leelite.Framework.Models.Enabled;
 using Leelite.Framework.Models.SoftDelete;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Leelite.Identity.Models.UserAgg

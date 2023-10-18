@@ -2,21 +2,15 @@
 
 namespace Leelite.Extensions.DependencyInjection
 {
-    public class RegistrationData
+    /// <summary>
+    /// RegisterAssemblyTypes uses this to create the initial data
+    /// </summary>
+    /// <param name="types"></param>
+    public class RegistrationData(IServiceCollection services, IEnumerable<Type> types)
     {
-        private readonly IServiceCollection _services;
-        private readonly IList<Func<Type, IEnumerable<Type>>> _serviceMappings = new List<Func<Type, IEnumerable<Type>>>();
-        private IEnumerable<Type> _types;
-
-        /// <summary>
-        /// RegisterAssemblyTypes uses this to create the initial data
-        /// </summary>
-        /// <param name="types"></param>
-        public RegistrationData(IServiceCollection services, IEnumerable<Type> types)
-        {
-            _services = services ?? throw new ArgumentNullException(nameof(services));
-            _types = types ?? throw new ArgumentNullException(nameof(types));
-        }
+        private readonly IServiceCollection _services = services ?? throw new ArgumentNullException(nameof(services));
+        private readonly List<Func<Type, IEnumerable<Type>>> _serviceMappings = [];
+        private IEnumerable<Type> _types = types ?? throw new ArgumentNullException(nameof(types));
 
         /// <summary>
         /// 构建完成的 Descriptor
@@ -64,10 +58,10 @@ namespace Leelite.Extensions.DependencyInjection
             return this;
         }
 
-        private IList<ServiceDescriptor> Build(IEnumerable<Type> types, IList<Func<Type, IEnumerable<Type>>> serviceMappings, ServiceLifetime lifetime)
+        private static List<ServiceDescriptor> Build(IEnumerable<Type> types, IList<Func<Type, IEnumerable<Type>>> serviceMappings, ServiceLifetime lifetime)
         {
-            if (types == null) throw new ArgumentNullException(nameof(types));
-            if (serviceMappings == null) throw new ArgumentNullException(nameof(serviceMappings));
+            ArgumentNullException.ThrowIfNull(types);
+            ArgumentNullException.ThrowIfNull(serviceMappings);
 
             var descriptors = new List<ServiceDescriptor>();
 

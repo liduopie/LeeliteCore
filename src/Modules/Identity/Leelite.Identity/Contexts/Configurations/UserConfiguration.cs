@@ -46,34 +46,41 @@ namespace Leelite.Identity.Contexts.Configurations
                 l.Property(p => p.LockoutEnabled).HasColumnName("LockoutEnabled");
             });
 
-            builder.OwnsOne(u => u.Account, a =>
+            builder.ComplexProperty(u => u.Account, a =>
             {
+                a.IsRequired();
                 a.Property(p => p.UserName).HasColumnName("UserName").HasMaxLength(nameMaxLength);
                 a.Property(p => p.NormalizedUserName).HasColumnName("NormalizedUserName").HasMaxLength(nameMaxLength);
-                a.HasIndex(p => p.NormalizedUserName).HasDatabaseName("UserNameIndex").IsUnique();
+
+                // a.HasIndex(p => p.NormalizedUserName).HasDatabaseName("UserNameIndex").IsUnique();
             });
 
-            builder.OwnsOne(u => u.Password, pa =>
+            builder.ComplexProperty(u => u.Password, pa =>
             {
+                pa.IsRequired();
                 pa.Property(p => p.PasswordHash).HasColumnName("PasswordHash").HasMaxLength(1024);
             });
 
-            builder.OwnsOne(u => u.Phone, ph =>
+            builder.ComplexProperty(u => u.Phone, ph =>
             {
+                ph.IsRequired();
                 ph.Property(p => p.PhoneNumber).HasColumnName("PhoneNumber").HasMaxLength(64);
                 ph.Property(p => p.PhoneNumberConfirmed).HasColumnName("PhoneNumberConfirmed").HasMaxLength(64);
             });
 
-            builder.OwnsOne(u => u.Email, e =>
+            builder.ComplexProperty(u => u.Email, e =>
             {
+                e.IsRequired();
                 e.Property(p => p.Email).HasColumnName("Email").HasMaxLength(nameMaxLength);
                 e.Property(p => p.NormalizedEmail).HasColumnName("NormalizedEmail").HasMaxLength(nameMaxLength);
                 e.Property(p => p.EmailConfirmed).HasColumnName("EmailConfirmed").HasMaxLength(nameMaxLength);
-                e.HasIndex(p => p.NormalizedEmail).HasDatabaseName("EmailIndex");
+
+                // e.HasIndex(p => p.NormalizedEmail).HasDatabaseName("EmailIndex");
             });
 
-            builder.OwnsOne(u => u.IDCard, i =>
+            builder.ComplexProperty(u => u.IDCard, i =>
             {
+                i.IsRequired();
                 i.Property(p => p.Ethnicity).HasColumnName("Ethnicity").HasMaxLength(32);
                 i.Property(p => p.Address).HasColumnName("Address").HasMaxLength(256);
                 i.Property(p => p.IDNumber).HasColumnName("IDNumber").HasMaxLength(32);
@@ -84,8 +91,9 @@ namespace Leelite.Identity.Contexts.Configurations
                 i.Property(p => p.Fingerprint).HasColumnName("Fingerprint");
             });
 
-            builder.OwnsOne(u => u.Facial, f =>
+            builder.ComplexProperty(u => u.Facial, f =>
             {
+                f.IsRequired();
                 f.Property(p => p.FeatureCode).HasColumnName("FeatureCode");
             });
 
@@ -109,9 +117,9 @@ namespace Leelite.Identity.Contexts.Configurations
 
             builder.HasMany<UserClaim>().WithOne().HasForeignKey(c => c.UserId).IsRequired();
             builder.HasMany<UserFingerprint>().WithOne().HasForeignKey(c => c.UserId).IsRequired();
-            builder.HasMany<UserLogin>().WithOne().HasForeignKey("UserId").IsRequired();
-            builder.HasMany<UserToken>().WithOne().HasForeignKey("UserId").IsRequired();
-            builder.HasMany<UserRole>().WithOne().HasForeignKey("UserId").IsRequired();
+            builder.HasMany<UserLogin>().WithOne().HasForeignKey(c => c.UserId).IsRequired();
+            builder.HasMany<UserToken>().WithOne().HasForeignKey(c => c.UserId).IsRequired();
+            builder.HasMany<UserRole>().WithOne().HasForeignKey(c => c.UserId).IsRequired();
         }
     }
 }

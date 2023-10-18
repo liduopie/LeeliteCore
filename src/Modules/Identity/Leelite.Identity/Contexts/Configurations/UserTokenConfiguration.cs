@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq;
+
 using Leelite.Identity.Models.UserTokenAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -20,15 +22,13 @@ namespace Leelite.Identity.Contexts.Configurations
         public void Configure(EntityTypeBuilder<UserToken> builder)
         {
             builder.Ignore("Id");
-            builder.HasKey("_userId", "_loginProvider", "_name");
+            builder.HasKey(c => new { c.UserId, c.LoginProvider, c.Name });
             builder.ToTable(TableConsts.IdentityUserTokens);
-
-            builder.Property("_userId").HasColumnName("UserId");
 
             if (_storeOptions.MaxLengthForKeys > 0)
             {
-                builder.Property("_loginProvider").HasColumnName("LoginProvider").HasMaxLength(_storeOptions.MaxLengthForKeys);
-                builder.Property("_name").HasColumnName("Name").HasMaxLength(_storeOptions.MaxLengthForKeys);
+                builder.Property(p => p.LoginProvider).HasMaxLength(_storeOptions.MaxLengthForKeys);
+                builder.Property(p => p.Name).HasMaxLength(_storeOptions.MaxLengthForKeys);
             }
 
             builder.Property(t => t.Value).HasMaxLength(256);

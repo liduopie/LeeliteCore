@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Model;
 
@@ -10,23 +11,35 @@ namespace Leelite.Identity.Models.UserLoginAgg
     /// </summary>
     public class UserLogin : AggregateRoot<UserLoginKey>
     {
-        private string _loginProvider;
-        private string _providerKey;
+        public override UserLoginKey Id { get; set; }
 
-        public override UserLoginKey Id
+        /// <summary>
+        /// Gets or sets the login provider for the login (e.g. facebook, google)
+        /// </summary>
+        public string LoginProvider
         {
             get
             {
-                return new UserLoginKey()
-                {
-                    LoginProvider = _loginProvider,
-                    ProviderKey = _providerKey
-                };
+                return Id.LoginProvider;
             }
             set
             {
-                _loginProvider = value.LoginProvider;
-                _providerKey = value.ProviderKey;
+                Id.LoginProvider = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the unique provider identifier for this login.
+        /// </summary>
+        public string ProviderKey
+        {
+            get
+            {
+                return Id.ProviderKey;
+            }
+            set
+            {
+                Id.ProviderKey = value;
             }
         }
 

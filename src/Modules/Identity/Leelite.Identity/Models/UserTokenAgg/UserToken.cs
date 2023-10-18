@@ -1,34 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Model;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Leelite.Identity.Models.UserTokenAgg
 {
     public class UserToken : AggregateRoot<UserTokenKey>
     {
-        private long _userId;
-        private string _loginProvider;
-        private string _name;
-
         /// <inheritdoc/>
-        public override UserTokenKey Id
+        public override UserTokenKey Id { get; set; }
+
+        /// <summary>
+        /// Gets or sets the primary key of the user that the token belongs to.
+        /// </summary>
+        public long UserId
         {
             get
             {
-                return new UserTokenKey()
-                {
-                    UserId = _userId,
-                    LoginProvider = _loginProvider,
-                    Name = _name
-                };
+                return Id.UserId;
             }
             set
             {
-                _userId = value.UserId;
-                _loginProvider = value.LoginProvider;
-                _name = value.Name;
+                Id.UserId = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the LoginProvider this token is from.
+        /// </summary>
+        public string LoginProvider
+        {
+            get
+            {
+                return Id.LoginProvider;
+            }
+            set
+            {
+                Id.LoginProvider = value;
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets the name of the token.
+        /// </summary>
+        public string Name
+        {
+            get
+            {
+                return Id.Name;
+            }
+            set
+            {
+                Id.Name = value;
             }
         }
 

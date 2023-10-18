@@ -1,10 +1,16 @@
-﻿using Leelite.Extensions.EntityFramework;
+﻿using System.Data.Common;
+
+using Leelite.Extensions.EntityFramework;
 using Leelite.Extensions.EntityFramework.Connection;
 
+using Microsoft.Data.SqlClient;
+using Microsoft.Data.Sqlite;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 
-using System.Data.Common;
+using MySqlConnector;
+
+using Npgsql;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -26,10 +32,11 @@ namespace Microsoft.Extensions.DependencyInjection
 
         private static void AddDbProviders()
         {
-            DbProviderFactories.RegisterFactory("Npgsql", Npgsql.NpgsqlFactory.Instance);
-            DbProviderFactories.RegisterFactory("Sqlite", Data.Sqlite.SqliteFactory.Instance);
-            DbProviderFactories.RegisterFactory("SqlClient", Data.SqlClient.SqlClientFactory.Instance);
-            DbProviderFactories.RegisterFactory("MySql", MySql.Data.MySqlClient.MySqlClientFactory.Instance);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
+            DbProviderFactories.RegisterFactory("Npgsql", NpgsqlFactory.Instance);
+            DbProviderFactories.RegisterFactory("Sqlite", SqliteFactory.Instance);
+            DbProviderFactories.RegisterFactory("SqlClient", SqlClientFactory.Instance);
+            DbProviderFactories.RegisterFactory("MySql", MySqlConnectorFactory.Instance);
         }
 
         public static void AddDbContext<TContext>(this IServiceCollection services, string connectionStringName, bool separateMigrations = false, Action<IServiceProvider, DbContextOptionsBuilder> optionsAction = null)
@@ -63,7 +70,13 @@ namespace Microsoft.Extensions.DependencyInjection
                         builder.UseSqlServer(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));
                         break;
                     case DatabaseProviderType.MySql:
-                        builder.UseMySQL(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));
+                        // Replace with your server version and type.
+                        // Use 'MariaDbServerVersion' for MariaDB.
+                        // Alternatively, use 'ServerVersion.AutoDetect(connectionString)'.
+                        // For common usages, see pull request #1233.
+                        var serverVersion = new MySqlServerVersion(new Version(8, 0, 34));
+
+                        builder.UseMySql(_connectionFactory.GetConnection(connectionStringName), serverVersion, c => c.MigrationsAssembly(migrationsAssemblyName));
                         break;
                     case DatabaseProviderType.Npgsql:
                         builder.UseNpgsql(_connectionFactory.GetConnection(connectionStringName), c => c.MigrationsAssembly(migrationsAssemblyName));

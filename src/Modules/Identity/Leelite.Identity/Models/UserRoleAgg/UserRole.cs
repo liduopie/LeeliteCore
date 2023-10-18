@@ -1,5 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Model;
 
@@ -10,27 +11,34 @@ namespace Leelite.Identity.Models.UserRoleAgg
     /// </summary>
     public class UserRole : AggregateRoot<UserRoleKey>
     {
-        private long _userId;
-        private int _roleId;
+        public override UserRoleKey Id { get; set; }
 
-        public override UserRoleKey Id
+        public long UserId
         {
             get
             {
-                return new UserRoleKey()
-                {
-                    UserId = _userId,
-                    RoleId = _roleId
-                };
+                return Id.UserId;
             }
             set
             {
-                _userId = value.UserId;
-                _roleId = value.RoleId;
+                Id.UserId = value;
+            }
+        }
+
+        public int RoleId
+        {
+            get
+            {
+                return Id.RoleId;
+            }
+            set
+            {
+                Id.RoleId = value;
             }
         }
     }
 
+    [ComplexType]
     public class UserRoleKey : ValueObject<UserRoleKey>
     {
         /// <summary>

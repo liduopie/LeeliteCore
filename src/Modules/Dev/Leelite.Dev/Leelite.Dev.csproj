@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,7 +14,7 @@
     <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Mono.TextTemplating" Version="2.3.1" />
-    <PackageReference Include="System.CodeDom" Version="7.0.0" />
+    <PackageReference Include="Mono.TextTemplating" Version="3.0.0-preview-0027-g2711105671" />
+    <PackageReference Include="System.CodeDom" Version="8.0.0-rc.2.23479.6" />
   </ItemGroup>
 </Project>

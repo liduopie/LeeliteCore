@@ -13,8 +13,8 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <returns>Registration builder allowing the registration to be configured.</returns>
         public static RegistrationData RegisterAssemblyTypes(this IServiceCollection services, params Assembly[] assemblies)
         {
-            if (services == null) throw new ArgumentNullException(nameof(services));
-            if (assemblies == null) throw new ArgumentNullException(nameof(assemblies));
+            ArgumentNullException.ThrowIfNull(services);
+            ArgumentNullException.ThrowIfNull(assemblies);
 
             var classTypes = assemblies.SelectMany(c => c.GetExportedTypes())
                 .Where(c =>

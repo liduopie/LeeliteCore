@@ -50,7 +50,7 @@ namespace HybridFS.FileProvider
 
         public bool IsDirectory => _index!.IsDirectory;
 
-        public Stream? CreateReadStream()
+        public Stream CreateReadStream()
         {
             if (_index != null && !IsDirectory)
                 return _manager.GetFileStreamAsync(_index.Path).GetAwaiter().GetResult();

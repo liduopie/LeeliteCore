@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Leelite.Framework.Domain.Aggregate;
+﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;
 using Leelite.Framework.Domain.Repository;
@@ -33,7 +29,7 @@ namespace Leelite.Framework.Service.Commands
 
             foreach (var item in entities)
             {
-                await _domainEventBus.PublishAsync(new DeletedEvent<TEntity>(item));
+                await _domainEventBus.PublishAsync(new DeletedEvent<TEntity>(item), cancellationToken);
             }
 
             return true;
