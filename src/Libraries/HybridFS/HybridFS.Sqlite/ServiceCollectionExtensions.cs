@@ -10,10 +10,11 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static void AddHybridFS_Sqlite(this IServiceCollection service, Action<HybridFSOptions>? action = null)
         {
-            if (action != null)
-            {
-                service.AddHybridFS(action);
-            }
+            var options = new HybridFSOptions();
+
+            action?.Invoke(options);
+
+            service.AddHybridFS(action);
 
             service.AddSingleton<IFileStoreContextFactory, SqliteFileStoreContextFactory>();
 

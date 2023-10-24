@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+    <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,19 +1,17 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using HybridFS.FileProvider;
 using HybridFS.FileSystem;
+
 using Microsoft.Extensions.DependencyInjection;
+
 using Xunit;
 
 namespace HybridFS.XUnitTest
 {
     public class FileProviderUnitTest
     {
-        private IFileManager GetFileManager()
+        private static IFileManager GetFileManager()
         {
-            ServiceCollection services = new ServiceCollection();
+            ServiceCollection services = new();
 
             services.AddHybridFS_Sqlite();
 

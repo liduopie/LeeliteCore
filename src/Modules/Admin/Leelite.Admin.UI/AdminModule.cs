@@ -24,7 +24,7 @@ namespace Leelite.Admin.UI
             if (client != null)
             {
                 client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-dots-three", "仪表盘", "", "", "Admin", ""));
-                client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-chart-pie-slice", "统计分析", "", "/Admin/Dashboard", "Admin", ""));
+                client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-chart-pie-slice", "统计分析", "", "/Admin/Home/Dashboard", "Admin", ""));
 
                 client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-dots-three", "系统", "", "", "Admin", ""));
                 client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-gear", "系统设置", "", "/Admin/Settings/Index", "Admin", ""));

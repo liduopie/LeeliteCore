@@ -1,9 +1,4 @@
-﻿using System;
-using System.IO;
-using System.Threading;
-using System.Threading.Tasks;
-
-using HybridFS.FileStore.Contexts;
+﻿using HybridFS.FileStore.Contexts;
 using HybridFS.FileStore.Models;
 using HybridFS.FileStore.ShardingRule;
 
@@ -20,7 +15,7 @@ namespace HybridFS.FileStore
             _factory = factory;
         }
 
-        public async Task<FileEntry?> CreateFileFromStreamAsync(Stream inputStream)
+        public async Task<FileEntry> CreateFileFromStreamAsync(Stream inputStream)
         {
             if (inputStream.Length == 0) return null;
 
@@ -71,7 +66,7 @@ namespace HybridFS.FileStore
             return entry;
         }
 
-        public async Task<FileEntry?> GetFileEntryAsync(long id)
+        public async Task<FileEntry> GetFileEntryAsync(long id)
         {
             var context = _factory.GetContext(id);
 

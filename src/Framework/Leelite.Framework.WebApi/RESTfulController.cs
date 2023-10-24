@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using FluentValidation;
+﻿using FluentValidation;
+
 using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Service;
 using Leelite.Framework.Service.Dtos;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;

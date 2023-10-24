@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Senparc.Weixin.Cache.Redis" Version="2.15.13" />
+    <PackageReference Include="Senparc.Weixin.MP" Version="16.19.3" />
+    <PackageReference Include="Senparc.Weixin.WxOpen" Version="3.16.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+  </ItemGroup>
+
+</Project>

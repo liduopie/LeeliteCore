@@ -5,11 +5,11 @@
 
 Add-Migration InitialSettings -o Migrations/PostgreSQL -s AppHost -c SettingsContext
 
-Update-Database -s AppHost -c SettingsContext
+Update-Database -s WebHost -Context SettingsContext
 
-Script-Migration -s AppHost -c SettingsContext
+Script-Migration -s AppHost -Context SettingsContext
 
-Drop-Database -s AppHost -c SettingsContext
+Drop-Database -s AppHost -Context SettingsContext
 
 Remove-Migration Check -s AppHost -c SettingsContext
 

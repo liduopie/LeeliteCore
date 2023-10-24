@@ -12,6 +12,7 @@ namespace Leelite.Core.BackgroundJob
         /// Execute the <see cref="RecurringJob"/>.
         /// </summary>
         /// <param name="context">The context to <see cref="PerformContext"/>.</param>
+        [AutomaticRetry(Attempts = 0)]
         void Execute(PerformContext context);
     }
 }

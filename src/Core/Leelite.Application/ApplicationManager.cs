@@ -9,22 +9,16 @@ namespace Leelite.Application
         /// <summary>
         /// 应用入口
         /// </summary>
-        public static List<Client> Clients { get; set; } = new List<Client>();
+        public static List<Client> Clients { get; set; } = [];
 
         /// <summary>
         /// 应用包含的模块
         /// </summary>
-        public static List<ModuleInfo> Modules
-        {
-            get
-            {
-                return ModularManager.Current.ModuleInfos.ToList();
-            }
-        }
+        public static List<ModuleInfo> Modules => ModularManager.Current.ModuleInfos.ToList();
 
         /// <summary>
         /// 应用功能
         /// </summary>
-        public static List<FeatureItem> Features { get; set; } = new List<FeatureItem>();
+        public static List<FeatureItem> Features { get; set; } = [];
     }
 }

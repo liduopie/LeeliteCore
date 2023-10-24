@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<TargetFramework>net6.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -9,17 +9,17 @@
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.Weixin\</OutputPath>
+		<OutputPath>..\..\..\Hosts\Modules\Leelite.Weixin\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.11.0" />
+		<PackageReference Include="Senparc.Weixin.MP.MVC" Version="7.12.13" />
 	</ItemGroup>
 
 	<ItemGroup>
-		<ProjectReference Include="..\Leelite.Modules.Weixin\Leelite.Modules.Weixin.csproj" />
+	  <ProjectReference Include="..\Leelite.Weixin\Leelite.Weixin.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

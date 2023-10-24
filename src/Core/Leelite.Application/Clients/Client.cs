@@ -11,7 +11,7 @@
             Name = name;
             DefaultUrl = url;
             Description = description;
-            Order = order;
+            Sort = order;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@
         /// <summary>
         /// 排序
         /// </summary>
-        public int Order { get; set; }
+        public int Sort { get; set; }
 
         /// <summary>
         /// 子应用入口

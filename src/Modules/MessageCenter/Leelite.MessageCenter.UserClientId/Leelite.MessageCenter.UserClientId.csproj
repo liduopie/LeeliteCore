@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.MessageCenter.UniPush\Leelite.MessageCenter.UniPush.csproj" />
+    <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+  </ItemGroup>
+
+</Project>

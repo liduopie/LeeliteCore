@@ -41,7 +41,7 @@
             <div class="offcanvas-body">
                 <div class="list-group mb-3">
                     @{
-                        var clients = Leelite.Application.ApplicationManager.Clients;
+                        var clients = Leelite.Application.ApplicationManager.Clients.OrderBy(c => c.Sort).ToList();
 
                         @foreach (var item in clients)
                         {

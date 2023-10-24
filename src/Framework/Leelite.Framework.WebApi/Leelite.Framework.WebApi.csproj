@@ -10,7 +10,7 @@
 	</ItemGroup>
 
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\Hosts\Modules\Leelite.Framework.WebApi</OutputPath>
+		<OutputPath>..\..\Hosts\Modules\Leelite.Framework</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 	</PropertyGroup>
 

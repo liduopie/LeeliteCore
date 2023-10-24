@@ -1,6 +1,7 @@
 ﻿using FluentValidation.AspNetCore;
 
 using Leelite.Core.Modular;
+using Leelite.Framework.Service;
 
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;

@@ -1,8 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
 
 	<PropertyGroup>
-		<TargetFramework>net7.0</TargetFramework>
+		<TargetFramework>net8.0</TargetFramework>
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -10,13 +11,14 @@
 	</ItemGroup>
 	
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-		<OutputPath>..\..\..\Hosts\AppHost\Modules\Leelite.Modules.FileStorage\</OutputPath>
+		<OutputPath>..\..\..\Hosts\Modules\Leelite.FileStorage\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\Settings\Leelite.Modules.Settings\Leelite.Modules.Settings.csproj" />
-	  <ProjectReference Include="..\Leelite.Modules.FileStorage.Api\Leelite.Modules.FileStorage.Api.csproj" />
-	  <ProjectReference Include="..\Leelite.Modules.FileStorage\Leelite.Modules.FileStorage.csproj" />
+	  <ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
+	  <ProjectReference Include="..\Leelite.FileStorage.Api\Leelite.FileStorage.Api.csproj" />
+	  <ProjectReference Include="..\Leelite.FileStorage\Leelite.FileStorage.csproj" />
 	</ItemGroup>
 </Project>

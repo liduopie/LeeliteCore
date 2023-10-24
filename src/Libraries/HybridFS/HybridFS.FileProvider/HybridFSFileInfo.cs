@@ -52,9 +52,18 @@ namespace HybridFS.FileProvider
 
         public Stream CreateReadStream()
         {
-            if (_index != null && !IsDirectory)
-                return _manager.GetFileStreamAsync(_index.Path).GetAwaiter().GetResult();
-            return null;
+            if (_index == null)
+                throw new FileNotFoundException();
+
+            if (IsDirectory)
+                throw new InvalidOperationException("Cannot create a read stream for a directory.");
+
+            var result = _manager.GetFileStreamAsync(_index.Path).GetAwaiter().GetResult();
+
+            if (result == null)
+                throw new FileNotFoundException();
+
+            return result;
         }
     }
 }

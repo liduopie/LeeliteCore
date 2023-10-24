@@ -1,4 +1,6 @@
-﻿using Coldairarrow.Util;
+﻿using System.Security.Cryptography;
+
+using Coldairarrow.Util;
 
 using HybridFS.FileStore;
 using HybridFS.FileSystem.Contexts;
@@ -7,8 +9,6 @@ using HybridFS.FileSystem.Models;
 using HybridFS.Utility;
 
 using Microsoft.EntityFrameworkCore;
-
-using System.Security.Cryptography;
 
 namespace HybridFS.FileSystem
 {
@@ -25,13 +25,13 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<FileIndex?> GetFileIndexAsync(string path)
+        public async Task<FileIndex> GetFileIndexAsync(string path)
         {
             return await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
         }
 
         /// <inheritdoc/>
-        public async Task<HybridFileInfo?> GetFileInfoAsync(string path)
+        public async Task<HybridFileInfo> GetFileInfoAsync(string path)
         {
             var index = await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
 
@@ -41,7 +41,7 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<HybridDirectoryInfo?> GetDirectoryInfoAsync(string path)
+        public async Task<HybridDirectoryInfo> GetDirectoryInfoAsync(string path)
         {
             var index = await _context.FileIndexs.Where(c => c.Path == path).FirstOrDefaultAsync();
 
@@ -72,7 +72,7 @@ namespace HybridFS.FileSystem
         }
 
         /// <inheritdoc/>
-        public async Task<Stream?> GetFileStreamAsync(string path)
+        public async Task<Stream> GetFileStreamAsync(string path)
         {
             if (string.IsNullOrEmpty(path)) return null;
 

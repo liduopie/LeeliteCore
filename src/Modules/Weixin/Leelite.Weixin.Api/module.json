@@ -1,7 +1,7 @@
 {
-  "Name": "Leelite.Modules.Weixin",
-  "AssemblyFileName": "Leelite.Modules.Weixin.Api.dll",
+  "Name": "Leelite.Weixin",
+  "AssemblyFileName": "Leelite.Weixin.Api.dll",
   "ReferencedAssemblies": [
-    "Leelite.Modules.Weixin.dll"
+    "Leelite.Weixin.dll"
   ]
 }

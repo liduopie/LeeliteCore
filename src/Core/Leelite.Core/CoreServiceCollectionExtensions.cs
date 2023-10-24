@@ -62,9 +62,9 @@ namespace Leelite.Core
 
             Logger.LogInformation($"AddLeeliteCore add Mapper.");
 
-            // services.AddSignalR();
+            services.AddSignalR();
 
-            // Logger.LogInformation($"AddLeeliteCore add SignalR.");
+            Logger.LogInformation($"AddLeeliteCore add SignalR.");
         }
     }
 }

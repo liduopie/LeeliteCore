@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+
+	<PropertyGroup>
+		<BaseOutputPath>..\Leelite.MessageCenter\bin\</BaseOutputPath>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+	</ItemGroup>
+
+</Project>

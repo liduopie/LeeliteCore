@@ -175,7 +175,7 @@
                                     var item = client.Shortcuts[i];
 
                                     <div class="col">
-                                        <a class="dropdown-item text-wrap h-100 align-items-start @(i%2==0?"border-end-sm ":"")@(client.Shortcuts.Count-i!=1?"border-bottom ":"")@(client.Shortcuts.Count-i==2?"border-bottom-sm-0 rounded-bottom-start ":"")@(client.Shortcuts.Count-i==1?"rounded-bottom-end ":"")p-3" href="@item.Url" target="_blank">
+                                        <a class="dropdown-item text-wrap h-100 align-items-start @(i%2==0?"border-end-sm ":"")@(client.Shortcuts.Count-i!=1?"border-bottom ":"")@(i%2==0 && client.Shortcuts.Count-i==2?"border-bottom-sm-0 rounded-bottom-start ":"")@(i%2==1 && client.Shortcuts.Count-i==1?"rounded-bottom-end ":"")p-3" href="@item.Url" target="_blank">
                                             <div>
                                                 <img src="@item.Icon" class="h-40px mb-2" alt="">
                                                 <div class="fw-semibold my-1">@item.Name</div>

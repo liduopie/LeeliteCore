@@ -12,10 +12,10 @@
 	</PropertyGroup>
 	<ItemGroup>
 		<PackageReference Include="AspNetCore.HealthChecks.Hangfire" Version="7.0.0" />
-		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.5" />
+		<PackageReference Include="Hangfire.AspNetCore" Version="1.8.6" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
-		<PackageReference Include="Hangfire.Core" Version="1.8.5" />
-		<PackageReference Include="Hangfire.PostgreSql" Version="1.20.3" />
+		<PackageReference Include="Hangfire.Core" Version="1.8.6" />
+		<PackageReference Include="Hangfire.PostgreSql" Version="1.20.4" />
 	</ItemGroup>
 	<ItemGroup>
 		<ProjectReference Include="..\..\Core\Leelite.Application\Leelite.Application.csproj" />

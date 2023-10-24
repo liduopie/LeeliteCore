@@ -17,28 +17,41 @@ namespace Leelite.Core.BackgroundJob.Services
     public class JobsService : BackgroundService
     {
         // TODO: 一次性任务没有实现自动注册
-        private readonly IBackgroundJobClient _backgroundJobs;
-        private readonly IRecurringJobManager _recurringJobs;
+        private readonly IBackgroundJobClient _backgroundJobClient;
+        private readonly IRecurringJobManager _recurringJobManager;
         private readonly ILogger<JobsService> _logger;
-        private readonly IEnumerable<IRecurringJob> _jobs;
+        private readonly IEnumerable<IBackgroundJob> _backgroundJobs;
+        private readonly IEnumerable<IRecurringJob> _recurringJobs;
 
         public JobsService(
-           [NotNull] IBackgroundJobClient backgroundJobs,
-           [NotNull] IRecurringJobManager recurringJobs,
+           [NotNull] IBackgroundJobClient backgroundJobClient,
+           [NotNull] IRecurringJobManager recurringJobManager,
            [NotNull] ILogger<JobsService> logger,
-           IEnumerable<IRecurringJob> jobs)
+           IEnumerable<IBackgroundJob> backgroundJobs,
+           IEnumerable<IRecurringJob> recurringJobs)
         {
-            _backgroundJobs = backgroundJobs ?? throw new ArgumentNullException(nameof(backgroundJobs));
-            _recurringJobs = recurringJobs ?? throw new ArgumentNullException(nameof(recurringJobs));
+            _backgroundJobClient = backgroundJobClient ?? throw new ArgumentNullException(nameof(backgroundJobClient));
+            _recurringJobManager = recurringJobManager ?? throw new ArgumentNullException(nameof(recurringJobManager));
             _logger = logger ?? throw new ArgumentNullException(nameof(logger));
-            _jobs = jobs;
+            _backgroundJobs = backgroundJobs;
+            _recurringJobs = recurringJobs;
         }
 
         protected override Task ExecuteAsync(CancellationToken stoppingToken)
         {
             try
             {
-                foreach (var job in _jobs)
+                foreach (var job in _backgroundJobs)
+                {
+                    var jobType = job.GetType();
+
+                    var method = jobType.GetMethod("Execute", new Type[] { typeof(PerformContext) });
+                    var jobInfo = new Hangfire.Common.Job(method, new object[] { null });
+
+                    _backgroundJobClient.Create(jobInfo, new Hangfire.States.EnqueuedState());
+                }
+
+                foreach (var job in _recurringJobs)
                 {
                     var jobType = job.GetType();
 
@@ -46,17 +59,17 @@ namespace Leelite.Core.BackgroundJob.Services
                     if (attr == null) continue;
 
                     var method = jobType.GetMethod("Execute", new Type[] { typeof(PerformContext) });
-                    var jobInfo = new Hangfire.Common.Job(method, new object[] { });
+                    var jobInfo = new Hangfire.Common.Job(method, []);
 
                     if (attr.Enabled)
-                        _recurringJobs.AddOrUpdate(attr.RecurringJobId, jobInfo, attr.Cron, TZConvert.GetTimeZoneInfo(attr.TimeZone), attr.Queue);
+                        _recurringJobManager.AddOrUpdate(attr.RecurringJobId, jobInfo, attr.Cron, TZConvert.GetTimeZoneInfo(attr.TimeZone), attr.Queue);
                     else
-                        _recurringJobs.RemoveIfExists(attr.RecurringJobId);
+                        _recurringJobManager.RemoveIfExists(attr.RecurringJobId);
                 }
             }
             catch (Exception e)
             {
-                _logger.LogError("An exception occurred while creating recurring jobs.", e);
+                _logger.LogError(e, "An exception occurred while creating recurring jobs.");
             }
 
             return Task.CompletedTask;

@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+	  <Compile Remove="Services\**" />
+	  <EmbeddedResource Remove="Services\**" />
+	  <None Remove="Services\**" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Include="Services\MessageService.cs" />
+	  <Compile Include="Services\MessageTypeService.cs" />
+	  <Compile Include="Services\PushPlatformService.cs" />
+	  <Compile Include="Services\PushRecordService.cs" />
+	  <Compile Include="Services\SessionService.cs" />
+	  <Compile Include="Services\TemplateService.cs" />
+	</ItemGroup>
+	<ItemGroup>
+		<PackageReference Include="Dapper" Version="2.1.15" />
+		<PackageReference Include="Hangfire.Core" Version="1.8.6" />
+		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
+		<PackageReference Include="JinianNet.JNTemplate" Version="2.4.1" />
+		<PackageReference Include="JsonFlatten" Version="1.0.2" />
+	</ItemGroup>
+	<ItemGroup>
+	  <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
+	</ItemGroup>
+</Project>

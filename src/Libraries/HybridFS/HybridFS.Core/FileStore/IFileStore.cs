@@ -1,6 +1,4 @@
-﻿using System.IO;
-using System.Threading.Tasks;
-using HybridFS.FileStore.Models;
+﻿using HybridFS.FileStore.Models;
 
 namespace HybridFS.FileStore
 {
@@ -14,7 +12,7 @@ namespace HybridFS.FileStore
         /// </summary>
         /// <param name="id">文件Id</param>
         /// <returns>返回文件条目信息</returns>
-        Task<FileEntry?> GetFileEntryAsync(long id);
+        Task<FileEntry> GetFileEntryAsync(long id);
 
         /// <summary>
         /// 根据文件条目Id获取文件流
@@ -35,7 +33,7 @@ namespace HybridFS.FileStore
         /// </summary>
         /// <param name="inputStream">输入文件流</param>
         /// <returns>返回文件条目Id</returns>
-        Task<FileEntry?> CreateFileFromStreamAsync(Stream inputStream);
+        Task<FileEntry> CreateFileFromStreamAsync(Stream inputStream);
 
         /// <summary>
         /// 检查并删除文件条目

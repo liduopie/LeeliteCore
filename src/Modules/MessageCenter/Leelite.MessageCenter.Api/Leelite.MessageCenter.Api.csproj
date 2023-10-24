@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+	</PropertyGroup>
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+		<OutputPath>..\..\..\Hosts\Modules\Leelite.MessageCenter\</OutputPath>
+		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+		<CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+	</PropertyGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+		<ProjectReference Include="..\..\..\Framework\Leelite.Framework.WebApi\Leelite.Framework.WebApi.csproj" />
+		<ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+	</ItemGroup>
+	<ItemGroup>
+		<None Update="module.json">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+</Project>

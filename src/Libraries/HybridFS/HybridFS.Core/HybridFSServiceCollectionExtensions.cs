@@ -1,5 +1,5 @@
-﻿using System;
-using Coldairarrow.Util;
+﻿using Coldairarrow.Util;
+
 using HybridFS;
 using HybridFS.FileStore;
 using HybridFS.FileSystem;
@@ -8,9 +8,8 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class HybridFSServiceCollectionExtensions
     {
-        public static void AddHybridFS(this IServiceCollection service, Action<HybridFSOptions>? action = null)
+        public static void AddHybridFS(this IServiceCollection service, Action<HybridFSOptions> action = null)
         {
-
             var options = new HybridFSOptions();
 
             action?.Invoke(options);
@@ -22,9 +21,9 @@ namespace Microsoft.Extensions.DependencyInjection
                 .SetWorkderId(options.WorkderId)
                 .Boot();
 
-            service.AddSingleton<IFileStore, FileStore>();
+            service.AddScoped<IFileStore, FileStore>();
 
-            service.AddSingleton<IFileManager, FileManager>();
+            service.AddScoped<IFileManager, FileManager>();
         }
     }
 }

@@ -1,8 +1,8 @@
 {
-  "Name": "Leelite.Modules.FileStorage",
-  "AssemblyFileName": "Leelite.Modules.FileStorage.UI.dll",
+  "Name": "Leelite.FileStorage",
+  "AssemblyFileName": "Leelite.FileStorage.UI.dll",
   "ReferencedAssemblies": [
-    "Leelite.Modules.FileStorage.dll",
-    "Leelite.Modules.FileStorage.Api.dll"
+    "Leelite.FileStorage.dll",
+    "Leelite.FileStorage.Api.dll"
   ]
 }
