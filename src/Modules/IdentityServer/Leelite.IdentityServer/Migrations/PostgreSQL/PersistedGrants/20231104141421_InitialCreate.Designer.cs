@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
 {
     [DbContext(typeof(PersistedGrantContext))]
-    [Migration("20231102144323_InitialCreate")]
+    [Migration("20231104141421_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -108,7 +108,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
 
                     b.HasIndex("Use");
 
-                    b.ToTable("Keys", (string)null);
+                    b.ToTable("IdentityServer_Keys", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.PersistedGrant", b =>
@@ -232,7 +232,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("ServerSideSessions", (string)null);
+                    b.ToTable("IdentityServer_ServerSideSessions", (string)null);
                 });
 #pragma warning restore 612, 618
         }

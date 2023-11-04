@@ -2,12 +2,12 @@
 {
     public static class TableConsts
     {
-        public const string Message = "Message";
-        public const string MessageTopic = "Message_Topic";
-        public const string MessageType = "Message_Type";
-        public const string PushPlatform = "Message_Push_Platform";
-        public const string PushRecord = "Message_Push_Record";
-        public const string Session = "Message_Session";
-        public const string Template = "Message_Template";
+        public const string Message = "MessageCenter_Message";
+        public const string MessageTopic = "MessageCenter_Topic";
+        public const string MessageType = "MessageCenter_Type";
+        public const string PushPlatform = "MessageCenter_Platform";
+        public const string PushRecord = "MessageCenter_Record";
+        public const string Session = "MessageCenter_Session";
+        public const string Template = "MessageCenter_Template";
     }
 }

@@ -9,7 +9,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 #nullable disable
 
-namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
+namespace Leelite.MessageCenter.Migrations.PostgreSQL
 {
     [DbContext(typeof(MessageContext))]
     partial class MessageContextModelSnapshot : ModelSnapshot
@@ -77,7 +77,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message", (string)null);
+                    b.ToTable("MessageCenter_Message", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTopicAgg.MessageTopic", b =>
@@ -105,7 +105,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Topic", (string)null);
+                    b.ToTable("MessageCenter_Topic", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTypeAgg.MessageType", b =>
@@ -153,10 +153,10 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Type", (string)null);
+                    b.ToTable("MessageCenter_Type", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.PushPlatformAgg.PushPlatform", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -191,7 +191,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Push_Platform", (string)null);
+                    b.ToTable("MessageCenter_Platform", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
@@ -235,7 +235,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Push_Record", (string)null);
+                    b.ToTable("MessageCenter_Record", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.SessionAgg.Session", b =>
@@ -286,7 +286,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Session", (string)null);
+                    b.ToTable("MessageCenter_Session", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.TemplateAgg.Template", b =>
@@ -326,7 +326,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Template", (string)null);
+                    b.ToTable("MessageCenter_Template", (string)null);
                 });
 #pragma warning restore 612, 618
         }

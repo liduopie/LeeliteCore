@@ -11,7 +11,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.IdentityServer.Migrations.PostgreSQL.DataProtections
 {
     [DbContext(typeof(DataProtectionDbContext))]
-    [Migration("20231102144406_InitialCreate")]
+    [Migration("20231104141434_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

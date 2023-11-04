@@ -8,35 +8,40 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
+#nullable disable
+
+namespace Leelite.MessageCenter.Migrations.PostgreSQL
 {
     [DbContext(typeof(MessageContext))]
-    [Migration("20210721114813_ChangeTemplateId")]
-    partial class ChangeTemplateId
+    [Migration("20231104144230_InitDbMessageCenter")]
+    partial class InitDbMessageCenter
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.7")
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                .HasAnnotation("ProductVersion", "8.0.0-rc.2.23480.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.MessageAgg.Message", b =>
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Leelite.MessageCenter.Models.MessageAgg.Message", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<IDictionary<string, string>>("Data")
+                    b.Property<string>("Data")
                         .HasColumnType("json");
 
                     b.Property<DateTime>("DeleteTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<bool>("DeliveryState")
                         .HasColumnType("boolean");
@@ -46,7 +51,10 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                         .HasColumnType("character varying(512)");
 
                     b.Property<DateTime>("ExpirationTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("GenerateRecord")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("boolean");
@@ -58,7 +66,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                         .HasColumnType("boolean");
 
                     b.Property<DateTime>("ReadTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("SessionId")
                         .HasColumnType("bigint");
@@ -72,15 +80,16 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message");
+                    b.ToTable("MessageCenter_Message", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.MessageTopicAgg.MessageTopic", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTopicAgg.MessageTopic", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(256)
@@ -99,15 +108,16 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Topic");
+                    b.ToTable("MessageCenter_Topic", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.MessageTypeAgg.MessageType", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTypeAgg.MessageType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(256)
@@ -146,15 +156,16 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Type");
+                    b.ToTable("MessageCenter_Type", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PlatformAgg.PushPlatform", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.PushPlatformAgg.PushPlatform", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Code")
                         .HasMaxLength(256)
@@ -183,21 +194,22 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Push_Platform");
+                    b.ToTable("MessageCenter_Platform", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Content")
                         .HasColumnType("text");
 
                     b.Property<DateTime>("ExpirationTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<long>("MessageId")
                         .HasColumnType("bigint");
@@ -214,28 +226,36 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     b.Property<int>("State")
                         .HasColumnType("integer");
 
+                    b.Property<string>("TemplateCode")
+                        .HasMaxLength(256)
+                        .HasColumnType("character varying(256)");
+
                     b.Property<string>("Url")
                         .HasColumnType("text");
 
+                    b.Property<long>("UserId")
+                        .HasColumnType("bigint");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Push_Record");
+                    b.ToTable("MessageCenter_Record", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.SessionAgg.Session", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.SessionAgg.Session", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("bigint");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<long>("Id"));
 
                     b.Property<DateTime>("CompleteTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<DateTime>("CreateTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
-                    b.Property<IDictionary<string, string>>("Data")
+                    b.Property<string>("Data")
                         .HasColumnType("json");
 
                     b.Property<string>("Description")
@@ -243,7 +263,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                         .HasColumnType("character varying(512)");
 
                     b.Property<DateTime>("ExpirationTime")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<int>("MessageTypeId")
                         .HasColumnType("integer");
@@ -269,15 +289,16 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Session");
+                    b.ToTable("MessageCenter_Session", (string)null);
                 });
 
-            modelBuilder.Entity("Leelite.Modules.MessageCenter.Models.TemplateAgg.Template", b =>
+            modelBuilder.Entity("Leelite.MessageCenter.Models.TemplateAgg.Template", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn);
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ContentTemplate")
                         .HasMaxLength(512)
@@ -308,7 +329,7 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("Message_Template");
+                    b.ToTable("MessageCenter_Template", (string)null);
                 });
 #pragma warning restore 612, 618
         }

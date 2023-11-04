@@ -17,6 +17,7 @@ MessageDesignTimeFactory 类中UseMySql、UseNpgsql MigrationsAssembly使用默�
 1.在 MessageCenter 项目中生成迁移文件
 PostgreSQL
 dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/PostgreSQL -c MessageContext -- PostgreSQL
+Add-Migration InitDbMessageCenter -OutputDir Migrations/PostgreSQL -StartupProject WebHost -Context MessageContext
 2.将 Migrations 目录移动到 MessageCenter.PostgreSQL 项目中
 
 
@@ -29,6 +30,9 @@ dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Mi
 PostgreSQL
 dotnet ef migrations add AddPushRecordUserId -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
 dotnet ef migrations remove -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.PostgreSQL -c MessageContext -- PostgreSQL
+
+Add-Migration InitDbMessageCenter -o Migrations/PostgreSQL -s WebHost -Project Leelite.MessageCenter.PostgreSQL -Context MessageContext
+Remove-Migration -s WebHost -Project Leelite.MessageCenter.PostgreSQL -Context MessageContext
 
 MySql
 dotnet ef migrations add AddPushRecordUserId -s ../../../Hosts/ConsoleHost -p ../Leelite.Modules.MessageCenter.MySql -c MessageContext -- MySql
@@ -44,3 +48,5 @@ dotnet ef migrations script -i -o ../Leelite.Modules.MessageCenter.MySql/Sql/ins
 
 更新数据库
 dotnet ef database update -s ../../../Hosts/ConsoleHost -c MessageContext -- PostgreSQL
+
+Update-Database -s WebHost -Context MessageContext

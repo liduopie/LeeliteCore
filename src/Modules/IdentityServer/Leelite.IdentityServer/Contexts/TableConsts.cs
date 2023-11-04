@@ -28,6 +28,8 @@
 
         public const string PersistedGrants = "IdentityServer_PersistedGrants";
         public const string DeviceFlowCodes = "IdentityServer_DeviceFlowCodes";
+        public const string ServerSideSessions = "IdentityServer_ServerSideSessions";
+        public const string Keys = "IdentityServer_Keys";
 
 
         public const string DataProtectionKeys = "IdentityServer_DataProtectionKeys";

@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
 {
     [DbContext(typeof(ConfigurationContext))]
-    [Migration("20231102144005_InitialCreate")]
+    [Migration("20231104141408_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

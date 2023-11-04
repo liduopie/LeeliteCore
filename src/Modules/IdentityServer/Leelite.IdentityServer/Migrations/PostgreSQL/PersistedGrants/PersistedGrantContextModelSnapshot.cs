@@ -105,7 +105,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
 
                     b.HasIndex("Use");
 
-                    b.ToTable("Keys", (string)null);
+                    b.ToTable("IdentityServer_Keys", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.PersistedGrant", b =>
@@ -229,7 +229,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
 
                     b.HasIndex("SubjectId");
 
-                    b.ToTable("ServerSideSessions", (string)null);
+                    b.ToTable("IdentityServer_ServerSideSessions", (string)null);
                 });
 #pragma warning restore 612, 618
         }

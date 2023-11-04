@@ -3,44 +3,51 @@ using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
+#nullable disable
+
+namespace Leelite.MessageCenter.Migrations.PostgreSQL
 {
-    public partial class DbInitMessageCenter : Migration
+    /// <inheritdoc />
+    public partial class InitDbMessageCenter : Migration
     {
+        /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Message",
+                name: "MessageCenter_Message",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    SessionId = table.Column<long>(type: "bigint", nullable: false),
                     UserId = table.Column<long>(type: "bigint", nullable: false),
                     MessageTypeId = table.Column<int>(type: "integer", nullable: false),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Data = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
+                    Data = table.Column<string>(type: "json", nullable: true),
+                    GenerateRecord = table.Column<bool>(type: "boolean", nullable: false),
                     ReadState = table.Column<bool>(type: "boolean", nullable: false),
                     DeliveryState = table.Column<bool>(type: "boolean", nullable: false),
                     IsDeleted = table.Column<bool>(type: "boolean", nullable: false),
-                    CreateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    ReadTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    DeleteTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    ExpirationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false)
+                    CreateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ReadTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    DeleteTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ExpirationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Message", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_Push_Platform",
+                name: "MessageCenter_Platform",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    Code = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     ProviderName = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Config = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
                     Priority = table.Column<int>(type: "integer", nullable: false),
@@ -48,30 +55,33 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_Push_Platform", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Platform", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_Push_Record",
+                name: "MessageCenter_Record",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    UserId = table.Column<long>(type: "bigint", nullable: false),
                     MessageId = table.Column<long>(type: "bigint", nullable: false),
                     PlatformId = table.Column<int>(type: "integer", nullable: false),
+                    TemplateCode = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Content = table.Column<string>(type: "text", nullable: true),
                     Url = table.Column<string>(type: "text", nullable: true),
-                    PushState = table.Column<bool>(type: "boolean", nullable: false),
+                    State = table.Column<int>(type: "integer", nullable: false),
                     RetriesNum = table.Column<int>(type: "integer", nullable: false),
-                    Remark = table.Column<string>(type: "text", nullable: true)
+                    Remark = table.Column<string>(type: "text", nullable: true),
+                    ExpirationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_Push_Record", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Record", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_Session",
+                name: "MessageCenter_Session",
                 columns: table => new
                 {
                     Id = table.Column<long>(type: "bigint", nullable: false)
@@ -79,26 +89,26 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                     MessageTypeId = table.Column<int>(type: "integer", nullable: false),
                     Title = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Description = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
-                    Data = table.Column<IDictionary<string, string>>(type: "json", nullable: true),
+                    Data = table.Column<string>(type: "json", nullable: true),
                     UserIds = table.Column<IList<long>>(type: "json", nullable: true),
                     UserNum = table.Column<int>(type: "integer", nullable: false),
                     PushNum = table.Column<int>(type: "integer", nullable: false),
-                    CreateTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CreateTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     State = table.Column<int>(type: "integer", nullable: false),
-                    CompleteTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
-                    ExpirationTime = table.Column<DateTime>(type: "timestamp without time zone", nullable: false),
+                    CompleteTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    ExpirationTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
                     Remark = table.Column<string>(type: "text", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_Session", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Session", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_Template",
+                name: "MessageCenter_Template",
                 columns: table => new
                 {
-                    Id = table.Column<long>(type: "bigint", nullable: false)
+                    Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     PlatformId = table.Column<int>(type: "integer", nullable: false),
                     MessageTypeCode = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
@@ -110,18 +120,34 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_Template", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Template", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Message_Type",
+                name: "MessageCenter_Topic",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
                     Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     Code = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
-                    Icon = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Icon = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
+                    IsEnabled = table.Column<bool>(type: "boolean", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_MessageCenter_Topic", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "MessageCenter_Type",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Name = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Code = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
+                    Topic = table.Column<string>(type: "character varying(256)", maxLength: 256, nullable: true),
                     TitleTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     DescriptionTemplate = table.Column<string>(type: "character varying(512)", maxLength: 512, nullable: true),
                     Schema = table.Column<string>(type: "text", nullable: true),
@@ -132,29 +158,33 @@ namespace Leelite.Modules.MessageCenter.Migrations.PostgreSQL
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Message_Type", x => x.Id);
+                    table.PrimaryKey("PK_MessageCenter_Type", x => x.Id);
                 });
         }
 
+        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Message");
+                name: "MessageCenter_Message");
 
             migrationBuilder.DropTable(
-                name: "Message_Push_Platform");
+                name: "MessageCenter_Platform");
 
             migrationBuilder.DropTable(
-                name: "Message_Push_Record");
+                name: "MessageCenter_Record");
 
             migrationBuilder.DropTable(
-                name: "Message_Session");
+                name: "MessageCenter_Session");
 
             migrationBuilder.DropTable(
-                name: "Message_Template");
+                name: "MessageCenter_Template");
 
             migrationBuilder.DropTable(
-                name: "Message_Type");
+                name: "MessageCenter_Topic");
+
+            migrationBuilder.DropTable(
+                name: "MessageCenter_Type");
         }
     }
 }

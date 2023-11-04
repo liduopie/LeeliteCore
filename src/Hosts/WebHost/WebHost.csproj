@@ -9,6 +9,8 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\Leelite.Application\Leelite.Application.csproj" />
     <ProjectReference Include="..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
+    <ProjectReference Include="..\..\Modules\MessageCenter\Leelite.MessageCenter.PostgreSQL\Leelite.MessageCenter.PostgreSQL.csproj" />
+    <ProjectReference Include="..\..\Modules\MessageCenter\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
   </ItemGroup>
 
   <ItemGroup>

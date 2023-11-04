@@ -12,9 +12,9 @@ Update-Database -s WebHost -Context DataProtectionDbContext
 
 Drop-Database -s WebHost -c PersistedGrantContext
 
-Remove-Migration -s WebHost -c ConfigurationContext
-Remove-Migration -s WebHost -c PersistedGrantContext
-Remove-Migration -s WebHost -c DataProtectionDbContext
+Remove-Migration -s WebHost -Context ConfigurationContext
+Remove-Migration -s WebHost -Context PersistedGrantContext
+Remove-Migration -s WebHost -Context DataProtectionDbContext
 
 PersistedGrantDesignTimeFactory
 ConfigurationDesignTimeFactory

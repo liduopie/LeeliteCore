@@ -26,4 +26,7 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
 	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="Migrations\PostgreSQL\" />
+	</ItemGroup>
 </Project>

@@ -32,6 +32,24 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 });
 
             migrationBuilder.CreateTable(
+                name: "IdentityServer_Keys",
+                columns: table => new
+                {
+                    Id = table.Column<string>(type: "text", nullable: false),
+                    Version = table.Column<int>(type: "integer", nullable: false),
+                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    Use = table.Column<string>(type: "text", nullable: true),
+                    Algorithm = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
+                    IsX509Certificate = table.Column<bool>(type: "boolean", nullable: false),
+                    DataProtected = table.Column<bool>(type: "boolean", nullable: false),
+                    Data = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_IdentityServer_Keys", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "IdentityServer_PersistedGrants",
                 columns: table => new
                 {
@@ -54,25 +72,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 });
 
             migrationBuilder.CreateTable(
-                name: "Keys",
-                columns: table => new
-                {
-                    Id = table.Column<string>(type: "text", nullable: false),
-                    Version = table.Column<int>(type: "integer", nullable: false),
-                    Created = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    Use = table.Column<string>(type: "text", nullable: true),
-                    Algorithm = table.Column<string>(type: "character varying(100)", maxLength: 100, nullable: false),
-                    IsX509Certificate = table.Column<bool>(type: "boolean", nullable: false),
-                    DataProtected = table.Column<bool>(type: "boolean", nullable: false),
-                    Data = table.Column<string>(type: "text", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Keys", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ServerSideSessions",
+                name: "IdentityServer_ServerSideSessions",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
@@ -89,7 +89,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ServerSideSessions", x => x.Id);
+                    table.PrimaryKey("PK_IdentityServer_ServerSideSessions", x => x.Id);
                 });
 
             migrationBuilder.CreateIndex(
@@ -102,6 +102,11 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 name: "IX_IdentityServer_DeviceFlowCodes_Expiration",
                 table: "IdentityServer_DeviceFlowCodes",
                 column: "Expiration");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_IdentityServer_Keys_Use",
+                table: "IdentityServer_Keys",
+                column: "Use");
 
             migrationBuilder.CreateIndex(
                 name: "IX_IdentityServer_PersistedGrants_ConsumedTime",
@@ -130,34 +135,29 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 columns: new[] { "SubjectId", "SessionId", "Type" });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Keys_Use",
-                table: "Keys",
-                column: "Use");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ServerSideSessions_DisplayName",
-                table: "ServerSideSessions",
+                name: "IX_IdentityServer_ServerSideSessions_DisplayName",
+                table: "IdentityServer_ServerSideSessions",
                 column: "DisplayName");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServerSideSessions_Expires",
-                table: "ServerSideSessions",
+                name: "IX_IdentityServer_ServerSideSessions_Expires",
+                table: "IdentityServer_ServerSideSessions",
                 column: "Expires");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServerSideSessions_Key",
-                table: "ServerSideSessions",
+                name: "IX_IdentityServer_ServerSideSessions_Key",
+                table: "IdentityServer_ServerSideSessions",
                 column: "Key",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServerSideSessions_SessionId",
-                table: "ServerSideSessions",
+                name: "IX_IdentityServer_ServerSideSessions_SessionId",
+                table: "IdentityServer_ServerSideSessions",
                 column: "SessionId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ServerSideSessions_SubjectId",
-                table: "ServerSideSessions",
+                name: "IX_IdentityServer_ServerSideSessions_SubjectId",
+                table: "IdentityServer_ServerSideSessions",
                 column: "SubjectId");
         }
 
@@ -168,13 +168,13 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.PersistedGrants
                 name: "IdentityServer_DeviceFlowCodes");
 
             migrationBuilder.DropTable(
+                name: "IdentityServer_Keys");
+
+            migrationBuilder.DropTable(
                 name: "IdentityServer_PersistedGrants");
 
             migrationBuilder.DropTable(
-                name: "Keys");
-
-            migrationBuilder.DropTable(
-                name: "ServerSideSessions");
+                name: "IdentityServer_ServerSideSessions");
         }
     }
 }

@@ -12,6 +12,8 @@ namespace Leelite.Modules.IdentityServer.Contexts
         {
             storeOptions.PersistedGrants.Name = TableConsts.PersistedGrants;
             storeOptions.DeviceFlowCodes.Name = TableConsts.DeviceFlowCodes;
+            storeOptions.ServerSideSessions.Name = TableConsts.ServerSideSessions;
+            storeOptions.Keys.Name = TableConsts.Keys;
         }
     }
 }
