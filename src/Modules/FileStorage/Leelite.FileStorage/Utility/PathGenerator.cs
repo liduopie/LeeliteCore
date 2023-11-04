@@ -3,10 +3,10 @@ using System.Linq;
 
 using HybridFS.Utility;
 
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
-using Leelite.Modules.FileStorage.Options;
+using Leelite.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Options;
 
-namespace Leelite.Modules.FileStorage.Utility
+namespace Leelite.FileStorage.Utility
 {
     public static class PathGenerator
     {

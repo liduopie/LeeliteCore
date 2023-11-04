@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.FileStorage.Options
+﻿namespace Leelite.FileStorage.Options
 {
     public enum DirectoryNameRule
     {

@@ -13,7 +13,6 @@ namespace Leelite.AspNetCore
     {
         private static bool _running;
         private static ILogger Logger { get; set; }
-
         public static bool Stoped { get; private set; }
         public static WebApplication App { get; set; }
 

@@ -2,7 +2,7 @@ using System.IO;
 using System.Text.Json.Serialization;
 using Leelite.Framework.Service.Dtos;
 
-namespace Leelite.Modules.FileStorage.Dtos.FileItemDtos
+namespace Leelite.FileStorage.Dtos.FileItemDtos
 {
     public class FileItemCreateRequest : IRequest
     {

@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.FileStorage.Models.FileItemAgg
+﻿namespace Leelite.FileStorage.Models.FileItemAgg
 {
     public enum FileState
     {

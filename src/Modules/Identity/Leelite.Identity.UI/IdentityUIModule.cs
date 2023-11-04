@@ -24,10 +24,12 @@ namespace Leelite.Identity.UI
     {
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, Role>(o =>
-            {
-                o.Stores.MaxLengthForKeys = 256;
-            }).AddDefaultTokenProviders();
+            services
+                .AddIdentity<User, Role>(o =>
+                {
+                    o.Stores.MaxLengthForKeys = 256;
+                })
+                .AddDefaultTokenProviders();
 
             var authenticationConfig = configuration.GetSection("Authentication");
 
@@ -51,7 +53,6 @@ namespace Leelite.Identity.UI
 
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-
             app.UseStaticFiles(new StaticFileOptions
             {
                 FileProvider = new PhysicalFileProvider(Path.Combine(this.GetModuleInfo(app.ApplicationServices).DirectoryPath, "wwwroot")),

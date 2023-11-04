@@ -14,4 +14,4 @@ Migrations
 CreateIdentitySchema
 
 生成sql
- dotnet ef migrations script -i -o Sql/install.sql -s ../../../Hosts/ConsoleHost -- PostgreSQL
+dotnet ef migrations script -i -o Sql/install.sql -s ../../../Hosts/ConsoleHost -- PostgreSQL

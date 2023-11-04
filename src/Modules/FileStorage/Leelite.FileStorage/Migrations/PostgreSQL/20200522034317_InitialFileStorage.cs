@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Leelite.Modules.FileStorage.Migrations.PostgreSQL
+namespace Leelite.FileStorage.Migrations.PostgreSQL
 {
     public partial class InitialFileStorage : Migration
     {

@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.FileStorage.Contexts
+﻿namespace Leelite.FileStorage.Contexts
 {
     public class TableConsts
     {

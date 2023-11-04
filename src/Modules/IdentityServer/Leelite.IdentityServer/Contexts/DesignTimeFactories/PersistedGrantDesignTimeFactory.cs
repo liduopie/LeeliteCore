@@ -1,4 +1,5 @@
-﻿using IdentityServer4.EntityFramework.Options;
+﻿using Duende.IdentityServer.EntityFramework.Options;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
@@ -11,9 +12,13 @@ namespace Leelite.Modules.IdentityServer.Contexts.DesignTimeFactories
             var optionsBuilder = new DbContextOptionsBuilder<PersistedGrantContext>();
             optionsBuilder.UseNpgsql("Host=127.0.0.1;Database=leelite;Username=postgres;Password=pgadmin");
 
-            var options = new OperationalStoreOptions();
+            var storeOptions = new OperationalStoreOptions();
 
-            return new PersistedGrantContext(optionsBuilder.Options, options);
+            var context = new PersistedGrantContext(optionsBuilder.Options, storeOptions);
+
+            context.StoreOptions = storeOptions;
+
+            return context;
         }
     }
 }

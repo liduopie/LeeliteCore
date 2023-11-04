@@ -2,6 +2,9 @@
   "Name": "Leelite.Identity",
   "AssemblyFileName": "Leelite.Identity.UI.dll",
   "ReferencedAssemblies": [
-    "Leelite.Identity.SignIn.dll"
+    "Leelite.Identity.dll",
+    "Leelite.Identity.SignIn.dll",
+    "Leelite.Identity.Admin.dll",
+    "Leelite.Identity.Api.dll"
   ]
 }

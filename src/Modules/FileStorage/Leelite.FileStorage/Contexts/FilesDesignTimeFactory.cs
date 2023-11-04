@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Leelite.Modules.FileStorage.Contexts
+namespace Leelite.FileStorage.Contexts
 {
     public class FilesDesignTimeFactory : IDesignTimeDbContextFactory<FileStorageContext>
     {

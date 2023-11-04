@@ -1,12 +1,12 @@
 using System;
 
 using Leelite.Framework.WebApi;
-using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
-using Leelite.Modules.FileStorage.Interfaces;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Dtos.FileItemDtos;
+using Leelite.FileStorage.Interfaces;
+using Leelite.FileStorage.Models.FileItemAgg;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Modules.Files.WebApi
+namespace Leelite.Files.WebApi
 {
     [ApiController]
     [Area("Files")]

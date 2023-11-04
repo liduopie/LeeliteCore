@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 
-using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Dtos.FileItemDtos;
+using Leelite.FileStorage.Models.FileItemAgg;
 
-namespace Leelite.Modules.FileStorage
+namespace Leelite.FileStorage
 {
     public class FileStorageProfile : Profile
     {

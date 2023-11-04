@@ -1,5 +1,7 @@
 ﻿using System.Threading.Tasks;
+
 using Microsoft.EntityFrameworkCore;
+
 using Skoruba.AuditLogging.EntityFramework.DbContexts;
 using Skoruba.AuditLogging.EntityFramework.Entities;
 

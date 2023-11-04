@@ -23,9 +23,13 @@
         public const string IdentityResource = "IdentityServer_IdentityResource";
         public const string IdentityResourceClaim = "IdentityServer_IdentityResourceClaim";
         public const string IdentityResourceProperty = "IdentityServer_IdentityResourceProperty";
+        public const string IdentityProvider = "IdentityServer_IdentityProvider";
 
 
         public const string PersistedGrants = "IdentityServer_PersistedGrants";
         public const string DeviceFlowCodes = "IdentityServer_DeviceFlowCodes";
+
+
+        public const string DataProtectionKeys = "IdentityServer_DataProtectionKeys";
     }
 }

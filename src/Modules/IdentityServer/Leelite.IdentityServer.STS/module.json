@@ -1,0 +1,11 @@
+{
+  "Name": "Leelite.IdentityServer.STS",
+  "AssemblyFileName": "Leelite.IdentityServer.STS.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Identity.dll",
+    "Leelite.IdentityServer.dll"
+  ],
+  "ExcludedModules": [
+    "Leelite.Identity"
+  ]
+}

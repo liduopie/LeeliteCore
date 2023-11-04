@@ -1,0 +1,1 @@
+dotnet new skoruba.duende.isadmin --name Leelite.IdentityServer.Admin --title Leelite.IdentityServer.Admin --adminemail "admin@leelite" --adminpassword "Pa$$word123" --adminrole Admin --adminclientid AdminClient --adminclientsecret AdminSecret --dockersupport true

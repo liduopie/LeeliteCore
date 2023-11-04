@@ -1,7 +1,7 @@
 ﻿using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module.Dependency;
-using Leelite.Modules.FileStorage;
+using Leelite.FileStorage;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

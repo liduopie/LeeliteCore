@@ -1,9 +1,9 @@
 ﻿using Leelite.Framework.Domain.Context;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Models.FileItemAgg;
 
 using Microsoft.EntityFrameworkCore;
 
-namespace Leelite.Modules.FileStorage.Contexts
+namespace Leelite.FileStorage.Contexts
 {
     public class FileStorageContext : EFDbContext
     {

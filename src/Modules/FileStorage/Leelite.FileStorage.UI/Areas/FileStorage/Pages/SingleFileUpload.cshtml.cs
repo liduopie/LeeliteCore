@@ -9,17 +9,17 @@ using System.Threading.Tasks;
 using HybridFS.FileSystem;
 
 using Leelite.Application.Settings;
-using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
-using Leelite.Modules.FileStorage.Interfaces;
-using Leelite.Modules.FileStorage.Options;
-using Leelite.Modules.FileStorage.Utility;
+using Leelite.FileStorage.Dtos.FileItemDtos;
+using Leelite.FileStorage.Interfaces;
+using Leelite.FileStorage.Options;
+using Leelite.FileStorage.Utility;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Configuration;
 
-namespace Leelite.Modules.FileStorage.UI.Areas.FileStorage.Pages
+namespace Leelite.FileStorage.UI.Areas.FileStorage.Pages
 {
     public class SingleFileUploadModel : PageModel
     {

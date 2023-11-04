@@ -1,7 +1,4 @@
-﻿using System;
-using System.Data;
-using System.Linq;
-using Leelite.Framework.Domain.Context;
+﻿using Leelite.Framework.Domain.Context;
 using Leelite.Identity.Contexts.Configurations;
 using Leelite.Identity.Models.RoleAgg;
 using Leelite.Identity.Models.RoleClaimAgg;
@@ -12,10 +9,10 @@ using Leelite.Identity.Models.UserKeyAgg;
 using Leelite.Identity.Models.UserLoginAgg;
 using Leelite.Identity.Models.UserRoleAgg;
 using Leelite.Identity.Models.UserTokenAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 

@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
+﻿using System.Reflection;
 
 using Leelite.Commons.Host;
 using Leelite.Core.Modular;
+using Leelite.Framework.Attributes;
 using Leelite.Framework.Service;
 
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -26,6 +24,9 @@ namespace Leelite.Framework.WebApi
                 foreach (var assembly in context.Assemblies)
                 {
                     var types = assembly.GetTypes().Where(c => c.IsClass && !c.IsAbstract && !c.IsGenericType && c.HasImplementedRawGeneric(typeof(ICrudService<,,,,,>)));
+
+                    // 过滤类型的带有通用api标记
+                    types = types.Where(c => c.GetCustomAttribute<GenericApiControllerAttribute>() != null);
 
                     serviceTypes.AddRange(types);
                 }

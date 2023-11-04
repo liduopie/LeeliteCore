@@ -21,6 +21,11 @@
         public IList<string> ReferencedAssemblies { get; set; } = new List<string>();
 
         /// <summary>
+        /// 排斥的模块
+        /// </summary>
+        public IList<string> ExcludedModules { get; set; } = new List<string>();
+
+        /// <summary>
         /// 模块所在路径
         /// </summary>
         public string DirectoryPath { get; set; } = "";

@@ -6,7 +6,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
-namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
+#nullable disable
+
+namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
 {
     [DbContext(typeof(ConfigurationContext))]
     partial class ConfigurationContextModelSnapshot : ModelSnapshot
@@ -15,23 +17,25 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .UseIdentityByDefaultColumns()
-                .HasAnnotation("Relational:MaxIdentifierLength", 63)
-                .HasAnnotation("ProductVersion", "5.0.0");
+                .HasAnnotation("ProductVersion", "8.0.0-rc.2.23480.1")
+                .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResource", b =>
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResource", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("AllowedAccessTokenSigningAlgorithms")
                         .HasMaxLength(100)
                         .HasColumnType("character varying(100)");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -45,7 +49,7 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("LastAccessed")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Name")
                         .IsRequired()
@@ -55,26 +59,30 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<bool>("NonEditable")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("RequireResourceIndicator")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("ShowInDiscoveryDocument")
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResource");
+                    b.ToTable("IdentityServer_ApiResource", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("integer");
@@ -86,17 +94,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApiResourceId");
+                    b.HasIndex("ApiResourceId", "Type")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceClaim");
+                    b.ToTable("IdentityServer_ApiResourceClaim", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("integer");
@@ -113,17 +123,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApiResourceId");
+                    b.HasIndex("ApiResourceId", "Key")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceProperty");
+                    b.ToTable("IdentityServer_ApiResourceProperty", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceScope", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("integer");
@@ -135,30 +147,32 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApiResourceId");
+                    b.HasIndex("ApiResourceId", "Scope")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceScope");
+                    b.ToTable("IdentityServer_ApiResourceScope", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceSecret", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceSecret", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ApiResourceId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
 
                     b.Property<DateTime?>("Expiration")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -174,15 +188,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("IdentityServer_ApiResourceSecret");
+                    b.ToTable("IdentityServer_ApiResourceSecret", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScope", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -198,10 +216,16 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<bool>("Enabled")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime?>("LastAccessed")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
+
+                    b.Property<bool>("NonEditable")
+                        .HasColumnType("boolean");
 
                     b.Property<bool>("Required")
                         .HasColumnType("boolean");
@@ -209,20 +233,24 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<bool>("ShowInDiscoveryDocument")
                         .HasColumnType("boolean");
 
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("timestamp with time zone");
+
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScope");
+                    b.ToTable("IdentityServer_ApiScope", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ScopeId")
                         .HasColumnType("integer");
@@ -234,17 +262,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex("ScopeId", "Type")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScopeClaim");
+                    b.ToTable("IdentityServer_ApiScopeClaim", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Key")
                         .IsRequired()
@@ -261,17 +291,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ScopeId");
+                    b.HasIndex("ScopeId", "Key")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScopeProperty");
+                    b.ToTable("IdentityServer_ApiScopeProperty", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Client", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.Client", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("AbsoluteRefreshTokenLifetime")
                         .HasColumnType("integer");
@@ -314,6 +346,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)");
 
+                    b.Property<int?>("CibaLifetime")
+                        .HasColumnType("integer");
+
                     b.Property<string>("ClientClaimsPrefix")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
@@ -334,8 +369,17 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<int?>("ConsentLifetime")
                         .HasColumnType("integer");
 
+                    b.Property<bool?>("CoordinateLifetimeWithUserSession")
+                        .HasColumnType("boolean");
+
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<TimeSpan>("DPoPClockSkew")
+                        .HasColumnType("interval");
+
+                    b.Property<int>("DPoPValidationMode")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -363,8 +407,12 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<bool>("IncludeJwtId")
                         .HasColumnType("boolean");
 
+                    b.Property<string>("InitiateLoginUri")
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
+
                     b.Property<DateTime?>("LastAccessed")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("LogoUri")
                         .HasMaxLength(2000)
@@ -376,6 +424,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<string>("PairWiseSubjectSalt")
                         .HasMaxLength(200)
                         .HasColumnType("character varying(200)");
+
+                    b.Property<int?>("PollingInterval")
+                        .HasColumnType("integer");
 
                     b.Property<string>("ProtocolType")
                         .IsRequired()
@@ -394,6 +445,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Property<bool>("RequireConsent")
                         .HasColumnType("boolean");
 
+                    b.Property<bool>("RequireDPoP")
+                        .HasColumnType("boolean");
+
                     b.Property<bool>("RequirePkce")
                         .HasColumnType("boolean");
 
@@ -407,7 +461,7 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("UserCodeType")
                         .HasMaxLength(100)
@@ -421,15 +475,16 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_Client");
+                    b.ToTable("IdentityServer_Client", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -446,17 +501,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "Type", "Value")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientClaim");
+                    b.ToTable("IdentityServer_ClientClaim", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientCorsOrigin", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -468,17 +525,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "Origin")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientCorsOrigin");
+                    b.ToTable("IdentityServer_ClientCorsOrigin", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientGrantType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -490,17 +549,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "GrantType")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientGrantType");
+                    b.ToTable("IdentityServer_ClientGrantType", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientIdPRestriction", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -512,39 +573,43 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "Provider")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientIdPRestriction");
+                    b.ToTable("IdentityServer_ClientIdPRestriction", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
 
                     b.Property<string>("PostLogoutRedirectUri")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
+                        .HasMaxLength(400)
+                        .HasColumnType("character varying(400)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "PostLogoutRedirectUri")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientPostLogoutRedirectUri");
+                    b.ToTable("IdentityServer_ClientPostLogoutRedirectUri", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -561,39 +626,43 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "Key")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientProperty");
+                    b.ToTable("IdentityServer_ClientProperty", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientRedirectUri", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientRedirectUri", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
 
                     b.Property<string>("RedirectUri")
                         .IsRequired()
-                        .HasMaxLength(2000)
-                        .HasColumnType("character varying(2000)");
+                        .HasMaxLength(400)
+                        .HasColumnType("character varying(400)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "RedirectUri")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientRedirectUri");
+                    b.ToTable("IdentityServer_ClientRedirectUri", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientScope", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
@@ -605,30 +674,32 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ClientId");
+                    b.HasIndex("ClientId", "Scope")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientScopes");
+                    b.ToTable("IdentityServer_ClientScopes", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientSecret", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("ClientId")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(2000)
                         .HasColumnType("character varying(2000)");
 
                     b.Property<DateTime?>("Expiration")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Type")
                         .IsRequired()
@@ -644,18 +715,67 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("IdentityServer_ClientSecret");
+                    b.ToTable("IdentityServer_ClientSecret", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResource", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityProvider", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("Created")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("DisplayName")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<bool>("Enabled")
+                        .HasColumnType("boolean");
+
+                    b.Property<DateTime?>("LastAccessed")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<bool>("NonEditable")
+                        .HasColumnType("boolean");
+
+                    b.Property<string>("Properties")
+                        .HasColumnType("text");
+
+                    b.Property<string>("Scheme")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("Type")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
+
+                    b.Property<DateTime?>("Updated")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Scheme")
+                        .IsUnique();
+
+                    b.ToTable("IdentityServer_IdentityProvider", (string)null);
+                });
+
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResource", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("Description")
                         .HasMaxLength(1000)
@@ -686,22 +806,23 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                         .HasColumnType("boolean");
 
                     b.Property<DateTime?>("Updated")
-                        .HasColumnType("timestamp without time zone");
+                        .HasColumnType("timestamp with time zone");
 
                     b.HasKey("Id");
 
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResource");
+                    b.ToTable("IdentityServer_IdentityResource", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceClaim", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("IdentityResourceId")
                         .HasColumnType("integer");
@@ -713,17 +834,19 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityResourceId");
+                    b.HasIndex("IdentityResourceId", "Type")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResourceClaim");
+                    b.ToTable("IdentityServer_IdentityResourceClaim", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceProperty", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("integer")
-                        .UseIdentityByDefaultColumn();
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<int>("IdentityResourceId")
                         .HasColumnType("integer");
@@ -740,14 +863,15 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IdentityResourceId");
+                    b.HasIndex("IdentityResourceId", "Key")
+                        .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResourceProperty");
+                    b.ToTable("IdentityServer_IdentityResourceProperty", (string)null);
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiResource", "ApiResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                         .WithMany("UserClaims")
                         .HasForeignKey("ApiResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -756,9 +880,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("ApiResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceProperty", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiResource", "ApiResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                         .WithMany("Properties")
                         .HasForeignKey("ApiResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -767,9 +891,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("ApiResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceScope", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiResource", "ApiResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                         .WithMany("Scopes")
                         .HasForeignKey("ApiResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -778,9 +902,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("ApiResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResourceSecret", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceSecret", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiResource", "ApiResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                         .WithMany("Secrets")
                         .HasForeignKey("ApiResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -789,9 +913,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("ApiResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeClaim", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiScope", "Scope")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiScope", "Scope")
                         .WithMany("UserClaims")
                         .HasForeignKey("ScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -800,9 +924,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Scope");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScopeProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeProperty", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.ApiScope", "Scope")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.ApiScope", "Scope")
                         .WithMany("Properties")
                         .HasForeignKey("ScopeId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -811,9 +935,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Scope");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientClaim", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("Claims")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -822,9 +946,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientCorsOrigin", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientCorsOrigin", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("AllowedCorsOrigins")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -833,9 +957,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientGrantType", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientGrantType", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("AllowedGrantTypes")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -844,9 +968,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientIdPRestriction", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientIdPRestriction", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("IdentityProviderRestrictions")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -855,9 +979,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("PostLogoutRedirectUris")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -866,9 +990,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientProperty", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("Properties")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -877,9 +1001,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientRedirectUri", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientRedirectUri", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("RedirectUris")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -888,9 +1012,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientScope", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("AllowedScopes")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -899,9 +1023,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ClientSecret", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientSecret", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.Client", "Client")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.Client", "Client")
                         .WithMany("ClientSecrets")
                         .HasForeignKey("ClientId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -910,9 +1034,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("Client");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceClaim", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceClaim", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.IdentityResource", "IdentityResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.IdentityResource", "IdentityResource")
                         .WithMany("UserClaims")
                         .HasForeignKey("IdentityResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -921,9 +1045,9 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("IdentityResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResourceProperty", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceProperty", b =>
                 {
-                    b.HasOne("IdentityServer4.EntityFramework.Entities.IdentityResource", "IdentityResource")
+                    b.HasOne("Duende.IdentityServer.EntityFramework.Entities.IdentityResource", "IdentityResource")
                         .WithMany("Properties")
                         .HasForeignKey("IdentityResourceId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -932,7 +1056,7 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("IdentityResource");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiResource", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResource", b =>
                 {
                     b.Navigation("Properties");
 
@@ -943,14 +1067,14 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("UserClaims");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.ApiScope", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScope", b =>
                 {
                     b.Navigation("Properties");
 
                     b.Navigation("UserClaims");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.Client", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.Client", b =>
                 {
                     b.Navigation("AllowedCorsOrigins");
 
@@ -971,7 +1095,7 @@ namespace Leelite.Modules.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.Navigation("RedirectUris");
                 });
 
-            modelBuilder.Entity("IdentityServer4.EntityFramework.Entities.IdentityResource", b =>
+            modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResource", b =>
                 {
                     b.Navigation("Properties");
 

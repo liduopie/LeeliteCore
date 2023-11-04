@@ -2,17 +2,17 @@
 
 using Leelite.Core.Module;
 using Leelite.Framework.Service.Commands;
-using Leelite.Modules.FileStorage.CommandHandlers;
-using Leelite.Modules.FileStorage.Contexts;
-using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.CommandHandlers;
+using Leelite.FileStorage.Contexts;
+using Leelite.FileStorage.Dtos.FileItemDtos;
+using Leelite.FileStorage.Models.FileItemAgg;
 
 using MediatR;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Modules.FileStorage
+namespace Leelite.FileStorage
 {
     public class FileStorageModule : ModuleBase
     {

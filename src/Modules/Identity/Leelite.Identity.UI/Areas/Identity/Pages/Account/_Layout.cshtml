@@ -1,7 +1,7 @@
 ﻿@{
     Layout = "/Areas/Identity/Pages/_Layout.cshtml";
 }
-@section Styles{
+@section Styles {
     <link href="~/identity/css/identity.css" rel="stylesheet" type="text/css">
         @RenderSection("Styles", required: false)
 }
@@ -62,14 +62,6 @@
 
             </div>
             <!-- /content area -->
-            <!-- Footer -->
-            <div class="navbar navbar-sm navbar-footer border-top">
-                <div class="container-fluid">
-                    <span>&copy; @DateTime.Now.Year. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a></span>
-                </div>
-            </div>
-            <!-- /footer -->
-
         </div>
         <!-- /inner content -->
 
@@ -78,6 +70,13 @@
 
 </div>
 <!-- /page content -->
+<!-- Footer -->
+<div class="navbar navbar-sm navbar-footer border-top">
+    <div class="container-fluid">
+        <span>&copy; @DateTime.Now.Year. <a href="#">Leelite</a> by <a href="#" target="_blank">liduopie</a></span>
+    </div>
+</div>
+<!-- /footer -->
 @section ScriptsPlugins {
     <script src="~/global_assets/js/plugins/forms/styling/uniform.min.js"></script>
     @RenderSection("ScriptsPlugins", required: false)

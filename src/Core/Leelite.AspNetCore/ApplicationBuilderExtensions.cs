@@ -16,6 +16,8 @@ namespace Microsoft.AspNetCore.Builder
 
                 // TODO:动态加载的dll 会出现无法获取程序集错误
                 // app.UseDatabaseErrorPage();
+
+                // app.UseMigrationsEndPoint();
             }
             else
             {
@@ -66,6 +68,9 @@ namespace Microsoft.AspNetCore.Builder
             //        spa.UseProxyToSpaDevelopmentServer("http://localhost:4200");
             //    }
             //});
+
+            // TODO:不确定用途
+            // app.MapFallbackToFile("index.html");
         }
     }
 }

@@ -35,6 +35,11 @@ namespace Leelite.Framework.WebApi
 
             area = area.Substring(0, area.IndexOf("."));
 
+            if (string.IsNullOrEmpty(area))
+            {
+                area = fullName.Split(".")[1];
+            }
+
             controller.RouteValues["area"] = area;
         }
     }

@@ -6,7 +6,7 @@ using Leelite.Framework.Models.SoftDelete;
 using Leelite.Framework.Models.State;
 using Leelite.Framework.Models.Tenant;
 
-namespace Leelite.Modules.FileStorage.Models.FileItemAgg
+namespace Leelite.FileStorage.Models.FileItemAgg
 {
     public class FileItem : AggregateRoot<Guid>,
         ITenant<long>,

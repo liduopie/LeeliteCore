@@ -2,10 +2,10 @@ using System;
 
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Domain.UnitOfWork;
-using Leelite.Modules.FileStorage.Contexts;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Contexts;
+using Leelite.FileStorage.Models.FileItemAgg;
 
-namespace Leelite.Modules.FileStorage.Repositories
+namespace Leelite.FileStorage.Repositories
 {
     public interface IFileInfoRepository : IRepository<FileItem, Guid>
     {

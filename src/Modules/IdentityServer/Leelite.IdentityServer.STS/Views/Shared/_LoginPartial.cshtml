@@ -1,0 +1,71 @@
+﻿@inject SignInManager<User> SignInManager
+@inject UserManager<User> UserManager
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item nav-item-dropdown-lg dropdown">
+            <a href="#" class="navbar-nav-link align-items-center rounded p-1" data-bs-toggle="dropdown" aria-expanded="false">
+                <div class="status-indicator-container">
+                    @if (string.IsNullOrEmpty(UserManager.GetUserAsync(User).Result.ProfilePicture))
+                    {
+                        <img src="~/global_assets/images/users/face1.jpg" class="w-32px h-32px rounded" alt="">
+                    }
+                    else
+                    {
+                        <img src="@UserManager.GetUserAsync(User).Result.ProfilePicture" class="w-32px h-32px rounded" alt="">
+                    }
+                    <span class="status-indicator bg-success"></span>
+                </div>
+                <span class="d-none d-lg-inline-block mx-lg-2">@User.Identity.Name</span>
+            </a>
+
+            <div class="dropdown-menu dropdown-menu-end">
+                <a href="#" class="dropdown-item">
+                    <i class="ph-user-circle me-2"></i>
+                    My profile
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="ph-currency-circle-dollar me-2"></i>
+                    My subscription
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="ph-shopping-cart me-2"></i>
+                    My orders
+                </a>
+                <a href="#" class="dropdown-item">
+                    <i class="ph-envelope-open me-2"></i>
+                    My inbox
+                    <span class="badge bg-primary rounded-pill ms-auto">26</span>
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" asp-page="/Identity/Manage/Index">
+                    <i class="ph-gear me-2"></i>
+                    账号设置
+                </a>
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Page("/", new { area = "" })" method="post">
+                    <button type="submit" class="dropdown-item"><i class="ph-sign-out me-2"></i>退出登录</button>
+                </form>
+            </div>
+        </li>
+    }
+    else
+    {
+        <li class="nav-item">
+            <a class="navbar-nav-link rounded" asp-area="Identity" asp-page="/Account/Create/Index">
+                <div class="d-flex align-items-center mx-md-1">
+                    <i class="ph-user-circle-plus"></i>
+                    <span class="d-none d-md-inline-block ms-2">注册</span>
+                </div>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="navbar-nav-link rounded" asp-area="Identity" asp-page="/Account/Login/Index">
+                <div class="d-flex align-items-center mx-md-1">
+                    <i class="ph-user-circle"></i>
+                    <span class="d-none d-md-inline-block ms-2">登录</span>
+                </div>
+            </a>
+        </li>
+    }
+</ul>

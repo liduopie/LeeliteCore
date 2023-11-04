@@ -2,14 +2,14 @@
   "Name": "Leelite.MessageCenter",
   "AssemblyFileName": "Leelite.MessageCenter.Api.dll",
   "ReferencedAssemblies": [
-    "Leelite.MessageCenter.dll"
-    //"Leelite.MessageCenter.SignalR.dll",
-    //"Leelite.MessageCenter.SMS.dll",
-    //"Leelite.MessageCenter.SMS.Ali.dll",
-    //"Leelite.MessageCenter.UniPush.dll",
-    //"Leelite.MessageCenter.UserClientId.dll",
-    //"Leelite.MessageCenter.UserPhone.dll",
-    //"Leelite.MessageCenter.UserOpenID.dll",
-    //"Leelite.MessageCenter.Weixin.dll"
+    "Leelite.MessageCenter.dll",
+    "Leelite.MessageCenter.SignalR.dll",
+    "Leelite.MessageCenter.SMS.dll",
+    "Leelite.MessageCenter.SMS.Ali.dll",
+    "Leelite.MessageCenter.UniPush.dll",
+    "Leelite.MessageCenter.UserClientId.dll",
+    "Leelite.MessageCenter.UserPhone.dll",
+    "Leelite.MessageCenter.UserOpenID.dll",
+    "Leelite.MessageCenter.Weixin.dll"
   ]
 }

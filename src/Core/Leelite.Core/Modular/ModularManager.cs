@@ -93,6 +93,18 @@ namespace Leelite.Core.Modular
 
             _logger.LogInformation($"Default AssemblyLoadContext find module types {moduleTypes.Count}.");
 
+            var excludedModules = new List<ModuleInfo>();
+
+            foreach (var info in _infos)
+            {
+                excludedModules.AddRange(_infos.Where(c => info.ExcludedModules.Contains(c.Name)));
+            }
+
+            foreach (var item in excludedModules)
+            {
+                _infos.Remove(item);
+            }
+
             foreach (var info in _infos)
             {
                 var moduleContext = new ModuleContext();

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Models.FileItemAgg;
 
-namespace Leelite.Modules.FileStorage.Options
+namespace Leelite.FileStorage.Options
 {
     /// <summary>
     /// 文件存储选项

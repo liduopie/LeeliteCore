@@ -1,12 +1,11 @@
-﻿using FluentValidation.AspNetCore;
+﻿using System.Reflection;
+
+using FluentValidation.AspNetCore;
 
 using Leelite.Core.Modular;
-using Leelite.Framework.Service;
 
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
 using Microsoft.Extensions.DependencyInjection;
-
-using System.Reflection;
 
 namespace Leelite.AspNetCore.Modular
 {
@@ -17,26 +16,27 @@ namespace Leelite.AspNetCore.Modular
 
             var manager = ModularManager.Current;
 
-            foreach (var loader in manager.GetLoaders())
+            foreach (var context in manager.ModuleContexts)
             {
-                var moduleAssembly = loader.LoadDefaultAssembly();
-
-                // This loads MVC application parts from plugin assemblies
-                var partFactory = ApplicationPartFactory.GetApplicationPartFactory(moduleAssembly);
-                foreach (var part in partFactory.GetApplicationParts(moduleAssembly))
+                foreach (var assembly in context.Assemblies)
                 {
-                    builder.PartManager.ApplicationParts.Add(part);
-                }
-
-                // This piece finds and loads related parts, such as MvcAppPlugin1.Views.dll.
-                var relatedAssembliesAttrs = moduleAssembly.GetCustomAttributes<RelatedAssemblyAttribute>();
-                foreach (var attr in relatedAssembliesAttrs)
-                {
-                    var assembly = loader.LoadAssembly(attr.AssemblyFileName);
-                    partFactory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
+                    // This loads MVC application parts from plugin assemblies
+                    var partFactory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
                     foreach (var part in partFactory.GetApplicationParts(assembly))
                     {
                         builder.PartManager.ApplicationParts.Add(part);
+                    }
+
+                    // This piece finds and loads related parts, such as MvcAppPlugin1.Views.dll.
+                    var relatedAssembliesAttrs = assembly.GetCustomAttributes<RelatedAssemblyAttribute>();
+                    foreach (var attr in relatedAssembliesAttrs)
+                    {
+                        var viewAssembly = context.Loader.LoadAssembly(attr.AssemblyFileName);
+                        partFactory = ApplicationPartFactory.GetApplicationPartFactory(assembly);
+                        foreach (var part in partFactory.GetApplicationParts(assembly))
+                        {
+                            builder.PartManager.ApplicationParts.Add(part);
+                        }
                     }
                 }
             }

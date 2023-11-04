@@ -15,12 +15,12 @@ using Leelite.Framework.Domain.Event;
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Service.Commands;
 using Leelite.Framework.Service.Events;
-using Leelite.Modules.FileStorage.Dtos.FileItemDtos;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
-using Leelite.Modules.FileStorage.Options;
-using Leelite.Modules.FileStorage.Utility;
+using Leelite.FileStorage.Dtos.FileItemDtos;
+using Leelite.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Options;
+using Leelite.FileStorage.Utility;
 
-namespace Leelite.Modules.FileStorage.CommandHandlers
+namespace Leelite.FileStorage.CommandHandlers
 {
     public class FileInfoCreateCommandHandler : ICommandHandler<CreateCommand<FileItemCreateRequest, FileItemDto, FileItem, Guid>, FileItemDto>
     {

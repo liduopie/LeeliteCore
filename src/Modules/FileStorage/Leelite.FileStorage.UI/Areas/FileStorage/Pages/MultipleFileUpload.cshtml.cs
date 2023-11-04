@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Leelite.Modules.FileStorage.UI.Areas.FileStorage.Pages
+namespace Leelite.FileStorage.UI.Areas.FileStorage.Pages
 {
     public class MultipleFileUploadModel : PageModel
     {

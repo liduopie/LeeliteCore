@@ -1,9 +1,9 @@
 using System;
 
 using Leelite.Framework.Service.Dtos;
-using Leelite.Modules.FileStorage.Models.FileItemAgg;
+using Leelite.FileStorage.Models.FileItemAgg;
 
-namespace Leelite.Modules.FileStorage.Dtos.FileItemDtos
+namespace Leelite.FileStorage.Dtos.FileItemDtos
 {
     public class FileItemDto : IDto<Guid>
     {
