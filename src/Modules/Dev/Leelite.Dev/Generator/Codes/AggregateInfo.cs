@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Dev.Generator.Codes
+﻿namespace Leelite.Dev.Generator.Codes
 {
     public class AggregateInfo
     {

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Leelite.Identity.Services.Models
+namespace Leelite.Identity.SignIn.Password.Services.Models
 {
     public class UpdatePasswordRequest
     {

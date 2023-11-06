@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Dev.Generator
+﻿namespace Leelite.Dev.Generator
 {
     public class CodeFileInfo
     {

@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.IdentityServer.Contexts
+﻿namespace Leelite.IdentityServer.Contexts
 {
     public static class TableConsts
     {

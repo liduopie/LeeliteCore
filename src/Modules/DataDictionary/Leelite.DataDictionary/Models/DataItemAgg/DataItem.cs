@@ -1,7 +1,7 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.SoftDelete;
 
-namespace Leelite.Modules.DataDictionary.Models.DataItemAgg
+namespace Leelite.DataDictionary.Models.DataItemAgg
 {
     public class DataItem : AggregateRoot<int>, ISoftDelete
     {

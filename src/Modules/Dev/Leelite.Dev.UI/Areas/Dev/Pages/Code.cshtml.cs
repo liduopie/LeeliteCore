@@ -1,10 +1,10 @@
 using System.Text;
-using Leelite.Modules.Dev.Generator.Codes;
+using Leelite.Dev.Generator.Codes;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Leelite.Modules.Dev.UI.Pages
+namespace Leelite.Dev.UI.Pages
 {
     public class CodeModel : PageModel
     {

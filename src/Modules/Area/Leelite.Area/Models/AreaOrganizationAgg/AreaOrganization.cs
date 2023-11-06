@@ -1,7 +1,7 @@
 ﻿using System;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Area.Models.AreaOrganizationAgg
+namespace Leelite.Area.Models.AreaOrganizationAgg
 {
     public class AreaOrganization : AggregateRoot<AreaOrganizationKey>
     {

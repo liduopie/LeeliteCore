@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Leelite.Modules.MessageCenter.Migrations.MySql
+namespace Leelite.MessageCenter.Migrations.MySql
 {
     [DbContext(typeof(MessageContext))]
     partial class MessageContextModelSnapshot : ModelSnapshot

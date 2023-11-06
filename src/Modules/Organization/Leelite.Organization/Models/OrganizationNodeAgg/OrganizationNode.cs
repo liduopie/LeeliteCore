@@ -1,7 +1,7 @@
 ﻿using Leelite.Framework.Domain.Model;
 using Leelite.Framework.Models.Tree;
 
-namespace Leelite.Modules.Organization.Models.OrganizationNodeAgg
+namespace Leelite.Organization.Models.OrganizationNodeAgg
 {
     public class OrganizationNode : Entity<long>, ITree<long>
     {

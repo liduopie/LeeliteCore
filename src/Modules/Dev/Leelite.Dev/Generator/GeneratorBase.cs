@@ -5,7 +5,7 @@ using System.Text;
 
 using Mono.TextTemplating;
 
-namespace Leelite.Modules.Dev.Generator
+namespace Leelite.Dev.Generator
 {
     public abstract class GeneratorBase
     {

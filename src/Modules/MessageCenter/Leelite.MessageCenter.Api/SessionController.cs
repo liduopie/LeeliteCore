@@ -5,7 +5,7 @@ using Leelite.MessageCenter.Models.SessionAgg;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.MessageCenter.WebApi
+namespace Leelite.MessageCenter.Api
 {
     [ApiController]
     [Area("MessageCenter")]

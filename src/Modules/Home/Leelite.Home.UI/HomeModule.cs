@@ -4,7 +4,7 @@ using Leelite.AspNetCore.Modular;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Leelite.Modules.Dev.UI
+namespace Leelite.Home.UI
 {
     public class HomeModule : MvcModuleBase
     {

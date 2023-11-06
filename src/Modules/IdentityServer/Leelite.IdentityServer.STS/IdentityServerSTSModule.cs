@@ -5,8 +5,8 @@ using Leelite.Core.Module.Dependency;
 using Leelite.Identity;
 using Leelite.Identity.Models.RoleAgg;
 using Leelite.Identity.Models.UserAgg;
-using Leelite.Modules.IdentityServer;
-using Leelite.Modules.IdentityServer.Contexts;
+using Leelite.IdentityServer;
+using Leelite.IdentityServer.Contexts;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;

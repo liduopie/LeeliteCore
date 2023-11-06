@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Organization.Models.OrganizationTypeAgg
+namespace Leelite.Organization.Models.OrganizationTypeAgg
 {
     /// <summary>
     /// 组织机构类型

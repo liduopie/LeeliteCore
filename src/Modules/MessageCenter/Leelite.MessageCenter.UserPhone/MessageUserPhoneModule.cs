@@ -5,7 +5,7 @@ using Leelite.MessageCenter.UserPhone;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Modules.MessageCenter.UserPhone
+namespace Leelite.MessageCenter.UserPhone
 {
     public class MessageUserPhoneModule : ModuleBase
     {

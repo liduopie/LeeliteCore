@@ -3,14 +3,14 @@
     Layout = "_Layout";
 }
 
-@section GlobalStyles{
+@section GlobalStyles {
     <link href="~/admin_assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
     <link href="~/admin_assets/css/bootstrap_limitless.min.css" rel="stylesheet" type="text/css">
     <link href="~/admin_assets/css/layout.min.css" rel="stylesheet" type="text/css">
     <link href="~/admin_assets/css/components.min.css" rel="stylesheet" type="text/css">
 }
 
-@section Styles{
+@section Styles {
     @RenderSection("Styles", required: false)
 }
 
@@ -107,7 +107,7 @@
                                 continue;
                             }
 
-                            NavItem(item, currentPath);
+                            NavItem(item, currentPath ?? "");
                         }
                     }
                 </ul>

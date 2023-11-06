@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Dev.Generator.Projects
+﻿namespace Leelite.Dev.Generator.Projects
 {
     public class ProjectInfo
     {

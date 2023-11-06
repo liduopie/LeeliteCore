@@ -1,7 +1,7 @@
 ﻿using System;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Authorization.Models.UserPermissionValueAgg
+namespace Leelite.Authorization.Models.UserPermissionValueAgg
 {
     public class RolePermissionValue : AggregateRoot<RolePermissionValueKey>
     {

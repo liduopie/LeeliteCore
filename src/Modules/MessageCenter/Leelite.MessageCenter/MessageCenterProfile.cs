@@ -13,7 +13,7 @@ using Leelite.MessageCenter.Models.PushRecordAgg;
 using Leelite.MessageCenter.Models.SessionAgg;
 using Leelite.MessageCenter.Models.TemplateAgg;
 
-namespace Leelite.Modules.MessageCenter
+namespace Leelite.MessageCenter
 {
     public class MessageCenterProfile : Profile
     {

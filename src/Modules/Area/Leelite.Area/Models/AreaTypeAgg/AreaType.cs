@@ -1,6 +1,6 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Area.Models.AreaTypeAgg
+namespace Leelite.Area.Models.AreaTypeAgg
 {
     public class AreaType : AggregateRoot<string>
     {

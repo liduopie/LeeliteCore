@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Leelite.Framework.Domain.Model;
 
-namespace Leelite.Modules.Authorization.Models.PermissionRoleAgg
+namespace Leelite.Authorization.Models.PermissionRoleAgg
 {
     public class PermissionRoleUser : ValueObject<PermissionRoleUser>
     {

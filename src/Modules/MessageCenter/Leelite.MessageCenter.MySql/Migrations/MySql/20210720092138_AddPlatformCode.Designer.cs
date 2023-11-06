@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Leelite.Modules.MessageCenter.Migrations.MySql
+namespace Leelite.MessageCenter.Migrations.MySql
 {
     [DbContext(typeof(MessageContext))]
     [Migration("20210720092138_AddPlatformCode")]

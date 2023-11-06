@@ -5,7 +5,7 @@ using Leelite.Identity.Interfaces;
 using Leelite.Identity.Models.UserAgg;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Identity.WebApi
+namespace Leelite.Identity.Api
 {
     [ApiController]
     [Area("Identity")]

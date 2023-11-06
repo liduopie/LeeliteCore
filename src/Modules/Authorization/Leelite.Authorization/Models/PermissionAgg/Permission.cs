@@ -1,7 +1,7 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Tree;
 
-namespace Leelite.Modules.Authorization.Models.PermissionAgg
+namespace Leelite.Authorization.Models.PermissionAgg
 {
     public class Permission : AggregateRoot<string>, ITree<string>
     {

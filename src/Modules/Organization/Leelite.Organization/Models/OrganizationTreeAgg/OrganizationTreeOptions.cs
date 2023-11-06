@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Organization.Models.OrganizationTreeAgg
+﻿namespace Leelite.Organization.Models.OrganizationTreeAgg
 {
     public class OrganizationTreeOptions
     {

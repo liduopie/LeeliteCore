@@ -27,7 +27,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\Settings\Leelite.Settings\Leelite.Settings.csproj" />
-		<ProjectReference Include="..\Leelite.Identity.Admin\Leelite.Identity.Admin.csproj" />
 		<ProjectReference Include="..\Leelite.Identity.Api\Leelite.Identity.Api.csproj" />
 		<ProjectReference Include="..\Leelite.Identity.SignIn\Leelite.Identity.SignIn.csproj" />
 		<ProjectReference Include="..\Leelite.Identity\Leelite.Identity.csproj" />

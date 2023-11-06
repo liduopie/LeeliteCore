@@ -10,7 +10,7 @@ using Leelite.MessageCenter.Repositories;
 
 using System;
 
-namespace Leelite.Modules.MessageCenter.Jobs
+namespace Leelite.MessageCenter.Jobs
 {
     [RecurringJob("1 16 * * *", RecurringJobId = "删除过期消息")]
     public class DeleteExpiredMessageJob : IRecurringJob

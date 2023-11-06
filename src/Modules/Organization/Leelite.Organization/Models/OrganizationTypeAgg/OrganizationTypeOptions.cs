@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Organization.Models.OrganizationTypeAgg
+﻿namespace Leelite.Organization.Models.OrganizationTypeAgg
 {
     public class OrganizationTypeOptions
     {

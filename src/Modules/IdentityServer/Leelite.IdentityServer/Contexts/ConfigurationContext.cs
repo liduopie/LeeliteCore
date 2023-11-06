@@ -5,7 +5,7 @@ using Duende.IdentityServer.EntityFramework.Options;
 using Microsoft.EntityFrameworkCore;
 
 
-namespace Leelite.Modules.IdentityServer.Contexts
+namespace Leelite.IdentityServer.Contexts
 {
     public class ConfigurationContext : ConfigurationDbContext<ConfigurationContext>
     {

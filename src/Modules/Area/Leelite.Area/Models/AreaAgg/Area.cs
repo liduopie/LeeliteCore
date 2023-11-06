@@ -1,7 +1,7 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Models.Tree;
 
-namespace Leelite.Modules.Area.Models.AreaAgg
+namespace Leelite.Area.Models.AreaAgg
 {
     public class Area : AggregateRoot<int>, ITree<int>
     {

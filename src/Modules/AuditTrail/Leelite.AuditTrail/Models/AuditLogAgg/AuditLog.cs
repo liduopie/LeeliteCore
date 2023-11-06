@@ -2,7 +2,7 @@
 using System.Text.Json;
 using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.AuditTrail.Models.AuditLogAgg
+namespace Leelite.AuditTrail.Models.AuditLogAgg
 {
     public class AuditLog : AggregateRoot<long>
     {

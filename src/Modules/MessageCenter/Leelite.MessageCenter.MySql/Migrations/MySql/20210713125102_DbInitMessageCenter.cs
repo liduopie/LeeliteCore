@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace Leelite.Modules.MessageCenter.Migrations.MySql
+namespace Leelite.MessageCenter.Migrations.MySql
 {
     public partial class DbInitMessageCenter : Migration
     {

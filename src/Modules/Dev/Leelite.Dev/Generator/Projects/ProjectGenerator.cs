@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Leelite.Modules.Dev.Generator.Projects
+namespace Leelite.Dev.Generator.Projects
 {
     public class ProjectGenerator : GeneratorBase
     {

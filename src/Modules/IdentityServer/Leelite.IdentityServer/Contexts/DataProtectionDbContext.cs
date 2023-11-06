@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.DataProtection.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
-namespace Leelite.Modules.IdentityServer.Contexts
+namespace Leelite.IdentityServer.Contexts
 {
     public class DataProtectionDbContext : DbContext, IDataProtectionKeyContext
     {

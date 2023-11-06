@@ -11,7 +11,7 @@ using Senparc.Weixin.MP.AdvancedAPIs;
 using Senparc.Weixin.MP.AdvancedAPIs.OAuth;
 using Senparc.Weixin.MP.MvcExtension;
 
-namespace Leelite.Modules.Weixin.Api.MP
+namespace Leelite.Weixin.Api.MP
 {
     [ApiController]
     [Area("Weixin")]

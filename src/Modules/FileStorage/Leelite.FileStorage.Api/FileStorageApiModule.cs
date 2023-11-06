@@ -5,7 +5,7 @@ using Leelite.Framework.WebApi;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Identity.UI
+namespace Leelite.FileStorage.Api
 {
     [DependsOn(typeof(FrameworkWebApiModule))]
     public class FileStorageApiModule : ModuleBase

@@ -6,7 +6,7 @@ using Leelite.FileStorage.Interfaces;
 using Leelite.FileStorage.Models.FileItemAgg;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Files.WebApi
+namespace Leelite.FileStorage.Api
 {
     [ApiController]
     [Area("Files")]

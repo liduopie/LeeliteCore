@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.DataDictionary.Models.DataTypeAgg
+﻿namespace Leelite.DataDictionary.Models.DataTypeAgg
 {
     public enum TypeCategory
     {

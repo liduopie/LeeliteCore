@@ -6,7 +6,7 @@ using Leelite.Framework.Models.Enabled;
 using Leelite.Framework.Models.SoftDelete;
 using Leelite.Framework.Models.State;
 
-namespace Leelite.Modules.Organization.Models.EmployeeAgg
+namespace Leelite.Organization.Models.EmployeeAgg
 {
     public class Employee : AggregateRoot<long>,
         IAudit<long>,

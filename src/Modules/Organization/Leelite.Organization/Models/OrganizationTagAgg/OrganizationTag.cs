@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using Leelite.Framework.Domain.Model;
 
-namespace Leelite.Modules.Organization.Models.OrganizationTagAgg
+namespace Leelite.Organization.Models.OrganizationTagAgg
 {
     public class OrganizationTag : ValueObject<OrganizationTag>
     {

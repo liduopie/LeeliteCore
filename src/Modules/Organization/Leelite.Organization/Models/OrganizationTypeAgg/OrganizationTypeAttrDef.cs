@@ -1,7 +1,7 @@
 ﻿using System;
 using Leelite.Framework.Domain.Model;
 
-namespace Leelite.Modules.Organization.Models.OrganizationTypeAgg
+namespace Leelite.Organization.Models.OrganizationTypeAgg
 {
     /// <summary>
     /// 组织结构类型的属性定义

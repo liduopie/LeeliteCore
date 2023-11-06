@@ -1,10 +1,10 @@
 ﻿using Leelite.Core.Module;
-using Leelite.Modules.IdentityServer.Contexts;
+using Leelite.IdentityServer.Contexts;
 
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Modules.IdentityServer
+namespace Leelite.IdentityServer
 {
     public class IdentityServerModule : ModuleBase
     {

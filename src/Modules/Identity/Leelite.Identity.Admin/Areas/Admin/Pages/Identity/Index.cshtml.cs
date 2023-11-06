@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Leelite.Modules.Identity.Admin.Areas.Admin.Pages.Identity
+namespace Leelite.Identity.Admin.Areas.Admin.Pages.Identity
 {
     public class IndexModel : PageModel
     {

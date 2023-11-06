@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.IdentityServer.Options
+﻿namespace Leelite.IdentityServer.Options
 {
     public class IdentityServerOptons
     {

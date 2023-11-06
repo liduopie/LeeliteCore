@@ -2,7 +2,7 @@
 using System.IO;
 using Mono.TextTemplating;
 
-namespace Leelite.Modules.Dev.Generator.Codes
+namespace Leelite.Dev.Generator.Codes
 {
     public class CodeGenerator : GeneratorBase
     {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Leelite.Settings.WebApi
+namespace Leelite.Settings.Api
 {
     [ApiController]
     [Area("Settings")]

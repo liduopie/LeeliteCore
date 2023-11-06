@@ -7,7 +7,7 @@ using Leelite.Framework.Models.Enabled;
 using Leelite.Framework.Models.SoftDelete;
 using Leelite.Framework.Models.Tenant;
 
-namespace Leelite.Modules.Organization.Models.OrganizationAgg
+namespace Leelite.Organization.Models.OrganizationAgg
 {
     public class Organization : AggregateRoot<long>,
         ITenant<long>,

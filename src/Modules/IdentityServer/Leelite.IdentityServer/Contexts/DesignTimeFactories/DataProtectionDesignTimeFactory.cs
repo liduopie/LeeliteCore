@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Design;
 
-namespace Leelite.Modules.IdentityServer.Contexts.DesignTimeFactories
+namespace Leelite.IdentityServer.Contexts.DesignTimeFactories
 {
     public class DataProtectionDesignTimeFactory : IDesignTimeDbContextFactory<DataProtectionDbContext>
     {

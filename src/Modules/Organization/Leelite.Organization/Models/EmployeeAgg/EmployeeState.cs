@@ -1,4 +1,4 @@
-﻿namespace Leelite.Modules.Organization.Models.EmployeeAgg
+﻿namespace Leelite.Organization.Models.EmployeeAgg
 {
     public enum EmployeeState
     {

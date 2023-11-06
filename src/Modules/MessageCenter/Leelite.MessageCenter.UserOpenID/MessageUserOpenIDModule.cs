@@ -5,7 +5,7 @@ using Leelite.MessageCenter.Weixin;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Modules.MessageCenter.UserOpenID
+namespace Leelite.MessageCenter.UserOpenID
 {
     public class MessageUserOpenIDModule : ModuleBase
     {

@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using Leelite.Framework.Domain.Aggregate;
+﻿using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Authorization.Models.PermissionRoleAgg
+namespace Leelite.Authorization.Models.PermissionRoleAgg
 {
     public class PermissionRole : AggregateRoot<long>
     {

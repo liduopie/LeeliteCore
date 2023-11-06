@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace Leelite.Identity.WebApi
+namespace Leelite.Identity.Api
 {
     [ApiController]
     [Area("Identity")]

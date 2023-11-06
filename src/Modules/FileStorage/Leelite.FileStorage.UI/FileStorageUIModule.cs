@@ -1,14 +1,13 @@
 ﻿using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module.Dependency;
-using Leelite.FileStorage;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.Identity.UI
+namespace Leelite.FileStorage.UI
 {
     [DependsOn(typeof(FileStorageModule))]
     public class FileStorageUIModule : MvcModuleBase

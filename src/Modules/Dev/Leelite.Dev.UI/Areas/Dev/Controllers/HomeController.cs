@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Dev.UI.Areas.Dev.Controllers
+namespace Leelite.Web.Areas.Dev.Controllers
 {
     [Area("Dev")]
     public class HomeController : Controller

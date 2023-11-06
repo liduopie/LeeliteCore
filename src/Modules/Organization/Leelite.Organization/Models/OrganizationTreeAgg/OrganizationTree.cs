@@ -1,6 +1,6 @@
 ﻿using Leelite.Framework.Domain.Aggregate;
 
-namespace Leelite.Modules.Organization.Models.OrganizationTreeAgg
+namespace Leelite.Organization.Models.OrganizationTreeAgg
 {
     public class OrganizationTree : AggregateRoot<string>
     {
