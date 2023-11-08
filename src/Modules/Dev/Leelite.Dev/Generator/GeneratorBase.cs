@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using System.Text;
+
+using Leelite.Core.Module;
 
 using Mono.TextTemplating;
 
@@ -9,9 +8,12 @@ namespace Leelite.Dev.Generator
 {
     public abstract class GeneratorBase
     {
-        public GeneratorBase(Action<GeneratorOptions> action = null)
+        public GeneratorBase(ModuleOptions moduleOptions, Action<GeneratorOptions> action = null)
         {
             Options = new GeneratorOptions();
+
+            Options.TemplateDirectory = Path.Combine(Directory.GetCurrentDirectory(), moduleOptions.ModulesDirectory, Options.TemplateDirectory);
+            Options.OutputDirectory = Path.Combine(Directory.GetCurrentDirectory(), Options.OutputDirectory);
 
             action?.Invoke(Options);
         }

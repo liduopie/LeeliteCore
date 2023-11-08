@@ -21,6 +21,14 @@
                 <div class="card-body border-top">
                     <form method="post">
                         <div class="row mb-3">
+                            <label asp-for="Info.ModuleName" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Info.ModuleName" class="form-control" required>
+                                <span asp-validation-for="Info.ModuleName" class="validation-invalid-label"></span>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label asp-for="Info.Namespace" class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-9">
                                 <input asp-for="Info.Namespace" class="form-control" required>

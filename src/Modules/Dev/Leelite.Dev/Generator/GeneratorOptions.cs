@@ -1,13 +1,11 @@
-﻿using System.IO;
-
-namespace Leelite.Dev.Generator
+﻿namespace Leelite.Dev.Generator
 {
     public class GeneratorOptions
     {
         public GeneratorOptions()
         {
-            TemplateDirectory = Path.Combine(Directory.GetCurrentDirectory(), @"Modules\Leelite.Modules.Dev\templates");
-            OutputDirectory = Path.Combine(Directory.GetCurrentDirectory(), "output");
+            TemplateDirectory = @"Leelite.Dev\templates";
+            OutputDirectory = "output";
         }
 
         public string TemplateDirectory { get; set; }

@@ -1,5 +1,8 @@
 ﻿using System;
 using System.IO;
+
+using Leelite.Core.Module;
+
 using Mono.TextTemplating;
 
 namespace Leelite.Dev.Generator.Codes
@@ -8,7 +11,7 @@ namespace Leelite.Dev.Generator.Codes
     {
         private readonly AggregateInfo _aggregateInfo;
 
-        public CodeGenerator(AggregateInfo info, Action<GeneratorOptions> action = null) : base(action)
+        public CodeGenerator(AggregateInfo info, ModuleOptions moduleOptions, Action<GeneratorOptions> action = null) : base(moduleOptions, action)
         {
             _aggregateInfo = info;
 

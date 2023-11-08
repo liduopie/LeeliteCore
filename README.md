@@ -126,6 +126,7 @@ Npgsql.EntityFrameworkCore.PostgreSQL [![NuGet](https://buildstats.info/nuget/Np
 ## 待解决的问题
 验证组件 FluentValidation.AspNetCore 的使用。 已经使用
 配置文件的使用
+代码生成无法输出文件
 
 ## 开发例子 Samples
 ### 01. 模块例子

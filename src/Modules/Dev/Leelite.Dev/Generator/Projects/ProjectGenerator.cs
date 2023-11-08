@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Text;
+﻿using Leelite.Core.Module;
 
 namespace Leelite.Dev.Generator.Projects
 {
@@ -9,7 +6,7 @@ namespace Leelite.Dev.Generator.Projects
     {
         private readonly ProjectInfo _projectInfo;
 
-        public ProjectGenerator(ProjectInfo info, Action<GeneratorOptions> action = null) : base(action)
+        public ProjectGenerator(ProjectInfo info, ModuleOptions moduleOptions, Action<GeneratorOptions> action = null) : base(moduleOptions, action)
         {
             _projectInfo = info;
 
@@ -35,6 +32,7 @@ namespace Leelite.Dev.Generator.Projects
         {
             var parameters = new GeneratorParameters();
 
+            parameters.Add("ModuleName", _projectInfo.ModuleName);
             parameters.Add("Namespace", _projectInfo.Namespace);
             parameters.Add("IsModule", _projectInfo.IsModule.ToString());
 

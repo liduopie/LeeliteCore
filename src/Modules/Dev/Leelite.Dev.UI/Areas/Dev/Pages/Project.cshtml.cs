@@ -1,19 +1,25 @@
 using System.Text;
+
+using Leelite.Core.Module;
 using Leelite.Dev.Generator.Projects;
+
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
 
 namespace Leelite.Dev.UI.Pages
 {
     public class ProjectModel : PageModel
     {
+        private readonly ModuleOptions _moduleOptions;
         private readonly ILogger<ProjectModel> _logger;
 
         public StringBuilder Logs { get; set; }
 
-        public ProjectModel(ILogger<ProjectModel> logger)
+        public ProjectModel(IOptions<ModuleOptions> moduleOptions, ILogger<ProjectModel> logger)
         {
+            _moduleOptions = moduleOptions.Value;
             _logger = logger;
         }
 
@@ -31,7 +37,7 @@ namespace Leelite.Dev.UI.Pages
                 return Page();
             }
 
-            var generater = new ProjectGenerator(Info);
+            var generater = new ProjectGenerator(Info, _moduleOptions);
 
             generater.Init();
 
