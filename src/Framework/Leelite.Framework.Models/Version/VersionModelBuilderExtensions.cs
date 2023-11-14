@@ -1,5 +1,4 @@
-﻿
-using Leelite.Framework.Models.Version;
+﻿using Leelite.Framework.Models.Version;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

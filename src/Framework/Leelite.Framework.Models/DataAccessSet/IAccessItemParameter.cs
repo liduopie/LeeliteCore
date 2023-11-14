@@ -1,17 +1,7 @@
-﻿using Leelite.Framework.Domain.Aggregate;
-
-namespace Leelite.Framework.Models.DataAccessSet
+﻿namespace Leelite.Framework.Models.DataAccessSet
 {
-    /// <summary>
-    /// 数据权限项
-    /// </summary>
-    public interface IAccessItem<TKey> : IAggregateRoot<long>
+    public interface IAccessItemParameter
     {
-        /// <summary>
-        /// 数据Id
-        /// </summary>
-        TKey DataId { get; set; }
-
         /// <summary>
         /// 权限
         /// </summary>

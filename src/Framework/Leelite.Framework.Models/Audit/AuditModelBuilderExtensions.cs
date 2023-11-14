@@ -22,5 +22,17 @@ namespace Microsoft.EntityFrameworkCore
             typeBuilder.Property(p => p.LastModificationTime);
 
         }
+
+        public static void HasSoftDeletionAudit<TEntity, TKey>(this EntityTypeBuilder<TEntity> typeBuilder, int maxLength = 32)
+            where TEntity : class, ISoftDeletionAudited<TKey>
+        {
+            if (typeof(TKey).Name == "string")
+            {
+                typeBuilder.Property(p => p.DeleterId).HasMaxLength(maxLength);
+            }
+
+            typeBuilder.Property(p => p.Deleter).HasMaxLength(maxLength);
+            typeBuilder.Property(p => p.DeletionTime);
+        }
     }
 }

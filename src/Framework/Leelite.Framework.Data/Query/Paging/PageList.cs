@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using Leelite.Framework.Data.Query.OrderBy;
-using Leelite.Framework.Data.Query.Parameters;
+﻿using Leelite.Framework.Data.Query.OrderBy;
 
 namespace Leelite.Framework.Data.Query.Paging
 {
@@ -56,15 +54,5 @@ namespace Leelite.Framework.Data.Query.Paging
         /// 内容
         /// </summary>
         public IList<T> Data { get; set; }
-
-        /// <summary>
-        /// 索引器
-        /// </summary>
-        /// <param name="index">索引</param>
-        public T this[int index]
-        {
-            get => Data[index];
-            set => Data[index] = value;
-        }
     }
 }

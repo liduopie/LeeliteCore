@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Leelite.Framework.Models.Audit
+﻿namespace Leelite.Framework.Models.Audit
 {
     /// <summary>
     /// 操作审计

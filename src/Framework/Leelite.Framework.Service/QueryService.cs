@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Leelite.Framework.Data.Query;
+﻿using Leelite.Framework.Data.Query;
 using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Service.Dtos;
+
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Framework.Service

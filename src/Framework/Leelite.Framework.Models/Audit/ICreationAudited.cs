@@ -1,16 +1,14 @@
-using System;
-
 namespace Leelite.Framework.Models.Audit
 {
     /// <summary>
     /// 创建操作审计
     /// </summary>
-    public interface ICreationAudited<TKey>
+    public interface ICreationAudited<TUserKey>
     {
-         /// <summary>
+        /// <summary>
         /// 创建人标识
         /// </summary>
-        TKey CreatorId { get; set; }
+        TUserKey CreatorId { get; set; }
 
         /// <summary>
         /// 创建人

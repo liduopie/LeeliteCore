@@ -1,16 +1,14 @@
-﻿using System;
-
-namespace Leelite.Framework.Models.Audit
+﻿namespace Leelite.Framework.Models.Audit
 {
     /// <summary>
     /// 软删除审计
     /// </summary>
-    public interface ISoftDeletionAudited<TKey>
+    public interface ISoftDeletionAudited<TUserKey>
     {
         /// <summary>
         /// 删除人标识
         /// </summary>
-        TKey DeleterId { get; set; }
+        TUserKey DeleterId { get; set; }
 
         /// <summary>
         /// 删除人

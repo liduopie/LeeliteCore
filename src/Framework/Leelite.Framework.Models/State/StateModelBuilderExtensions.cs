@@ -1,5 +1,4 @@
-﻿
-using Leelite.Framework.Models.State;
+﻿using Leelite.Framework.Models.State;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

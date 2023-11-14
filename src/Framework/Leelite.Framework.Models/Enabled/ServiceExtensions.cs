@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading.Tasks;
-using Leelite.Framework.Service;
+﻿using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Repository;
-using Leelite.Framework.Domain.Aggregate;
+using Leelite.Framework.Service;
 
 namespace Leelite.Framework.Models.Enabled
 {

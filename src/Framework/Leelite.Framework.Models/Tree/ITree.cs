@@ -1,9 +1,11 @@
-﻿namespace Leelite.Framework.Models.Tree
+﻿using Leelite.Framework.Models.Sort;
+
+namespace Leelite.Framework.Models.Tree
 {
     /// <summary>
     /// 树型实体
     /// </summary>
-    public interface ITree<TKey>
+    public interface ITree<TKey> : ISort
     {
         /// <summary>
         /// 父标识
@@ -19,11 +21,6 @@
         /// 层级
         /// </summary>
         int Level { get; set; }
-
-        /// <summary>
-        /// 排序号
-        /// </summary>
-        int Sort { get; set; }
 
         /// <summary>
         /// 是叶子节点

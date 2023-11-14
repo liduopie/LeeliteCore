@@ -1,5 +1,4 @@
-﻿
-using Leelite.Framework.Models.Tree;
+﻿using Leelite.Framework.Models.Tree;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -17,7 +16,8 @@ namespace Microsoft.EntityFrameworkCore
 
             typeBuilder.Property(p => p.Path).HasMaxLength(1024);
             typeBuilder.Property(p => p.Level);
-            typeBuilder.Property(p => p.Sort);
+            typeBuilder.Property(p => p.IsLeaf);
+            typeBuilder.Property(p => p.ChildrenCount);
         }
     }
 }

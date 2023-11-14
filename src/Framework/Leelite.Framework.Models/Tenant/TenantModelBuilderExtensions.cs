@@ -1,5 +1,4 @@
-﻿
-using Leelite.Framework.Models.Tenant;
+﻿using Leelite.Framework.Models.Tenant;
 
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

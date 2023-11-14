@@ -2,9 +2,6 @@
 using Leelite.Framework.Domain.Repository;
 using Leelite.Framework.Service;
 
-using System;
-using System.Threading.Tasks;
-
 namespace Leelite.Framework.Models.SoftDelete
 {
     /// <summary>
