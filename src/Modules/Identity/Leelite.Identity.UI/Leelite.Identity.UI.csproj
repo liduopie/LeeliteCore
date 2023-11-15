@@ -18,15 +18,16 @@
 	</PropertyGroup>
 	
 	<ItemGroup>
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0-rc.2.23480.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.0-rc.2.23480.2" />
-		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0-rc.2.23480.2" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="8.0.0" />
+		<PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.0" />
 		<PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\..\..\Core\Leelite.AspNetCore\Leelite.AspNetCore.csproj" />
 		<ProjectReference Include="..\..\Settings\Leelite.Settings\Leelite.Settings.csproj" />
+		<ProjectReference Include="..\Leelite.Identity.Admin\Leelite.Identity.Admin.csproj" />
 		<ProjectReference Include="..\Leelite.Identity.Api\Leelite.Identity.Api.csproj" />
 		<ProjectReference Include="..\Leelite.Identity.SignIn\Leelite.Identity.SignIn.csproj" />
 		<ProjectReference Include="..\Leelite.Identity\Leelite.Identity.csproj" />

@@ -18,7 +18,8 @@ using Microsoft.Extensions.FileProviders;
 
 namespace Leelite.IdentityServer.STS
 {
-    [DependsOn(typeof(IdentityModule), typeof(IdentityServerModule))]
+    [DependsOn(typeof(IdentityModule))]
+    [DependsOn(typeof(IdentityServerModule))]
     public class IdentityServerSTSModule : MvcModuleBase
     {
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)

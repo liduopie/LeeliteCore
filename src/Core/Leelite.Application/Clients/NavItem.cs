@@ -12,8 +12,9 @@
             string name,
             string description,
             string url,
-            string permission,
-            string feature)
+            string permission = "",
+            string feature = "",
+            int sort = 1)
         {
             Target = target;
             Icon = icon;
@@ -22,6 +23,7 @@
             Url = url;
             PermissionDependency = permission;
             FeatureDependency = feature;
+            Sort = sort;
         }
 
         /// <summary>
@@ -65,6 +67,11 @@
         /// 如果只有经过身份验证的用户才能看到此菜单项，则可以将其设置为true。
         /// </summary>
         public bool RequiresAuthentication { get; set; }
+
+        /// <summary>
+        /// 排序
+        /// </summary>
+        public int Sort { get; set; }
 
         /// <summary>
         /// 此菜单项的子项。

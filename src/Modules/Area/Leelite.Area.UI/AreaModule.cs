@@ -4,7 +4,7 @@ using Leelite.AspNetCore.Modular;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 
-namespace Leelite.Area.UI
+namespace Leelite.Web
 {
 
     public class AreaModule : MvcModuleBase
@@ -15,7 +15,7 @@ namespace Leelite.Area.UI
 
             if (client != null)
             {
-                client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-map-trifold", "区域管理", "", "/Admin/Area/Index", "Admin", ""));
+                client.AddNavMenus(new Application.Clients.NavItem("_self", "ph-map-trifold", "区域管理", "", "/Admin/Area/Index", "Admin", ""));
             }
         }
     }

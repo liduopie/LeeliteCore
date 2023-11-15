@@ -77,7 +77,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Message", (string)null);
+                    b.ToTable("MessageCenter_Messages", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTopicAgg.MessageTopic", b =>
@@ -105,7 +105,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Topic", (string)null);
+                    b.ToTable("MessageCenter_Topics", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.MessageTypeAgg.MessageType", b =>
@@ -153,7 +153,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Type", (string)null);
+                    b.ToTable("MessageCenter_Types", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.PushPlatformAgg.PushPlatform", b =>
@@ -191,7 +191,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Platform", (string)null);
+                    b.ToTable("MessageCenter_Platforms", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.PushRecordAgg.PushRecord", b =>
@@ -235,7 +235,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Record", (string)null);
+                    b.ToTable("MessageCenter_Records", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.SessionAgg.Session", b =>
@@ -286,7 +286,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Session", (string)null);
+                    b.ToTable("MessageCenter_Sessions", (string)null);
                 });
 
             modelBuilder.Entity("Leelite.MessageCenter.Models.TemplateAgg.Template", b =>
@@ -326,7 +326,7 @@ namespace Leelite.MessageCenter.Migrations.PostgreSQL
 
                     b.HasKey("Id");
 
-                    b.ToTable("MessageCenter_Template", (string)null);
+                    b.ToTable("MessageCenter_Templates", (string)null);
                 });
 #pragma warning restore 612, 618
         }

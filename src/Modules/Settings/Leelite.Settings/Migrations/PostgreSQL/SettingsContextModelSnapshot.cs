@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
+#nullable disable
+
 namespace Leelite.Settings.Migrations.PostgreSQL
 {
     [DbContext(typeof(SettingsContext))]
@@ -14,32 +16,33 @@ namespace Leelite.Settings.Migrations.PostgreSQL
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
-                .HasAnnotation("ProductVersion", "3.1.2")
+                .HasAnnotation("ProductVersion", "8.0.0-rc.2.23480.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
+
+            NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
             modelBuilder.Entity("Leelite.Settings.Models.SettingValueAgg.SettingValue", b =>
                 {
                     b.Property<long>("_tenantId")
-                        .HasColumnName("TenantId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("TenantId");
 
                     b.Property<long>("_userId")
-                        .HasColumnName("UserId")
-                        .HasColumnType("bigint");
+                        .HasColumnType("bigint")
+                        .HasColumnName("UserId");
 
                     b.Property<string>("_name")
-                        .HasColumnName("Name")
+                        .HasMaxLength(256)
                         .HasColumnType("character varying(256)")
-                        .HasMaxLength(256);
+                        .HasColumnName("Name");
 
                     b.Property<string>("Value")
-                        .HasColumnType("character varying(1024)")
-                        .HasMaxLength(1024);
+                        .HasMaxLength(1024)
+                        .HasColumnType("character varying(1024)");
 
                     b.HasKey("_tenantId", "_userId", "_name");
 
-                    b.ToTable("Settings_SettingValue");
+                    b.ToTable("Settings_SettingValues", (string)null);
                 });
 #pragma warning restore 612, 618
         }

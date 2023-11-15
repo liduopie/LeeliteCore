@@ -1,4 +1,5 @@
-﻿@{
+﻿@using Leelite.Application.Clients;
+@{
     Layout = "_Layout";
 }
 
@@ -11,6 +12,16 @@
 
 @section Styles {
     @RenderSection("Styles", required: false)
+}
+
+@{
+    var client = Leelite.Application.ApplicationManager.Clients.Find(c => c.Code == "Home");
+    if (client == null)
+    {
+        client = new Leelite.Application.Clients.Client();
+    }
+
+    var currentPath = ViewContext.HttpContext.Request.Path.Value;
 }
 
 <div class="navbar-top">
@@ -32,18 +43,30 @@
 
             <div class="navbar-collapse order-2 order-lg-1 collapse" id="navbar-mobile" style="">
                 <ul class="navbar-nav gap-lg-2 mt-2 mt-lg-0">
-                    <li class="nav-item">
-                        <a href="#" class="navbar-nav-link rounded">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a href="#" class="navbar-nav-link rounded dropdown-toggle" data-bs-toggle="dropdown">Dropdown</a>
-                        <div class="dropdown-menu">
-                            <a href="#" class="dropdown-item">Action</a>
-                            <a href="#" class="dropdown-item">Another action</a>
-                            <a href="#" class="dropdown-item">Something else here</a>
-                            <a href="#" class="dropdown-item">One more line</a>
-                        </div>
-                    </li>
+                    @foreach (var item in client.NavMenus)
+                    {
+                        if (item.Items.Count > 0)
+                        {
+                            <li class="nav-item dropdown">
+                                <a target="@item.Target" href="@item.Url" class="navbar-nav-link rounded-pill dropdown-toggle @(currentPath.Contains(item.Url)?"active":"")" data-bs-toggle="dropdown">@item.Name</a>
+                                <div class="dropdown-menu">
+                                    @foreach (var subItem in item.Items)
+                                    {
+                                        <a target="@item.Target" href="@item.Url" class="dropdown-item">@subItem.Name</a>
+                                    }
+                                </div>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a target="@item.Target" href="@item.Url" class="navbar-nav-link rounded-pill @(currentPath.Contains(item.Url)?"active":"")">
+                                    @item.Name
+                                </a>
+                            </li>
+                        }
+
+                    }
                 </ul>
             </div>
 

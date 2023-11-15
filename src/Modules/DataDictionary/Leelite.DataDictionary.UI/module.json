@@ -1,7 +1,8 @@
 {
-  "Name": "Leelite.Area",
-  "AssemblyFileName": "Leelite.Area.UI.dll",
+  "Name": "Leelite.DataDictionary",
+  "AssemblyFileName": "Leelite.DataDictionary.UI.dll",
   "ReferencedAssemblies": [
-    "Leelite.Area.dll"
+    "Leelite.DataDictionary.dll",
+    "Leelite.DataDictionary.Api.dll"
   ]
 }

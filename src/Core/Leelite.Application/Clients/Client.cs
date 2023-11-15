@@ -63,5 +63,15 @@
         /// 快捷入口
         /// </summary>
         public IList<NavItem> Shortcuts { get; set; } = new List<NavItem>();
+
+        public void AddNavMenus(params NavItem[] items)
+        {
+            foreach (var item in items)
+            {
+                NavMenus.Add(item);
+            }
+
+            NavMenus = NavMenus.OrderBy(m => m.Sort).ToList();
+        }
     }
 }

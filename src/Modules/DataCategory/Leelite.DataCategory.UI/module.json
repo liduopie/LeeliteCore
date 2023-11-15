@@ -1,0 +1,8 @@
+{
+  "Name": "Leelite.DataCategory",
+  "AssemblyFileName": "Leelite.DataCategory.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.DataCategory.dll",
+    "Leelite.DataCategory.Api.dll"
+  ]
+}

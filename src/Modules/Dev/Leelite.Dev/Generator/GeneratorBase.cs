@@ -42,13 +42,16 @@ namespace Leelite.Dev.Generator
             foreach (var item in parameters)
             {
                 Parameters.Add(item.Key, item.Value);
+                Logs.AppendLine($"parameters '{item.Key}：{item.Value}'");
             }
 
             var pathBuilder = new GeneratorPathBuilder(Options, Parameters);
 
             foreach (var template in Templates)
             {
-                CodeFileInfos.Add(pathBuilder.Build(template));
+                var info = pathBuilder.Build(template);
+                CodeFileInfos.Add(info);
+                Logs.AppendLine($"Templates '{info.TemplatePath}：{info.AbsolutePath}'");
             }
 
             TemplateGenerator = new TemplateGenerator();
@@ -56,6 +59,7 @@ namespace Leelite.Dev.Generator
             foreach (var item in Parameters)
             {
                 TemplateGenerator.TryAddParameter(item.Key + "=" + item.Value);
+                Logs.AppendLine($"Parameters '{item.Key + "=" + item.Value}");
             }
         }
 
@@ -88,7 +92,7 @@ namespace Leelite.Dev.Generator
                     Directory.CreateDirectory(Path.GetDirectoryName(file.AbsolutePath));
                 }
 
-                TemplateGenerator.ProcessTemplateAsync(file.TemplatePath, file.AbsolutePath);
+                TemplateGenerator.ProcessTemplateAsync(file.TemplatePath, file.AbsolutePath).Wait();
                 if (TemplateGenerator.Errors.HasErrors)
                 {
                     Logs.AppendLine($"Processing '{file.TemplatePath}' failed.");

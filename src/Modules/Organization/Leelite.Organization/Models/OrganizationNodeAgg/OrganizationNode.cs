@@ -8,6 +8,9 @@ namespace Leelite.Organization.Models.OrganizationNodeAgg
         public string TreeId { get; set; }
 
         /// <inheritdoc/>
+        public string Name { get; set; }
+
+        /// <inheritdoc/>
         public long ParentId { get; set; }
 
         /// <inheritdoc/>

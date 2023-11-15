@@ -1,10 +1,9 @@
-﻿using System.Linq;
-
-using HealthChecks.UI.Client;
+﻿using HealthChecks.UI.Client;
 
 using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module.Dependency;
+using Leelite.HealthChecks;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
@@ -12,7 +11,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.HealthChecks.UI
+namespace Leelite.Web
 {
     [DependsOn(typeof(HealthChecksModule))]
     public class HealthChecksUIModule : MvcModuleBase

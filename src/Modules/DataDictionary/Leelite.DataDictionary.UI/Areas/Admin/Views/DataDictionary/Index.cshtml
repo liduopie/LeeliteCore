@@ -1,0 +1,234 @@
+﻿@using Leelite.DataDictionary.Models.DataTypeAgg
+@model Leelite.Web.Models.DataDictionaryViewModel
+@{
+    Layout = "_AdminLayout";
+}
+
+@{
+    ViewData["Title"] = "数据字典";
+}
+
+<!-- Page header -->
+<div class="page-header page-header-light shadow">
+    <div class="page-header-content d-lg-flex">
+        <div class="page-title">
+            <h5 class="mb-0">数据字典</h5>
+            <div class="text-muted mt-1">系统字典、组织机构字典</div>
+        </div>
+
+        <div class="my-auto ms-auto">
+            @* <button type="button" class="btn btn-light btn-icon">
+            <i class="ph-plus"></i>
+            </button>
+            <button type="button" class="btn btn-teal btn-icon">
+            <i class="ph-download"></i>
+            </button> *@
+        </div>
+
+        <div class="vr d-none d-sm-block flex-shrink-0 my-2 mx-3"></div>
+
+        <div class="collapse d-lg-block my-lg-auto" id="page_header">
+
+            <div class="hstack gap-3 mb-3 mb-lg-0">
+                @* <div class="wmin-lg-200">
+                <select class="form-control form-control-multiselect" multiple="multiple">
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                <option value="mushrooms">Mushrooms</option>
+                </select>
+                </div> *@
+
+                <div class="input-group wmin-lg-200">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-light btn-icon">
+                        <i class="ph-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header-content d-lg-flex border-top">
+        <div class="d-flex">
+            <div class="breadcrumb py-2">
+                <a href="@Url.Action("Index", "Home",new { area = "Admin" })" class="breadcrumb-item"><i class="ph-house"></i></a>
+                <a href="@Url.Action("Index", "DataDictionary",new { area = "Admin" })" class="breadcrumb-item">数据字典</a>
+                <span class="breadcrumb-item active">列表</span>
+            </div>
+
+            <a href="#breadcrumb_elements" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+                <i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+            </a>
+        </div>
+
+        <div class="collapse d-lg-block ms-lg-auto" id="breadcrumb_elements">
+            <div class="d-lg-flex mb-2 mb-lg-0">
+                <a href="#" class="d-flex align-items-center text-body py-2">
+                    Link
+                </a>
+
+                <div class="dropdown ms-lg-3">
+                    <a href="#" class="d-flex align-items-center text-body dropdown-toggle py-2" data-bs-toggle="dropdown">
+                        <span class="flex-1">Dropdown</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end w-100 w-lg-auto">
+                        <a href="#" class="dropdown-item">
+                            Action
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            Another action
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            One more action
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            Separate action
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<!-- Content area -->
+<div class="content">
+    <!-- Basic table -->
+    <div class="card">
+        <ul class="nav nav-tabs nav-tabs-underline">
+            <li class="nav-item">
+                <a href="@Url.Action("Index", new { ownerType = OwnerType.System })" class="nav-link @(Model.ActiveOwnerType==OwnerType.System ? "active":"")">系统</a>
+            </li>
+            <li class="nav-item">
+                <a href="@Url.Action("Index", new { ownerType = OwnerType.Organization })" class="nav-link @(Model.ActiveOwnerType==OwnerType.Organization ? " active":"")">组织机构</a>
+            </li>
+        </ul>
+
+        <!-- Inner container -->
+        <div class="d-lg-flex align-items-lg-start">
+
+            <!-- Secondary sidebar -->
+            <div class="sidebar sidebar-secondary sidebar-expand-lg">
+
+                <!-- Sidebar content -->
+                <div class="sidebar-content">
+
+                    <!-- Sidebar search -->
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-body">
+                            <div class="form-control-feedback form-control-feedback-end">
+                                <input type="search" class="form-control" placeholder="Search">
+                                <div class="form-control-feedback-icon">
+                                    <i class="ph-magnifying-glass opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /sidebar search -->
+                    <!-- Sub navigation -->
+                    <div class="sidebar-section">
+                        <ul class="nav nav-sidebar my-2" data-nav-type="accordion">
+                            @{
+                                if (Model.ActiveOwnerType == OwnerType.System)
+                                {
+                                    foreach (var item in Model.SystemTypes)
+                                    {
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", new { ownerType = Model.ActiveOwnerType,dataType = item.Id })" class="nav-link active">
+                                                @item.Name
+                                                <span class="text-muted fs-sm fw-normal ms-auto"></span>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+
+                                if (Model.ActiveOwnerType == OwnerType.Organization)
+                                {
+                                    foreach (var item in Model.OrganizationTypes)
+                                    {
+                                        <li class="nav-item">
+                                            <a href="@Url.Action("Index", new { ownerType = Model.ActiveOwnerType,dataType = item.Id })" class="nav-link active">
+                                                <i class="ph-file-text me-2"></i>
+                                                @item.Name
+                                                <span class="text-muted fs-sm fw-normal ms-auto"></span>
+                                            </a>
+                                        </li>
+                                    }
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <!-- /sub navigation -->
+
+                </div>
+                <!-- /sidebar content -->
+
+            </div>
+            <!-- /secondary sidebar -->
+            <!-- Right content -->
+            <div class="flex-1">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>编码</th>
+                                <th>值</th>
+                                <th>排序</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.PageList.Data)
+                            {
+                                <tr>
+                                    <td>@Html.DisplayFor(m => item.Id)</td>
+                                    <td>@Html.DisplayFor(m => item.Code)</td>
+                                    <td>@Html.DisplayFor(m => item.Value)</td>
+                                    <td>@Html.DisplayFor(m => item.Sort)</td>
+                                    <td>@Html.DisplayFor(m => item.Enabled)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer d-sm-flex justify-content-end flex-sm-wrap py-sm-2">
+                    <ul class="pagination align-self-end pagination-flat mt-2 mt-sm-0">
+                        <li class="page-item @(Model.PageList.Page - 1 > 0 ? "" : "disabled")"><a href="@Url.Action("Index", new { page = Model.PageList.Page - 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">&larr;</a></li>
+                        @if (Model.PageList.Page - 1 > 0)
+                        {
+                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page - 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@Model.PageList.Page - 1</a></li>
+                        }
+
+                        <li class="page-item active"><a href="#" class="page-link rounded">@Model.PageList.Page</a></li>
+
+                        @if (Model.PageList.Page * Model.PageList.PageSize < Model.PageList.TotalCount)
+                        {
+                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page + 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@Model.PageList.Page + 1</a></li>
+                        }
+
+                        <li class="page-item  @(Model.PageList.Page * Model.PageList.PageSize < Model.PageList.TotalCount ? "" : "disabled")"><a href="@Url.Action("Index", new { page = Model.PageList.Page + 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">&rarr;</a></li>
+                    </ul>
+                </div>
+            </div>
+            <!-- /right content -->
+
+        </div>
+        <!-- /inner container -->
+
+    </div>
+    <!-- /basic table -->
+</div>
+<!-- /content area -->
+@section ScriptsPlugins {
+    <script src="~/global_assets/js/vendor/forms/selects/bootstrap_multiselect.js"></script>
+}
+
+@section Scripts {
+    <script src="~/admin/js/pages/admin_data_dictionary_index.js"></script>
+}
+
+

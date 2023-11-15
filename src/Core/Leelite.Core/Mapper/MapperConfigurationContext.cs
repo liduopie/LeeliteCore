@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using AutoMapper.EquivalencyExpression;
 
 namespace Leelite.Core.Mapper
 {
@@ -15,6 +16,8 @@ namespace Leelite.Core.Mapper
         {
             Action<IMapperConfigurationExpression> action = (c) =>
             {
+                c.AddCollectionMappers();
+
                 foreach (var configure in _configures)
                 {
                     configure.Invoke(c);

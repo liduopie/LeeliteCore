@@ -23,7 +23,7 @@
                         <div class="row mb-3">
                             <label asp-for="Info.ClassName" class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-9">
-                                <input asp-for="Info.ClassName" class="form-control" required>
+                                <input asp-for="Info.ClassName" class="form-control" required placeholder="AA">
                                 <span asp-validation-for="Info.ClassName" class="validation-invalid-label"></span>
                                 <div class="form-text text-muted"></div>
                             </div>
@@ -32,8 +32,17 @@
                         <div class="row mb-3">
                             <label asp-for="Info.ClassFullName" class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-9">
-                                <input asp-for="Info.ClassFullName" class="form-control" required />
+                                <input asp-for="Info.ClassFullName" class="form-control" required placeholder="Leelite.AA.models.BBAgg.CC" />
                                 <span asp-validation-for="Info.ClassFullName" class="validation-invalid-label"></span>
+                                <div class="form-text text-muted"></div>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label asp-for="Info.ModuleName" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Info.ModuleName" class="form-control" required placeholder="Leelite.AA" />
+                                <span asp-validation-for="Info.ModuleName" class="validation-invalid-label"></span>
                                 <div class="form-text text-muted"></div>
                             </div>
                         </div>
@@ -41,7 +50,7 @@
                         <div class="row mb-3">
                             <label asp-for="Info.Namespace" class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-9">
-                                <input asp-for="Info.Namespace" class="form-control" required />
+                                <input asp-for="Info.Namespace" class="form-control" required placeholder="Leelite.AA" />
                                 <span asp-validation-for="Info.Namespace" class="validation-invalid-label"></span>
                                 <div class="form-text text-muted"></div>
                             </div>
@@ -50,7 +59,7 @@
                         <div class="row mb-3">
                             <label asp-for="Info.AssemblyPath" class="col-lg-3 col-form-label"></label>
                             <div class="col-lg-9">
-                                <input asp-for="Info.AssemblyPath" class="form-control" required />
+                                <input asp-for="Info.AssemblyPath" class="form-control" required placeholder="Leelite.AA.dll" />
                                 <span asp-validation-for="Info.AssemblyPath" class="validation-invalid-label"></span>
                                 <div class="form-text text-muted"></div>
                             </div>

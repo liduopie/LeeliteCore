@@ -2,6 +2,6 @@
 {
     public static class TableConsts
     {
-        public const string SettingValue = "Settings_SettingValue";
+        public const string SettingValue = "Settings_SettingValues";
     }
 }

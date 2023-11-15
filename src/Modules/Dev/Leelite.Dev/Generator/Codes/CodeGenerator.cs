@@ -26,8 +26,9 @@ namespace Leelite.Dev.Generator.Codes
 
             parameters.Add("ClassName", _aggregateInfo.ClassName);
             parameters.Add("ClassFullName", _aggregateInfo.ClassFullName);
+            parameters.Add("ModuleName", _aggregateInfo.ModuleName);
             parameters.Add("Namespace", _aggregateInfo.Namespace);
-            parameters.Add("AssemblyPath", _aggregateInfo.AssemblyPath);
+            parameters.Add("AssemblyPath", Path.Combine(AppContext.BaseDirectory, _aggregateInfo.AssemblyPath));
 
             base.Init(parameters);
         }
@@ -37,7 +38,7 @@ namespace Leelite.Dev.Generator.Codes
         /// </summary>
         public override void Generating()
         {
-            TemplateGenerator.Refs.Add(_aggregateInfo.AssemblyPath);
+            TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, _aggregateInfo.AssemblyPath));
             TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, "Leelite.Framework.Models.dll"));
             TemplateGenerator.Refs.Add(Path.Combine(AppContext.BaseDirectory, "Leelite.Framework.Domain.dll"));
             TemplateGenerator.Imports.Add(_aggregateInfo.Namespace);

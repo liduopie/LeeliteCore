@@ -73,7 +73,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResource", (string)null);
+                    b.ToTable("IdentityServer_ApiResources", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
@@ -97,7 +97,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ApiResourceId", "Type")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceClaim", (string)null);
+                    b.ToTable("IdentityServer_ApiResourceClaims", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceProperty", b =>
@@ -126,7 +126,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ApiResourceId", "Key")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceProperty", (string)null);
+                    b.ToTable("IdentityServer_ApiResourceProperties", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceScope", b =>
@@ -150,7 +150,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ApiResourceId", "Scope")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiResourceScope", (string)null);
+                    b.ToTable("IdentityServer_ApiResourceScopes", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceSecret", b =>
@@ -188,7 +188,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasIndex("ApiResourceId");
 
-                    b.ToTable("IdentityServer_ApiResourceSecret", (string)null);
+                    b.ToTable("IdentityServer_ApiResourceSecrets", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScope", b =>
@@ -241,7 +241,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScope", (string)null);
+                    b.ToTable("IdentityServer_ApiScopes", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeClaim", b =>
@@ -265,7 +265,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ScopeId", "Type")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScopeClaim", (string)null);
+                    b.ToTable("IdentityServer_ApiScopeClaims", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiScopeProperty", b =>
@@ -294,7 +294,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ScopeId", "Key")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ApiScopeProperty", (string)null);
+                    b.ToTable("IdentityServer_ApiScopeProperties", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.Client", b =>
@@ -475,7 +475,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_Client", (string)null);
+                    b.ToTable("IdentityServer_Clients", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientClaim", b =>
@@ -504,7 +504,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "Type", "Value")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientClaim", (string)null);
+                    b.ToTable("IdentityServer_ClientClaims", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientCorsOrigin", b =>
@@ -528,7 +528,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "Origin")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientCorsOrigin", (string)null);
+                    b.ToTable("IdentityServer_ClientCorsOrigins", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientGrantType", b =>
@@ -552,7 +552,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "GrantType")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientGrantType", (string)null);
+                    b.ToTable("IdentityServer_ClientGrantTypes", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientIdPRestriction", b =>
@@ -576,7 +576,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "Provider")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientIdPRestriction", (string)null);
+                    b.ToTable("IdentityServer_ClientIdPRestrictions", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
@@ -600,7 +600,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "PostLogoutRedirectUri")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientPostLogoutRedirectUri", (string)null);
+                    b.ToTable("IdentityServer_ClientPostLogoutRedirectUris", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientProperty", b =>
@@ -629,7 +629,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "Key")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientProperty", (string)null);
+                    b.ToTable("IdentityServer_ClientProperties", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientRedirectUri", b =>
@@ -653,7 +653,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("ClientId", "RedirectUri")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_ClientRedirectUri", (string)null);
+                    b.ToTable("IdentityServer_ClientRedirectUris", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ClientScope", b =>
@@ -715,7 +715,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("IdentityServer_ClientSecret", (string)null);
+                    b.ToTable("IdentityServer_ClientSecrets", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityProvider", b =>
@@ -763,7 +763,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("Scheme")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityProvider", (string)null);
+                    b.ToTable("IdentityServer_IdentityProviders", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResource", b =>
@@ -813,7 +813,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("Name")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResource", (string)null);
+                    b.ToTable("IdentityServer_IdentityResources", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceClaim", b =>
@@ -837,7 +837,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("IdentityResourceId", "Type")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResourceClaim", (string)null);
+                    b.ToTable("IdentityServer_IdentityResourceClaims", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.IdentityResourceProperty", b =>
@@ -866,7 +866,7 @@ namespace Leelite.IdentityServer.Migrations.PostgreSQL.Configurations
                     b.HasIndex("IdentityResourceId", "Key")
                         .IsUnique();
 
-                    b.ToTable("IdentityServer_IdentityResourceProperty", (string)null);
+                    b.ToTable("IdentityServer_IdentityResourceProperties", (string)null);
                 });
 
             modelBuilder.Entity("Duende.IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>

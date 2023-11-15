@@ -1,0 +1,199 @@
+﻿@using Leelite.Framework.Models.Tree
+@model Leelite.Web.Models.DataCategoryViewModel
+@{
+    Layout = "_AdminLayout";
+}
+
+@{
+    ViewData["Title"] = "数据分类";
+}
+
+<!-- Page header -->
+<div class="page-header page-header-light shadow">
+    <div class="page-header-content d-lg-flex">
+        <div class="page-title">
+            <h5 class="mb-0">数据分类</h5>
+            <div class="text-muted mt-1">系统数据分类</div>
+        </div>
+
+        <div class="my-auto ms-auto">
+            @* <button type="button" class="btn btn-light btn-icon">
+            <i class="ph-plus"></i>
+            </button>
+            <button type="button" class="btn btn-teal btn-icon">
+            <i class="ph-download"></i>
+            </button> *@
+        </div>
+
+        <div class="vr d-none d-sm-block flex-shrink-0 my-2 mx-3"></div>
+
+        <div class="collapse d-lg-block my-lg-auto" id="page_header">
+
+            <div class="hstack gap-3 mb-3 mb-lg-0">
+                @* <div class="wmin-lg-200">
+                <select class="form-control form-control-multiselect" multiple="multiple">
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                <option value="mushrooms">Mushrooms</option>
+                </select>
+                </div> *@
+
+                <div class="input-group wmin-lg-200">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-light btn-icon">
+                        <i class="ph-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header-content d-lg-flex border-top">
+        <div class="d-flex">
+            <div class="breadcrumb py-2">
+                <a href="@Url.Action("Index", "Home",new { area = "Admin" })" class="breadcrumb-item"><i class="ph-house"></i></a>
+                <a href="@Url.Action("Index", "DataDictionary",new { area = "Admin" })" class="breadcrumb-item">数据字典</a>
+                <span class="breadcrumb-item active">列表</span>
+            </div>
+
+            <a href="#breadcrumb_elements" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+                <i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+            </a>
+        </div>
+
+        <div class="collapse d-lg-block ms-lg-auto" id="breadcrumb_elements">
+            <div class="d-lg-flex mb-2 mb-lg-0">
+                <a href="#" class="d-flex align-items-center text-body py-2">
+                    Link
+                </a>
+
+                <div class="dropdown ms-lg-3">
+                    <a href="#" class="d-flex align-items-center text-body dropdown-toggle py-2" data-bs-toggle="dropdown">
+                        <span class="flex-1">Dropdown</span>
+                    </a>
+
+                    <div class="dropdown-menu dropdown-menu-end w-100 w-lg-auto">
+                        <a href="#" class="dropdown-item">
+                            Action
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            Another action
+                        </a>
+                        <a href="#" class="dropdown-item">
+                            One more action
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            Separate action
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<!-- Content area -->
+<div class="content">
+
+    <!-- Basic card -->
+    <div class="card">
+        <!-- Inner container -->
+        <div class="d-lg-flex align-items-lg-start">
+
+            <!-- Secondary sidebar -->
+            <div class="sidebar sidebar-secondary sidebar-expand-lg">
+
+                <!-- Sidebar content -->
+                <div class="sidebar-content">
+
+                    <!-- Sidebar search -->
+                    <div class="sidebar-section">
+                        <div class="sidebar-section-body">
+                            <div class="form-control-feedback form-control-feedback-end">
+                                <input type="search" class="form-control" placeholder="Search">
+                                <div class="form-control-feedback-icon">
+                                    <i class="ph-magnifying-glass opacity-50"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /sidebar search -->
+                    <!-- Sub navigation -->
+                    <div class="sidebar-section">
+                        <ul class="nav nav-sidebar my-2" data-nav-type="accordion">
+                            @{
+                                foreach (var item in Model.CategoryTypes)
+                                {
+                                    <li class="nav-item">
+                                        <a href="@Url.Action("Index", new { categoryType = Model.ActiveCategoryType.Id })" class="nav-link active">
+                                            @item.Name
+                                            <span class="text-muted fs-sm fw-normal ms-auto"></span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        </ul>
+                    </div>
+                    <!-- /sub navigation -->
+
+                </div>
+                <!-- /sidebar content -->
+
+            </div>
+            <!-- /secondary sidebar -->
+            <!-- Right content -->
+            <div class="flex-1">
+                <div class="tree-default p-3">
+                    <ul class="d-none mb-0">
+                        @{
+                            @functions {
+                                private void RenderNode(ITreeNode<long> node)
+                                {
+                                    if (node.IsLeaf)
+                                    {
+                                        <li class="has-tooltip" title="@node.Name">@node.Name</li>
+                                    }
+                                    else
+                                    {
+                                        <li class="folder expanded">
+                                            Expanded folder with children
+                                            <ul>
+                                                @foreach (var item in node.Children)
+                                                {
+                                                    RenderNode(item);
+                                                }
+                                            </ul>
+                                        </li>
+                                    }
+                                }
+                            }
+
+                            @foreach (var item in Model.CategoryTree)
+                            {
+                                RenderNode(item);
+                            }
+                        }
+                    </ul>
+                </div>
+            </div>
+            <!-- /right content -->
+
+        </div>
+        <!-- /inner container -->
+    </div>
+    <!-- /basic card -->
+
+</div>
+<!-- /content area -->
+@section ScriptsPlugins {
+    <script src="~/global_assets/js/vendor/forms/selects/bootstrap_multiselect.js"></script>
+    <script src="~/global_assets/js/vendor/trees/fancytree_all.min.js"></script>
+    <script src="~/global_assets/js/vendor/trees/fancytree_childcounter.js"></script>
+    <script src="~/global_assets/js/vendor/trees/fancytree.dnd5.js"></script>
+}
+
+@section Scripts {
+    <script src="~/admin/js/pages/admin_data_category_index.js"></script>
+}

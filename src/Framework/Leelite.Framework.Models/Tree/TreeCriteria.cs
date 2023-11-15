@@ -13,6 +13,7 @@ namespace Leelite.Framework.Models.Tree
         /// <returns>返回条件</returns>
         public static Criterion<TEntity> Children<TEntity, TKey>(TKey parentId)
             where TEntity : ITree<TKey>
+            where TKey : IEquatable<TKey>
         {
             return new DirectCriterion<TEntity>(c => c.ParentId.Equals(parentId));
         }
@@ -26,6 +27,7 @@ namespace Leelite.Framework.Models.Tree
         /// <returns>返回条件</returns>
         public static Criterion<TEntity> Level<TEntity, TKey>(int level)
             where TEntity : ITree<TKey>
+            where TKey : IEquatable<TKey>
         {
             return new DirectCriterion<TEntity>(c => c.Level == level);
         }

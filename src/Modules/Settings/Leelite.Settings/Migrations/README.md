@@ -1,21 +1,22 @@
 ﻿# Markdown file
-添加当前项目引用到AppHost
+添加当前项目引用到WebHost
 默认项目选中当前项目
 在程序包管理控制台运行命令：
 
-Add-Migration InitialSettings -o Migrations/PostgreSQL -s AppHost -c SettingsContext
+Add-Migration InitialSettings -o Migrations/PostgreSQL -s WebHost -c SettingsContext
+Add-Migration ChangeTableName -o Migrations/PostgreSQL -s WebHost -c SettingsContext
 
 Update-Database -s WebHost -Context SettingsContext
 
-Script-Migration -s AppHost -Context SettingsContext
+Script-Migration -s WebHost -Context SettingsContext
 
-Drop-Database -s AppHost -Context SettingsContext
+Drop-Database -s WebHost -Context SettingsContext
 
-Remove-Migration Check -s AppHost -c SettingsContext
+Remove-Migration Check -s WebHost -c SettingsContext
 
 SettingsDesignTimeFactory
 
 生成数据库初始化SQL
 dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -p Leelite.Settings.csproj -s ../../../Hosts/AppHost/AppHost.csproj
 简化版本
-dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -s ../../../Hosts/AppHost
+dotnet ef migrations script -i -o Migrations/PostgreSQL/install.sql -s ../../../Hosts/WebHost

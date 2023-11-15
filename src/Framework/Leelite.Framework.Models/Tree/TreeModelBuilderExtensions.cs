@@ -7,7 +7,8 @@ namespace Microsoft.EntityFrameworkCore
     public static class TreeModelBuilderExtensions
     {
         public static void HasTree<TEntity, TKey>(this EntityTypeBuilder<TEntity> typeBuilder, int maxLength = 32)
-             where TEntity : class, ITree<TKey>
+            where TEntity : class, ITree<TKey>
+            where TKey : IEquatable<TKey>
         {
             if (typeof(TKey).Name == "string")
             {

@@ -9,7 +9,7 @@ namespace Microsoft.EntityFrameworkCore
         public static void HasVersion<TEntity>(this EntityTypeBuilder<TEntity> typeBuilder)
             where TEntity : class, IVersion
         {
-            typeBuilder.Property(p => p.Version);
+            typeBuilder.Property(p => p.Version).IsConcurrencyToken();
         }
     }
 }

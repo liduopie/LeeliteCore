@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.FileStorage.UI.Areas.Admin.Controllers
+namespace Leelite.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class FileStorageController : Controller

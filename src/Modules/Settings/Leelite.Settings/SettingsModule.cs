@@ -3,8 +3,6 @@ using Leelite.Core.Module.Dependency;
 using Leelite.Framework;
 using Leelite.Settings.Contexts;
 
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 

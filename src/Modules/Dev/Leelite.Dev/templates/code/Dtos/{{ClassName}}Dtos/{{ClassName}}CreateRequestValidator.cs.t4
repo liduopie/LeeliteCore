@@ -2,7 +2,7 @@
 <#@ parameter type="System.String" name="ClassName" #>
 <#@ parameter type="System.String" name="Namespace" #>
 using FluentValidation;
-using Leelite.Commons.Validation;
+using Leelite.Core.Validation;
 
 namespace <#=Namespace #>.Dtos.<#=ClassName #>Dtos
 {

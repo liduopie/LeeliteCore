@@ -5,6 +5,10 @@ namespace Leelite.DataDictionary.Models.DataTypeAgg
     public class DataType : AggregateRoot<string>
     {
         public string Name { get; set; }
-        public TypeCategory Type { get; set; }
+
+        /// <summary>
+        /// 拥有者类别
+        /// </summary>
+        public OwnerType OwnerType { get; set; }
     }
 }

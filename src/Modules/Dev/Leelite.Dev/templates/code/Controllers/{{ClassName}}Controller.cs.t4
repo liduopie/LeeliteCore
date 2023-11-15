@@ -19,7 +19,7 @@ using <#=Namespace #>.Interfaces;
 using <#=Namespace #>.Models.<#=ClassName #>Agg;
 using Microsoft.AspNetCore.Mvc;
 
-namespace <#=Namespace #>.WebApi
+namespace <#=Namespace #>.Api
 {
     [ApiController]
     [Area("<#=moudleNmae #>")]

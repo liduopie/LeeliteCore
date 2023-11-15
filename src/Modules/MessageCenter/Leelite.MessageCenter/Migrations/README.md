@@ -18,7 +18,11 @@ MessageDesignTimeFactory 类中UseMySql、UseNpgsql MigrationsAssembly使用默�
 PostgreSQL
 dotnet ef migrations add DbInitMessageCenter -s ../../../Hosts/ConsoleHost -o Migrations/PostgreSQL -c MessageContext -- PostgreSQL
 Add-Migration InitDbMessageCenter -OutputDir Migrations/PostgreSQL -StartupProject WebHost -Context MessageContext
+
 2.将 Migrations 目录移动到 MessageCenter.PostgreSQL 项目中
+
+Leelite.MessageCenter.PostgreSQL 执行
+Add-Migration ChangeTableName -OutputDir Migrations/PostgreSQL -StartupProject WebHost -Context MessageContext
 
 
 MySql

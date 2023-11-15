@@ -6,6 +6,10 @@ Add-Migration InitialCreate -o Migrations/PostgreSQL/Configurations -s WebHost -
 Add-Migration InitialCreate -o Migrations/PostgreSQL/PersistedGrants -s WebHost -c PersistedGrantContext
 Add-Migration InitialCreate -o Migrations/PostgreSQL/DataProtections -s WebHost -c DataProtectionDbContext
 
+Add-Migration ChangeTableName -o Migrations/PostgreSQL/Configurations -s WebHost -c ConfigurationContext
+Add-Migration ChangeTableName -o Migrations/PostgreSQL/PersistedGrants -s WebHost -c PersistedGrantContext
+Add-Migration ChangeTableName -o Migrations/PostgreSQL/DataProtections -s WebHost -c DataProtectionDbContext
+
 Update-Database -s WebHost -Context ConfigurationContext
 Update-Database -s WebHost -Context PersistedGrantContext
 Update-Database -s WebHost -Context DataProtectionDbContext

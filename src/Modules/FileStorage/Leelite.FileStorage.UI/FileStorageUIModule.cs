@@ -1,13 +1,14 @@
 ﻿using Leelite.Application;
 using Leelite.AspNetCore.Modular;
 using Leelite.Core.Module.Dependency;
+using Leelite.FileStorage;
 
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Leelite.FileStorage.UI
+namespace Leelite.Web
 {
     [DependsOn(typeof(FileStorageModule))]
     public class FileStorageUIModule : MvcModuleBase
@@ -23,7 +24,7 @@ namespace Leelite.FileStorage.UI
 
             if (client != null)
             {
-                client.NavMenus.Add(new Application.Clients.NavItem("_self", "ph-files", "文件管理", "", "/Admin/FileStorage/Index", "Admin", ""));
+                client.AddNavMenus(new Application.Clients.NavItem("_self", "ph-files", "文件管理", "", "/Admin/FileStorage/Index", "Admin", ""));
             }
         }
 
