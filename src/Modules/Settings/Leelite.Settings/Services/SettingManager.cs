@@ -99,7 +99,7 @@ namespace Leelite.Settings.Services
         /// <inheritdoc/>
         public TOptions GetApplicationOptions<TOptions>()
         {
-            var name = nameof(TOptions);
+            var name = typeof(TOptions).Name;
 
             var config = GetApplicationConfig();
 

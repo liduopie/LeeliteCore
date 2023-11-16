@@ -31,7 +31,7 @@ namespace Leelite.Application.Settings
         /// <inheritdoc/>
         public TOptions GetApplicationOptions<TOptions>()
         {
-            var name = nameof(TOptions);
+            var name = typeof(TOptions).Name;
 
             var config = GetApplicationConfig();
 
