@@ -8,7 +8,5 @@ namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
 
         public string Name { get; set; }
 
-        public bool IsEnabled { get; set; }
-
     }
 }

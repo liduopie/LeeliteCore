@@ -7,6 +7,7 @@ namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
     {
         public CategoryTypeCreateRequestValidator()
         {
+            RuleFor(c => c.Name).NotNull();
         }
     }
 }

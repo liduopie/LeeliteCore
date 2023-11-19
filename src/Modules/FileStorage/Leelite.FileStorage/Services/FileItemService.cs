@@ -6,6 +6,7 @@ using Leelite.FileStorage.Interfaces;
 using Leelite.FileStorage.Models.FileItemAgg;
 using Leelite.FileStorage.Repositories;
 using Microsoft.Extensions.Logging;
+using Leelite.Framework.Domain.UnitOfWork;
 
 namespace Leelite.FileStorage.Services
 {
@@ -14,8 +15,9 @@ namespace Leelite.FileStorage.Services
         public FileItemService(
             IFileInfoRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<FileItemService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

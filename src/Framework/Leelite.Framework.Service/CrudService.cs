@@ -35,8 +35,9 @@ namespace Leelite.Framework.Service
         public CrudService(
             IRepository<TEntity, TKey> repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger logger
-            ) : base(repository, logger)
+            ) : base(repository, unitOfWork, logger)
         {
             _commandBus = commandBus;
         }

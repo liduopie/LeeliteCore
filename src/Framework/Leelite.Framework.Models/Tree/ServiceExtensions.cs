@@ -17,7 +17,7 @@ namespace Leelite.Framework.Models.Tree
         /// <param name="service">应用服务</param>
         /// <param name="rootId">根节点Id</param>
         /// <returns>根节点</returns>
-        public static ITreeNode<TKey> GetTree<TEntity, TKey>(this IService<TEntity, TKey> service, TKey rootId)
+        public static ITreeNode<TKey, TEntity> GetTree<TEntity, TKey>(this IService<TEntity, TKey> service, TKey rootId)
             where TEntity : IAggregateRoot<TKey>, ITree<TKey>
             where TKey : IEquatable<TKey>
         {
@@ -25,10 +25,10 @@ namespace Leelite.Framework.Models.Tree
 
             if (rootEntity == null)
             {
-                return new TreeNode<TKey>();
+                return new TreeNode<TKey, TEntity>();
             }
 
-            var rootNode = new TreeNode<TKey>()
+            var rootNode = new TreeNode<TKey, TEntity>()
             {
                 Id = rootEntity.Id,
                 ParentId = rootEntity.ParentId,
@@ -36,6 +36,7 @@ namespace Leelite.Framework.Models.Tree
                 Path = rootEntity.Path,
                 Name = rootEntity.Name,
                 Sort = rootEntity.Sort,
+                Source = rootEntity
             };
 
             var allNode = service.Repository.Find(c => c.Path.StartsWith(rootEntity.Path));
@@ -51,7 +52,7 @@ namespace Leelite.Framework.Models.Tree
         /// <param name="service">应用服务</param>
         /// <param name="rootId">根节点Id</param>
         /// <returns>根节点</returns>
-        public static async Task<ITreeNode<TKey>> GetTreeAsync<TEntity, TKey>(this IService<TEntity, TKey> service, TKey rootId)
+        public static async Task<ITreeNode<TKey, TEntity>> GetTreeAsync<TEntity, TKey>(this IService<TEntity, TKey> service, TKey rootId)
             where TEntity : IAggregateRoot<TKey>, ITree<TKey>
             where TKey : IEquatable<TKey>
         {
@@ -59,10 +60,10 @@ namespace Leelite.Framework.Models.Tree
 
             if (rootEntity == null)
             {
-                return new TreeNode<TKey>();
+                return new TreeNode<TKey, TEntity>();
             }
 
-            var rootNode = new TreeNode<TKey>()
+            ITreeNode<TKey, TEntity> rootNode = new TreeNode<TKey, TEntity>()
             {
                 Id = rootEntity.Id,
                 ParentId = rootEntity.ParentId,
@@ -70,11 +71,16 @@ namespace Leelite.Framework.Models.Tree
                 Path = rootEntity.Path,
                 Name = rootEntity.Name,
                 Sort = rootEntity.Sort,
+                Source = rootEntity
             };
 
             var allNode = await service.Repository.FindAsync(c => c.Path.StartsWith(rootEntity.Path));
 
-            return BuildChildrenNode(allNode, rootNode);
+            rootNode = BuildChildrenNode(allNode, rootNode);
+            rootNode.ChildrenCount = rootNode.Children.Count;
+            rootNode.IsLeaf = rootNode.ChildrenCount == 0;
+
+            return rootNode;
         }
 
         /// <summary>
@@ -85,17 +91,17 @@ namespace Leelite.Framework.Models.Tree
         /// <param name="entities">所有节点</param>
         /// <param name="currentNode">当前节点</param>
         /// <returns>当前节点</returns>
-        private static ITreeNode<TKey> BuildChildrenNode<TEntity, TKey>(IList<TEntity> entities, ITreeNode<TKey> currentNode)
+        private static ITreeNode<TKey, TEntity> BuildChildrenNode<TEntity, TKey>(IList<TEntity> entities, ITreeNode<TKey, TEntity> currentNode)
             where TEntity : IAggregateRoot<TKey>, ITree<TKey>
             where TKey : IEquatable<TKey>
         {
             var children = entities.Where(c => c.ParentId.Equals(currentNode.Id)).OrderBy(c => c.Sort).ToList();
 
-            var nodes = new List<ITreeNode<TKey>>();
+            var nodes = new List<ITreeNode<TKey, TEntity>>();
 
             foreach (var item in children)
             {
-                var node = new TreeNode<TKey>()
+                var node = new TreeNode<TKey, TEntity>()
                 {
                     Id = item.Id,
                     ParentId = item.ParentId,
@@ -103,6 +109,7 @@ namespace Leelite.Framework.Models.Tree
                     Path = item.Path,
                     Name = item.Name,
                     Sort = item.Sort,
+                    Source = item
                 };
 
                 BuildChildrenNode(entities, node);

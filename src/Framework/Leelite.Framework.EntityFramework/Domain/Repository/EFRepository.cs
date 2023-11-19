@@ -1,8 +1,8 @@
-﻿using System;
-using Leelite.Framework.Data.Store;
+﻿using Leelite.Framework.Data.Store;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Context;
 using Leelite.Framework.Domain.UnitOfWork;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.Domain.Repository

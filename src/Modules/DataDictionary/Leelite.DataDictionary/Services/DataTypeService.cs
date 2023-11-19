@@ -3,6 +3,7 @@ using Leelite.DataDictionary.Interfaces;
 using Leelite.DataDictionary.Models.DataTypeAgg;
 using Leelite.DataDictionary.Repositories;
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 
 using Microsoft.Extensions.Logging;
@@ -14,8 +15,9 @@ namespace Leelite.DataDictionary.Services
         public DataTypeService(
             IDataTypeRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<DataTypeService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

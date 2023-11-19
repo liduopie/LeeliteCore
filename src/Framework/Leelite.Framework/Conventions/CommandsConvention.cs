@@ -65,13 +65,13 @@ namespace Leelite.Framework.Conventions
 
                 // UpdateCommand
                 var updateCommandType = typeof(UpdateCommand<,,,>)
-                    .MakeGenericType(args[3], args[2], args[0], args[1]);
+                    .MakeGenericType(args[4], args[2], args[0], args[1]);
 
                 var updateRequestHandlerType = typeof(IRequestHandler<,>)
                     .MakeGenericType(updateCommandType, args[2]);
 
                 var updateCommandHandlerType = typeof(UpdateCommandHandler<,,,>)
-                    .MakeGenericType(args[3], args[2], args[0], args[1]);
+                    .MakeGenericType(args[4], args[2], args[0], args[1]);
 
                 services.AddTransient(updateRequestHandlerType, updateCommandHandlerType);
 

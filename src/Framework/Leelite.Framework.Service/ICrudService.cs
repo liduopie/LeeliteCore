@@ -1,5 +1,4 @@
-﻿using System;
-using Leelite.Commons.Lifetime;
+﻿using Leelite.Commons.Lifetime;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Service.Dtos;

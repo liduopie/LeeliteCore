@@ -1,7 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
-
-namespace Leelite.Framework.Service.Interfaces
+﻿namespace Leelite.Framework.Service.Interfaces
 {
     /// <summary>
     /// 删除操作

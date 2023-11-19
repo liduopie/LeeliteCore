@@ -1,0 +1,129 @@
+﻿@model Leelite.DataCategory.Dtos.CategoryDtos.CategoryDto
+@{
+    Layout = "_AdminLayout";
+}
+
+@{
+    ViewData["Title"] = "创建分类";
+}
+
+<!-- Page header -->
+<div class="page-header page-header-light shadow">
+    <div class="page-header-content d-lg-flex">
+        <div class="page-title">
+            <h5 class="mb-0">创建分类</h5>
+            <div class="text-muted mt-1">系统数据分类</div>
+        </div>
+
+        <div class="my-auto ms-auto">
+            @* <button type="button" class="btn btn-light btn-icon">
+            <i class="ph-plus"></i>
+            </button>
+            <button type="button" class="btn btn-teal btn-icon">
+            <i class="ph-download"></i>
+            </button> *@
+        </div>
+
+        <div class="vr d-none d-sm-block flex-shrink-0 my-2 mx-3"></div>
+
+        <div class="collapse d-lg-block my-lg-auto" id="page_header">
+
+            <div class="hstack gap-3 mb-3 mb-lg-0">
+                @* <div class="wmin-lg-200">
+                <select class="form-control form-control-multiselect" multiple="multiple">
+                <option value="cheese">Cheese</option>
+                <option value="tomatoes">Tomatoes</option>
+                <option value="mozarella">Mozzarella</option>
+                <option value="mushrooms">Mushrooms</option>
+                </select>
+                </div> *@
+
+                <div class="input-group wmin-lg-200">
+                    <input type="text" class="form-control" placeholder="Search">
+                    <button type="button" class="btn btn-light btn-icon">
+                        <i class="ph-magnifying-glass"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header-content d-lg-flex border-top">
+        <div class="d-flex">
+            <div class="breadcrumb py-2">
+                <a href="@Url.Action("Index", "Home",new { area = "Admin" })" class="breadcrumb-item"><i class="ph-house"></i></a>
+                <a href="@Url.Action("Index", "DataCategory",new { area = "Admin" })" class="breadcrumb-item">数据分类</a>
+                <span class="breadcrumb-item active">创建分类类别</span>
+            </div>
+
+            <a href="#breadcrumb_elements" class="btn btn-light align-self-center collapsed d-lg-none border-transparent rounded-pill p-0 ms-auto" data-bs-toggle="collapse">
+                <i class="ph-caret-down collapsible-indicator ph-sm m-1"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<!-- /page header -->
+<!-- Content area -->
+<div class="content container">
+
+    <!-- Centered card -->
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-header">
+                    <h6 class="mb-0">新增</h6>
+                </div>
+
+                <div asp-validation-summary="ModelOnly" class="card-body validation-invalid-label"></div>
+
+                <div class="card-body border-top">
+                    <form asp-action="CreateCategory">
+                        <div class="row mb-3">
+                            <label asp-for="Code" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Code" class="form-control" required placeholder="Code">
+                                <span asp-validation-for="Code" class="validation-invalid-label"></span>
+                                <div class="form-text text-muted"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Name" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Name" class="form-control" required placeholder="Name">
+                                <span asp-validation-for="Name" class="validation-invalid-label"></span>
+                                <div class="form-text text-muted"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Description" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <textarea asp-for="Description" rows="3" cols="3" class="form-control" placeholder="Description"></textarea>
+                                <span asp-validation-for="Description" class="validation-invalid-label"></span>
+                                <div class="form-text text-muted"></div>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <label asp-for="Sort" class="col-lg-3 col-form-label"></label>
+                            <div class="col-lg-9">
+                                <input asp-for="Sort" class="form-control" required placeholder="Sort">
+                                <span asp-validation-for="Sort" class="validation-invalid-label"></span>
+                                <div class="form-text text-muted"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" asp-for="CategoryTypeId" />
+                        <input type="hidden" asp-for="ParentId" />
+                        <input type="hidden" asp-for="Id" />
+                        <div class="text-end">
+                            <button type="submit" class="btn btn-primary">保存 <i class="ph-paper-plane-tilt ms-2"></i></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /centered card -->
+</div>
+<!-- /content area -->
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

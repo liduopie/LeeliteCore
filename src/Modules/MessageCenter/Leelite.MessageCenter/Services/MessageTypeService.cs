@@ -1,4 +1,5 @@
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 using Leelite.MessageCenter.Dtos.MessageTypeDtos;
 using Leelite.MessageCenter.Interfaces;
@@ -14,8 +15,9 @@ namespace Leelite.MessageCenter.Services
         public MessageTypeService(
             IMessageTypeRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<MessageTypeService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

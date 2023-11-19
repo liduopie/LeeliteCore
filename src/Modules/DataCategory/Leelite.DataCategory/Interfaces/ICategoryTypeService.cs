@@ -6,5 +6,6 @@ namespace Leelite.DataCategory.Interfaces
 {
     public interface ICategoryTypeService : ICrudService<CategoryType, int, CategoryTypeDto, CategoryTypeCreateRequest, CategoryTypeUpdateRequest, CategoryTypeQueryParameter>
     {
+        CategoryTypeDto GetByName(string name);
     }
 }

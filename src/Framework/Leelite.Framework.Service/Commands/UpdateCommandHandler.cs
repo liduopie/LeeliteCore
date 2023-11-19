@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;
@@ -10,7 +8,7 @@ using Leelite.Framework.Service.Events;
 
 namespace Leelite.Framework.Service.Commands
 {
-    public class UpdateCommandHandler<TCreateRequest, TDto, TEntity, TKey> : ICommandHandler<UpdateCommand<TCreateRequest, TDto, TEntity, TKey>, TDto>
+    public class UpdateCommandHandler<TUpdateRequest, TDto, TEntity, TKey> : ICommandHandler<UpdateCommand<TUpdateRequest, TDto, TEntity, TKey>, TDto>
          where TEntity : IAggregateRoot<TKey>
          where TKey : IEquatable<TKey>
     {
@@ -28,7 +26,7 @@ namespace Leelite.Framework.Service.Commands
             _mapper = mapper;
         }
 
-        public async Task<TDto> Handle(UpdateCommand<TCreateRequest, TDto, TEntity, TKey> request, CancellationToken cancellationToken)
+        public async Task<TDto> Handle(UpdateCommand<TUpdateRequest, TDto, TEntity, TKey> request, CancellationToken cancellationToken)
         {
             var entity = _mapper.Map<TEntity>(request.Source);
 

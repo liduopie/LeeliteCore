@@ -1,4 +1,5 @@
-﻿@using Leelite.Framework.Models.Tree
+﻿@using Leelite.DataCategory.Models.CategoryAgg
+@using Leelite.Framework.Models.Tree
 @model Leelite.Web.Models.DataCategoryViewModel
 @{
     Layout = "_AdminLayout";
@@ -6,6 +7,10 @@
 
 @{
     ViewData["Title"] = "数据分类";
+}
+
+@section Styles {
+    <link href="~/global_assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
 }
 
 <!-- Page header -->
@@ -53,7 +58,7 @@
         <div class="d-flex">
             <div class="breadcrumb py-2">
                 <a href="@Url.Action("Index", "Home",new { area = "Admin" })" class="breadcrumb-item"><i class="ph-house"></i></a>
-                <a href="@Url.Action("Index", "DataDictionary",new { area = "Admin" })" class="breadcrumb-item">数据字典</a>
+                <a href="@Url.Action("Index", "DataCategory",new { area = "Admin" })" class="breadcrumb-item">数据分类</a>
                 <span class="breadcrumb-item active">列表</span>
             </div>
 
@@ -108,9 +113,19 @@
                 <!-- Sidebar content -->
                 <div class="sidebar-content">
 
+                    <!-- Header -->
+                    <div class="sidebar-section sidebar-section-body d-flex align-items-center pb-0">
+                        <h5 class="mb-0">分类类别</h5>
+                        <div class="ms-auto">
+                            <a onclick="toCategoryTypeCreate()" class="btn btn-light border-transparent btn-icon rounded-pill btn-sm">
+                                <i class="ph-plus"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <!-- /header -->
                     <!-- Sidebar search -->
                     <div class="sidebar-section">
-                        <div class="sidebar-section-body">
+                        <div class="sidebar-section-body pb-0">
                             <div class="form-control-feedback form-control-feedback-end">
                                 <input type="search" class="form-control" placeholder="Search">
                                 <div class="form-control-feedback-icon">
@@ -122,15 +137,15 @@
                     <!-- /sidebar search -->
                     <!-- Sub navigation -->
                     <div class="sidebar-section">
-                        <ul class="nav nav-sidebar my-2" data-nav-type="accordion">
+                        <ul class="nav nav-sidebar nav-sidebar-icons-reverse my-2" data-nav-type="accordion">
                             @{
                                 foreach (var item in Model.CategoryTypes)
                                 {
                                     <li class="nav-item">
-                                        <a href="@Url.Action("Index", new { categoryType = Model.ActiveCategoryType.Id })" class="nav-link active">
+                                        <span onclick="toIndex(@item.Id)" class="nav-link @(item.Id == Model.ActiveCategoryType.Id?"active":"") " style="cursor: pointer;">
+                                            <i onclick="toCategoryTypeEdit(@item.Id)" class="ph-note-pencil"></i>
                                             @item.Name
-                                            <span class="text-muted fs-sm fw-normal ms-auto"></span>
-                                        </a>
+                                        </span>
                                     </li>
                                 }
                             }
@@ -145,20 +160,34 @@
             <!-- /secondary sidebar -->
             <!-- Right content -->
             <div class="flex-1">
-                <div class="tree-default p-3">
+                <div class="card-header d-flex align-items-center py-0">
+                    <h6 class="py-3 mb-0">@Model.ActiveCategoryType.Name</h6>
+                    <div class="ms-auto my-auto">
+                        <div onclick="deleteCategory()" class="btn btn-light border-transparent btn-icon rounded-pill btn-sm">
+                            <i class="ph-x"></i>
+                        </div>
+                        <div onclick="toCategoryEdit()" class="btn btn-light border-transparent btn-icon rounded-pill btn-sm">
+                            <i class="ph-note-pencil"></i>
+                        </div>
+                        <div onclick="toCategoryCreate(@Model.ActiveCategoryType.Id)" class="btn btn-light border-transparent btn-icon rounded-pill btn-sm">
+                            <i class="ph-plus"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="tree-default py-3">
                     <ul class="d-none mb-0">
                         @{
                             @functions {
-                                private void RenderNode(ITreeNode<long> node)
+                                private void RenderNode(ITreeNode<long, Category> node)
                                 {
                                     if (node.IsLeaf)
                                     {
-                                        <li class="has-tooltip" title="@node.Name">@node.Name</li>
+                                        <li id="@node.Id" class="has-tooltip" title="@node.Name">@node.Name</li>
                                     }
                                     else
                                     {
-                                        <li class="folder expanded">
-                                            Expanded folder with children
+                                        <li id="@node.Id" class="folder expanded" title="@node.Name">
+                                            @node.Name [@node.Source.IsEnabled]
                                             <ul>
                                                 @foreach (var item in node.Children)
                                                 {
@@ -186,6 +215,7 @@
     <!-- /basic card -->
 
 </div>
+
 <!-- /content area -->
 @section ScriptsPlugins {
     <script src="~/global_assets/js/vendor/forms/selects/bootstrap_multiselect.js"></script>
@@ -196,4 +226,73 @@
 
 @section Scripts {
     <script src="~/admin/js/pages/admin_data_category_index.js"></script>
+    <script type="text/javascript">
+        function toIndex(id) {
+            window.location.href = '/Admin/DataCategory?categoryTypeId=' + id;
+        }
+
+        function toCategoryTypeCreate() {
+            window.location.href = '/Admin/DataCategory/CategoryTypeCreate';
+        }
+
+        function toCategoryTypeEdit(id) {
+            event.stopPropagation();
+            window.location.href = '/Admin/DataCategory/CategoryTypeEdit/' + id;
+        }
+
+        function toCategoryCreate(categoryTypeId) {
+            var parentId = 0;
+
+            const tree = $.ui.fancytree.getTree('.tree-default');
+
+            var activeNode = tree.getActiveNode();
+
+            if (activeNode) {
+                parentId = activeNode.key;
+            }
+
+            window.location.href = '/Admin/DataCategory/CategoryCreate?categoryTypeId=' + categoryTypeId + '&parentId=' + parentId;
+        }
+
+        function toCategoryEdit() {
+            var id = 0;
+
+            const tree = $.ui.fancytree.getTree('.tree-default');
+
+            var activeNode = tree.getActiveNode();
+
+            if (activeNode) {
+                id = activeNode.key;
+            }
+
+            window.location.href = '/Admin/DataCategory/CategoryEdit/' + id;
+        }
+
+        // 删除分类
+        function deleteCategory() {
+            var id = 0;
+
+            const tree = $.ui.fancytree.getTree('.tree-default');
+
+            var activeNode = tree.getActiveNode();
+
+            if (activeNode) {
+                id = activeNode.key;
+            }
+
+            $.ajax({
+                url: '/Admin/DataCategory/CategoryDelete/' + id,
+                type: 'POST',
+                data: {},
+                success: function (data) {
+                    if (data.success) {
+                        window.location.reload();
+                    }
+                    else {
+                        alert(data.message);
+                    }
+                }
+            });
+        }
+    </script>
 }

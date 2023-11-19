@@ -3,6 +3,7 @@ using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Repository;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service.Dtos;
 
 using Microsoft.Extensions.Logging;
@@ -24,14 +25,26 @@ namespace Leelite.Framework.Service
         where TDto : IDto<TKey>
         where TQueryParameter : PageParameter<TEntity>
     {
+
+        protected readonly IUnitOfWork _unitOfWork;
+
+        public virtual IUnitOfWork UnitOfWork
+        {
+            get
+            {
+                return _unitOfWork;
+            }
+        }
+
         /// <summary>
         /// 查询存储器
         /// </summary>
         public IRepository<TEntity, TKey> Repository { get; set; }
 
-        public QueryService(IRepository<TEntity, TKey> repository, ILogger logger) : base(logger)
+        public QueryService(IRepository<TEntity, TKey> repository, IUnitOfWork unitOfWork, ILogger logger) : base(logger)
         {
             Repository = repository;
+            _unitOfWork = unitOfWork;
         }
 
 

@@ -44,7 +44,12 @@ namespace Leelite.Core.Aspects
 
             logger.LogDebug($"Executing method {name}");
 
-            logger.LogDebug($"Executing args {JsonSerializer.Serialize(args)}");
+            foreach (var arg in args)
+            {
+                if (arg.GetType() == typeof(CancellationToken)) continue;
+
+                logger.LogDebug($"Executing args {JsonSerializer.Serialize(arg)}");
+            }
 
             var sw = Stopwatch.StartNew();
 

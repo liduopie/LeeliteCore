@@ -1,4 +1,5 @@
 ﻿using Leelite.DataCategory.Dtos.CategoryTypeDtos;
+using Leelite.DataCategory.Models.CategoryAgg;
 using Leelite.Framework.Models.Tree;
 
 namespace Leelite.Web.Models
@@ -12,6 +13,6 @@ namespace Leelite.Web.Models
         /// </summary>
         public CategoryTypeDto ActiveCategoryType { get; set; }
 
-        public IList<ITreeNode<long>> CategoryTree { get; set; }
+        public IList<ITreeNode<long, Category>> CategoryTree { get; set; }
     }
 }

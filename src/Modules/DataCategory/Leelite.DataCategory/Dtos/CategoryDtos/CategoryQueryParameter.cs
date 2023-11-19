@@ -13,7 +13,7 @@ namespace Leelite.DataCategory.Dtos.CategoryDtos
 
         public int CategoryTypeId { get; set; }
 
-        public long ParentId { get; set; }
+        public long? ParentId { get; set; }
 
         public override Expression<Func<Category, bool>> SatisfiedBy()
         {
@@ -25,8 +25,8 @@ namespace Leelite.DataCategory.Dtos.CategoryDtos
             if (CategoryTypeId > 0)
                 c &= CategoryCriteria.CategoryTypeId(CategoryTypeId);
 
-            if (ParentId > 0)
-                c &= TreeCriteria.Children<Category, long>(ParentId);
+            if (ParentId != null)
+                c &= TreeCriteria.Children<Category, long>(ParentId.Value);
 
             return c.SatisfiedBy();
         }

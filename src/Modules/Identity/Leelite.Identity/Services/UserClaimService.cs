@@ -1,9 +1,11 @@
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 using Leelite.Identity.Dtos.UserClaimDtos;
 using Leelite.Identity.Interfaces;
 using Leelite.Identity.Models.UserClaimAgg;
 using Leelite.Identity.Repositories;
+
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Identity.Services
@@ -13,8 +15,9 @@ namespace Leelite.Identity.Services
         public UserClaimService(
             IUserClaimRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<UserClaimService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

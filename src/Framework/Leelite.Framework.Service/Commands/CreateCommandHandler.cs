@@ -1,7 +1,5 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+
 using Leelite.Framework.Domain.Aggregate;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Event;

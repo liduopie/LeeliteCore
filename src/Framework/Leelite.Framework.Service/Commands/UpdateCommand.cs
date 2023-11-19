@@ -2,8 +2,8 @@
 
 namespace Leelite.Framework.Service.Commands
 {
-    public class UpdateCommand<TCreateRequest, TDto, TEntity, TKey> : Command<TCreateRequest, TDto>
+    public class UpdateCommand<TUpdateRequest, TDto, TEntity, TKey> : Command<TUpdateRequest, TDto>
     {
-        public UpdateCommand(TCreateRequest source) : base(source) { }
+        public UpdateCommand(TUpdateRequest source) : base(source) { }
     }
 }

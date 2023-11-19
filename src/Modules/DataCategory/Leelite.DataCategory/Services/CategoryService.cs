@@ -1,12 +1,13 @@
-﻿using Leelite.DataCategory.Dtos.CategoryDtos;
+using Leelite.DataCategory.Dtos.CategoryDtos;
+using Leelite.DataCategory.Interfaces;
 using Leelite.DataCategory.Models.CategoryAgg;
 using Leelite.DataCategory.Repositories;
-using Leelite.DataCategory.Interfaces;
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
+using Leelite.Framework.Models.Tree;
 using Leelite.Framework.Service;
 
 using Microsoft.Extensions.Logging;
-using Leelite.Framework.Models.Tree;
 
 namespace Leelite.DataCategory.Services
 {
@@ -15,13 +16,14 @@ namespace Leelite.DataCategory.Services
         public CategoryService(
             ICategoryRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<CategoryService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
 
         /// <inheritdoc/>
-        public IList<ITreeNode<long>> GetCategoryTreeByType(int typeId)
+        public IList<ITreeNode<long, Category>> GetCategoryTreeByType(int typeId)
         {
             var query = new CategoryQueryParameter();
             query.CategoryTypeId = typeId;
@@ -29,7 +31,7 @@ namespace Leelite.DataCategory.Services
 
             var roots = Get(query);
 
-            var nodes = new List<ITreeNode<long>>();
+            var nodes = new List<ITreeNode<long, Category>>();
 
             foreach (var item in roots)
             {
@@ -40,14 +42,15 @@ namespace Leelite.DataCategory.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IList<ITreeNode<long>>> GetCategoryTreeByTypeAsync(int typeId)
+        public async Task<IList<ITreeNode<long, Category>>> GetCategoryTreeByTypeAsync(int typeId)
         {
             var query = new CategoryQueryParameter();
             query.CategoryTypeId = typeId;
+            query.ParentId = 0;
 
             var roots = await GetAsync(query);
 
-            var nodes = new List<ITreeNode<long>>();
+            var nodes = new List<ITreeNode<long, Category>>();
 
             foreach (var item in roots)
             {

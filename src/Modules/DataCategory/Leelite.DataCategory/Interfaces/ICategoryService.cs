@@ -12,13 +12,13 @@ namespace Leelite.DataCategory.Interfaces
         /// </summary>
         /// <param name="typeId">分类Id</param>
         /// <returns>返回节点结合</returns>
-        IList<ITreeNode<long>> GetCategoryTreeByType(int typeId);
+        IList<ITreeNode<long, Category>> GetCategoryTreeByType(int typeId);
 
         /// <summary>
         /// 根据分类类别获取分类树
         /// </summary>
         /// <param name="typeId">分类Id</param>
         /// <returns>返回节点结合</returns>
-        Task<IList<ITreeNode<long>>> GetCategoryTreeByTypeAsync(int typeId);
+        Task<IList<ITreeNode<long, Category>>> GetCategoryTreeByTypeAsync(int typeId);
     }
 }

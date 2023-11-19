@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Leelite.Core.Cache;
 using Leelite.Framework.Domain.Command;
 using Leelite.Framework.Domain.Repository;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 using Leelite.MessageCenter.Dtos.MessageDtos;
 using Leelite.MessageCenter.Interfaces;
@@ -20,8 +21,9 @@ namespace Leelite.MessageCenter.Services
         public MessageService(
             IMessageRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<MessageService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
 

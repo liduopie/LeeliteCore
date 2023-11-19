@@ -1,5 +1,4 @@
-﻿using System;
-using Leelite.Framework.Data.Store;
+﻿using Leelite.Framework.Data.Store;
 using Leelite.Framework.Domain.Model;
 
 namespace Leelite.Framework.Domain.Repository

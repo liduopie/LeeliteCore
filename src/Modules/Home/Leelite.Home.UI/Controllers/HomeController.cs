@@ -27,6 +27,11 @@ namespace Leelite.Home.UI.Controllers
 
             model.Options = _settingManager.GetApplicationOptions<ApplicationOptions>();
 
+            if (!string.IsNullOrEmpty(model.Options.StartUrl))
+            {
+                return Redirect(model.Options.StartUrl);
+            }
+
             return View();
         }
 

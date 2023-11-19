@@ -1,4 +1,5 @@
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 using Leelite.MessageCenter.Dtos.PushRecordDtos;
 using Leelite.MessageCenter.Interfaces;
@@ -14,8 +15,9 @@ namespace Leelite.MessageCenter.Services
         public PushRecordService(
             IPushRecordRepository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<PushRecordService> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

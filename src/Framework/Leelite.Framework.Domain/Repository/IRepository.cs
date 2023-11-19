@@ -1,5 +1,4 @@
-﻿using System;
-using Leelite.Commons.Lifetime;
+﻿using Leelite.Commons.Lifetime;
 using Leelite.Framework.Data.Store;
 using Leelite.Framework.Domain.Model;
 

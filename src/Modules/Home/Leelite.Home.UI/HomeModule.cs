@@ -6,10 +6,6 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Leelite.Home.UI
 {
     public class HomeModule : MvcModuleBase
