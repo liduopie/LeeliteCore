@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Leelite.Framework</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="LinqToElasticSearch" Version="1.0.74" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Leelite.Framework.Domain\Leelite.Framework.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

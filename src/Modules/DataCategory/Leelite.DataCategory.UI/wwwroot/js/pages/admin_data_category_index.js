@@ -65,3 +65,72 @@ const PageHeader = function () {
 document.addEventListener('DOMContentLoaded', function () {
     PageHeader.initComponents();
 });
+
+function toIndex(id) {
+    window.location.href = '/Admin/DataCategory?categoryTypeId=' + id;
+}
+
+function toCategoryTypeCreate() {
+    window.location.href = '/Admin/DataCategory/CategoryTypeCreate';
+}
+
+function toCategoryTypeEdit(id) {
+    event.stopPropagation();
+
+    window.location.href = '/Admin/DataCategory/CategoryTypeEdit/' + id;
+}
+
+function toCategoryCreate(categoryTypeId) {
+    var parentId = 0;
+
+    const tree = $.ui.fancytree.getTree('.tree-default');
+
+    var activeNode = tree.getActiveNode();
+
+    if (activeNode) {
+        parentId = activeNode.key;
+    }
+
+    window.location.href = '/Admin/DataCategory/CategoryCreate?categoryTypeId=' + categoryTypeId + '&parentId=' + parentId;
+}
+
+function toCategoryEdit() {
+    var id = 0;
+
+    const tree = $.ui.fancytree.getTree('.tree-default');
+
+    var activeNode = tree.getActiveNode();
+
+    if (activeNode) {
+        id = activeNode.key;
+    }
+
+    window.location.href = '/Admin/DataCategory/CategoryEdit/' + id;
+}
+
+// 删除分类
+function deleteCategory() {
+    var id = 0;
+
+    const tree = $.ui.fancytree.getTree('.tree-default');
+
+    var activeNode = tree.getActiveNode();
+
+    if (activeNode) {
+        id = activeNode.key;
+    }
+
+    $.ajax({
+        url: '/Admin/DataCategory/CategoryDelete/' + id,
+        type: 'POST',
+        data: {},
+        success: function (data) {
+            if (data.success) {
+                window.location.reload();
+            }
+            else {
+                alert(data.message);
+            }
+        }
+    });
+}

@@ -1,6 +1,5 @@
-﻿using System;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.Data.Store
@@ -11,14 +10,14 @@ namespace Leelite.Framework.Data.Store
         /// <summary>
         /// 初始化查询存储器
         /// </summary>
-        /// <param name="dbcontext">工作单元</param>
+        /// <param name="dbcontext">工作上下文</param>
         protected EFAbstractStore(DbContext dbcontext)
         {
             DbContext = dbcontext;
         }
 
         /// <summary>
-        /// 工作单元
+        /// 工作上下文
         /// </summary>
         protected DbContext DbContext { get; }
 

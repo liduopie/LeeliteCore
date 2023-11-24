@@ -50,7 +50,6 @@ namespace Leelite.AspNetCore
                     builder.Services.ConfigureLeeliteCore(configuration);
 
                     // start 相关
-                    builder.Services.AddSharedConnection();
                     builder.Services.AddLeeliteWebCore(configuration);
 
                     // 数据库开发页面

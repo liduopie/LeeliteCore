@@ -20,5 +20,27 @@ namespace Leelite.Framework.Domain.Repository
         {
             unitOfWork.Register((IDbContext)dbContext);
         }
+
+        /// <inheritdoc/>
+        public TEntity FindById(TKey id)
+        {
+            var result = Find(c => c.Id.Equals(id));
+
+            if (result.Count > 0)
+                return result[0];
+            else
+                return default;
+        }
+
+        /// <inheritdoc/>
+        public async Task<TEntity> FindByIdAsync(TKey id, CancellationToken cancellationToken = default)
+        {
+            var result = await FindAsync(c => c.Id.Equals(id), cancellationToken);
+
+            if (result.Count > 0)
+                return result[0];
+            else
+                return default;
+        }
     }
 }

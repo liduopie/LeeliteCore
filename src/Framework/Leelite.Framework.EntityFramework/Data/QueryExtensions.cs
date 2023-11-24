@@ -1,9 +1,6 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
-using Leelite.Framework.Data.Query.Paging;
+﻿using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
+
 using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.Data.Query

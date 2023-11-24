@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Leelite.Framework.Data.Query;
-using Leelite.Framework.Data.Query.Parameters;
+﻿using Leelite.Framework.Data.Query.Parameters;
 
 namespace Leelite.Framework.Data.Query
 {

@@ -21,8 +21,11 @@ namespace Leelite.Framework
 
         public override void ConfigureServices(IServiceCollection services, IConfiguration configuration)
         {
-            services.AddEFUnitOfWork();
+            services.AddEntityFramework();
             services.AddDomain();
+            services.AddEsClientProvider();
+
+            services.Configure<ElasticsearchOptions>(configuration.GetSection(nameof(ElasticsearchOptions)));
         }
     }
 }

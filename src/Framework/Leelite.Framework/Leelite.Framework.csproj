@@ -13,6 +13,7 @@
 		<ProjectReference Include="..\..\Core\Leelite.Core\Leelite.Core.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Data\Leelite.Framework.Data.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Domain\Leelite.Framework.Domain.csproj" />
+		<ProjectReference Include="..\Leelite.Framework.Elasticsearch\Leelite.Framework.Elasticsearch.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.EntityFramework\Leelite.Framework.EntityFramework.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Models\Leelite.Framework.Models.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Service\Leelite.Framework.Service.csproj" />

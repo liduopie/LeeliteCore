@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Linq.Expressions;
 
 namespace Leelite.Framework.Data.Query.OrderBy
 {
@@ -18,6 +15,7 @@ namespace Leelite.Framework.Data.Query.OrderBy
         {
             var expression = source.Expression;
             int count = 0;
+
             foreach (var item in sortItems)
             {
                 var parameter = Expression.Parameter(typeof(T), "x");

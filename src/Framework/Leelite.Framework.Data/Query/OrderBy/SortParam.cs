@@ -9,8 +9,8 @@
         /// 构建排序规则
         /// </summary>
         /// <param name="name">属性名称</param>
-        /// <param name="desc">排序方式,true正序、false倒序。</param>
-        public SortParam(string name, bool desc)
+        /// <param name="desc">排序方式,true倒序、false正序。</param>
+        public SortParam(string name, bool desc = false)
         {
             FiledName = name;
             if (desc)

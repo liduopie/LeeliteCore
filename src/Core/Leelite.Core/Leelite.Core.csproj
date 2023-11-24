@@ -37,7 +37,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\Commons\Leelite.Commons\Leelite.Commons.csproj" />
 		<ProjectReference Include="..\..\Extensions\Leelite.Extensions.DependencyInjection\Leelite.Extensions.DependencyInjection.csproj" />
-		<ProjectReference Include="..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
 	</ItemGroup>
 
 </Project>

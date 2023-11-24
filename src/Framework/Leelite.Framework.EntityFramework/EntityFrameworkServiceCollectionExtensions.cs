@@ -4,8 +4,9 @@ namespace Microsoft.Extensions.DependencyInjection
 {
     public static class EntityFrameworkServiceCollectionExtensions
     {
-        public static void AddEFUnitOfWork(this IServiceCollection services)
+        public static void AddEntityFramework(this IServiceCollection services)
         {
+            services.AddSharedConnection();
             services.AddScoped<IUnitOfWork, EFUnitOfWork>();
         }
     }

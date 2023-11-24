@@ -12,5 +12,17 @@ namespace Leelite.Framework.Domain.Repository
         where TEntity : IEntity<TKey>
         where TKey : IEquatable<TKey>
     {
+        /// <summary>
+        /// 查找实体
+        /// </summary>
+        /// <param name="id">标识</param>
+        TEntity FindById(TKey id);
+
+        /// <summary>
+        /// 查找实体
+        /// </summary>
+        /// <param name="id">标识</param>
+        /// <param name="cancellationToken">取消令牌</param>
+        Task<TEntity> FindByIdAsync(TKey id, CancellationToken cancellationToken = default);
     }
 }
