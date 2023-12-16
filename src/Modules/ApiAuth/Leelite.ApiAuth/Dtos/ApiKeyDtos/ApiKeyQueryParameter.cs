@@ -2,12 +2,18 @@ using System.Linq.Expressions;
 
 using Leelite.ApiAuth.Models.ApiKeyAgg;
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 
 namespace Leelite.ApiAuth.Dtos.ApiKeyDtos
 {
     public class ApiKeyQueryParameter : PageParameter<ApiKey>
     {
+        public ApiKeyQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public long UserId { get; set; }
 
         public override Expression<Func<ApiKey, bool>> SatisfiedBy()

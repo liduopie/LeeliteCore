@@ -2,6 +2,7 @@ using System;
 using System.Linq.Expressions;
 
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.MessageCenter.Models.SessionAgg;
 
@@ -9,6 +10,11 @@ namespace Leelite.MessageCenter.Dtos.SessionDtos
 {
     public class SessionQueryParameter : PageParameter<Session>
     {
+        public SessionQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public string Keyword { get; set; }
         public CompleteState[] States { get; set; }
         public DateTime? StartCreateTime { get; set; }

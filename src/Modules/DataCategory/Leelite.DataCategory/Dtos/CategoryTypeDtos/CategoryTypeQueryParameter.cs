@@ -2,12 +2,18 @@ using System.Linq.Expressions;
 
 using Leelite.DataCategory.Models.CategoryTypeAgg;
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 
 namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
 {
     public class CategoryTypeQueryParameter : PageParameter<CategoryType>
     {
+        public CategoryTypeQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public string Keyword { get; set; }
         public string Name { get; set; }
 

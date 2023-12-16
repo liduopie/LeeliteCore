@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Linq.Expressions;
+
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Settings.Models.SettingValueAgg;
 
@@ -11,6 +13,11 @@ namespace Leelite.Settings.Dtos.SettingValueDtos
     /// </summary>
     public class SettingValueQueryParameter : PageParameter<SettingValue>
     {
+        public SettingValueQueryParameter()
+        {
+
+        }
+
         public long TenantId { get; set; }
 
         public long UserId { get; set; }

@@ -1,4 +1,5 @@
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Models.SoftDelete;
 using Leelite.MessageCenter.Models.MessageAgg;
@@ -11,6 +12,11 @@ namespace Leelite.MessageCenter.Dtos.MessageDtos
     public class MessageQueryParameter : PageParameter<Message>,
         ISoftDeleteParameter
     {
+        public MessageQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public string Keyword { get; set; }
         public DateTime? StartCreateTime { get; set; }
         public DateTime? EndCreateTime { get; set; }

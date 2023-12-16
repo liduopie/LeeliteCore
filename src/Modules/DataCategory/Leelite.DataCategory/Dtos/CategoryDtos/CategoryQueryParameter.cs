@@ -2,6 +2,7 @@
 
 using Leelite.DataCategory.Models.CategoryAgg;
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Models.Tree;
 
@@ -9,6 +10,11 @@ namespace Leelite.DataCategory.Dtos.CategoryDtos
 {
     public class CategoryQueryParameter : PageParameter<Category>, IKeyword
     {
+        public CategoryQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public string Keyword { get; set; }
 
         public int CategoryTypeId { get; set; }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 
 using Leelite.Framework.Data.Query.Criteria;
+using Leelite.Framework.Data.Query.OrderBy;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.MessageCenter.Models.PushRecordAgg;
 
@@ -10,6 +11,11 @@ namespace Leelite.MessageCenter.Dtos.PushRecordDtos
 {
     public class PushRecordQueryParameter : PageParameter<PushRecord>
     {
+        public PushRecordQueryParameter()
+        {
+            SortItems.Add(new SortParam("Id"));
+        }
+
         public PushState[] States { get; set; }
         public bool? Expired { get; set; }
         public IList<string> Topics { get; set; }
