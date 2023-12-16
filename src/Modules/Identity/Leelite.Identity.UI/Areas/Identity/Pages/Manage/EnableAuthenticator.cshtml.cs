@@ -12,7 +12,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Leelite.Identity.Models.UserAgg;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Manage
+namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
     public class EnableAuthenticatorModel : PageModel
     {

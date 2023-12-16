@@ -1,5 +1,6 @@
 ﻿@using Microsoft.AspNetCore.Hosting;
 @using Microsoft.Extensions.Hosting;
+@using StackExchange.Profiling;
 @inject IWebHostEnvironment env
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
@@ -71,6 +72,8 @@
             </div>
         </div>
         <!-- /dev config -->
+
+        <mini-profiler />
     }
 
     <!-- Core JS files -->

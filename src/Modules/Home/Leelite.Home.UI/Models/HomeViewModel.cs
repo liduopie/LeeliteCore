@@ -1,7 +1,6 @@
-﻿
-using Leelite.Application.Options;
+﻿using Leelite.Application;
 
-namespace Leelite.Home.UI.Models
+namespace Leelite.Web.Models
 {
     public class HomeViewModel
     {

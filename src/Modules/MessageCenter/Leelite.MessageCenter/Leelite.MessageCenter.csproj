@@ -17,10 +17,10 @@
 	  <Compile Include="Services\TemplateService.cs" />
 	</ItemGroup>
 	<ItemGroup>
-		<PackageReference Include="Dapper" Version="2.1.21" />
+		<PackageReference Include="Dapper" Version="2.1.24" />
 		<PackageReference Include="Hangfire.Core" Version="1.8.6" />
 		<PackageReference Include="Hangfire.Console" Version="1.4.2" />
-		<PackageReference Include="JinianNet.JNTemplate" Version="2.4.1" />
+		<PackageReference Include="JinianNet.JNTemplate" Version="2.4.2" />
 		<PackageReference Include="JsonFlatten" Version="1.0.2" />
 	</ItemGroup>
 	<ItemGroup>

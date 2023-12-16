@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.MessageCenter.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("MessageCenter")]
     [Route("api/[area]/[controller]")]
     public class SessionController : RESTfulController<Session, long, SessionDto, SessionCreateRequest, SessionUpdateRequest, SessionQueryParameter>

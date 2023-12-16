@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Leelite.Home.UI.Pages
+namespace Leelite.Web.Pages
 {
     public class PrivacyModel : PageModel
     {

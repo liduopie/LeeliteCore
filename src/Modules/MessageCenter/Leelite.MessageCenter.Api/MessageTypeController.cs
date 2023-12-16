@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.MessageCenter.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("MessageCenter")]
     [Route("api/[area]/[controller]")]
     public class MessageTypeController : RESTfulController<MessageType, int, MessageTypeDto, MessageTypeCreateRequest, MessageTypeUpdateRequest, MessageTypeQueryParameter>

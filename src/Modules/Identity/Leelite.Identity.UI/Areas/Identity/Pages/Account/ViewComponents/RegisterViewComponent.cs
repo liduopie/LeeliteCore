@@ -1,10 +1,10 @@
 ﻿using Leelite.Application.Settings;
 using Leelite.Identity.Options;
-using Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models;
+using Leelite.Web.Areas.Identity.Pages.Account.ViewComponents.Models;
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents
+namespace Leelite.Web.Areas.Identity.Pages.Account.ViewComponents
 {
     public class RegisterViewComponent : ViewComponent
     {

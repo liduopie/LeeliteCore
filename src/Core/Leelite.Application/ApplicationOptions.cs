@@ -1,4 +1,4 @@
-﻿namespace Leelite.Application.Options
+﻿namespace Leelite.Application
 {
     public class ApplicationOptions
     {
@@ -16,10 +16,5 @@
         /// 关键字
         /// </summary>
         public string Keywords { get; set; } = "";
-
-        /// <summary>
-        /// 启动路径
-        /// </summary>
-        public string StartUrl { get; set; } = "";
     }
 }

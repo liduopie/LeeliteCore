@@ -7,6 +7,7 @@ using System.Collections.Generic;
 namespace Leelite.Setting
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("Setting")]
     [Route("api/[area]/[controller]")]
     public class DefinitionController : ControllerBase

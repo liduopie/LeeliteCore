@@ -39,7 +39,7 @@ namespace Leelite.MiniProfiler
                 // (Optional) To control authorization, you can use the Func<HttpRequest, bool> options:
                 // (default is everyone can access profilers)
                 options.ResultsAuthorize = _ => !miniProfilerOptions.DisableProfilingResults;
-                // options.ResultsListAuthorize = _ => !miniProfilerOptions.DisableProfilingResults;
+                options.ResultsListAuthorize = _ => !miniProfilerOptions.DisableProfilingResults;
                 // Or, there are async versions available:
                 // options.ResultsAuthorizeAsync = async request => (await MyGetUserFunctionAsync(request)).CanSeeMiniProfiler;
                 // options.ResultsAuthorizeListAsync = async request => (await MyGetUserFunctionAsync(request)).CanSeeMiniProfilerLists;
@@ -64,6 +64,13 @@ namespace Leelite.MiniProfiler
                 // (defaults to "light")
                 options.ColorScheme = StackExchange.Profiling.ColorScheme.Auto;
 
+                // Optionally change the number of decimal places shown for millisecond timings.
+                // (defaults to 2)
+                // options.PopupDecimalPlaces = 1;
+
+                // Enabled sending the Server-Timing header on responses
+                // options.EnableServerTimingHeader = true;
+
                 // The below are newer options, available in .NET Core 3.0 and above:
 
                 // (Optional) You can disable MVC filter profiling
@@ -87,6 +94,13 @@ namespace Leelite.MiniProfiler
                 // It has a lot of overhead vs. normal profiling and should only be used with that in mind
                 // (defaults to false, debug/heavy mode is off)
                 //options.EnableDebugMode = true;
+
+                options.IgnoredPaths.Add("/global_assets");
+                options.IgnoredPaths.Add("/assets");
+                options.IgnoredPaths.Add("/def_assets");
+                options.IgnoredPaths.Add("/dev_assets");
+                options.IgnoredPaths.Add("/admin_assets");
+                options.IgnoredPaths.Add("/home_assets");
             }).AddEntityFramework();
         }
         public override void Configure(IApplicationBuilder app, IWebHostEnvironment env)

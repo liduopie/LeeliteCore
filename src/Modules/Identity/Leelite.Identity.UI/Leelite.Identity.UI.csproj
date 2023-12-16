@@ -5,6 +5,7 @@
 		<AddRazorSupportForMvc>true</AddRazorSupportForMvc>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>disable</Nullable>
+		<RootNamespace>Leelite.Web</RootNamespace>
 	</PropertyGroup>
 
 	<ItemGroup>

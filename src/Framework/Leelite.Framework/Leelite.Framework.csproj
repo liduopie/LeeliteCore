@@ -6,7 +6,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.0" />
+		<PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.8.1" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -16,6 +16,7 @@
 		<ProjectReference Include="..\Leelite.Framework.Elasticsearch\Leelite.Framework.Elasticsearch.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.EntityFramework\Leelite.Framework.EntityFramework.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Models\Leelite.Framework.Models.csproj" />
+		<ProjectReference Include="..\Leelite.Framework.RocksDb\Leelite.Framework.RocksDb.csproj" />
 		<ProjectReference Include="..\Leelite.Framework.Service\Leelite.Framework.Service.csproj" />
 	</ItemGroup>
 </Project>

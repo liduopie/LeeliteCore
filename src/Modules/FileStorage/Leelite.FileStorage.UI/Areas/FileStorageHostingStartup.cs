@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
-[assembly: HostingStartup(typeof(Leelite.FileStorage.UI.Areas.FileStorageHostingStartup))]
-namespace Leelite.FileStorage.UI.Areas
+[assembly: HostingStartup(typeof(Leelite.Web.Areas.FileStorage.FileStorageHostingStartup))]
+namespace Leelite.Web.Areas.FileStorage
 {
     public class FileStorageHostingStartup : IHostingStartup
     {

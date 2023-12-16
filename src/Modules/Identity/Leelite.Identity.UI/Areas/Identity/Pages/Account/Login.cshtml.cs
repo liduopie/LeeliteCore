@@ -1,5 +1,5 @@
 using Leelite.Identity.Models.UserAgg;
-using Leelite.Identity.UI.Areas.Identity.Pages.Account.Models.Password;
+using Leelite.Web.Areas.Identity.Pages.Account.Models.Password;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Account
+namespace Leelite.Web.Areas.Identity.Pages.Account
 {
     public class LoginModel : PageModel
     {

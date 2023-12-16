@@ -23,8 +23,6 @@ namespace Leelite.Identity
 
             services.TryAddScoped<IUserStore<User>, UserStore>();
             services.TryAddScoped<IRoleStore<Role>, RoleStore>();
-
-            services.AddHealthChecks().AddDbContextCheck<IdentityContext>(tags: new[] { "database" });
         }
     }
 }

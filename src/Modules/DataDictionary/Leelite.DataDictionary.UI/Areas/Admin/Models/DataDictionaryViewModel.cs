@@ -3,7 +3,7 @@ using Leelite.DataDictionary.Dtos.DataTypeDtos;
 using Leelite.DataDictionary.Models.DataTypeAgg;
 using Leelite.Framework.Data.Query.Paging;
 
-namespace Leelite.Web.Models
+namespace Leelite.Web.Areas.Admin.Models
 {
     public class DataDictionaryViewModel
     {

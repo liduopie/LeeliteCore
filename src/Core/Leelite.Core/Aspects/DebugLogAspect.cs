@@ -4,6 +4,7 @@ using Microsoft.Extensions.Logging;
 
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace Leelite.Core.Aspects
 {
@@ -29,7 +30,7 @@ namespace Leelite.Core.Aspects
             var logger = _loggerFactory.CreateLogger(type.GetGenericTypeName());
 
             logger.LogDebug($"Executing resultType {valueType.Name}");
-            logger.LogDebug($"Executing result {JsonSerializer.Serialize(value)}");
+            logger.LogDebug($"Executing result {JsonSerializer.Serialize(value, new JsonSerializerOptions() { ReferenceHandler = ReferenceHandler.Preserve })}");
         }
 
         [Advice(Kind.Around, Targets = Target.Public | Target.Method)]
@@ -48,7 +49,7 @@ namespace Leelite.Core.Aspects
             {
                 if (arg.GetType() == typeof(CancellationToken)) continue;
 
-                logger.LogDebug($"Executing args {JsonSerializer.Serialize(arg)}");
+                logger.LogDebug($"Executing args {JsonSerializer.Serialize(arg, new JsonSerializerOptions() { ReferenceHandler = ReferenceHandler.Preserve })}");
             }
 
             var sw = Stopwatch.StartNew();

@@ -3,7 +3,7 @@ using Leelite.Identity.SignIn.Options;
 
 using Microsoft.AspNetCore.Authentication;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models
+namespace Leelite.Web.Areas.Identity.Pages.Account.ViewComponents.Models
 {
     public class ExternalLoginsViewModel
     {

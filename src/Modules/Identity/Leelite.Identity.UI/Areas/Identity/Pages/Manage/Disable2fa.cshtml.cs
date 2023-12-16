@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Manage
+namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
     public class Disable2faModel : PageModel
     {

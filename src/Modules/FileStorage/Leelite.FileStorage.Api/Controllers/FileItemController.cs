@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.FileStorage.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("Files")]
     [Route("api/[area]/[controller]")]
     public class FileItemController : RESTfulController<FileItem, Guid, FileItemDto, FileItemCreateRequest, FileItemUpdateRequest, FileItemQueryParameter>

@@ -65,13 +65,13 @@ namespace Leelite.FileStorage.Utility
                     if (_allowedChars.Length == 0)
                     {
                         // Limits characters to ASCII encoding.
-                        for (var i = 0; i < data.Length; i++)
-                        {
-                            if (reader.ReadByte() > sbyte.MaxValue)
-                            {
-                                return false;
-                            }
-                        }
+                        //for (var i = 0; i < data.Length; i++)
+                        //{
+                        //    if (reader.ReadByte() > sbyte.MaxValue)
+                        //    {
+                        //        return false;
+                        //    }
+                        //}
                     }
                     else
                     {
@@ -106,6 +106,7 @@ namespace Leelite.FileStorage.Utility
                 // With the file signatures provided in the _fileSignature
                 // dictionary, the following code tests the input content's
                 // file signature.
+
                 var signatures = _fileSignature[ext];
                 var headerBytes = reader.ReadBytes(signatures.Max(m => m.Length));
 

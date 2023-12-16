@@ -13,6 +13,7 @@
     var idProp = classType.GetProperties().Where(c => c.Name == "Id").FirstOrDefault();
 #>
 using Leelite.Framework.Domain.Command;
+using Leelite.Framework.Domain.UnitOfWork;
 using Leelite.Framework.Service;
 using <#=Namespace #>.Dtos.<#=ClassName #>Dtos;
 using <#=Namespace #>.Interfaces;
@@ -27,8 +28,9 @@ namespace <#=Namespace #>.Services
         public <#=ClassName #>Service(
             I<#=ClassName #>Repository repository,
             ICommandBus commandBus,
+            IUnitOfWork unitOfWork,
             ILogger<<#=ClassName #>Service> logger
-            ) : base(repository, commandBus, logger)
+            ) : base(repository, commandBus, unitOfWork, logger)
         {
         }
     }

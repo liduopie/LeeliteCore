@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.DataDictionary.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("DataDictionary")]
     [Route("api/[area]/[controller]")]
     public class DataItemController : RESTfulController<DataItem, int, DataItemDto, DataItemCreateRequest, DataItemUpdateRequest, DataItemQueryParameter>

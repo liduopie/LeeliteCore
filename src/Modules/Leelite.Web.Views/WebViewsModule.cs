@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;
 
-namespace Leelite.UI.Shared
+namespace Leelite.Web
 {
     public class WebViewsModule : MvcModuleBase
     {

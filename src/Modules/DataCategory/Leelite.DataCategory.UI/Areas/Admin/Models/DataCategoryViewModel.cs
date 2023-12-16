@@ -2,7 +2,7 @@
 using Leelite.DataCategory.Models.CategoryAgg;
 using Leelite.Framework.Models.Tree;
 
-namespace Leelite.Web.Models
+namespace Leelite.Web.Areas.Admin.Models
 {
     public class DataCategoryViewModel
     {

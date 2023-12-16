@@ -1,0 +1,9 @@
+{
+  "Name": "Leelite.ApiAuth",
+  "AssemblyFileName": "Leelite.ApiAuth.UI.dll",
+  "ReferencedAssemblies": [
+    "Leelite.Identity.dll",
+    "Leelite.ApiAuth.dll",
+    "Leelite.ApiAuth.Api.dll"
+  ]
+}

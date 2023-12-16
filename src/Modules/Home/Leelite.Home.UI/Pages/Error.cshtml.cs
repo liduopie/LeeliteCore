@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 using System.Diagnostics;
 
-namespace Leelite.Home.UI.Pages
+namespace Leelite.Web.Pages
 {
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public class ErrorModel : PageModel

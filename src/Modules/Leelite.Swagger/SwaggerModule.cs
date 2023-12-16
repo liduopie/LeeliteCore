@@ -18,8 +18,10 @@ namespace Leelite.Swagger
             // Register the Swagger generator, defining 1 or more Swagger documents
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Leelite API", Version = "v1" });
+                c.SwaggerDoc("manager", new OpenApiInfo { Title = "Manager API", Version = "v1" });
                 c.OrderActionsBy((apiDesc) => $"{apiDesc.ActionDescriptor.RouteValues["area"]}_{apiDesc.ActionDescriptor.RouteValues["controller"]}_{apiDesc.HttpMethod}");
+
+                c.SwaggerDoc("platform", new OpenApiInfo { Title = "Platform API", Version = "v1" });
             });
 
             // Adds FluentValidationRules staff to Swagger. (Minimal configuration)
@@ -35,14 +37,15 @@ namespace Leelite.Swagger
             // specifying the Swagger JSON endpoint.
             app.UseSwaggerUI(c =>
             {
-                c.SwaggerEndpoint("/swagger/v1/swagger.json", "Leelite API V1");
+                c.SwaggerEndpoint("/swagger/manager/swagger.json", "Manager API V1");
+                c.SwaggerEndpoint("/swagger/platform/swagger.json", "Platform API V1");
             });
 
             app.UseReDoc(c =>
             {
                 // c.RoutePrefix = "docs";
-                c.SpecUrl("/swagger/v1/swagger.json");
-                c.DocumentTitle = "Leelite API V1";
+                c.SpecUrl("/swagger/platform/swagger.json");
+                c.DocumentTitle = "Platform API";
             });
 
             var client = ApplicationManager.Clients.Find(c => c.Code == "Admin");

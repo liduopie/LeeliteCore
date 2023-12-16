@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Leelite.DataCategory.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("DataCategory")]
     [Route("api/[area]/[controller]")]
     public class CategoryController : RESTfulController<Category, long, CategoryDto, CategoryCreateRequest, CategoryUpdateRequest, CategoryQueryParameter>

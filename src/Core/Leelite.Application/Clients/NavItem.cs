@@ -12,6 +12,7 @@
             string name,
             string description,
             string url,
+            string code = "",
             string permission = "",
             string feature = "",
             int sort = 1)
@@ -21,10 +22,16 @@
             Name = name;
             Description = description;
             Url = url;
+            Code = code;
             PermissionDependency = permission;
             FeatureDependency = feature;
             Sort = sort;
         }
+
+        /// <summary>
+        /// 菜单编码
+        /// </summary>
+        public string Code { get; set; }
 
         /// <summary>
         /// 打开方式 "_blank", "_self", "_parent", "_top"

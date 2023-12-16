@@ -1,0 +1,37 @@
+﻿@page
+@model CreateKeyModel
+
+@{
+    ViewData["Title"] = "Api密钥";
+    ViewData["ActivePage"] = "SecretKey";
+}
+
+<div class="tab-pane fade active show">
+
+    <!-- Profile info -->
+    <div class="card">
+        <div class="card-header d-flex align-items-center py-0">
+            <h5 class="py-3 mb-0">@ViewData["Title"] - 新增</h5>
+        </div>
+
+        <div asp-validation-summary="ModelOnly" class="card-body validation-invalid-label"></div>
+
+        <div class="card-body border-top">
+            <form method="post">
+                <div class="row mb-3">
+                    <label asp-for="Input.OwnerName" class="col-lg-3 col-form-label"></label>
+                    <div class="col-lg-9">
+                        <input asp-for="Input.OwnerName" class="form-control" required placeholder="OwnerName">
+                        <span asp-validation-for="Input.OwnerName" class="validation-invalid-label"></span>
+                        <div class="form-text text-muted"></div>
+                    </div>
+                </div>
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">创建 <i class="ph-paper-plane-tilt ms-2"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- /profile info -->
+
+</div>

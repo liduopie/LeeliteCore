@@ -1,13 +1,13 @@
-﻿using Leelite.Application.Options;
+﻿using System.Diagnostics;
+
+using Leelite.Application;
 using Leelite.Application.Settings;
-using Leelite.Home.UI.Models;
+using Leelite.Web.Models;
 
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
-using System.Diagnostics;
-
-namespace Leelite.Home.UI.Controllers
+namespace Leelite.Web.Controllers
 {
     public class HomeController : Controller
     {
@@ -27,9 +27,11 @@ namespace Leelite.Home.UI.Controllers
 
             model.Options = _settingManager.GetApplicationOptions<ApplicationOptions>();
 
-            if (!string.IsNullOrEmpty(model.Options.StartUrl))
+            var settings = _settingManager.GetApplicationOptions<ApplicationSettings>();
+
+            if (!string.IsNullOrEmpty(settings.StartUrl))
             {
-                return Redirect(model.Options.StartUrl);
+                return Redirect(settings.StartUrl);
             }
 
             return View();

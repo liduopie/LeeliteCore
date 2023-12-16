@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Hosting;
 
-[assembly: HostingStartup(typeof(Leelite.Identity.UI.Areas.Identity.IdentityHostingStartup))]
-namespace Leelite.Identity.UI.Areas.Identity
+[assembly: HostingStartup(typeof(Leelite.Web.Areas.Identity.IdentityHostingStartup))]
+namespace Leelite.Web.Areas.Identity
 {
     public class IdentityHostingStartup : IHostingStartup
     {

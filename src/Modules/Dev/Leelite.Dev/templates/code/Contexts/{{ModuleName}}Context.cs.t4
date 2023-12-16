@@ -14,7 +14,7 @@
     var idProp = classType.GetProperties().Where(c => c.Name == "Id").FirstOrDefault();
 #>
 using <#=Namespace #>.Contexts.Configurations;
-using <#=Namespace #>.Models.CategoryAgg;
+using <#=Namespace #>.Models.<#=ClassName #>Agg;
 using Leelite.Framework.Domain.Context;
 
 using Microsoft.EntityFrameworkCore;
@@ -28,9 +28,9 @@ namespace <#=Namespace #>.Contexts
         }
 
         /// <summary>
-        /// Gets or sets the <see cref="DbSet{TEntity}"/> of Users.
+        /// Gets or sets the <see cref="DbSet{TEntity}"/> of <#=ClassName #>s.
         /// </summary>
-        public virtual DbSet<<#=ClassName #>> <#=ClassName #> { get; set; }
+        public virtual DbSet<<#=ClassName #>> <#=ClassName #>s { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

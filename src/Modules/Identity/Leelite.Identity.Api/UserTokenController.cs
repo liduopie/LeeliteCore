@@ -1,9 +1,12 @@
 using System.Threading.Tasks;
+
 using FluentValidation;
+
 using Leelite.Framework.WebApi;
 using Leelite.Identity.Dtos.UserTokenDtos;
 using Leelite.Identity.Interfaces;
 using Leelite.Identity.Models.UserTokenAgg;
+
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -11,6 +14,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Leelite.Identity.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("Identity")]
     [Route("api/[area]/[controller]")]
     public class UserTokenController : RESTfulController<UserToken, UserTokenKey, UserTokenDto, UserTokenCreateRequest, UserTokenUpdateRequest, UserTokenQueryParameter>

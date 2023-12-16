@@ -8,6 +8,7 @@ namespace Leelite.DataCategory.Api
 {
     [ApiController]
     [Area("DataCategory")]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Route("api/[area]/[controller]")]
     public class CategoryTypeController : RESTfulController<CategoryType, int, CategoryTypeDto, CategoryTypeCreateRequest, CategoryTypeUpdateRequest, CategoryTypeQueryParameter>
     {

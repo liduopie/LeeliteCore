@@ -19,7 +19,9 @@ namespace Leelite.Framework.Data.Store
         public void Add([Valid] TEntity entity)
         {
             if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
+            {
+                return;
+            }
 
             DbSet.Add(entity);
 
@@ -30,7 +32,9 @@ namespace Leelite.Framework.Data.Store
         public async Task AddAsync([Valid] TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
+            {
+                return;
+            }
 
             await DbSet.AddAsync(entity, cancellationToken);
 
@@ -40,8 +44,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public void AddRange([Valid] IEnumerable<TEntity> entities)
         {
-            if (entities == null)
-                throw new ArgumentNullException(nameof(entities));
+            if (entities == null || entities.Count() == 0)
+            {
+                return;
+            }
 
             DbSet.AddRange(entities);
 
@@ -51,8 +57,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public async Task AddRangeAsync([Valid] IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
         {
-            if (entities == null)
-                throw new ArgumentNullException(nameof(entities));
+            if (entities == null || entities.Count() == 0)
+            {
+                return;
+            }
 
             await DbSet.AddRangeAsync(entities, cancellationToken);
 
@@ -63,7 +71,9 @@ namespace Leelite.Framework.Data.Store
         public void Remove(TEntity entity)
         {
             if (entity == null)
+            {
                 return;
+            }
 
             DbSet.Remove(entity);
 
@@ -74,7 +84,9 @@ namespace Leelite.Framework.Data.Store
         public async Task RemoveAsync(TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
+            {
                 return;
+            }
 
             DbSet.Remove(entity);
 
@@ -84,8 +96,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            if (entities == null)
+            if (entities == null || entities.Count() == 0)
+            {
                 return;
+            }
 
             DbSet.RemoveRange(entities);
 
@@ -95,6 +109,11 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public async Task RemoveRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
         {
+            if (entities == null || entities.Count() == 0)
+            {
+                return;
+            }
+
             DbSet.RemoveRange(entities);
 
             await DbContext.SaveChangesAsync();
@@ -104,7 +123,9 @@ namespace Leelite.Framework.Data.Store
         public void Update([Valid] TEntity entity)
         {
             if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
+            {
+                return;
+            }
 
             DbContext.Entry(entity).State = EntityState.Modified;
 
@@ -115,7 +136,9 @@ namespace Leelite.Framework.Data.Store
         public async Task UpdateAsync([Valid] TEntity entity, CancellationToken cancellationToken = default)
         {
             if (entity == null)
-                throw new ArgumentNullException(nameof(entity));
+            {
+                return;
+            }
 
             DbContext.Entry(entity).State = EntityState.Modified;
 
@@ -125,8 +148,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public void UpdateRange([Valid] IEnumerable<TEntity> entities)
         {
-            if (entities == null)
-                throw new ArgumentNullException(nameof(entities));
+            if (entities == null || entities.Count() == 0)
+            {
+                return;
+            }
 
             foreach (var entity in entities)
                 DbContext.Entry(entity).State = EntityState.Modified;
@@ -137,8 +162,10 @@ namespace Leelite.Framework.Data.Store
         /// <inheritdoc/>
         public async Task UpdateRangeAsync([Valid] IEnumerable<TEntity> entities, CancellationToken cancellationToken = default)
         {
-            if (entities == null)
-                throw new ArgumentNullException(nameof(entities));
+            if (entities == null || entities.Count() == 0)
+            {
+                return;
+            }
 
             foreach (var entity in entities)
                 DbContext.Entry(entity).State = EntityState.Modified;

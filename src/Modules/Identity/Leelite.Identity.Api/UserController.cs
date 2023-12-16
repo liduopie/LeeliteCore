@@ -1,13 +1,16 @@
 using System.Threading.Tasks;
+
 using Leelite.Framework.WebApi;
 using Leelite.Identity.Dtos.UserDtos;
 using Leelite.Identity.Interfaces;
 using Leelite.Identity.Models.UserAgg;
+
 using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Identity.Api
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("Identity")]
     [Route("api/[area]/[controller]")]
     public class UserController : RESTfulController<User, long, UserDto, UserCreateRequest, UserUpdateRequest, UserQueryParameter>

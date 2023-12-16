@@ -8,6 +8,7 @@ namespace Leelite.DataDictionary.Api
 {
     [ApiController]
     [Area("DataDictionary")]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Route("api/[area]/[controller]")]
     public class DataTypeController : RESTfulController<DataType, string, DataTypeDto, DataTypeCreateRequest, DataTypeUpdateRequest, DataTypeQueryParameter>
     {

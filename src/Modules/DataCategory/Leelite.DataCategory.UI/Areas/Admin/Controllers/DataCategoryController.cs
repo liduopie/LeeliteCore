@@ -2,7 +2,7 @@
 using Leelite.DataCategory.Dtos.CategoryDtos;
 using Leelite.DataCategory.Dtos.CategoryTypeDtos;
 using Leelite.DataCategory.Interfaces;
-using Leelite.Web.Models;
+using Leelite.Web.Areas.Admin.Models;
 
 using Microsoft.AspNetCore.Mvc;
 

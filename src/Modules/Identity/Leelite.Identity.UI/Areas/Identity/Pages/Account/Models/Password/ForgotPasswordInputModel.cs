@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.Models.Password
+namespace Leelite.Web.Areas.Identity.Pages.Account.Models.Password
 {
     public class ForgotPasswordInputModel
     {

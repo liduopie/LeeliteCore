@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Manage
+namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
     public partial class EmailModel : PageModel
     {

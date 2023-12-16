@@ -2,7 +2,7 @@
 using Leelite.DataDictionary.Dtos.DataTypeDtos;
 using Leelite.DataDictionary.Interfaces;
 using Leelite.DataDictionary.Models.DataTypeAgg;
-using Leelite.Web.Models;
+using Leelite.Web.Areas.Admin.Models;
 
 using Microsoft.AspNetCore.Mvc;
 

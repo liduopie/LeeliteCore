@@ -2,9 +2,10 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.DevOps.Controllers
+namespace Leelite.Web.Controllers
 {
     [ApiController]
+    [ApiExplorerSettings(GroupName = "manager")]
     [Area("DevOps")]
     [Route("api/[area]/[controller]")]
     public class AutoUpdateController : ControllerBase

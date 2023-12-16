@@ -1,12 +1,5 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.IO;
-using System.Linq;
 using System.Net;
-using System.Reflection;
-using System.Threading.Tasks;
-using HybridFS.FileSystem;
 
 using Leelite.Application.Settings;
 using Leelite.FileStorage.Dtos.FileItemDtos;
@@ -17,9 +10,8 @@ using Leelite.FileStorage.Utility;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.Extensions.Configuration;
 
-namespace Leelite.FileStorage.UI.Areas.FileStorage.Pages
+namespace Leelite.Web.Areas.FileStorage.Pages
 {
     public class SingleFileUploadModel : PageModel
     {

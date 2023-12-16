@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Leelite.Framework.Data.Query.Paging;
+﻿using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
 
 namespace Leelite.Framework.Data.Query
@@ -54,10 +52,9 @@ namespace Leelite.Framework.Data.Query
         /// <inheritdoc/>
         public PageList<T> PageListQuery(IQueryable<T> source)
         {
-            var pageList = BuildPageQueryable(source);
+            var totalCount = BuildQueryable(source).Count();
 
-            // 总行数
-            var totalCount = BuildQueryable(source).LongCount();
+            var pageList = BuildPageQueryable(source);
 
             return new PageList<T>(pageList.ToList(), Pager, Parameter.SortItems, totalCount);
         }

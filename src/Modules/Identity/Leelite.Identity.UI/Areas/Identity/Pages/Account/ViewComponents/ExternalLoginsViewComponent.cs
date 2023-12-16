@@ -1,13 +1,13 @@
 ﻿using Leelite.Application.Settings;
 using Leelite.Identity.Models.UserAgg;
 using Leelite.Identity.SignIn.Options;
-using Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents.Models;
+using Leelite.Web.Areas.Identity.Pages.Account.ViewComponents.Models;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Leelite.Identity.UI.Areas.Identity.Pages.Account.ViewComponents
+namespace Leelite.Web.Areas.Identity.Pages.Account.ViewComponents
 {
     public class ExternalLoginsViewComponent : ViewComponent
     {

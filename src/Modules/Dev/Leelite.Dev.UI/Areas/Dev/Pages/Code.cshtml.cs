@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
-namespace Leelite.Dev.UI.Pages
+namespace Leelite.Web.Areas.Dev.Pages
 {
     public class CodeModel : PageModel
     {

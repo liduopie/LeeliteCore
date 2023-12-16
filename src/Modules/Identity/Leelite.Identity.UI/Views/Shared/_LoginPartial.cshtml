@@ -1,6 +1,16 @@
 ﻿@inject SignInManager<User> SignInManager
 @inject UserManager<User> UserManager
 
+@{
+    var client = Leelite.Application.ApplicationManager.Clients.Find(c => c.Code == "Identity");
+    if (client == null)
+    {
+        client = new Leelite.Application.Clients.Client();
+    }
+
+    var currentPath = ViewContext.HttpContext.Request.Path.Value;
+}
+
 <ul class="navbar-nav">
     @if (SignInManager.IsSignedIn(User))
     {
@@ -21,10 +31,20 @@
             </a>
 
             <div class="dropdown-menu dropdown-menu-end">
-                <a href="#" class="dropdown-item">
-                    <i class="ph-user-circle me-2"></i>
-                    My profile
-                </a>
+                @foreach (var item in client.NavMenus)
+                {
+                    if (string.IsNullOrEmpty(item.Url))
+                    {
+                        <div class="dropdown-divider"></div>
+                    }
+                    else
+                    {
+                        <a href="@item.Url" class="dropdown-item">
+                            <i class="@item.Icon me-2"></i>
+                            @item.Name
+                        </a>
+                    }
+                }
                 <a href="#" class="dropdown-item">
                     <i class="ph-currency-circle-dollar me-2"></i>
                     My subscription

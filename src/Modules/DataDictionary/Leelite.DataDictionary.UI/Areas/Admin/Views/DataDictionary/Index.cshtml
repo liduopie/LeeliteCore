@@ -1,5 +1,5 @@
 ﻿@using Leelite.DataDictionary.Models.DataTypeAgg
-@model Leelite.Web.Models.DataDictionaryViewModel
+@model DataDictionaryViewModel
 @{
     Layout = "_AdminLayout";
 }
@@ -200,14 +200,14 @@
                         <li class="page-item @(Model.PageList.Page - 1 > 0 ? "" : "disabled")"><a href="@Url.Action("Index", new { page = Model.PageList.Page - 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">&larr;</a></li>
                         @if (Model.PageList.Page - 1 > 0)
                         {
-                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page - 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@Model.PageList.Page - 1</a></li>
+                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page - 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@(Model.PageList.Page - 1)</a></li>
                         }
 
                         <li class="page-item active"><a href="#" class="page-link rounded">@Model.PageList.Page</a></li>
 
                         @if (Model.PageList.Page * Model.PageList.PageSize < Model.PageList.TotalCount)
                         {
-                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page + 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@Model.PageList.Page + 1</a></li>
+                            <li class="page-item"><a href="@Url.Action("Index", new { page = Model.PageList.Page + 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">@(Model.PageList.Page + 1)</a></li>
                         }
 
                         <li class="page-item  @(Model.PageList.Page * Model.PageList.PageSize < Model.PageList.TotalCount ? "" : "disabled")"><a href="@Url.Action("Index", new { page = Model.PageList.Page + 1, keyword = Model.QueryParameter.Keyword})" class="page-link rounded">&rarr;</a></li>

@@ -64,6 +64,7 @@ namespace Leelite.Framework
             {
                 throw new Exception("es 地址不可为空");
             }
+
             var uri = new Uri(url);
             var connectionSetting = new ConnectionSettings(uri);
             if (!string.IsNullOrWhiteSpace(url))
@@ -88,6 +89,7 @@ namespace Leelite.Framework
             {
                 throw new Exception("urls can not be null");
             }
+
             var uris = urls.Select(p => new Uri(p)).ToArray();
             var connectionPool = new SniffingConnectionPool(uris);
             var connectionSetting = new ConnectionSettings(connectionPool);

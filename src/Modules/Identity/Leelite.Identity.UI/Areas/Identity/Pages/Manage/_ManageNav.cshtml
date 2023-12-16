@@ -1,46 +1,90 @@
 ﻿@inject SignInManager<User> SignInManager
+
+@{
+    var client = Leelite.Application.ApplicationManager.Clients.Find(c => c.Code == "Identity");
+    if (client == null)
+    {
+        client = new Leelite.Application.Clients.Client();
+    }
+
+    var currentPath = ViewContext.HttpContext.Request.Path.Value;
+}
+
 @{
     var hasExternalLogins = (await SignInManager.GetExternalAuthenticationSchemesAsync()).Any();
 }
 
 <ul class="nav nav-sidebar">
-    <li class="nav-item">
-        <a id="profile" asp-page="./Index" class="nav-link @ManageNavPages.IndexNavClass(ViewContext)">
-            <i class="ph-user me-2"></i>
-            My profile
-        </a>
-    </li>
-    <li class="nav-item">
-        <a id="email" asp-page="./Email" class="nav-link @ManageNavPages.EmailNavClass(ViewContext)">
-            <i class="ph-envelope-simple me-2"></i>
-            Email
-        </a>
-    </li>
-    <li class="nav-item">
-        <a id="change-password" asp-page="./ChangePassword" class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)">
-            <i class="ph-password me-2"></i>
-            Password
-        </a>
-    </li>
-    @if (hasExternalLogins)
+    @foreach (var item in client.NavMenus)
     {
-        <li id="external-logins" class="nav-item">
-            <a id="external-login" asp-page="./ExternalLogins" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)">
-                <i class="ph-codesandbox-logo me-2"></i>
-                External logins
-            </a>
-        </li>
+        if (string.IsNullOrEmpty(item.Url))
+        {
+            <li class="nav-item-divider"></li>
+        }
+        else
+        {
+            switch (item.Url)
+            {
+                case "/Identity/Manage/Index":
+                    <li class="nav-item">
+                        <a id="profile" asp-page="./Index" class="nav-link @ManageNavPages.IndexNavClass(ViewContext)">
+                            <i class="@item.Icon me-2"></i>
+                            我的资料
+                        </a>
+                    </li>
+                    break;
+                case "/Identity/Manage/Email":
+                    <li class="nav-item">
+                        <a id="email" asp-page="./Email" class="nav-link @ManageNavPages.EmailNavClass(ViewContext)">
+                            <i class="@item.Icon me-2"></i>
+                            邮箱
+                        </a>
+                    </li>
+                    break;
+                case "/Identity/Manage/ChangePassword":
+                    <li class="nav-item">
+                        <a id="change-password" asp-page="./ChangePassword" class="nav-link @ManageNavPages.ChangePasswordNavClass(ViewContext)">
+                            <i class="@item.Icon me-2"></i>
+                            密码
+                        </a>
+                    </li>
+                    break;
+                case "/Identity/Manage/ExternalLogins":
+                    if (hasExternalLogins)
+                    {
+                        <li id="external-logins" class="nav-item">
+                            <a id="external-login" asp-page="./ExternalLogins" class="nav-link @ManageNavPages.ExternalLoginsNavClass(ViewContext)">
+                                <i class="@item.Icon me-2"></i>
+                                扩展登录
+                            </a>
+                        </li>
+                    }
+                    break;
+                case "/Identity/Manage/TwoFactorAuthentication":
+                    <li class="nav-item">
+                        <a id="two-factor" class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" asp-page="./TwoFactorAuthentication">
+                            <i class="@item.Icon me-2"></i>
+                            双因子
+                        </a>
+                    </li>
+                    break;
+                case "/Identity/Manage/PersonalData":
+                    <li class="nav-item">
+                        <a id="personal-data" class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" asp-page="./PersonalData">
+                            <i class="@item.Icon me-2"></i>
+                            个人数据
+                        </a>
+                    </li>
+                    break;
+                default:
+                    <li class="nav-item">
+                        <a href="@item.Url" class="nav-link @ManageNavPages.PageNavClass(ViewContext, item.Code)">
+                            <i class="@item.Icon me-2"></i>
+                            @item.Name
+                        </a>
+                    </li>
+                    break;
+            }
+        }
     }
-    <li class="nav-item">
-        <a class="nav-link @ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)" id="two-factor" asp-page="./TwoFactorAuthentication">
-            <i class="ph-key me-2"></i>
-            Two-factor authentication
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link @ManageNavPages.PersonalDataNavClass(ViewContext)" id="personal-data" asp-page="./PersonalData">
-            <i class="ph-database me-2"></i>
-            Personal data
-        </a>
-    </li>
 </ul>
