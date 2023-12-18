@@ -1,6 +1,5 @@
-﻿using System.Threading;
-using System.Threading.Tasks;
-using Leelite.Identity.Models.UserAgg;
+﻿using Leelite.Identity.Models.UserAgg;
+
 using Microsoft.AspNetCore.Identity;
 
 namespace Leelite.Identity.Stores.UserStore

@@ -10,7 +10,7 @@
 	<ItemGroup>
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
-	
+
 	<PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
 		<OutputPath>..\..\..\Hosts\Modules\Leelite.FileStorage\</OutputPath>
 		<AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
@@ -18,8 +18,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
-	  <ProjectReference Include="..\Leelite.FileStorage.Api\Leelite.FileStorage.Api.csproj" />
-	  <ProjectReference Include="..\Leelite.FileStorage\Leelite.FileStorage.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
+		<ProjectReference Include="..\Leelite.FileStorage.Api\Leelite.FileStorage.Api.csproj" />
+		<ProjectReference Include="..\Leelite.FileStorage\Leelite.FileStorage.csproj" />
 	</ItemGroup>
 </Project>

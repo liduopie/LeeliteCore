@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
-    <ProjectReference Include="..\..\..\Core\Leelite.Core\Leelite.Core.csproj" />
-    <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
-    <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Core\Leelite.Application\Leelite.Application.csproj" />
+		<ProjectReference Include="..\..\..\Core\Leelite.Core\Leelite.Core.csproj" />
+		<ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
+		<ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
+	</ItemGroup>
 
 </Project>

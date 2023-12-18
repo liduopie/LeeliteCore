@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Leelite.AspNetCore.Mvc;
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class FileStorageController : Controller
+    public class FileStorageController : AdminControllerBase
     {
         public IActionResult Index()
         {

@@ -32,7 +32,7 @@ namespace Leelite.Web
                 // Please note if OnValidateKey delegete on options.Events is also set then this delegate will be used instead of ApiKeyProvider.
                 .AddApiKeyInHeaderOrQueryParams<ApiKeyProvider>(options =>
                 {
-                    options.Realm = "Web API";
+                    options.Realm = "Platform Web API";
                     options.KeyName = "SecretKey";
 
                     //// Optional option to suppress the browser login dialog for ajax calls.
@@ -49,7 +49,7 @@ namespace Leelite.Web
                     options.Events = new ApiKeyEvents
                     {
 
-                        //// A delegate assigned to this property will be invoked just before validating the api key. 
+                        // A delegate assigned to this property will be invoked just before validating the api key. 
                         //OnValidateKey = async (context) =>
                         //{
                         //    // custom code to handle the api key, create principal and call Success method on context.
@@ -59,12 +59,15 @@ namespace Leelite.Web
                         //    if (isValid)
                         //    {
                         //        context.Response.Headers.Append("ValidationCustomHeader", "From OnValidateKey");
-                        //        var claims = new[]
+                        //        var claims = new List<Claim>()
                         //        {
-                        //            new Claim(ClaimTypes.NameIdentifier, apiKey.OwnerName, ClaimValueTypes.String, context.Options.ClaimsIssuer),
+                        //            new Claim(ClaimTypes.NameIdentifier, apiKey.UserId.ToString(), ClaimValueTypes.String, context.Options.ClaimsIssuer),
                         //            new Claim(ClaimTypes.Name, apiKey.OwnerName, ClaimValueTypes.String, context.Options.ClaimsIssuer),
-                        //            new Claim("CustomClaimType", "Custom Claim Value - from OnValidateKey")
+                        //            // new Claim("CustomClaimType", "Custom Claim Value - from OnValidateKey")
                         //        };
+
+                        //        claims.AddRange(apiKey.Claims);
+
                         //        context.Principal = new ClaimsPrincipal(new ClaimsIdentity(claims, context.Scheme.Name));
                         //        context.Success();
                         //    }

@@ -93,7 +93,7 @@ namespace Leelite.Web
 
             services.AddHealthChecks().AddDbContextCheck<IdentityContext>(tags: new[] { "database" });
 
-            var client = new Application.Clients.Client("Identity", "ph-user", "用户信息", "/", "用户信息", -1);
+            var client = new Application.Clients.Client("Identity", "ph-user", "用户信息", "/Identity/Manage", "用户信息", -1);
 
             ApplicationManager.Clients.Add(client);
         }

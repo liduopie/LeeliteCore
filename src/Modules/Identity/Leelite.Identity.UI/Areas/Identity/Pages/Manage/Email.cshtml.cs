@@ -2,17 +2,17 @@
 using System.Text;
 using System.Text.Encodings.Web;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public partial class EmailModel : PageModel
+    public partial class EmailModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

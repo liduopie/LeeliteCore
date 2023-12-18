@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
-    <ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
-    <ProjectReference Include="..\..\..\Libraries\HybridFS\HybridFS.Sqlite\HybridFS.Sqlite.csproj" />
-    <ProjectReference Include="..\..\Settings\Leelite.Settings\Leelite.Settings.csproj" />
-  </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Extensions\Leelite.Extensions.EntityFramework\Leelite.Extensions.EntityFramework.csproj" />
+		<ProjectReference Include="..\..\..\Framework\Leelite.Framework\Leelite.Framework.csproj" />
+		<ProjectReference Include="..\..\..\Libraries\HybridFS\HybridFS.Sqlite\HybridFS.Sqlite.csproj" />
+		<ProjectReference Include="..\..\Settings\Leelite.Settings\Leelite.Settings.csproj" />
+	</ItemGroup>
 
 </Project>

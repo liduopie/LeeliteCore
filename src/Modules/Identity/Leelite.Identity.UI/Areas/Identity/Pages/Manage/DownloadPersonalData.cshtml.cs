@@ -1,18 +1,18 @@
 ﻿using System.Text;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 using Newtonsoft.Json;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class DownloadPersonalDataModel : PageModel
+    public class DownloadPersonalDataModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly ILogger<DownloadPersonalDataModel> _logger;

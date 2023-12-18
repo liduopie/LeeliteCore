@@ -1,13 +1,12 @@
 using Leelite.ApiAuth.Dtos.ApiKeyDtos;
 using Leelite.ApiAuth.Interfaces;
-using Leelite.Identity.Extensions;
+using Leelite.AspNetCore.Mvc.RazorPages;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class CreateKeyModel : PageModel
+    public class CreateKeyModel : AdminPageModel
     {
         private readonly IApiKeyService _apiKeyService;
 
@@ -25,13 +24,12 @@ namespace Leelite.Web.Areas.Identity.Pages.Manage
 
         public async Task<IActionResult> OnPostAsync()
         {
-            var userId = User.GetUserId<long>();
-            if (userId == 0)
+            if (UserId == 0)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return NotFound($"Unable to load user with ID '{UserId}'.");
             }
 
-            Input.UserId = userId;
+            Input.UserId = UserId;
             Input.Claims = User.Claims.ToList();
 
             await _apiKeyService.CreateAsync(Input);

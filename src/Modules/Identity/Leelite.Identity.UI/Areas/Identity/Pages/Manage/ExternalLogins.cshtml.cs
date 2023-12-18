@@ -1,13 +1,13 @@
-﻿using Leelite.Identity.Models.UserAgg;
+﻿using Leelite.AspNetCore.Mvc.RazorPages;
+using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class ExternalLoginsModel : PageModel
+    public class ExternalLoginsModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

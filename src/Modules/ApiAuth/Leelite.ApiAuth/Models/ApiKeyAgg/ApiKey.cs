@@ -50,7 +50,7 @@ namespace Leelite.ApiAuth.Models.ApiKeyAgg
 
                 foreach (var item in strList)
                 {
-                    var arr = item.Split(":", StringSplitOptions.TrimEntries);
+                    var arr = item.Split(": ", StringSplitOptions.TrimEntries);
 
                     _claims.Add(new Claim(arr[0], arr[1]));
                 }

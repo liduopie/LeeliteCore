@@ -1,9 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Leelite.AspNetCore.Mvc;
+
+using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Web.Areas.Dev.Controllers
 {
-    [Area("Dev")]
-    public class HomeController : Controller
+    public class HomeController : DevControllerBase
     {
         public IActionResult Index()
         {

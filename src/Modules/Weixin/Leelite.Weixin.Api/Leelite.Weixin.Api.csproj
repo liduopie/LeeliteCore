@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -19,7 +20,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Leelite.Weixin\Leelite.Weixin.csproj" />
+		<ProjectReference Include="..\Leelite.Weixin\Leelite.Weixin.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

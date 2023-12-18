@@ -1,5 +1,6 @@
 ﻿using FluentValidation;
 
+using Leelite.AspNetCore.Mvc;
 using Leelite.Framework.Data.Query.Paging;
 using Leelite.Framework.Data.Query.Parameters;
 using Leelite.Framework.Domain.Aggregate;
@@ -12,10 +13,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Leelite.Framework.WebApi
 {
-    [ApiController]
-    [Route("api/[area]/[controller]")]
     [GenericControllerNameConvention(typeof(RESTfulController<,,,,,>))]
-    public class RESTfulController<TEntity, TKey, TDto, TCreateRequest, TUpdateRequest, TQueryParameter> : ControllerBase
+    public class RESTfulController<TEntity, TKey, TDto, TCreateRequest, TUpdateRequest, TQueryParameter> : AdminApiControllerBase
         where TEntity : IAggregateRoot<TKey>
         where TKey : IEquatable<TKey>
         where TDto : IDto<TKey>
@@ -32,7 +31,7 @@ namespace Leelite.Framework.WebApi
 
         // GET: api/[area]/[controller]
         [HttpGet]
-        public async Task<ActionResult<IList<TDto>>> Get([FromQuery]TQueryParameter queryParameter)
+        public async Task<ActionResult<IList<TDto>>> Get([FromQuery] TQueryParameter queryParameter)
         {
             var list = await _service.GetPageAsync(queryParameter);
 
@@ -41,7 +40,7 @@ namespace Leelite.Framework.WebApi
 
         // GET: api/[area]/[controller]/GetPageList
         [HttpGet("GetPageList")]
-        public async Task<ActionResult<PageList<TDto>>> GetPageList([FromQuery]TQueryParameter queryParameter)
+        public async Task<ActionResult<PageList<TDto>>> GetPageList([FromQuery] TQueryParameter queryParameter)
         {
             return await _service.GetPageListAsync(queryParameter);
         }
@@ -89,7 +88,7 @@ namespace Leelite.Framework.WebApi
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public virtual async Task<ActionResult<TDto>> Put([FromQuery]TKey id, [FromBody] TUpdateRequest updateRequest)
+        public virtual async Task<ActionResult<TDto>> Put([FromQuery] TKey id, [FromBody] TUpdateRequest updateRequest)
         {
             if (!id.Equals(updateRequest.Id))
             {

@@ -1,4 +1,5 @@
 ﻿using Leelite.AspNetCore.Models;
+using Leelite.AspNetCore.Mvc;
 using Leelite.DataCategory.Dtos.CategoryDtos;
 using Leelite.DataCategory.Dtos.CategoryTypeDtos;
 using Leelite.DataCategory.Interfaces;
@@ -8,8 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Leelite.Web.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    public class DataCategoryController : Controller
+    public class DataCategoryController : AdminControllerBase
     {
         private readonly ICategoryTypeService _categoryTypeService;
         private readonly ICategoryService _categoryService;

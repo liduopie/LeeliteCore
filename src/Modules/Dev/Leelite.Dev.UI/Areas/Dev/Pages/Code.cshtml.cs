@@ -1,16 +1,16 @@
 using System.Text;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Core.Module;
 using Leelite.Dev.Generator.Codes;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Leelite.Web.Areas.Dev.Pages
 {
-    public class CodeModel : PageModel
+    public class CodeModel : DevPageModel
     {
         private readonly ModuleOptions _moduleOptions;
         private readonly ILogger<CodeModel> _logger;

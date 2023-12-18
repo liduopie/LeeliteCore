@@ -1,20 +1,17 @@
-﻿using System;
-using System.ComponentModel;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+﻿using System.ComponentModel.DataAnnotations;
 using System.Text;
 using System.Text.Encodings.Web;
-using System.Linq;
-using System.Threading.Tasks;
+
+using Leelite.AspNetCore.Mvc.RazorPages;
+using Leelite.Identity.Models.UserAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using Leelite.Identity.Models.UserAgg;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class EnableAuthenticatorModel : PageModel
+    public class EnableAuthenticatorModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly ILogger<EnableAuthenticatorModel> _logger;

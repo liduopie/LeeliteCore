@@ -1,8 +1,6 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using Leelite.Identity.Models.UserAgg;
+﻿using Leelite.Identity.Models.UserAgg;
 using Leelite.Identity.Models.UserTokenAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 

@@ -2,6 +2,7 @@
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<PropertyGroup>
@@ -9,11 +10,11 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+		<ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="新文件夹\" />
+		<Folder Include="新文件夹\" />
 	</ItemGroup>
 
 </Project>

@@ -1,16 +1,16 @@
 using System.Text;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Core.Module;
 using Leelite.Dev.Generator.Projects;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 
 namespace Leelite.Web.Areas.Dev.Pages
 {
-    public class ProjectModel : PageModel
+    public class ProjectModel : DevPageModel
     {
         private readonly ModuleOptions _moduleOptions;
         private readonly ILogger<ProjectModel> _logger;

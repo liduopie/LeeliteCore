@@ -1,7 +1,8 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
 	</PropertyGroup>
 
 	<ItemGroup>
@@ -9,7 +10,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
+		<ProjectReference Include="..\Leelite.MessageCenter\Leelite.MessageCenter.csproj" />
 	</ItemGroup>
 
 </Project>

@@ -1,14 +1,13 @@
 using Leelite.ApiAuth.Dtos.ApiKeyDtos;
 using Leelite.ApiAuth.Interfaces;
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Framework.Data.Query.Paging;
-using Leelite.Identity.Extensions;
 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class SecretKeyModel : PageModel
+    public class SecretKeyModel : AdminPageModel
     {
         private readonly IApiKeyService _apiKeyService;
 
@@ -25,15 +24,14 @@ namespace Leelite.Web.Areas.Identity.Pages.Manage
 
         public async Task<IActionResult> OnGetAsync()
         {
-            var userId = User.GetUserId<long>();
-            if (userId == 0)
+            if (UserId == 0)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return NotFound($"Unable to load user with ID '{UserId}'.");
             }
 
             var query = new ApiKeyQueryParameter();
 
-            query.UserId = userId;
+            query.UserId = UserId;
             query.Pager.Page = page;
 
             PageList = await _apiKeyService.GetPageListAsync(query);
@@ -43,15 +41,14 @@ namespace Leelite.Web.Areas.Identity.Pages.Manage
 
         public async Task<IActionResult> OnPostDeleteAsync(string key)
         {
-            var userId = User.GetUserId<long>();
-            if (userId == 0)
+            if (UserId == 0)
             {
-                return NotFound($"Unable to load user with ID '{userId}'.");
+                return NotFound($"Unable to load user with ID '{UserId}'.");
             }
 
             var apiKey = await _apiKeyService.GetApiKeyAsync(key);
 
-            if (userId != apiKey.UserId)
+            if (UserId != apiKey.UserId)
             {
                 return NotFound($"Unable to load SecretKey with ID '{key}'.");
             }

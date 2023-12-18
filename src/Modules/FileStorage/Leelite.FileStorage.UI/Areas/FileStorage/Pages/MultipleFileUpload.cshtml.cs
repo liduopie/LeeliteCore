@@ -1,8 +1,8 @@
-using Microsoft.AspNetCore.Mvc.RazorPages;
+using Leelite.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.FileStorage.Pages
 {
-    public class MultipleFileUploadModel : PageModel
+    public class MultipleFileUploadModel : UserPageModel
     {
         public void OnGet()
         {

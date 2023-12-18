@@ -2,6 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Net;
 
 using Leelite.Application.Settings;
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.FileStorage.Dtos.FileItemDtos;
 using Leelite.FileStorage.Interfaces;
 using Leelite.FileStorage.Options;
@@ -9,11 +10,10 @@ using Leelite.FileStorage.Utility;
 
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.FileStorage.Pages
 {
-    public class SingleFileUploadModel : PageModel
+    public class SingleFileUploadModel : UserPageModel
     {
         private readonly IFileItemService _service;
         private readonly FileStorageOptions _filesOptions;

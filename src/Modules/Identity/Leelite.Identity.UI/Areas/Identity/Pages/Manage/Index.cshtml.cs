@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
+
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Identity.Models.UserAgg;
+
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public partial class IndexModel : PageModel
+    public partial class IndexModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

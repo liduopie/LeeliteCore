@@ -2,8 +2,6 @@
 
 using Microsoft.AspNetCore.Mvc;
 
-using System.Collections.Generic;
-
 namespace Leelite.Setting
 {
     [ApiController]

@@ -1,13 +1,13 @@
-﻿using Leelite.Identity.Models.UserAgg;
+﻿using Leelite.AspNetCore.Mvc.RazorPages;
+using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class Disable2faModel : PageModel
+    public class Disable2faModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly ILogger<Disable2faModel> _logger;

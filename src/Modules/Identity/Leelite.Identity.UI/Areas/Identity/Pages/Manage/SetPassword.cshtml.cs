@@ -1,14 +1,14 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class SetPasswordModel : PageModel
+    public class SetPasswordModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;

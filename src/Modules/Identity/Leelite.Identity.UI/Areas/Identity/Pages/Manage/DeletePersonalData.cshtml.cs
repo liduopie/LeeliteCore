@@ -1,15 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+using Leelite.AspNetCore.Mvc.RazorPages;
 using Leelite.Identity.Models.UserAgg;
 
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
 namespace Leelite.Web.Areas.Identity.Pages.Manage
 {
-    public class DeletePersonalDataModel : PageModel
+    public class DeletePersonalDataModel : UserPageModel
     {
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
