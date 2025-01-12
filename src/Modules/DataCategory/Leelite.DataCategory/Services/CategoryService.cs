@@ -23,11 +23,20 @@ namespace Leelite.DataCategory.Services
         }
 
         /// <inheritdoc/>
-        public IList<ITreeNode<long, Category>> GetCategoryTreeByType(int typeId)
+        public IList<ITreeNode<long, Category>> GetCategoryTreeByType(int typeId, bool includeDisable)
         {
             var query = new CategoryQueryParameter();
             query.CategoryTypeId = typeId;
             query.ParentId = 0;
+
+            if (includeDisable)
+            {
+                query.IsEnabled = null;
+            }
+            else
+            {
+                query.IsEnabled = true;
+            }
 
             var roots = Get(query);
 
@@ -42,11 +51,20 @@ namespace Leelite.DataCategory.Services
         }
 
         /// <inheritdoc/>
-        public async Task<IList<ITreeNode<long, Category>>> GetCategoryTreeByTypeAsync(int typeId)
+        public async Task<IList<ITreeNode<long, Category>>> GetCategoryTreeByTypeAsync(int typeId, bool includeDisable)
         {
             var query = new CategoryQueryParameter();
             query.CategoryTypeId = typeId;
             query.ParentId = 0;
+
+            if (includeDisable)
+            {
+                query.IsEnabled = null;
+            }
+            else
+            {
+                query.IsEnabled = true;
+            }
 
             var roots = await GetAsync(query);
 

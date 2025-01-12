@@ -1,6 +1,12 @@
 ﻿@using Leelite.Application.Clients;
+@using Leelite.Application;
+@using Leelite.Application.Settings;
+
+@inject ISettingManager settingManager
 @{
     Layout = "_Layout";
+    var option = settingManager.GetApplicationOptions<ApplicationOptions>();
+    ViewData["Title"] = option.Title;
 }
 
 @section GlobalStyles {
@@ -29,7 +35,7 @@
     <div class="navbar navbar-dark bg-secondary navbar-expand-lg fixed-top px-lg-0">
         <div class="container-fluid container-boxed jusitfy-content-start">
             <div class="navbar-brand">
-                <a href="index.html" class="d-inline-flex align-items-center">
+                <a href="/" class="d-inline-flex align-items-center">
                     <img src="~/global_assets/images/logo_icon.svg" alt="">
                     <img src="~/global_assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">
                 </a>
@@ -71,7 +77,7 @@
             </div>
 
             <ul class="nav gap-sm-2 order-1 order-lg-2 ms-auto">
-                <li class="nav-item">
+                @* <li class="nav-item">
                     <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
                         <i class="ph-bell"></i>
                         <span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
@@ -81,7 +87,7 @@
                     <a href="#" class="navbar-nav-link navbar-nav-link-icon rounded">
                         <i class="ph-chats"></i>
                     </a>
-                </li>
+                </li> *@
 
                 <partial name="_LoginPartial" />
             </ul>
@@ -99,10 +105,10 @@
 <!-- Footer -->
 <div class="navbar navbar-sm navbar-footer border-top px-lg-0">
     <div class="container-fluid container-boxed">
-        <span>&copy; 2022 <a asp-area="" asp-page="">Leelite Home</a></span>
+        <span>&copy; 2023 <a asp-area="" asp-page="">@ViewData["Title"]</a></span>
 
         <ul class="nav">
-            <li class="nav-item">
+            @* <li class="nav-item">
                 <a href="https://kopyov.ticksy.com/" class="navbar-nav-link navbar-nav-link-icon rounded" target="_blank">
                     <div class="d-flex align-items-center mx-md-1">
                         <i class="ph-lifebuoy"></i>
@@ -125,7 +131,7 @@
                         <span class="d-none d-md-inline-block ms-2">Privacy</span>
                     </div>
                 </a>
-            </li>
+            </li> *@
         </ul>
     </div>
 </div>

@@ -15,6 +15,7 @@ namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
         }
 
         public string Keyword { get; set; }
+        public string Code { get; set; }
         public string Name { get; set; }
 
         public override Expression<Func<CategoryType, bool>> SatisfiedBy()
@@ -24,6 +25,11 @@ namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
             if (!string.IsNullOrEmpty(Keyword))
             {
                 c &= CategoryTypeCriteria.Keyword(Keyword);
+            }
+
+            if (!string.IsNullOrEmpty(Code))
+            {
+                c &= CategoryTypeCriteria.Code(Code);
             }
 
             if (!string.IsNullOrEmpty(Name))

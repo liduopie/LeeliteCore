@@ -18,6 +18,16 @@ namespace Leelite.DataCategory.Models.CategoryTypeAgg
             return criterion;
         }
 
+        public static Criterion<CategoryType> Code(string code)
+        {
+            if (string.IsNullOrWhiteSpace(code))
+                return new TrueCriterion<CategoryType>();
+
+            var codeCriterion = new DirectCriterion<CategoryType>(c => c.Code == code);
+
+            return codeCriterion;
+        }
+
         public static Criterion<CategoryType> Name(string name)
         {
             if (string.IsNullOrWhiteSpace(name))

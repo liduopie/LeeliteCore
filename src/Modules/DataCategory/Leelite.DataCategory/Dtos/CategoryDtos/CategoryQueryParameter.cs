@@ -21,6 +21,12 @@ namespace Leelite.DataCategory.Dtos.CategoryDtos
 
         public long? ParentId { get; set; }
 
+        public int? Level { get; set; }
+
+        public bool? IsEnabled { get; set; }
+
+        public string Path { get; set; }
+
         public override Expression<Func<Category, bool>> SatisfiedBy()
         {
             Criterion<Category> c = new TrueCriterion<Category>();
@@ -33,6 +39,15 @@ namespace Leelite.DataCategory.Dtos.CategoryDtos
 
             if (ParentId != null)
                 c &= TreeCriteria.Children<Category, long>(ParentId.Value);
+
+            if (Level != null)
+                c &= TreeCriteria.Level<Category, long>(Level.Value);
+
+            if (IsEnabled != null)
+                c &= CategoryCriteria.IsEnabled(IsEnabled.Value);
+
+            if (!string.IsNullOrEmpty(Path))
+                c &= TreeCriteria.Path<Category, long>(Path);
 
             return c.SatisfiedBy();
         }

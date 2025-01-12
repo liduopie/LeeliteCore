@@ -21,11 +21,15 @@ namespace Leelite.DataCategory.Services
         {
         }
 
-        /// <summary>
-        /// 根据名称获取
-        /// </summary>
-        /// <param name="name">分类名称</param>
-        /// <returns>分类信息</returns>
+        /// <inheritdoc/>
+        public CategoryTypeDto GetByCode(string code)
+        {
+            var entity = Repository.Find(CategoryTypeCriteria.Code(code).SatisfiedBy()).FirstOrDefault();
+
+            return MapTo<CategoryTypeDto>(entity);
+        }
+
+        /// <inheritdoc/>
         public CategoryTypeDto GetByName(string name)
         {
             var entity = Repository.Find(CategoryTypeCriteria.Name(name).SatisfiedBy()).FirstOrDefault();

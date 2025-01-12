@@ -25,5 +25,12 @@ namespace Leelite.DataCategory.Models.CategoryAgg
 
             return criterion;
         }
+
+        public static Criterion<Category> IsEnabled(bool isEnabled)
+        {
+            var criterion = new DirectCriterion<Category>(c => c.IsEnabled == isEnabled);
+
+            return criterion;
+        }
     }
 }

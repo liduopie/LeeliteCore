@@ -20,7 +20,7 @@ namespace Leelite.Web.Areas.Admin.Controllers
             _categoryService = categoryService;
         }
 
-        public async Task<IActionResult> Index(int categoryTypeId)
+        public async Task<IActionResult> Index(int categoryTypeId, bool includeDisable)
         {
             var defTypeId = categoryTypeId;
 
@@ -35,7 +35,7 @@ namespace Leelite.Web.Areas.Admin.Controllers
             }
 
             // 获取数据分类
-            var categoryTree = await _categoryService.GetCategoryTreeByTypeAsync(defTypeId);
+            var categoryTree = await _categoryService.GetCategoryTreeByTypeAsync(defTypeId, includeDisable);
 
             var model = new DataCategoryViewModel()
             {

@@ -14,6 +14,7 @@ namespace Leelite.DataCategory.Contexts.Configurations
             builder.ToTable(TableConsts.Category);
 
             builder.Property(p => p.CategoryTypeId);
+            builder.Property(p => p.Code).HasMaxLength(64);
             builder.Property(p => p.Name).HasMaxLength(256);
             builder.Property(p => p.Icon).HasMaxLength(256);
             builder.Property(p => p.Description).HasMaxLength(512);

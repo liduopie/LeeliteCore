@@ -31,5 +31,19 @@ namespace Leelite.Framework.Models.Tree
         {
             return new DirectCriterion<TEntity>(c => c.Level == level);
         }
+
+        /// <summary>
+        /// 根据路径查询
+        /// </summary>
+        /// <typeparam name="TEntity"></typeparam>
+        /// <typeparam name="TKey"></typeparam>
+        /// <param name="path"></param>
+        /// <returns></returns>
+        public static Criterion<TEntity> Path<TEntity, TKey>(string path)
+            where TEntity : ITree<TKey>
+            where TKey : IEquatable<TKey>
+        {
+            return new DirectCriterion<TEntity>(c => c.Path.StartsWith(path));
+        }
     }
 }

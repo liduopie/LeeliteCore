@@ -3,6 +3,7 @@ using System;
 using Leelite.DataCategory.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace Leelite.DataCategory.Migrations.PostgreSQL
 {
     [DbContext(typeof(DataCategoryContext))]
-    partial class DataCategoryContextModelSnapshot : ModelSnapshot
+    [Migration("20231219021815_UpdateCategoryCode")]
+    partial class UpdateCategoryCode
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

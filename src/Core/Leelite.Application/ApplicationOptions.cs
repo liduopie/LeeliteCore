@@ -5,7 +5,7 @@
         /// <summary>
         /// 应用名称
         /// </summary>
-        public string ApplicationName { get; set; } = "";
+        public string Title { get; set; } = "";
 
         /// <summary>
         /// 应用功能描述

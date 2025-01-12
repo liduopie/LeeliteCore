@@ -1,4 +1,5 @@
 using FluentValidation;
+
 using Leelite.Core.Validation;
 
 namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
@@ -7,6 +8,8 @@ namespace Leelite.DataCategory.Dtos.CategoryTypeDtos
     {
         public CategoryTypeUpdateRequestValidator()
         {
+            RuleFor(c => c.Code).NotNull();
+            RuleFor(c => c.Name).NotNull();
         }
     }
 }

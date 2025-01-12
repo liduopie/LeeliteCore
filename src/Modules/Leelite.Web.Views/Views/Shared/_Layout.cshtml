@@ -1,7 +1,17 @@
 ﻿@using Microsoft.AspNetCore.Hosting;
 @using Microsoft.Extensions.Hosting;
 @using StackExchange.Profiling;
+@using Leelite.Application;
+@using Leelite.Application.Settings;
+
 @inject IWebHostEnvironment env
+@inject ISettingManager settingManager
+@{
+    var option = settingManager.GetApplicationOptions<ApplicationOptions>();
+    ViewData["Title"] = option.Title;
+    ViewData["Description"] = option.Description;
+    ViewData["Keywords"] = option.Keywords;
+}
 <!DOCTYPE html>
 <html lang="zh-cn" dir="ltr">
 <head>
@@ -10,6 +20,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <title>@ViewData["Title"]</title>
+    <meta name="description" content="@ViewData["Description"]">
+    <meta name="keywords" content="@ViewData["Keywords"]">
     <link rel="shortcut icon" href="~/global_assets/images/logo_icon.svg" type="image/x-icon" sizes="16x16">
 
     <!-- Global stylesheets -->
@@ -17,6 +29,8 @@
     <link href="~/global_assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
     <link href="~/global_assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
     <link href="~/global_assets/icons/icomoon/styles.min.css" rel="stylesheet" type="text/css">
+
+    <link href="~/assets/css/custom.css" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
     @RenderSection("Styles", required: false)
 </head>
@@ -60,7 +74,6 @@
                             </dev>
                         }
                     }
-
                 </div>
             </div>
 

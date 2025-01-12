@@ -12,6 +12,7 @@ namespace Leelite.DataCategory.Contexts.Configurations
             builder.HasKey(r => r.Id);
             builder.ToTable(TableConsts.CategoryType);
 
+            builder.Property(p => p.Code).HasMaxLength(64);
             builder.Property(p => p.Name).HasMaxLength(256);
         }
     }
